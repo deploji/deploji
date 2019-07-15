@@ -62,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mastermind:build"
+            "browserTarget": "mastermind:build",
+            "proxyConfig": "./proxy.conf.json"
           },
           "configurations": {
             "production": {

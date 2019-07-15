@@ -1,0 +1,16 @@
+<h1>SSH keys</h1>
+<button type="button" mat-raised-button color="primary" routerLink="/settings/add-ssh-key">Add key</button>
+<mat-card *ngFor="let key of keys" class="ssh-key">
+  <div class="d-flex">
+    <div>
+      <div>{{key.title}}</div>
+      <div>{{key.fingerprint}}</div>
+    </div>
+    <div class="flex-fill"></div>
+    <div>
+      <button type="button" mat-icon-button title="Delete key" (click)="delete(key)">
+        <mat-icon color="warn">delete_forever</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

@@ -1,0 +1,13 @@
+<h1>Add new ssh key</h1>
+<form [formGroup]="form">
+  <mat-form-field class="d-block">
+    <input matInput placeholder="Title" type="text" formControlName="title">
+  </mat-form-field>
+  <mat-form-field class="d-block">
+    <textarea matInput placeholder="Key" type="textarea" formControlName="key"></textarea>
+  </mat-form-field>
+  <div class="button-row">
+    <button type="button" mat-raised-button routerLink="/settings/keys">Cancel</button>
+    <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+</form>

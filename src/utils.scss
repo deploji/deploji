@@ -1,0 +1,25 @@
+.flex-fill {
+  -ms-flex: 1 1 auto !important;
+  flex: 1 1 auto !important;
+}
+
+.content {
+  padding: 10px;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.mr-2 {
+  margin-right: 10px !important;
+}
+
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.d-flex {
+  display: flex !important;
+}
