@@ -5,6 +5,7 @@ import {NavResolve} from '../core/resolvers/nav.resolver';
 import {ProjectsComponent} from './projects/projects.component';
 import {KeysComponent} from './keys/keys.component';
 import {AddSshKeyComponent} from './add-ssh-key/add-ssh-key.component';
+import {EditProjectComponent} from './edit-project/edit-project.component';
 
 const routes: Routes = [
   {
@@ -32,12 +33,20 @@ const routes: Routes = [
         component: ProjectsComponent
       },
       {
+        path: 'projects/:id',
+        component: EditProjectComponent
+      },
+      {
         path: 'keys',
         component: KeysComponent
       },
       {
         path: 'add-ssh-key',
         component: AddSshKeyComponent
+      },
+      {
+        path: 'create-project',
+        component: EditProjectComponent
       }
     ]
   }

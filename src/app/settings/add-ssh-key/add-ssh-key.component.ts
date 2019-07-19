@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {SshKeysService} from '../../core/services/ssh-keys.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-add-ssh-key',
@@ -10,10 +11,10 @@ import {SshKeysService} from '../../core/services/ssh-keys.service';
 export class AddSshKeyComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private keys: SshKeysService) {
+  constructor(private fb: FormBuilder, private keys: SshKeysService, private router: Router) {
     this.form = fb.group({
-      title: [],
-      key: []
+      Title: [],
+      Key: []
     });
   }
 
@@ -24,6 +25,8 @@ export class AddSshKeyComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
-    this.keys.create(this.form.value).subscribe();
+    this.keys.create(this.form.value).subscribe(() => {
+      this.router.navigateByUrl('/settings/keys');
+    });
   }
 }

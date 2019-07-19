@@ -1,10 +1,9 @@
 <h1>SSH keys</h1>
 <button type="button" mat-raised-button color="primary" routerLink="/settings/add-ssh-key">Add key</button>
-<mat-card *ngFor="let key of keys" class="ssh-key">
+<mat-card *ngFor="let key of keys" class="my-2">
   <div class="d-flex">
     <div>
-      <div>{{key.title}}</div>
-      <div>{{key.fingerprint}}</div>
+      <div>{{key.Title}}</div>
     </div>
     <div class="flex-fill"></div>
     <div>

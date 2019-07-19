@@ -1,1 +1,22 @@
-<p>projects works!</p>
+<h1>Projects</h1>
+<button type="button" mat-raised-button color="primary" routerLink="/settings/create-project">Create new project</button>
+<mat-card *ngFor="let project of projects" class="my-2">
+  <div class="d-flex">
+    <div>
+      <div>{{project.Name}}</div>
+      <div>{{project.RepoUrl}}</div>
+    </div>
+    <div class="flex-fill"></div>
+    <div>
+      <button type="button" mat-icon-button title="Edit" routerLink="/settings/projects/{{project.ID}}">
+        <mat-icon color="primary">edit</mat-icon>
+      </button>
+      <button type="button" mat-icon-button title="Synchronize with VCS" (click)="synchronize(project)">
+        <mat-icon color="primary">synchronize</mat-icon>
+      </button>
+      <button type="button" mat-icon-button title="Delete key" (click)="delete(project)">
+        <mat-icon color="warn">delete_forever</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

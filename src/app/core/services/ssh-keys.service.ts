@@ -7,7 +7,6 @@ import {HttpClient} from '@angular/common/http';
   providedIn: 'root'
 })
 export class SshKeysService {
-
   constructor(private http: HttpClient) { }
 
   getKeys(): Observable<SshKey[]> {
@@ -19,6 +18,6 @@ export class SshKeysService {
   }
 
   destroy(key: SshKey): Observable<void> {
-    return this.http.delete<void>(`/api/ssh-keys/${key.id}`);
+    return this.http.delete<void>(`/api/ssh-keys/${key.ID}`);
   }
 }

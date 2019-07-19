@@ -5,13 +5,14 @@ import {
   MatFormFieldModule,
   MatIconModule, MatInputModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatSelectModule,
   MatSidenavModule,
   MatToolbarModule
 } from '@angular/material';
 import {NavComponent} from './nav/nav.component';
 import {RouterModule} from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
+import { FormSshKeyComponent } from './form-ssh-key/form-ssh-key.component';
 
 
 const MODULES = [
@@ -24,6 +25,7 @@ const MODULES = [
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
+  MatSelectModule,
   ReactiveFormsModule,
 ];
 
@@ -34,6 +36,7 @@ const COMPONENTS = [
 @NgModule({
   declarations: [
     ...COMPONENTS,
+    FormSshKeyComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ const COMPONENTS = [
   exports: [
     ...MODULES,
     ...COMPONENTS,
+    FormSshKeyComponent,
   ]
 })
 export class SharedModule { }

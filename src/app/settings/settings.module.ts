@@ -7,6 +7,7 @@ import {ProjectsComponent} from './projects/projects.component';
 import {KeysComponent} from './keys/keys.component';
 import {SharedModule} from '../shared/shared.module';
 import {AddSshKeyComponent} from './add-ssh-key/add-ssh-key.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {AddSshKeyComponent} from './add-ssh-key/add-ssh-key.component';
     SettingsComponent,
     ProjectsComponent,
     KeysComponent,
-    AddSshKeyComponent
+    AddSshKeyComponent,
+    EditProjectComponent
   ],
   imports: [
     CommonModule,

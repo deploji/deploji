@@ -8,23 +8,14 @@ import {SshKeysService} from '../../core/services/ssh-keys.service';
   styleUrls: ['./keys.component.scss']
 })
 export class KeysComponent implements OnInit {
-  keys: SshKey[] = [
-    {
-      fingerprint: '41:8b:4b:b5:a6:f6:70:2b:b7:0c:03:5a:48:8e:cd:40',
-      title: 'sotomski@sotomski-ThinkPad-T470'
-    },
-    {
-      fingerprint: '41:8b:4b:b5:a6:f6:70:2b:b7:0c:03:5a:48:8e:cd:40',
-      title: 'sotomski@sotomski-ThinkPad-T470'
-    }
-  ];
+  keys: SshKey[] = [];
 
   constructor(private keysService: SshKeysService) { }
 
   ngOnInit() {
-    // this.keysService.getKeys().subscribe(keys => {
-    //   this.keys = keys;
-    // });
+    this.keysService.getKeys().subscribe(keys => {
+      this.keys = keys;
+    });
   }
 
   delete(key: SshKey) {
