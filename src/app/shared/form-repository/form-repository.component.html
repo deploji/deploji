@@ -1,0 +1,6 @@
+<mat-form-field>
+  <mat-label>{{label}}</mat-label>
+  <mat-select [formControl]="control" [compareWith]="compareFn">
+    <mat-option *ngFor="let repository of repositories" [value]="repository">{{repository.Name}}</mat-option>
+  </mat-select>
+</mat-form-field>

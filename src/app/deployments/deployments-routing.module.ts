@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
 import {DeploymentsComponent} from './deployments.component';
 import {NavResolve} from '../core/resolvers/nav.resolver';
-
+import {CreateDeploymentComponent} from './create-deployment/create-deployment.component';
+import {DeploymentDetailsComponent} from './deployment-details/deployment-details.component';
 
 const routes: Routes = [
   {
@@ -12,14 +13,17 @@ const routes: Routes = [
     data: {
       nav: {
         title: 'Deployments',
-        items: [
-          {
-            label: 'Projects',
-            link: 'projects'
-          }
-        ]
+        items: []
       }
     }
+  },
+  {
+    path: 'deployments/create',
+    component: CreateDeploymentComponent
+  },
+  {
+    path: 'deployments/:id',
+    component: DeploymentDetailsComponent
   }
 ];
 

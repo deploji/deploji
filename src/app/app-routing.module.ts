@@ -7,7 +7,19 @@ const routes: Routes = [
   {
     path: 'settings',
     loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
-  }
+  },
+  {
+    path: 'applications',
+    loadChildren: () => import('./applications/applications.module').then(m => m.ApplicationsModule)
+  },
+  {
+    path: 'inventories',
+    loadChildren: () => import('./inventories/inventories.module').then(m => m.InventoriesModule)
+  },
+  {
+    path: 'jobs',
+    loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule)
+  },
 ];
 
 @NgModule({

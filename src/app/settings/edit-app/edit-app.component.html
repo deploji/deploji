@@ -1,0 +1,32 @@
+<h1>
+  <ng-container *ngIf="!form.get('ID').value">Create new</ng-container>
+  <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
+  app
+</h1>
+<form [formGroup]="form">
+  <mat-form-field class="d-block">
+    <input matInput placeholder="Display name" type="text" formControlName="Name">
+  </mat-form-field>
+  <mat-form-field class="d-block">
+    <input matInput placeholder="Ansible name" type="text" formControlName="AnsibleName">
+  </mat-form-field>
+  <div>
+    <app-form-project label="Project" formControlName="Project"></app-form-project>
+  </div>
+  <div>
+    <app-form-project-file label="Ansible playbook"
+                           formControlName="AnsiblePlaybook"
+                           [project]="form.get('Project').value">
+    </app-form-project-file>
+  </div>
+  <div>
+    <app-form-repository label="Repository" formControlName="Repository"></app-form-repository>
+  </div>
+  <mat-form-field class="d-block">
+    <input matInput placeholder="Repository artifact" type="text" formControlName="RepositoryArtifact">
+  </mat-form-field>
+  <div class="button-row">
+    <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
+    <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+  </div>
+</form>

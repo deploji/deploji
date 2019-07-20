@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer [(opened)]="opened" class="sidenav" fixedInViewport
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="(isHandset$ | async) === false">
@@ -8,44 +8,71 @@
       <a mat-list-item routerLinkActive="active" *ngFor="let item of nav.items" [routerLink]="item.link">{{item.label}}</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>Mastermind</span>
-      <button
-        type="button"
-        aria-label="Deployments"
-        title="Deployments"
-        mat-button
-        routerLink="/deployments">
-        Deployments
-      </button>
-      <span class="flex-fill"></span>
-      <button
-        type="button"
-        aria-label="Settings"
-        title="Settings"
-        routerLink="/settings"
-        mat-icon-button
+  <mat-sidenav-content class="d-flex flex-column">
+    <header>
+      <mat-toolbar color="primary">
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="isHandset$ | async">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <span>Mastermind</span>
+        <button
+          type="button"
+          aria-label="Deployments"
+          title="Deployments"
+          mat-button
+          routerLink="/deployments">
+          Deployments
+        </button>
+        <button
+          type="button"
+          aria-label="Applications"
+          title="Applications"
+          mat-button
+          routerLink="/applications">
+          Applications
+        </button>
+        <button
+          type="button"
+          aria-label="Inventories"
+          title="Inventories"
+          mat-button
+          routerLink="/inventories">
+          Inventories
+        </button>
+        <button
+          type="button"
+          aria-label="Jobs"
+          title="Jobs"
+          mat-button
+          routerLink="/jobs">
+          Jobs
+        </button>
+        <span class="flex-fill"></span>
+        <button
+          type="button"
+          aria-label="Settings"
+          title="Settings"
+          routerLink="/settings"
+          mat-icon-button
         ><mat-icon aria-label="Profile">settings</mat-icon>
-      </button>
-      <button
-        type="button"
-        aria-label="Logout"
-        title="Logout"
-        mat-icon-button
+        </button>
+        <button
+          type="button"
+          aria-label="Logout"
+          title="Logout"
+          mat-icon-button
         ><mat-icon aria-label="Logout">exit_to_app</mat-icon>
-      </button>
-    </mat-toolbar>
-    <div class="content">
+        </button>
+      </mat-toolbar>
+    </header>
+    <div class="content flex-grow-1">
       <router-outlet></router-outlet>
     </div>
+    <footer></footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

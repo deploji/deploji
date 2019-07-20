@@ -19,7 +19,9 @@ export class ProjectsComponent implements OnInit {
   }
 
   delete(project: Project) {
-    this.projectsService.destroy(project).subscribe();
+    this.projectsService.destroy(project).subscribe(() => {
+      this.projects.splice(this.projects.indexOf(project), 1);
+    });
   }
 
   synchronize(project: Project) {

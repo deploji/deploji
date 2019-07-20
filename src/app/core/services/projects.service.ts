@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Project} from '../interfaces/project';
+import {ProjectFile} from '../interfaces/project-file';
 
 @Injectable({
   providedIn: 'root'
@@ -31,5 +32,9 @@ export class ProjectsService {
 
   getProject(id: number): Observable<Project> {
     return this.http.get<Project>(`/api/projects/${id}`);
+  }
+
+  getProjectFiles(project: Project): Observable<ProjectFile[]> {
+    return this.http.get<ProjectFile[]>(`/api/projects/${project.ID}/files`);
   }
 }

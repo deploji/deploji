@@ -6,6 +6,13 @@ import {ProjectsComponent} from './projects/projects.component';
 import {KeysComponent} from './keys/keys.component';
 import {AddSshKeyComponent} from './add-ssh-key/add-ssh-key.component';
 import {EditProjectComponent} from './edit-project/edit-project.component';
+import {AppsComponent} from './apps/apps.component';
+import {EditAppComponent} from './edit-app/edit-app.component';
+import {InventoriesComponent} from './inventories/inventories.component';
+import {EditInventoryComponent} from './edit-inventory/edit-inventory.component';
+import {EditRepositoryComponent} from './edit-repository/edit-repository.component';
+import {RepositoriesComponent} from './repositories/repositories.component';
+import {TemplatesComponent} from './templates/templates.component';
 
 const routes: Routes = [
   {
@@ -23,6 +30,22 @@ const routes: Routes = [
           {
             label: 'Projects',
             link: '/settings/projects'
+          },
+          {
+            label: 'Inventories',
+            link: '/settings/inventories'
+          },
+          {
+            label: 'Repositories',
+            link: '/settings/repositories'
+          },
+          {
+            label: 'Applications',
+            link: '/settings/apps'
+          },
+          {
+            label: 'Templates',
+            link: '/settings/templates'
           }
         ]
       }
@@ -33,6 +56,10 @@ const routes: Routes = [
         component: ProjectsComponent
       },
       {
+        path: 'projects/create',
+        component: EditProjectComponent
+      },
+      {
         path: 'projects/:id',
         component: EditProjectComponent
       },
@@ -41,12 +68,48 @@ const routes: Routes = [
         component: KeysComponent
       },
       {
-        path: 'add-ssh-key',
+        path: 'keys/add',
         component: AddSshKeyComponent
       },
       {
-        path: 'create-project',
-        component: EditProjectComponent
+        path: 'inventories',
+        component: InventoriesComponent
+      },
+      {
+        path: 'inventories/create',
+        component: EditInventoryComponent
+      },
+      {
+        path: 'inventories/:id',
+        component: EditInventoryComponent
+      },
+      {
+        path: 'apps',
+        component: AppsComponent
+      },
+      {
+        path: 'apps/create',
+        component: EditAppComponent
+      },
+      {
+        path: 'apps/:id',
+        component: EditAppComponent
+      },
+      {
+        path: 'repositories',
+        component: RepositoriesComponent
+      },
+      {
+        path: 'repositories/create',
+        component: EditRepositoryComponent
+      },
+      {
+        path: 'repositories/:id',
+        component: EditRepositoryComponent
+      },
+      {
+        path: 'templates',
+        component: TemplatesComponent
       }
     ]
   }

@@ -19,6 +19,8 @@ export class KeysComponent implements OnInit {
   }
 
   delete(key: SshKey) {
-    this.keysService.destroy(key).subscribe();
+    this.keysService.destroy(key).subscribe(() => {
+      this.keys.splice(this.keys.indexOf(key), 1);
+    });
   }
 }
