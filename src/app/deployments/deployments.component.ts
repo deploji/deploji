@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {DeploymentsService} from '../core/services/deployments.service';
-import {Deployment} from '../core/interfaces/deployment';
+import { DeploymentsService } from '../core/services/deployments.service';
+import { Deployment } from '../core/interfaces/deployment';
 
 @Component({
   selector: 'app-deployments',
@@ -10,7 +10,8 @@ import {Deployment} from '../core/interfaces/deployment';
 export class DeploymentsComponent implements OnInit {
   deployments: Deployment[];
 
-  constructor(private deploymentsService: DeploymentsService) { }
+  constructor(private deploymentsService: DeploymentsService) {
+  }
 
   ngOnInit() {
     this.deploymentsService.getDeployments().subscribe(deployments => {

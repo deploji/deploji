@@ -1,15 +1,16 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Inventory} from '../interfaces/inventory';
-import {App} from '../interfaces/app';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Inventory } from '../interfaces/inventory';
+import { App } from '../interfaces/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InventoriesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getInventories(app?: App): Observable<Inventory[]> {
     return this.http.get<Inventory[]>('/api/inventories', {params: app ? {app: app.ID.toString()} : {}});

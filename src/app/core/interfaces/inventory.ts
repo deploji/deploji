@@ -1,5 +1,5 @@
-import {Project} from './project';
-import {ProjectFile} from './project-file';
+import { Project } from './project';
+import { ProjectFile } from './project-file';
 
 export interface Inventory {
   ID?: number;

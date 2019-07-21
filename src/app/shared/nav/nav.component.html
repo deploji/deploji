@@ -1,11 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #drawer [(opened)]="opened" class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
     <mat-toolbar>{{nav.title}}</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLinkActive="active" *ngFor="let item of nav.items" [routerLink]="item.link">{{item.label}}</a>
+      <a mat-list-item routerLinkActive="active" *ngFor="let item of nav.items"
+         [routerLink]="item.link">{{item.label}}</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="d-flex flex-column">
@@ -59,14 +60,16 @@
           title="Settings"
           routerLink="/settings"
           mat-icon-button
-        ><mat-icon aria-label="Profile">settings</mat-icon>
+        >
+          <mat-icon aria-label="Profile">settings</mat-icon>
         </button>
         <button
           type="button"
           aria-label="Logout"
           title="Logout"
           mat-icon-button
-        ><mat-icon aria-label="Logout">exit_to_app</mat-icon>
+        >
+          <mat-icon aria-label="Logout">exit_to_app</mat-icon>
         </button>
       </mat-toolbar>
     </header>

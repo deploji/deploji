@@ -1,1 +1,8 @@
 <h1>Inventories</h1>
+<mat-card *ngFor="let inventory of inventories" class="my-2">
+  <div class="d-flex">
+    <div>
+      <div><b>{{inventory?.Name}}</b></div>
+    </div>
+  </div>
+</mat-card>

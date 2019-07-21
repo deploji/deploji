@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
-import {Observable} from 'rxjs';
-import {SshKey} from '../interfaces/ssh-key';
-import {HttpClient} from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { SshKey } from '../interfaces/ssh-key';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SshKeysService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getKeys(): Observable<SshKey[]> {
     return this.http.get<SshKey[]>('/api/ssh-keys');

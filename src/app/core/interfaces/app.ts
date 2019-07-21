@@ -1,5 +1,5 @@
-import {Project} from './project';
-import {Repository} from './repository';
+import { Project } from './project';
+import { Repository } from './repository';
 
 export interface App {
   ID?: number;

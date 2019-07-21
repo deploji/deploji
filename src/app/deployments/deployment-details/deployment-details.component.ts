@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {DeploymentsService} from '../../core/services/deployments.service';
-import {Deployment} from '../../core/interfaces/deployment';
+import { ActivatedRoute } from '@angular/router';
+import { DeploymentsService } from '../../core/services/deployments.service';
+import { Deployment } from '../../core/interfaces/deployment';
 
 @Component({
   selector: 'app-deployment-details',
@@ -11,7 +11,8 @@ import {Deployment} from '../../core/interfaces/deployment';
 export class DeploymentDetailsComponent implements OnInit {
   deployment: Deployment;
 
-  constructor(private deploymentsService: DeploymentsService, private route: ActivatedRoute) { }
+  constructor(private deploymentsService: DeploymentsService, private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {

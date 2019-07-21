@@ -1,8 +1,8 @@
-import {Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {App} from '../../core/interfaces/app';
-import {AppsService} from '../../core/services/apps.service';
+import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { App } from '../../core/interfaces/app';
+import { AppsService } from '../../core/services/apps.service';
 
 @Component({
   selector: 'app-form-application',
@@ -22,9 +22,11 @@ export class FormApplicationComponent implements ControlValueAccessor, OnInit, O
   apps: App[];
   private subscription: Subscription;
 
-  constructor(private appsService: AppsService) {}
+  constructor(private appsService: AppsService) {
+  }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

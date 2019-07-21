@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Inventory} from '../../core/interfaces/inventory';
-import {InventoriesService} from '../../core/services/inventories.service';
+import { Component, OnInit } from '@angular/core';
+import { Inventory } from '../../core/interfaces/inventory';
+import { InventoriesService } from '../../core/services/inventories.service';
 
 @Component({
   selector: 'app-inventories',
@@ -10,7 +10,8 @@ import {InventoriesService} from '../../core/services/inventories.service';
 export class InventoriesComponent implements OnInit {
   inventories: Inventory[] = [];
 
-  constructor(private inventoriesService: InventoriesService) { }
+  constructor(private inventoriesService: InventoriesService) {
+  }
 
   ngOnInit() {
     this.inventoriesService.getInventories().subscribe(inventories => {

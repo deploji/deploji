@@ -1,9 +1,9 @@
-import {Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Project} from '../../core/interfaces/project';
-import {Subscription} from 'rxjs';
-import {ProjectsService} from '../../core/services/projects.service';
-import {ProjectFile} from '../../core/interfaces/project-file';
+import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Project } from '../../core/interfaces/project';
+import { Subscription } from 'rxjs';
+import { ProjectsService } from '../../core/services/projects.service';
+import { ProjectFile } from '../../core/interfaces/project-file';
 
 @Component({
   selector: 'app-form-project-file',
@@ -24,9 +24,11 @@ export class FormProjectFileComponent implements ControlValueAccessor, OnInit, O
   files: ProjectFile[];
   private subscription: Subscription;
 
-  constructor(private projectsService: ProjectsService) {}
+  constructor(private projectsService: ProjectsService) {
+  }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

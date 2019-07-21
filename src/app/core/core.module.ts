@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {NavResolve} from './resolvers/nav.resolver';
-import {HttpClientModule} from '@angular/common/http';
-
+import { NavResolve } from './resolvers/nav.resolver';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -15,4 +14,5 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
   ]
 })
-export class CoreModule { }
+export class CoreModule {
+}

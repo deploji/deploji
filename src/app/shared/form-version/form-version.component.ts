@@ -1,9 +1,9 @@
-import {Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {VersionsService} from '../../core/services/versions.service';
-import {App} from '../../core/interfaces/app';
-import {Version} from '../../core/interfaces/version';
+import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { VersionsService } from '../../core/services/versions.service';
+import { App } from '../../core/interfaces/app';
+import { Version } from '../../core/interfaces/version';
 
 @Component({
   selector: 'app-form-version',
@@ -24,9 +24,11 @@ export class FormVersionComponent implements ControlValueAccessor, OnInit, OnDes
   versions: Version[];
   private subscription: Subscription;
 
-  constructor(private versionsService: VersionsService) {}
+  constructor(private versionsService: VersionsService) {
+  }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

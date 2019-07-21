@@ -1,18 +1,18 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {SettingsComponent} from './settings.component';
-import {NavResolve} from '../core/resolvers/nav.resolver';
-import {ProjectsComponent} from './projects/projects.component';
-import {KeysComponent} from './keys/keys.component';
-import {AddSshKeyComponent} from './add-ssh-key/add-ssh-key.component';
-import {EditProjectComponent} from './edit-project/edit-project.component';
-import {AppsComponent} from './apps/apps.component';
-import {EditAppComponent} from './edit-app/edit-app.component';
-import {InventoriesComponent} from './inventories/inventories.component';
-import {EditInventoryComponent} from './edit-inventory/edit-inventory.component';
-import {EditRepositoryComponent} from './edit-repository/edit-repository.component';
-import {RepositoriesComponent} from './repositories/repositories.component';
-import {TemplatesComponent} from './templates/templates.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { SettingsComponent } from './settings.component';
+import { NavResolve } from '../core/resolvers/nav.resolver';
+import { ProjectsComponent } from './projects/projects.component';
+import { KeysComponent } from './keys/keys.component';
+import { AddSshKeyComponent } from './add-ssh-key/add-ssh-key.component';
+import { EditProjectComponent } from './edit-project/edit-project.component';
+import { AppsComponent } from './apps/apps.component';
+import { EditAppComponent } from './edit-app/edit-app.component';
+import { InventoriesComponent } from './inventories/inventories.component';
+import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
+import { EditRepositoryComponent } from './edit-repository/edit-repository.component';
+import { RepositoriesComponent } from './repositories/repositories.component';
+import { TemplatesComponent } from './templates/templates.component';
 
 const routes: Routes = [
   {

@@ -8,9 +8,9 @@ describe('FormSshKeyComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormSshKeyComponent ]
+      declarations: [FormSshKeyComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

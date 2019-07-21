@@ -1,15 +1,16 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Project} from '../interfaces/project';
-import {ProjectFile} from '../interfaces/project-file';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Project } from '../interfaces/project';
+import { ProjectFile } from '../interfaces/project-file';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getProjects(): Observable<Project[]> {
     return this.http.get<Project[]>('/api/projects');

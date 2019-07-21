@@ -1,14 +1,15 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {App} from '../interfaces/app';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { App } from '../interfaces/app';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppsService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getApps(): Observable<App[]> {
     return this.http.get<App[]>('/api/applications');

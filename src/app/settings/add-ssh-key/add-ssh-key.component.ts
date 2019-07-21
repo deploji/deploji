@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {SshKeysService} from '../../core/services/ssh-keys.service';
-import {Router} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { SshKeysService } from '../../core/services/ssh-keys.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-ssh-key',

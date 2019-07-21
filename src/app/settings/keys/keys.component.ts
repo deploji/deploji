@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {SshKey} from '../../core/interfaces/ssh-key';
-import {SshKeysService} from '../../core/services/ssh-keys.service';
+import { Component, OnInit } from '@angular/core';
+import { SshKey } from '../../core/interfaces/ssh-key';
+import { SshKeysService } from '../../core/services/ssh-keys.service';
 
 @Component({
   selector: 'app-keys',
@@ -10,7 +10,8 @@ import {SshKeysService} from '../../core/services/ssh-keys.service';
 export class KeysComponent implements OnInit {
   keys: SshKey[] = [];
 
-  constructor(private keysService: SshKeysService) { }
+  constructor(private keysService: SshKeysService) {
+  }
 
   ngOnInit() {
     this.keysService.getKeys().subscribe(keys => {

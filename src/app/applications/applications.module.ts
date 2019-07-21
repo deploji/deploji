@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ApplicationsRoutingModule } from './applications-routing.module';
 import { ApplicationsComponent } from './applications.component';
-import {SharedModule} from '../shared/shared.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -14,4 +14,5 @@ import {SharedModule} from '../shared/shared.module';
     ApplicationsRoutingModule
   ]
 })
-export class ApplicationsModule { }
+export class ApplicationsModule {
+}

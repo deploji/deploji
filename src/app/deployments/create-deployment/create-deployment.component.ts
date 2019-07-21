@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
-import {Router} from '@angular/router';
-import {DeploymentsService} from '../../core/services/deployments.service';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { DeploymentsService } from '../../core/services/deployments.service';
 
 @Component({
   selector: 'app-create-deployment',

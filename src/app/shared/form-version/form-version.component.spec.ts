@@ -8,9 +8,9 @@ describe('FormVersionComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormVersionComponent ]
+      declarations: [FormVersionComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

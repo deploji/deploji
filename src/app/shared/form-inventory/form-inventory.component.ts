@@ -1,9 +1,9 @@
-import {Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {Inventory} from '../../core/interfaces/inventory';
-import {InventoriesService} from '../../core/services/inventories.service';
-import {App} from '../../core/interfaces/app';
+import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { Inventory } from '../../core/interfaces/inventory';
+import { InventoriesService } from '../../core/services/inventories.service';
+import { App } from '../../core/interfaces/app';
 
 @Component({
   selector: 'app-form-inventory',
@@ -24,9 +24,11 @@ export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnD
   inventories: Inventory[];
   private subscription: Subscription;
 
-  constructor(private inventoriesService: InventoriesService) {}
+  constructor(private inventoriesService: InventoriesService) {
+  }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

@@ -8,9 +8,9 @@ describe('FormProjectFileComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FormProjectFileComponent ]
+      declarations: [FormProjectFileComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

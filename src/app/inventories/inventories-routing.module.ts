@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {NavResolve} from '../core/resolvers/nav.resolver';
-import {InventoriesComponent} from './inventories.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { NavResolve } from '../core/resolvers/nav.resolver';
+import { InventoriesComponent } from './inventories.component';
 
 
 const routes: Routes = [
@@ -22,4 +22,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class InventoriesRoutingModule { }
+export class InventoriesRoutingModule {
+}

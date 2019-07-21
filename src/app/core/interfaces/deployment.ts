@@ -1,5 +1,5 @@
-import {App} from './app';
-import {Inventory} from './inventory';
+import { App } from './app';
+import { Inventory } from './inventory';
 
 export interface Deployment {
   ID?: number;

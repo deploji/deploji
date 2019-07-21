@@ -1,9 +1,9 @@
-import {NgModule} from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {DeploymentsComponent} from './deployments.component';
-import {NavResolve} from '../core/resolvers/nav.resolver';
-import {CreateDeploymentComponent} from './create-deployment/create-deployment.component';
-import {DeploymentDetailsComponent} from './deployment-details/deployment-details.component';
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { DeploymentsComponent } from './deployments.component';
+import { NavResolve } from '../core/resolvers/nav.resolver';
+import { CreateDeploymentComponent } from './create-deployment/create-deployment.component';
+import { DeploymentDetailsComponent } from './deployment-details/deployment-details.component';
 
 const routes: Routes = [
   {
@@ -31,4 +31,5 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class DeploymentsRoutingModule { }
+export class DeploymentsRoutingModule {
+}

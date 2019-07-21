@@ -1,8 +1,8 @@
-import {Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {SshKeysService} from '../../core/services/ssh-keys.service';
-import {SshKey} from '../../core/interfaces/ssh-key';
-import {Subscription} from 'rxjs';
+import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { SshKeysService } from '../../core/services/ssh-keys.service';
+import { SshKey } from '../../core/interfaces/ssh-key';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-form-ssh-key',
@@ -22,9 +22,11 @@ export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDest
   keys: SshKey[];
   private subscription: Subscription;
 
-  constructor(private keysService: SshKeysService) {}
+  constructor(private keysService: SshKeysService) {
+  }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

@@ -1,9 +1,9 @@
-import {Component, forwardRef, Input, OnDestroy, OnInit} from '@angular/core';
-import {ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Project} from '../../core/interfaces/project';
-import {Subscription} from 'rxjs';
-import {RepositoriesService} from '../../core/services/repositories.service';
-import {Repository} from '../../core/interfaces/repository';
+import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Project } from '../../core/interfaces/project';
+import { Subscription } from 'rxjs';
+import { RepositoriesService } from '../../core/services/repositories.service';
+import { Repository } from '../../core/interfaces/repository';
 
 @Component({
   selector: 'app-form-repository',
@@ -24,9 +24,11 @@ export class FormRepositoryComponent implements ControlValueAccessor, OnInit, On
   repositories: Repository[];
   private subscription: Subscription;
 
-  constructor(private repositoriesService: RepositoriesService) {}
+  constructor(private repositoriesService: RepositoriesService) {
+  }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
