@@ -1,0 +1,26 @@
+.job-status {
+  display: inline-block;
+  border-width: 2px;
+  border-style: solid;
+  padding: 5px;
+
+  &--completed {
+    border-color: green;
+    background-color: lightgreen;
+  }
+
+  &--processing {
+    border-color: yellow;
+    background-color: lightgoldenrodyellow;
+  }
+
+  &--pending {
+    border-color: cornflowerblue;
+    background-color: lightblue;
+  }
+
+  &--failed {
+    border-color: red;
+    background-color: lightcoral;
+  }
+}

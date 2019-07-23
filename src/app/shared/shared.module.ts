@@ -23,6 +23,7 @@ import { FormVersionComponent } from './form-version/form-version.component';
 import { FormProjectComponent } from './form-project/form-project.component';
 import { FormProjectFileComponent } from './form-project-file/form-project-file.component';
 import { FormRepositoryComponent } from './form-repository/form-repository.component';
+import { DeploymentStatusComponent } from './deployment-status/deployment-status.component';
 
 
 const MODULES = [
@@ -41,6 +42,7 @@ const MODULES = [
 ];
 
 const COMPONENTS = [
+  DeploymentStatusComponent,
   NavComponent,
   FormSshKeyComponent,
   FormApplicationComponent,

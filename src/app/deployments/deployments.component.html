@@ -11,15 +11,11 @@
   <div class="d-flex">
     <div>
       <div><b>#{{deployment?.ID}}</b></div>
+      <app-deployment-status routerLink="/deployments/{{deployment.ID}}" class="cursor-pointer" [deployment]="deployment"></app-deployment-status>
       <div>Application: {{deployment?.Application?.Name}}</div>
       <div>Inventory: {{deployment?.Inventory?.Name}}</div>
       <div>Created: {{deployment?.CreatedAt | date:'yyyy-MM-dd HH:mm'}}</div>
     </div>
     <div class="flex-fill"></div>
-    <div>
-      <button type="button" mat-icon-button title="Details" routerLink="/deployments/{{deployment.ID}}">
-        <mat-icon color="primary">view_agenda</mat-icon>
-      </button>
-    </div>
   </div>
 </mat-card>
