@@ -7,3 +7,36 @@ body {
   font-family: 'Roboto', sans-serif;
   //font-family: 'Open Sans', sans-serif;
 }
+
+.ansi-black {
+  color: white;
+  font-weight: bold;
+}
+
+.ansi-red {
+  color: #ff3a36;
+}
+
+.ansi-green {
+  color: #1ea528;
+}
+
+.ansi-yellow {
+  color: #fff431;
+}
+
+.ansi-blue {
+  color: #636fff;
+}
+
+.ansi-magenta {
+  color: #f248ff;
+}
+
+.ansi-cyan {
+  color: #75ffee;
+}
+
+.ansi-white {
+  color: #000000;
+}

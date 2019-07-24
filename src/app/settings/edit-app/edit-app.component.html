@@ -25,6 +25,11 @@
   <mat-form-field class="d-block">
     <input matInput placeholder="Repository artifact" type="text" formControlName="RepositoryArtifact">
   </mat-form-field>
+  <mat-form-field>
+    <mat-select formControlName="Inventories" placeholder="Inventories" [multiple]="true" [compareWith]="compareFN">
+      <mat-option *ngFor="let inventory of inventories" [value]="inventory">{{inventory.Inventory.Name}}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <div class="button-row">
     <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
     <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>

@@ -6,7 +6,6 @@ import { SharedModule } from '../shared/shared.module';
 import { CreateDeploymentComponent } from './create-deployment/create-deployment.component';
 import { DeploymentDetailsComponent } from './deployment-details/deployment-details.component';
 
-
 @NgModule({
   declarations: [
     DeploymentsComponent,
@@ -16,7 +15,7 @@ import { DeploymentDetailsComponent } from './deployment-details/deployment-deta
   imports: [
     CommonModule,
     SharedModule,
-    DeploymentsRoutingModule
+    DeploymentsRoutingModule,
   ]
 })
 export class DeploymentsModule {

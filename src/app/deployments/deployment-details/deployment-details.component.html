@@ -1,2 +1,9 @@
-<h1>deployment</h1>
-<div *ngFor="let log of logs">{{log.Message}}</div>
+<h1>Deployment</h1>
+<mat-slide-toggle [formControl]="autoScroll">Auto scroll</mat-slide-toggle>
+<div class="log-viewport-wrapper">
+  <cdk-virtual-scroll-viewport #scrollMe class="log-viewport" itemSize="15">
+    <ng-container *cdkVirtualFor="let log of logs">
+      <div [innerHTML]="log.Message | ansi"></div>
+    </ng-container>
+  </cdk-virtual-scroll-viewport>
+</div>

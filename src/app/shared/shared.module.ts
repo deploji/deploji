@@ -10,7 +10,7 @@ import {
   MatMenuModule,
   MatRippleModule,
   MatSelectModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSlideToggleModule,
   MatToolbarModule
 } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
@@ -24,7 +24,8 @@ import { FormProjectComponent } from './form-project/form-project.component';
 import { FormProjectFileComponent } from './form-project-file/form-project-file.component';
 import { FormRepositoryComponent } from './form-repository/form-repository.component';
 import { DeploymentStatusComponent } from './deployment-status/deployment-status.component';
-
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { AnsiPipe } from './pipes/ansi.pipe';
 
 const MODULES = [
   MatToolbarModule,
@@ -38,7 +39,9 @@ const MODULES = [
   MatCardModule,
   MatSelectModule,
   MatRippleModule,
+  MatSlideToggleModule,
   ReactiveFormsModule,
+  ScrollingModule,
 ];
 
 const COMPONENTS = [
@@ -53,9 +56,14 @@ const COMPONENTS = [
   FormRepositoryComponent,
 ];
 
+const PIPES = [
+  AnsiPipe,
+];
+
 @NgModule({
   declarations: [
     ...COMPONENTS,
+    ...PIPES,
   ],
   imports: [
     CommonModule,
@@ -65,6 +73,7 @@ const COMPONENTS = [
   exports: [
     ...MODULES,
     ...COMPONENTS,
+    ...PIPES,
   ]
 })
 export class SharedModule {
