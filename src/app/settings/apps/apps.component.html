@@ -10,11 +10,25 @@
 <mat-card *ngFor="let app of apps" class="my-2">
   <div class="d-flex">
     <div>
-      <div><b>{{app?.Name}}</b></div>
-      <div>Project: {{app?.Project?.Name}}</div>
-      <div>Playbook: {{app?.AnsiblePlaybook}}</div>
-      <div>Repository: {{app?.Repository?.Name}}</div>
-      <div>Artifact: {{app?.RepositoryArtifact}}</div>
+      <div class="mb-2"><b>{{app?.Name}}</b></div>
+      <div class="properties">
+        <div class="properties__row">
+          <div class="properties__label">Project</div>
+          <div class="properties__value">{{app?.Project?.Name}}</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__label">Playbook</div>
+          <div class="properties__value">{{app?.AnsiblePlaybook}}</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__label">Repository</div>
+          <div class="properties__value">{{app?.Repository?.Name}}</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__label">Artifact</div>
+          <div class="properties__value">{{app?.RepositoryArtifact}}</div>
+        </div>
+      </div>
     </div>
     <div class="flex-fill"></div>
     <div>

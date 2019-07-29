@@ -8,8 +8,17 @@ body {
   //font-family: 'Open Sans', sans-serif;
 }
 
+table {
+  width: 100%;
+}
+
 .ansi-black {
   color: white;
+  font-weight: bold;
+}
+
+.ansi-bright-black {
+  color: #d8d8d8;
   font-weight: bold;
 }
 
@@ -17,26 +26,79 @@ body {
   color: #ff3a36;
 }
 
+.ansi-bright-red {
+  color: #ffa9a7;
+}
+
 .ansi-green {
   color: #1ea528;
+}
+
+.ansi-bright-green {
+  color: #88f392;
 }
 
 .ansi-yellow {
   color: #fff431;
 }
 
+.ansi-bright-yellow {
+  color: #fff9b8;
+}
+
 .ansi-blue {
   color: #636fff;
+}
+
+.ansi-bright-blue {
+  color: #a3adff;
 }
 
 .ansi-magenta {
   color: #f248ff;
 }
 
+.ansi-bright-magenta {
+  color: #fd84ff;
+}
+
 .ansi-cyan {
   color: #75ffee;
 }
 
+.ansi-bright-cyan {
+  color: #b1faff;
+}
+
 .ansi-white {
+  color: #292929;
+}
+
+.ansi-bright-white {
   color: #000000;
+}
+
+.mat-card {
+  box-shadow: none !important;
+  border: 1px solid #ddd;
+}
+
+.rotate {
+  animation: spin 1.5s ease-in-out infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+button.mat-menu-item {
+  line-height: 24px !important;
+}
+
+a.mat-menu-item > mat-icon {
+  margin-bottom: 14px;
+}
+
+.mat-icon svg {
+  height: 24px;
+  width: 24px;
 }

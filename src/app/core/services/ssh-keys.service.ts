@@ -21,4 +21,15 @@ export class SshKeysService {
   destroy(key: SshKey): Observable<void> {
     return this.http.delete<void>(`/api/ssh-keys/${key.ID}`);
   }
+
+  getKey(id: number): Observable<SshKey> {
+    return this.http.get<SshKey>(`/api/ssh-keys/${id}`);
+  }
+
+  save(key: SshKey): Observable<SshKey> {
+    if (key.ID) {
+      return this.http.put<SshKey>('/api/ssh-keys', key);
+    }
+    return this.http.post<SshKey>('/api/ssh-keys', key);
+  }
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Inventory } from '../../core/interfaces/inventory';
 import { InventoriesService } from '../../core/services/inventories.service';
+import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-inventories',
@@ -10,7 +12,7 @@ import { InventoriesService } from '../../core/services/inventories.service';
 export class InventoriesComponent implements OnInit {
   inventories: Inventory[] = [];
 
-  constructor(private inventoriesService: InventoriesService) {
+  constructor(private inventoriesService: InventoriesService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -20,8 +22,16 @@ export class InventoriesComponent implements OnInit {
   }
 
   delete(inventory: Inventory) {
-    this.inventoriesService.destroy(inventory).subscribe(() => {
-      this.inventories.splice(this.inventories.indexOf(inventory), 1);
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '500px',
+      data: {title: 'Are you sure?', message: `Do you want do delete inventory ${inventory.Name}?`}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.inventoriesService.destroy(inventory).subscribe(() => {
+          this.inventories.splice(this.inventories.indexOf(inventory), 1);
+        });
+      }
     });
   }
 }

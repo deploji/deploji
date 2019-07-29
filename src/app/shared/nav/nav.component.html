@@ -20,7 +20,7 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span>Mastermind</span>
+        <span class="mr-2">Mastermind</span>
         <button
           type="button"
           aria-label="Deployments"
@@ -44,6 +44,14 @@
           mat-button
           routerLink="/inventories">
           Inventories
+        </button>
+        <button
+          type="button"
+          aria-label="Templates"
+          title="Templates"
+          mat-button
+          routerLink="/templates">
+          Templates
         </button>
         <button
           type="button"

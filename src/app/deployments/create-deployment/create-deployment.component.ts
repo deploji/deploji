@@ -14,7 +14,7 @@ export class CreateDeploymentComponent implements OnInit {
   constructor(private fb: FormBuilder, private deploymentsService: DeploymentsService, private router: Router) {
     this.form = fb.group({
       Application: [],
-      Inventory: [],
+      Inventories: [],
       Version: [],
     });
   }
@@ -26,8 +26,12 @@ export class CreateDeploymentComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
-    this.deploymentsService.save(this.form.value).subscribe((deployment) => {
-      this.router.navigateByUrl(`/deployments/${deployment.ID}`);
-    });
-  }
+    this.form.value.Inventories
+      .map(value => ({Application: this.form.value.Application, Version: this.form.value.Version, Inventory: value}))
+      .forEach(value => {
+        this.deploymentsService.save(value).subscribe((deployment) => {
+          this.router.navigateByUrl(`/deployments`);
+        });
+      });
+    }
 }

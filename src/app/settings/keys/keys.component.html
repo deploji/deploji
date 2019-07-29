@@ -11,10 +11,11 @@
       <div><b>{{key.Title}}</b></div>
     </div>
     <div class="flex-fill"></div>
-    <div>
-      <button type="button" mat-icon-button title="Delete key" (click)="delete(key)">
-        <mat-icon color="warn">delete_forever</mat-icon>
-      </button>
-    </div>
+    <button type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">
+      <mat-icon color="primary">edit</mat-icon>
+    </button>
+    <button type="button" mat-icon-button title="Delete key" (click)="delete(key)">
+      <mat-icon color="warn">delete_forever</mat-icon>
+    </button>
   </div>
 </mat-card>

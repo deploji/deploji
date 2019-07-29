@@ -3,22 +3,24 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   project
 </h1>
-<form [formGroup]="form">
-  <mat-form-field class="d-block">
-    <input matInput placeholder="Name" type="text" formControlName="Name">
-  </mat-form-field>
-  <mat-form-field class="d-block">
-    <input matInput placeholder="Git URL" type="text" formControlName="RepoUrl">
-  </mat-form-field>
-  <mat-form-field class="d-block">
-    <input matInput placeholder="Git branch" type="text" formControlName="RepoBranch">
-  </mat-form-field>
-  <mat-form-field class="d-block">
-    <input matInput placeholder="Git user" type="text" formControlName="RepoUser">
-  </mat-form-field>
-  <app-form-ssh-key formControlName="SshKey" label="SSH key"></app-form-ssh-key>
-  <div class="button-row">
-    <button type="button" mat-raised-button routerLink="/settings/projects">Cancel</button>
-    <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
-  </div>
-</form>
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Name" type="text" formControlName="Name">
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Git URL" type="text" formControlName="RepoUrl">
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Git branch" type="text" formControlName="RepoBranch">
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Git user" type="text" formControlName="RepoUser">
+    </mat-form-field>
+    <app-form-ssh-key formControlName="SshKey" label="SSH key"></app-form-ssh-key>
+    <div class="button-row">
+      <button type="button" mat-raised-button routerLink="/settings/projects">Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </form>
+</mat-card>

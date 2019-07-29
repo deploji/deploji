@@ -10,16 +10,30 @@
 <mat-card *ngFor="let project of projects" class="my-2">
   <div class="d-flex">
     <div>
-      <div><b>{{project.Name}}</b></div>
-      <div>{{project.RepoUrl}}</div>
+      <div class="mb-2"><b>{{project.Name}}</b></div>
+      <div class="properties">
+        <div class="properties__row">
+          <div class="properties__label">Repository URL</div>
+          <div class="properties__value">{{project.RepoUrl}}</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__label">Branch</div>
+          <div class="properties__value">{{project.RepoBranch}}</div>
+        </div>
+      </div>
     </div>
     <div class="flex-fill"></div>
     <div>
       <button type="button" mat-icon-button title="Edit" routerLink="/settings/projects/{{project.ID}}">
         <mat-icon color="primary">edit</mat-icon>
       </button>
-      <button type="button" mat-icon-button title="Synchronize with VCS" (click)="synchronize(project)">
-        <mat-icon color="primary">autorenew</mat-icon>
+      <button type="button"
+              mat-icon-button
+              title="Synchronize with VCS"
+              [ngClass]="{'rotate': project.synchronizing, 'success': project.synchronizationStatus === 'success', 'error': project.synchronizationStatus === 'error'}"
+              [disabled]="project.synchronizing"
+              (click)="synchronize(project)">
+        <mat-icon>autorenew</mat-icon>
       </button>
       <button type="button" mat-icon-button title="Delete key" (click)="delete(project)">
         <mat-icon color="warn">delete_forever</mat-icon>

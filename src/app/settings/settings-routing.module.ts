@@ -4,7 +4,7 @@ import { SettingsComponent } from './settings.component';
 import { NavResolve } from '../core/resolvers/nav.resolver';
 import { ProjectsComponent } from './projects/projects.component';
 import { KeysComponent } from './keys/keys.component';
-import { AddSshKeyComponent } from './add-ssh-key/add-ssh-key.component';
+import { EditSshKeyComponent } from './edit-ssh-key/edit-ssh-key.component';
 import { EditProjectComponent } from './edit-project/edit-project.component';
 import { AppsComponent } from './apps/apps.component';
 import { EditAppComponent } from './edit-app/edit-app.component';
@@ -13,6 +13,7 @@ import { EditInventoryComponent } from './edit-inventory/edit-inventory.componen
 import { EditRepositoryComponent } from './edit-repository/edit-repository.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { TemplatesComponent } from './templates/templates.component';
+import { EditTemplateComponent } from './edit-template/edit-template.component';
 
 const routes: Routes = [
   {
@@ -68,8 +69,12 @@ const routes: Routes = [
         component: KeysComponent
       },
       {
+        path: 'keys/:id',
+        component: EditSshKeyComponent
+      },
+      {
         path: 'keys/add',
-        component: AddSshKeyComponent
+        component: EditSshKeyComponent
       },
       {
         path: 'inventories',
@@ -110,7 +115,15 @@ const routes: Routes = [
       {
         path: 'templates',
         component: TemplatesComponent
-      }
+      },
+      {
+        path: 'templates/create',
+        component: EditTemplateComponent
+      },
+      {
+        path: 'templates/:id',
+        component: EditTemplateComponent
+      },
     ]
   }
 ];

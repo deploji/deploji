@@ -3,26 +3,28 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   repository
 </h1>
-<form [formGroup]="form">
-  <mat-form-field class="d-block">
-    <input matInput placeholder="Name" type="text" formControlName="Name">
-  </mat-form-field>
-  <mat-form-field class="d-block">
-    <mat-select placeholder="Type" formControlName="Type">
-      <mat-option value="docker">Docker registry</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field class="d-block">
-    <input matInput placeholder="URL" type="text" formControlName="Url">
-  </mat-form-field>
-  <mat-form-field class="d-block">
-    <input matInput autocomplete="new-password" placeholder="Username" type="text" formControlName="Username">
-  </mat-form-field>
-  <mat-form-field class="d-block">
-    <input matInput autocomplete="new-password" placeholder="Password" type="password" formControlName="Password">
-  </mat-form-field>
-  <div class="button-row">
-    <button type="button" mat-raised-button routerLink="/settings/repositories">Cancel</button>
-    <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
-  </div>
-</form>
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Name" type="text" formControlName="Name">
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <mat-select placeholder="Type" formControlName="Type">
+        <mat-option value="docker">Docker registry</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <input matInput placeholder="URL" type="text" formControlName="Url">
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <input matInput autocomplete="new-password" placeholder="Username" type="text" formControlName="Username">
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <input matInput autocomplete="new-password" placeholder="Password" type="password" formControlName="Password">
+    </mat-form-field>
+    <div class="button-row">
+      <button type="button" mat-raised-button routerLink="/settings/repositories">Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </form>
+</mat-card>

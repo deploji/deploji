@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +9,9 @@ import { DeploymentsModule } from './deployments/deployments.module';
 import { CoreModule } from './core/core.module';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 import { myRxStompConfig } from './my-rx-stomp.config';
+import { DialogSynchronizeComponent } from './shared/dialog-synchronize/dialog-synchronize.component';
+import { DialogConfirmComponent } from './shared/dialog-confirm/dialog-confirm.component';
+import { MatIconModule, MatIconRegistry } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,6 +24,7 @@ import { myRxStompConfig } from './my-rx-stomp.config';
     LayoutModule,
     BrowserAnimationsModule,
     SharedModule,
+    MatIconModule,
     DeploymentsModule,
   ],
   providers: [
@@ -34,7 +38,14 @@ import { myRxStompConfig } from './my-rx-stomp.config';
       deps: [InjectableRxStompConfig]
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogSynchronizeComponent,
+    DialogConfirmComponent,
+  ]
 })
 export class AppModule {
+  constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer){
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/mdi.svg'));
+  }
 }

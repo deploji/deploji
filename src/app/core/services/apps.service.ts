@@ -26,10 +26,6 @@ export class AppsService {
     return this.http.post<App>('/api/applications', app);
   }
 
-  synchronize(app: App): Observable<void> {
-    return this.http.post<void>(`/api/applications/${app.ID}/synchronize`, {});
-  }
-
   getApp(id: number): Observable<App> {
     return this.http.get<App>(`/api/applications/${id}`);
   }

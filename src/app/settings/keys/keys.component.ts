@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SshKey } from '../../core/interfaces/ssh-key';
 import { SshKeysService } from '../../core/services/ssh-keys.service';
+import { MatDialog } from '@angular/material';
+import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-keys',
@@ -10,7 +12,7 @@ import { SshKeysService } from '../../core/services/ssh-keys.service';
 export class KeysComponent implements OnInit {
   keys: SshKey[] = [];
 
-  constructor(private keysService: SshKeysService) {
+  constructor(private keysService: SshKeysService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -20,8 +22,16 @@ export class KeysComponent implements OnInit {
   }
 
   delete(key: SshKey) {
-    this.keysService.destroy(key).subscribe(() => {
-      this.keys.splice(this.keys.indexOf(key), 1);
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '500px',
+      data: {title: 'Are you sure?', message: `Do you want do delete key ${key.Title}?`}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.keysService.destroy(key).subscribe(() => {
+          this.keys.splice(this.keys.indexOf(key), 1);
+        });
+      }
     });
   }
 }

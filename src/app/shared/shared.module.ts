@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatCheckboxModule, MatChipsModule, MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule,
+  MatMenuModule, MatPaginatorModule, MatRadioModule,
   MatRippleModule,
   MatSelectModule,
-  MatSidenavModule, MatSlideToggleModule,
-  MatToolbarModule
+  MatSidenavModule, MatSlideToggleModule, MatTableModule,
+  MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
@@ -26,6 +26,13 @@ import { FormRepositoryComponent } from './form-repository/form-repository.compo
 import { DeploymentStatusComponent } from './deployment-status/deployment-status.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AnsiPipe } from './pipes/ansi.pipe';
+import { UrlsComponent } from './urls/urls.component';
+import { DeploymentTimeComponent } from './deployment-time/deployment-time.component';
+import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { DurationComponent } from './duration/duration.component';
+import { DurationPipe } from './pipes/duration.pipe';
+import { DialogSynchronizeComponent } from './dialog-synchronize/dialog-synchronize.component';
+import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 
 const MODULES = [
   MatToolbarModule,
@@ -37,15 +44,26 @@ const MODULES = [
   MatFormFieldModule,
   MatInputModule,
   MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
   MatSelectModule,
   MatRippleModule,
+  MatTableModule,
+  MatRadioModule,
   MatSlideToggleModule,
+  MatChipsModule,
+  MatPaginatorModule,
+  MatTooltipModule,
   ReactiveFormsModule,
   ScrollingModule,
 ];
 
 const COMPONENTS = [
   DeploymentStatusComponent,
+  DeploymentTimeComponent,
+  DialogConfirmComponent,
+  DialogSynchronizeComponent,
+  DurationComponent,
   NavComponent,
   FormSshKeyComponent,
   FormApplicationComponent,
@@ -54,10 +72,13 @@ const COMPONENTS = [
   FormProjectComponent,
   FormProjectFileComponent,
   FormRepositoryComponent,
+  UrlsComponent,
 ];
 
 const PIPES = [
   AnsiPipe,
+  TimeAgoPipe,
+  DurationPipe,
 ];
 
 @NgModule({

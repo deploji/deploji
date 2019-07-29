@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs';
   ]
 })
 export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() label: string;
+  @Input() label = 'SSH key';
   control = new FormControl();
   keys: SshKey[];
   private subscription: Subscription;

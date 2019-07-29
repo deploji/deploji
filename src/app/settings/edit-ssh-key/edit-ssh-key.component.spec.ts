@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddSshKeyComponent } from './add-ssh-key.component';
+import { EditSshKeyComponent } from './edit-ssh-key.component';
 
-describe('AddSshKeyComponent', () => {
-  let component: AddSshKeyComponent;
-  let fixture: ComponentFixture<AddSshKeyComponent>;
+describe('EditSshKeyComponent', () => {
+  let component: EditSshKeyComponent;
+  let fixture: ComponentFixture<EditSshKeyComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AddSshKeyComponent]
+      declarations: [EditSshKeyComponent]
     })
       .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddSshKeyComponent);
+    fixture = TestBed.createComponent(EditSshKeyComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

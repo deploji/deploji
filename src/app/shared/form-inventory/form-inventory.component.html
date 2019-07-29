@@ -1,6 +1,7 @@
-<mat-form-field>
+<mat-form-field class="w-100">
   <mat-label>{{label}}</mat-label>
-  <mat-select [formControl]="control" [compareWith]="compareFn">
+  <mat-select [formControl]="control" [multiple]="multiple" [compareWith]="compareFn">
+    <mat-option *ngIf="!multiple" [value]=""></mat-option>
     <mat-option *ngFor="let inventory of inventories" [value]="inventory">{{inventory.Name}}</mat-option>
   </mat-select>
 </mat-form-field>

@@ -2,8 +2,8 @@ import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChang
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Inventory } from '../../core/interfaces/inventory';
-import { InventoriesService } from '../../core/services/inventories.service';
 import { App } from '../../core/interfaces/app';
+import { InventoriesService } from '../../core/services/inventories.service';
 
 @Component({
   selector: 'app-form-inventory',
@@ -18,8 +18,9 @@ import { App } from '../../core/interfaces/app';
   ]
 })
 export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
-  @Input() label: string;
+  @Input() label = 'Inventory';
   @Input() app: App;
+  @Input() multiple = false;
   control = new FormControl();
   inventories: Inventory[];
   private subscription: Subscription;
@@ -27,8 +28,7 @@ export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnD
   constructor(private inventoriesService: InventoriesService) {
   }
 
-  propagateChange = (_: any) => {
-  };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
@@ -49,11 +49,16 @@ export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnD
     this.subscription = this.control.valueChanges.subscribe(value => {
       this.propagateChange(value);
     });
+    if (!this.app) {
+      this.inventoriesService.getInventories().subscribe(inventories => {
+        this.inventories = inventories;
+      });
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.app && changes.app.currentValue) {
-      this.inventoriesService.getInventories(changes.app.currentValue).subscribe(inventories => {
+      this.inventoriesService.getInventoriesByAppID(changes.app.currentValue.ID).subscribe(inventories => {
         this.inventories = inventories;
       });
     }

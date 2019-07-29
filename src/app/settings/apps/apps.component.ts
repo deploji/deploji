@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { App } from '../../core/interfaces/app';
 import { AppsService } from '../../core/services/apps.service';
+import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-apps',
@@ -10,7 +12,7 @@ import { AppsService } from '../../core/services/apps.service';
 export class AppsComponent implements OnInit {
   apps: App[] = [];
 
-  constructor(private appsService: AppsService) {
+  constructor(private appsService: AppsService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -20,12 +22,16 @@ export class AppsComponent implements OnInit {
   }
 
   delete(app: App) {
-    this.appsService.destroy(app).subscribe(() => {
-      this.apps.splice(this.apps.indexOf(app), 1);
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '500px',
+      data: {title: 'Are you sure?', message: `Do you want do delete application ${app.Name}?`}
     });
-  }
-
-  synchronize(app: App) {
-    this.appsService.synchronize(app).subscribe();
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.appsService.destroy(app).subscribe(() => {
+          this.apps.splice(this.apps.indexOf(app), 1);
+        });
+      }
+    });
   }
 }

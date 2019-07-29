@@ -30,4 +30,8 @@ export class InventoriesService {
   destroy(inventory: Inventory) {
     return this.http.delete(`/api/inventories/${inventory.ID}`);
   }
+
+  getInventoriesByAppID(appID: any): Observable<Inventory[]> {
+      return this.http.get<Inventory[]>(`/api/applications/${appID}/inventories`);
+  }
 }

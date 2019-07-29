@@ -17,7 +17,7 @@ import { Project } from '../../core/interfaces/project';
   ]
 })
 export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() label: string;
+  @Input() label = 'Project';
   control = new FormControl();
   projects: Project[];
   private subscription: Subscription;

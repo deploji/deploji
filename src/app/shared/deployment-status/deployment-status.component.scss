@@ -1,26 +1,23 @@
 .job-status {
-  display: inline-block;
-  border-width: 2px;
-  border-style: solid;
-  padding: 5px;
+  cursor: pointer;
 
   &--completed {
-    border-color: green;
-    background-color: lightgreen;
+    //color: white;
+    background-color: #73de83;
   }
 
   &--processing {
-    border-color: yellow;
-    background-color: lightgoldenrodyellow;
+    //color: white;
+    background-color: #ffe99a;
   }
 
   &--pending {
-    border-color: cornflowerblue;
-    background-color: lightblue;
+    //color: white;
+    background-color: #79c2ff;
   }
 
   &--failed {
-    border-color: red;
-    background-color: lightcoral;
+    //color: red;
+    background-color: #ff7276;
   }
 }

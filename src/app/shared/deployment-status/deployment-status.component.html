@@ -1,6 +1,6 @@
-<ng-container [ngSwitch]="deployment?.Status">
-  <span class="job-status job-status--pending" *ngSwitchCase="status.PENDING">Pending</span>
-  <span class="job-status job-status--processing" *ngSwitchCase="status.PROCESSING">Processing</span>
-  <span class="job-status job-status--completed" *ngSwitchCase="status.COMPLETED">Completed</span>
-  <span class="job-status job-status--failed" *ngSwitchCase="status.FAILED">Failed</span>
-</ng-container>
+<mat-chip-list [ngSwitch]="deployment?.Status">
+  <mat-chip routerLink="/deployments/{{deployment?.ID}}" class="job-status job-status--pending" *ngSwitchCase="status.PENDING">Pending</mat-chip>
+  <mat-chip routerLink="/deployments/{{deployment?.ID}}" class="job-status job-status--processing" *ngSwitchCase="status.PROCESSING">Processing</mat-chip>
+  <mat-chip routerLink="/deployments/{{deployment?.ID}}" class="job-status job-status--completed" *ngSwitchCase="status.COMPLETED">Completed</mat-chip>
+  <mat-chip routerLink="/deployments/{{deployment?.ID}}" class="job-status job-status--failed" *ngSwitchCase="status.FAILED">Failed</mat-chip>
+</mat-chip-list>

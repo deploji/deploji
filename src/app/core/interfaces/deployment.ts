@@ -3,10 +3,14 @@ import { Inventory } from './inventory';
 import { JobStatus } from '../enums/job-status.enum';
 
 export interface Deployment {
+  InventoryID?: number;
+  ApplicationID?: number;
   ID?: number;
-  Application: App;
-  Inventory: Inventory;
-  Version: string;
-  CreatedAt: any;
-  Status: JobStatus;
+  Application?: App;
+  Inventory?: Inventory;
+  Version?: string;
+  CreatedAt?: any;
+  StartedAt?: any;
+  FinishedAt?: any;
+  Status?: JobStatus;
 }

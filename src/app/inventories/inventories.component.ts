@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { InventoriesService } from '../core/services/inventories.service';
 import { Inventory } from '../core/interfaces/inventory';
+import { DeploymentsService } from '../core/services/deployments.service';
+import { Deployment } from '../core/interfaces/deployment';
 
 @Component({
   selector: 'app-inventories',
@@ -9,13 +11,29 @@ import { Inventory } from '../core/interfaces/inventory';
 })
 export class InventoriesComponent implements OnInit {
   inventories: Inventory[];
+  columnsToDisplay = ['application', 'version', 'urls'];
+  private latestDeployments: Deployment[];
 
-  constructor(private inventoriesService: InventoriesService) {
+  constructor(private inventoriesService: InventoriesService, private deploymentsService: DeploymentsService) {
   }
 
   ngOnInit() {
     this.inventoriesService.getInventories().subscribe(inventories => {
       this.inventories = inventories;
     });
+    this.deploymentsService.getLatestDeployments().subscribe(deployments => {
+      this.latestDeployments = deployments;
+    });
+  }
+
+  getDeploymentVersion(appID: number, inventoryID: number): string {
+    if (!this.latestDeployments) {
+      return '';
+    }
+    const deployment = this.latestDeployments.find(value => value.InventoryID === inventoryID && value.ApplicationID === appID);
+    if (!deployment) {
+      return '';
+    }
+    return deployment.Version;
   }
 }

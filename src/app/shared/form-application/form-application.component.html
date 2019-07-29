@@ -1,6 +1,7 @@
-<mat-form-field>
+<mat-form-field class="w-100">
   <mat-label>{{label}}</mat-label>
   <mat-select [formControl]="control" [compareWith]="compareFn">
+    <mat-option [value]=""></mat-option>
     <mat-option *ngFor="let app of apps" [value]="app">{{app.Name}}</mat-option>
   </mat-select>
 </mat-form-field>

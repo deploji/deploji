@@ -1,4 +1,4 @@
-<mat-form-field>
+<mat-form-field class="w-100">
   <mat-label>{{label}}</mat-label>
   <mat-select [formControl]="control" [compareWith]="compareFn">
     <mat-option *ngFor="let version of versions" [value]="version.Name">{{version.Name}}</mat-option>

@@ -6,4 +6,5 @@ export interface ApplicationInventory {
   Inventory: Inventory;
   InventoryID?: number;
   ApplicationUrls?: string;
+  IsActive: boolean;
 }

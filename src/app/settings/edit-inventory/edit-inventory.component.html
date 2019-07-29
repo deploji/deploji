@@ -3,19 +3,21 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   inventory
 </h1>
-<form [formGroup]="form">
-  <mat-form-field class="d-block">
-    <input matInput placeholder="Name" type="text" formControlName="Name">
-  </mat-form-field>
-  <div>
-    <app-form-project label="Project" formControlName="Project"></app-form-project>
-  </div>
-  <div>
-    <app-form-project-file label="Source file" formControlName="SourceFile" [project]="form.get('Project').value">
-    </app-form-project-file>
-  </div>
-  <div class="button-row">
-    <button type="button" mat-raised-button routerLink="/settings/inventories">Cancel</button>
-    <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
-  </div>
-</form>
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field class="d-block">
+      <input matInput placeholder="Name" type="text" formControlName="Name">
+    </mat-form-field>
+    <div>
+      <app-form-project label="Project" formControlName="Project"></app-form-project>
+    </div>
+    <div>
+      <app-form-project-file label="Source file" formControlName="SourceFile" [project]="form.get('Project').value">
+      </app-form-project-file>
+    </div>
+    <div class="button-row">
+      <button type="button" mat-raised-button routerLink="/settings/inventories">Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </form>
+</mat-card>

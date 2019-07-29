@@ -1,0 +1,23 @@
+<h1>Create inventory deployment</h1>
+<mat-card>
+  <form [formGroup]="form">
+    <div>
+      <app-form-inventory label="Inventory" formControlName="Inventory"></app-form-inventory>
+    </div>
+    <div formArrayName="Applications" *ngFor="let application of applications.controls; let i = index">
+      <div [formGroupName]="i">
+        <div>
+          <mat-checkbox formControlName="IsActive">{{application?.value?.Application?.Name}}</mat-checkbox>
+        </div>
+        <app-form-version [hidden]="!application?.value?.IsActive" label="Version" formControlName="Version"
+                          [app]="application.value?.Application"></app-form-version>
+      </div>
+    </div>
+    <div>
+    </div>
+    <div class="button-row">
+      <button type="button" mat-raised-button routerLink="/deployments">Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="create()">Save</button>
+    </div>
+  </form>
+</mat-card>
