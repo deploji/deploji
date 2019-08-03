@@ -6,21 +6,26 @@
 <mat-card>
   <form [formGroup]="form">
     <mat-form-field class="d-block">
-      <input matInput placeholder="Name" type="text" formControlName="Name">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="Name">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <mat-select placeholder="Type" formControlName="Type">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="Type">
         <mat-option value="docker">Docker registry</mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput placeholder="URL" type="text" formControlName="Url">
+      <mat-label>URL</mat-label>
+      <input matInput type="text" formControlName="Url">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput autocomplete="new-password" placeholder="Username" type="text" formControlName="Username">
+      <mat-label>Username</mat-label>
+      <input matInput autocomplete="new-password" type="text" formControlName="Username">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput autocomplete="new-password" placeholder="Password" type="password" formControlName="Password">
+      <mat-label>Password</mat-label>
+      <input matInput autocomplete="new-password" type="password" formControlName="Password">
     </mat-form-field>
     <div class="button-row">
       <button type="button" mat-raised-button routerLink="/settings/repositories">Cancel</button>

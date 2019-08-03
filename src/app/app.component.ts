@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from './core/services/auth.service';
+import { NgxPermissionsService } from 'ngx-permissions';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'mastermind';
+
+  constructor(private authService: AuthService, private permissionService: NgxPermissionsService) {
+    this.permissionService.loadPermissions(this.authService.permissions);
+  }
 }

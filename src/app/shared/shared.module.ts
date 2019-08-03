@@ -10,7 +10,7 @@ import {
   MatMenuModule, MatPaginatorModule, MatRadioModule,
   MatRippleModule,
   MatSelectModule,
-  MatSidenavModule, MatSlideToggleModule, MatTableModule,
+  MatSidenavModule, MatSlideToggleModule, MatTableModule, MatTabsModule,
   MatToolbarModule, MatTooltipModule
 } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
@@ -33,6 +33,8 @@ import { DurationComponent } from './duration/duration.component';
 import { DurationPipe } from './pipes/duration.pipe';
 import { DialogSynchronizeComponent } from './dialog-synchronize/dialog-synchronize.component';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { LoginComponent } from './login/login.component';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 const MODULES = [
   MatToolbarModule,
@@ -49,13 +51,16 @@ const MODULES = [
   MatSelectModule,
   MatRippleModule,
   MatTableModule,
+  MatTabsModule,
   MatRadioModule,
   MatSlideToggleModule,
   MatChipsModule,
   MatPaginatorModule,
+  MatSlideToggleModule,
   MatTooltipModule,
   ReactiveFormsModule,
   ScrollingModule,
+  NgxPermissionsModule,
 ];
 
 const COMPONENTS = [
@@ -64,6 +69,7 @@ const COMPONENTS = [
   DialogConfirmComponent,
   DialogSynchronizeComponent,
   DurationComponent,
+  LoginComponent,
   NavComponent,
   FormSshKeyComponent,
   FormApplicationComponent,

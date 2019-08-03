@@ -25,7 +25,9 @@
     "@mdi/font": "^3.8.95",
     "@stomp/ng2-stompjs": "^7.2.0",
     "ansi-html": "^0.0.7",
+    "jwt-decode": "^2.2.0",
     "moment": "^2.24.0",
+    "ngx-permissions": "^7.0.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.9.1"

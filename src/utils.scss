@@ -19,6 +19,10 @@
   margin-top: 0 !important;
 }
 
+.mt-4 {
+  margin-top: 15px !important;
+}
+
 .mb-2 {
   margin-bottom: 10px !important;
 }
@@ -34,6 +38,10 @@
 
 .my-2 {
   margin: 10px 0 !important;
+}
+
+.m-auto {
+  margin: auto !important;
 }
 
 .flex-column {
@@ -60,6 +68,10 @@
   background-color: white;
 }
 
+.p-0 {
+  padding: 0 !important;
+}
+
 .p-2 {
   padding: 5px !important;
 }
@@ -68,8 +80,20 @@
   padding: 10px !important;
 }
 
+.pt-3 {
+  padding-top: 10px !important;
+}
+
+.p-4 {
+  padding: 15px !important;
+}
+
 .w-100 {
   width: 100% !important;
+}
+
+.w-500px {
+  width: 500px !important;
 }
 
 .h-100 {

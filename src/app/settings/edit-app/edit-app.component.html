@@ -8,18 +8,21 @@
     <div class="row">
       <div class="col">
         <mat-form-field class="d-block w-100">
-          <input matInput placeholder="Display name" type="text" formControlName="Name">
+          <mat-label>Display name</mat-label>
+          <input matInput type="text" formControlName="Name">
         </mat-form-field>
         <div class="w-100">
           <app-form-repository label="Repository" formControlName="Repository"></app-form-repository>
         </div>
         <mat-form-field class="d-block w-100">
-          <input matInput placeholder="Repository artifact" type="text" formControlName="RepositoryArtifact">
+          <mat-label>Repository artifact</mat-label>
+          <input matInput type="text" formControlName="RepositoryArtifact">
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field class="d-block w-100">
-          <input matInput placeholder="Ansible name" type="text" formControlName="AnsibleName">
+          <mat-label>Ansible name</mat-label>
+          <input matInput type="text" formControlName="AnsibleName">
         </mat-form-field>
         <div class="w-100">
           <app-form-project label="Project" formControlName="Project"></app-form-project>
@@ -39,21 +42,19 @@
         <mat-card class="my-2">
           <div [formGroupName]="i">
             <h4 class="mt-0 mb-2">{{inventory.value.Inventory.Name}}</h4>
-            <mat-checkbox formControlName="IsActive">is active</mat-checkbox>
+            <div class="mb-2">
+              <mat-checkbox formControlName="IsActive">is active</mat-checkbox>
+            </div>
             <div>
               <mat-form-field class="w-100">
-                <textarea matInput formControlName="ApplicationUrls" placeholder="Application URLs"></textarea>
+                <mat-label>Application URLs</mat-label>
+                <textarea cdkTextareaAutosize matInput formControlName="ApplicationUrls"></textarea>
               </mat-form-field>
             </div>
           </div>
         </mat-card>
       </div>
     </div>
-    <!--  <mat-form-field>-->
-    <!--    <mat-select formControlName="Inventories" placeholder="Inventories" [multiple]="true" [compareWith]="compareFN">-->
-    <!--      <mat-option *ngFor="let inventory of form.get('Inventories').value" [value]="inventory">{{inventory.value.Inventory.Name}}</mat-option>-->
-    <!--    </mat-select>-->
-    <!--  </mat-form-field>-->
     <div class="button-row">
       <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
       <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>

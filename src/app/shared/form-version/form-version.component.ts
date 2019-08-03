@@ -53,7 +53,6 @@ export class FormVersionComponent implements ControlValueAccessor, OnInit, OnDes
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.app && changes.app.currentValue) {
-      console.warn(changes.app.currentValue);
       this.versionsService.getVersions(changes.app.currentValue).subscribe(versions => {
         this.versions = versions;
       });

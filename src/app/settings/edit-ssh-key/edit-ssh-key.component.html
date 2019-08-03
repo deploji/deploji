@@ -2,10 +2,12 @@
 <mat-card>
   <form [formGroup]="form">
     <mat-form-field class="d-block">
-      <input matInput placeholder="Title" type="text" formControlName="Title">
+      <mat-label>Title</mat-label>
+      <input matInput type="text" formControlName="Title">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <textarea matInput placeholder="Key" type="textarea" formControlName="Key"></textarea>
+      <mat-label>Key</mat-label>
+      <textarea cdkTextareaAutosize matInput type="textarea" formControlName="Key"></textarea>
     </mat-form-field>
     <div class="button-row">
       <button type="button" mat-raised-button routerLink="/settings/keys">Cancel</button>

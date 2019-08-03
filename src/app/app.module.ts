@@ -11,7 +11,11 @@ import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '
 import { myRxStompConfig } from './my-rx-stomp.config';
 import { DialogSynchronizeComponent } from './shared/dialog-synchronize/dialog-synchronize.component';
 import { DialogConfirmComponent } from './shared/dialog-confirm/dialog-confirm.component';
-import { MatIconModule, MatIconRegistry } from '@angular/material';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatIconModule, MatIconRegistry } from '@angular/material';
+import { materialConfig } from './material-config';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { NgxPermissionsModule } from 'ngx-permissions';
 
 @NgModule({
   declarations: [
@@ -26,6 +30,7 @@ import { MatIconModule, MatIconRegistry } from '@angular/material';
     SharedModule,
     MatIconModule,
     DeploymentsModule,
+    NgxPermissionsModule.forRoot()
   ],
   providers: [
     {
@@ -36,6 +41,15 @@ import { MatIconModule, MatIconRegistry } from '@angular/material';
       provide: RxStompService,
       useFactory: rxStompServiceFactory,
       deps: [InjectableRxStompConfig]
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: materialConfig,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      multi: true,
+      useClass: AuthInterceptor
     }
   ],
   bootstrap: [AppComponent],

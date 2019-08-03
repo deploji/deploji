@@ -14,6 +14,7 @@ import { EditRepositoryComponent } from './edit-repository/edit-repository.compo
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { TemplatesComponent } from './templates/templates.component';
 import { EditTemplateComponent } from './edit-template/edit-template.component';
+import { SystemSettingsComponent } from './system-settings/system-settings.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,10 @@ const routes: Routes = [
           {
             label: 'Templates',
             link: '/settings/templates'
+          },
+          {
+            label: 'Settings',
+            link: '/settings/settings'
           }
         ]
       }
@@ -123,6 +128,10 @@ const routes: Routes = [
       {
         path: 'templates/:id',
         component: EditTemplateComponent
+      },
+      {
+        path: 'settings',
+        component: SystemSettingsComponent
       },
     ]
   }
