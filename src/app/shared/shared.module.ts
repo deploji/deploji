@@ -2,16 +2,25 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatChipsModule, MatDialogModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
+  MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule, MatPaginatorModule, MatRadioModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatRadioModule,
   MatRippleModule,
   MatSelectModule,
-  MatSidenavModule, MatSlideToggleModule, MatTableModule, MatTabsModule,
-  MatToolbarModule, MatTooltipModule
+  MatSidenavModule,
+  MatSlideToggleModule,
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule
 } from '@angular/material';
 import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';

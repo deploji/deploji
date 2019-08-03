@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RepositoriesService } from '../../core/services/repositories.service';
 
@@ -19,9 +19,9 @@ export class EditRepositoryComponent implements OnInit {
   ) {
     this.form = fb.group({
       ID: [],
-      Name: [],
-      Url: [],
-      Type: [],
+      Name: ['', [Validators.required]],
+      Url: ['', [Validators.required, Validators.pattern(/http(s)?:\/\/.*/)]],
+      Type: ['', [Validators.required]],
       Username: [],
       Password: [],
     });

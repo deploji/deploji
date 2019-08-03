@@ -38,7 +38,7 @@ const routes: Routes = [
             link: '/settings/inventories'
           },
           {
-            label: 'Repositories',
+            label: 'Artifact Repositories',
             link: '/settings/repositories'
           },
           {
