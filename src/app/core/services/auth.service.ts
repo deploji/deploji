@@ -4,6 +4,7 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
 import { NgxPermissionsService } from 'ngx-permissions';
 import { Router } from '@angular/router';
+import { RolesEnum } from '../enums/roles.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -31,7 +32,7 @@ export class AuthService {
 
   get permissions(): string[] {
     if (!this.token) {
-      return ['GUEST'];
+      return [RolesEnum.GUEST];
     }
     if (!Array.isArray(this.token.perm) || this.token.perm.length === 0) {
       return [];

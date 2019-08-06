@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { NavService } from '../../core/services/nav.service';
 import { Nav } from '../../core/interfaces/nav';
 import { AuthService } from '../../core/services/auth.service';
+import { RolesEnum } from 'src/app/core/enums/roles.enum';
 
 @Component({
   selector: 'app-nav',
@@ -13,7 +14,7 @@ import { AuthService } from '../../core/services/auth.service';
 })
 export class NavComponent implements OnInit, OnDestroy {
   @ViewChild('drawer', {static: false}) drawer;
-
+  RolesEnum = RolesEnum;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)

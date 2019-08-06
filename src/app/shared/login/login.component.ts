@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { catchError } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private authService: AuthService, private dialog: MatDialog) {
     this.form = fb.group({
-      Username: [],
-      Password: []
+      Username: ['', [Validators.required]],
+      Password: ['', [Validators.required]]
     });
   }
 
