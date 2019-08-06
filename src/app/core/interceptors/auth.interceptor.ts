@@ -50,7 +50,7 @@ export class AuthInterceptor implements HttpInterceptor {
             })
           );
         }
-        throwError(error);
+        return throwError(error);
       })
     );
   }

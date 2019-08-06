@@ -12,10 +12,10 @@
           <input matInput type="text" formControlName="Name">
         </mat-form-field>
         <div class="w-100">
-          <app-form-repository label="Repository" formControlName="Repository"></app-form-repository>
+          <app-form-repository label="Artifact Repository" formControlName="Repository"></app-form-repository>
         </div>
         <mat-form-field class="d-block w-100">
-          <mat-label>Repository artifact</mat-label>
+          <mat-label>Artifact name</mat-label>
           <input matInput type="text" formControlName="RepositoryArtifact">
         </mat-form-field>
       </div>
@@ -23,9 +23,10 @@
         <mat-form-field class="d-block w-100">
           <mat-label>Ansible name</mat-label>
           <input matInput type="text" formControlName="AnsibleName">
+          <mat-hint>Ansible name is passed to ansible playbook as app variable</mat-hint>
         </mat-form-field>
         <div class="w-100">
-          <app-form-project label="Project" formControlName="Project"></app-form-project>
+          <app-form-project label="Ansible Project" formControlName="Project"></app-form-project>
         </div>
         <div class="w-100">
           <app-form-project-file label="Ansible playbook"

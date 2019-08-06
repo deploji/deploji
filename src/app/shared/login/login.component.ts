@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
+import { catchError } from 'rxjs/operators';
+import { MatDialog } from '@angular/material';
+import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
+import { throwError } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +14,7 @@ import { AuthService } from '../../core/services/auth.service';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private dialog: MatDialog) {
     this.form = fb.group({
       Username: [],
       Password: []
@@ -21,6 +25,17 @@ export class LoginComponent implements OnInit {
   }
 
   login(formValue: any) {
-    this.authService.login(formValue).subscribe();
+    this.authService.login(formValue).pipe(
+      catchError((err) => {
+        if (err.status !== 400) {
+          return err;
+        }
+        this.dialog.open(DialogConfirmComponent, {
+          width: '500px',
+          data: {title: '', hideCancelButton: true, message: `Invalid username or password`}
+        });
+        return throwError(err);
+      })
+    ).subscribe();
   }
 }

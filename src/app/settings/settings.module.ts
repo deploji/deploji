@@ -17,6 +17,8 @@ import { EditRepositoryComponent } from './edit-repository/edit-repository.compo
 import { TemplatesComponent } from './templates/templates.component';
 import { EditTemplateComponent } from './edit-template/edit-template.component';
 import { SystemSettingsComponent } from './system-settings/system-settings.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { UsersComponent } from './users/users.component';
 
 
 @NgModule({
@@ -34,7 +36,9 @@ import { SystemSettingsComponent } from './system-settings/system-settings.compo
     EditRepositoryComponent,
     TemplatesComponent,
     EditTemplateComponent,
-    SystemSettingsComponent
+    SystemSettingsComponent,
+    EditUserComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
