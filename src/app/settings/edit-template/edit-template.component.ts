@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TemplatesService } from '../../core/services/templates.service';
+import { TemplateForm } from '../../core/forms/template.form';
 
 @Component({
   selector: 'app-edit-template',
@@ -9,22 +9,13 @@ import { TemplatesService } from '../../core/services/templates.service';
   styleUrls: ['./edit-template.component.scss']
 })
 export class EditTemplateComponent implements OnInit {
-  form: FormGroup;
+  form = new TemplateForm();
 
   constructor(
-    private fb: FormBuilder,
     private templatesService: TemplatesService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.form = fb.group({
-      ID: [],
-      Name: [],
-      Project: [],
-      Inventory: [],
-      Playbook: [],
-      SshKey: [],
-    });
   }
 
   ngOnInit() {

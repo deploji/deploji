@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../core/services/auth.service';
 import { catchError } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 import { throwError } from 'rxjs';
+import { LoginForm } from '../../core/forms/login.form';
 
 @Component({
   selector: 'app-login',
@@ -12,13 +12,9 @@ import { throwError } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  form: FormGroup;
+  form = new LoginForm();
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private dialog: MatDialog) {
-    this.form = fb.group({
-      Username: ['', [Validators.required]],
-      Password: ['', [Validators.required]]
-    });
+  constructor(private authService: AuthService, private dialog: MatDialog) {
   }
 
   ngOnInit() {

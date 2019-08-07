@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SettingsService } from '../../core/services/settings.service';
 import { SettingGroup } from '../../core/interfaces/settingGroup';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confirm.component';
+import { SettingsForm } from '../../core/forms/settings.form';
 
 @Component({
   selector: 'app-system-settings',
@@ -12,37 +12,20 @@ import { DialogConfirmComponent } from '../../shared/dialog-confirm/dialog-confi
 })
 export class SystemSettingsComponent implements OnInit {
   groups: SettingGroup[];
-  form: FormGroup;
+  form = new SettingsForm([]);
 
-  constructor(private settingsService: SettingsService, private fb: FormBuilder, private dialog: MatDialog) {
-    this.form = fb.group({
-      Groups: fb.array([])
-    });
-  }
-
-  get formGroups() {
-    return this.form.get('Groups') as FormArray;
+  constructor(private settingsService: SettingsService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
     this.settingsService.getSettings().subscribe(settings => {
       this.groups = settings;
-      settings.forEach(group => {
-        const array = new FormArray([]);
-        this.formGroups.push(array);
-        group.Settings.forEach(setting => {
-          array.push(this.fb.group({
-            ID: [setting.ID],
-            Value: [setting.Value],
-            BoolValue: [setting.BoolValue]
-          }));
-        });
-      });
+      this.form = new SettingsForm(settings);
     });
   }
 
   save(i: number) {
-    this.settingsService.save(this.formGroups.at(i).value).subscribe(() => {
+    this.settingsService.save(this.form.Groups.at(i).value).subscribe(() => {
       this.dialog.open(DialogConfirmComponent, {
         width: '500px',
         data: {title: 'Settings saved', message: 'Settings have been saved successfully', hideCancelButton: true}

@@ -27,8 +27,7 @@ export class FormRepositoryComponent implements ControlValueAccessor, OnInit, On
   constructor(private repositoriesService: RepositoriesService) {
   }
 
-  propagateChange = (_: any) => {
-  };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

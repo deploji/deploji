@@ -27,8 +27,7 @@ export class FormProjectFileComponent implements ControlValueAccessor, OnInit, O
   constructor(private projectsService: ProjectsService) {
   }
 
-  propagateChange = (_: any) => {
-  };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

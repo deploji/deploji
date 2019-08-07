@@ -4,7 +4,7 @@
     <div>
       <app-form-inventory label="Inventory" formControlName="Inventory"></app-form-inventory>
     </div>
-    <div formArrayName="Applications" *ngFor="let application of applications.controls; let i = index">
+    <div formArrayName="Applications" *ngFor="let application of form.Applications.controls; let i = index">
       <div [formGroupName]="i">
         <div>
           <mat-checkbox formControlName="IsActive">{{application?.value?.Application?.Name}}</mat-checkbox>

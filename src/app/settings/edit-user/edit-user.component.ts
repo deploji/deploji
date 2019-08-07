@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../../core/services/users.service';
+import { UserForm } from '../../core/forms/user.form';
 
 @Component({
   selector: 'app-edit-user',
@@ -9,23 +9,13 @@ import { UsersService } from '../../core/services/users.service';
   styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
-  form: FormGroup;
+  form = new UserForm();
 
   constructor(
-    private fb: FormBuilder,
     private usersService: UsersService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.form = fb.group({
-      ID: [],
-      Username: ['', [Validators.required]],
-      Name: [],
-      Surname: [],
-      Email: [],
-      Password: [],
-      IsActive: [],
-    });
   }
 
   ngOnInit() {
