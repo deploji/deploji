@@ -18,6 +18,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache app dependencies
 COPY package.json /app/package.json
+COPY yarn.lock /app/yarn.lock
 RUN yarn install
 
 # add app
@@ -38,7 +39,7 @@ RUN ng build --prod
 FROM nginx:1.16.0-alpine
 
 # copy artifact build from the 'build environment'
-COPY --from=build /app/dist /usr/share/nginx/html
+COPY --from=build /app/dist/mastermind /usr/share/nginx/html
 
 # expose port 80
 EXPOSE 80
