@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProjectsService } from '../../core/services/projects.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectForm } from '../../core/forms/project.form';
 
 @Component({
   selector: 'app-edit-project',
@@ -9,17 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-project.component.scss']
 })
 export class EditProjectComponent implements OnInit {
-  form: FormGroup;
+  form = new ProjectForm();
 
-  constructor(private fb: FormBuilder, private projectsService: ProjectsService, private router: Router, private route: ActivatedRoute) {
-    this.form = fb.group({
-      ID: [],
-      Name: [],
-      RepoUrl: [],
-      RepoBranch: ['master'],
-      RepoUser: ['git'],
-      SshKey: [],
-    });
+  constructor(private projectsService: ProjectsService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {

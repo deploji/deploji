@@ -1,0 +1,43 @@
+<div class="d-flex">
+  <h1>Users</h1>
+  <div class="flex-fill"></div>
+  <div class="d-flex flex-column justify-content-center">
+    <button type="button" mat-raised-button color="primary" routerLink="/settings/users/create">
+      Create new user
+    </button>
+  </div>
+</div>
+<mat-card *ngFor="let user of users" class="my-2">
+  <div class="d-flex">
+    <div>
+      <div class="mb-2"><b>{{user.Username}}</b></div>
+      <div class="properties">
+        <div class="properties__row">
+          <div class="properties__label">Name</div>
+          <div class="properties__value">{{user.Name}}</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__label">Surname</div>
+          <div class="properties__value">{{user.Surname}}</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__label">E-mail</div>
+          <div class="properties__value">{{user.Email}}</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__label">Active</div>
+          <div class="properties__value">{{user.IsActive}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-fill"></div>
+    <div>
+      <button type="button" mat-icon-button title="Edit" routerLink="/settings/users/{{user.ID}}">
+        <mat-icon color="primary">edit</mat-icon>
+      </button>
+      <button type="button" mat-icon-button title="Delete template" (click)="delete(user)">
+        <mat-icon color="warn">delete_forever</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card>

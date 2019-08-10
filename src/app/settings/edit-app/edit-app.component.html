@@ -1,6 +1,6 @@
 <h1>
-  <ng-container *ngIf="!form.get('ID').value">Create new</ng-container>
-  <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
+  <ng-container *ngIf="!form.ID.value">Create new</ng-container>
+  <ng-container *ngIf="form.ID.value">Edit</ng-container>
   app
 </h1>
 <mat-card>
@@ -8,21 +8,25 @@
     <div class="row">
       <div class="col">
         <mat-form-field class="d-block w-100">
-          <input matInput placeholder="Display name" type="text" formControlName="Name">
+          <mat-label>Display name</mat-label>
+          <input matInput type="text" formControlName="Name">
         </mat-form-field>
         <div class="w-100">
-          <app-form-repository label="Repository" formControlName="Repository"></app-form-repository>
+          <app-form-repository label="Artifact Repository" formControlName="Repository"></app-form-repository>
         </div>
         <mat-form-field class="d-block w-100">
-          <input matInput placeholder="Repository artifact" type="text" formControlName="RepositoryArtifact">
+          <mat-label>Artifact name</mat-label>
+          <input matInput type="text" formControlName="RepositoryArtifact">
         </mat-form-field>
       </div>
       <div class="col">
         <mat-form-field class="d-block w-100">
-          <input matInput placeholder="Ansible name" type="text" formControlName="AnsibleName">
+          <mat-label>Ansible name</mat-label>
+          <input matInput type="text" formControlName="AnsibleName">
+          <mat-hint>Ansible name is passed to ansible playbook as app variable</mat-hint>
         </mat-form-field>
         <div class="w-100">
-          <app-form-project label="Project" formControlName="Project"></app-form-project>
+          <app-form-project label="Ansible Project" formControlName="Project"></app-form-project>
         </div>
         <div class="w-100">
           <app-form-project-file label="Ansible playbook"
@@ -35,25 +39,23 @@
     <div>
       <h2>Inventories</h2>
       <div class="d-flex flex-column" formArrayName="Inventories"
-           *ngFor="let inventory of inventories.controls; let i = index">
+           *ngFor="let inventory of form.Inventories.controls; let i = index">
         <mat-card class="my-2">
           <div [formGroupName]="i">
             <h4 class="mt-0 mb-2">{{inventory.value.Inventory.Name}}</h4>
-            <mat-checkbox formControlName="IsActive">is active</mat-checkbox>
+            <div class="mb-2">
+              <mat-checkbox formControlName="IsActive">is active</mat-checkbox>
+            </div>
             <div>
               <mat-form-field class="w-100">
-                <textarea matInput formControlName="ApplicationUrls" placeholder="Application URLs"></textarea>
+                <mat-label>Application URLs</mat-label>
+                <textarea cdkTextareaAutosize matInput formControlName="ApplicationUrls"></textarea>
               </mat-form-field>
             </div>
           </div>
         </mat-card>
       </div>
     </div>
-    <!--  <mat-form-field>-->
-    <!--    <mat-select formControlName="Inventories" placeholder="Inventories" [multiple]="true" [compareWith]="compareFN">-->
-    <!--      <mat-option *ngFor="let inventory of form.get('Inventories').value" [value]="inventory">{{inventory.value.Inventory.Name}}</mat-option>-->
-    <!--    </mat-select>-->
-    <!--  </mat-form-field>-->
     <div class="button-row">
       <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
       <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>

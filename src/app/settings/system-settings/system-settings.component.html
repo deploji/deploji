@@ -1,0 +1,24 @@
+<h1>Settings</h1>
+<mat-card class="p-0">
+  <form [formGroup]="form">
+    <mat-tab-group>
+      <mat-tab *ngFor="let group of groups; let i = index" [label]="group.Name" formArrayName="Groups">
+        <div class="p-4" [formGroupName]="i">
+          <ng-container *ngFor="let setting of group.Settings; let j = index">
+            <div [ngSwitch]="setting.ValueType" [formGroupName]="j">
+              <mat-form-field *ngSwitchCase="'text'" class="w-100 my-2">
+                <mat-label>{{setting.Label}}</mat-label>
+                <input matInput type="text" formControlName="Value">
+                <mat-hint>{{setting.Description}}</mat-hint>
+              </mat-form-field>
+              <div *ngSwitchCase="'bool'" class="mb-2">
+                <mat-slide-toggle formControlName="BoolValue">{{setting.Label}}</mat-slide-toggle>
+              </div>
+            </div>
+          </ng-container>
+          <button mat-raised-button color="primary" type="button" (click)="save(i)">Save</button>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </form>
+</mat-card>

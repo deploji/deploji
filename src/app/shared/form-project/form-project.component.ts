@@ -25,8 +25,7 @@ export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDes
   constructor(private projectsService: ProjectsService) {
   }
 
-  propagateChange = (_: any) => {
-  };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { NavService } from '../../core/services/nav.service';
 import { Nav } from '../../core/interfaces/nav';
+import { AuthService } from '../../core/services/auth.service';
+import { RolesEnum } from 'src/app/core/enums/roles.enum';
 
 @Component({
   selector: 'app-nav',
@@ -12,7 +14,7 @@ import { Nav } from '../../core/interfaces/nav';
 })
 export class NavComponent implements OnInit, OnDestroy {
   @ViewChild('drawer', {static: false}) drawer;
-
+  RolesEnum = RolesEnum;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -20,7 +22,7 @@ export class NavComponent implements OnInit, OnDestroy {
   nav: Nav;
   opened: boolean;
 
-  constructor(private breakpointObserver: BreakpointObserver, private navService: NavService) {
+  constructor(private breakpointObserver: BreakpointObserver, private navService: NavService, private authService: AuthService) {
   }
 
   ngOnDestroy(): void {
@@ -37,4 +39,7 @@ export class NavComponent implements OnInit, OnDestroy {
     });
   }
 
+  logout() {
+    this.authService.logout();
+  }
 }

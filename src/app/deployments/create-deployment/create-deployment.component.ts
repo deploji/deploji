@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DeploymentsService } from '../../core/services/deployments.service';
+import { CreateDeploymentForm } from '../../core/forms/create-deployment.form';
 
 @Component({
   selector: 'app-create-deployment',
@@ -9,14 +9,9 @@ import { DeploymentsService } from '../../core/services/deployments.service';
   styleUrls: ['./create-deployment.component.scss']
 })
 export class CreateDeploymentComponent implements OnInit {
-  form: FormGroup;
+  form = new CreateDeploymentForm();
 
-  constructor(private fb: FormBuilder, private deploymentsService: DeploymentsService, private router: Router) {
-    this.form = fb.group({
-      Application: [],
-      Inventories: [],
-      Version: [],
-    });
+  constructor(private deploymentsService: DeploymentsService, private router: Router) {
   }
 
   ngOnInit() {
@@ -26,12 +21,10 @@ export class CreateDeploymentComponent implements OnInit {
     if (!this.form.valid) {
       return;
     }
-    this.form.value.Inventories
-      .map(value => ({Application: this.form.value.Application, Version: this.form.value.Version, Inventory: value}))
-      .forEach(value => {
-        this.deploymentsService.save(value).subscribe((deployment) => {
-          this.router.navigateByUrl(`/deployments`);
-        });
+    this.form.deploymentsValue.forEach(deployment => {
+      this.deploymentsService.save(deployment).subscribe(() => {
+        this.router.navigateByUrl(`/deployments`);
       });
-    }
+    });
+  }
 }

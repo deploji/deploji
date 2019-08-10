@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RepositoriesService } from '../../core/services/repositories.service';
+import { RepositoryForm } from '../../core/forms/repository.form';
 
 @Component({
   selector: 'app-edit-repository',
@@ -9,22 +9,13 @@ import { RepositoriesService } from '../../core/services/repositories.service';
   styleUrls: ['./edit-repository.component.scss']
 })
 export class EditRepositoryComponent implements OnInit {
-  form: FormGroup;
+  form = new RepositoryForm();
 
   constructor(
-    private fb: FormBuilder,
     private repositoriesService: RepositoriesService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.form = fb.group({
-      ID: [],
-      Name: [],
-      Url: [],
-      Type: [],
-      Username: [],
-      Password: [],
-    });
   }
 
   ngOnInit() {

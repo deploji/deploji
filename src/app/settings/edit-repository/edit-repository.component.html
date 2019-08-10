@@ -1,26 +1,47 @@
 <h1>
   <ng-container *ngIf="!form.get('ID').value">Create new</ng-container>
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
-  repository
+  artifact repository
 </h1>
 <mat-card>
   <form [formGroup]="form">
     <mat-form-field class="d-block">
-      <input matInput placeholder="Name" type="text" formControlName="Name">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="Name">
+      <mat-error>
+        Name is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="d-block">
-      <mat-select placeholder="Type" formControlName="Type">
-        <mat-option value="docker">Docker registry</mat-option>
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="Type">
+        <mat-option value="docker-v1">Docker registry v1</mat-option>
+        <mat-option value="docker-v2">Docker registry v2</mat-option>
       </mat-select>
+      <mat-error>
+        Type is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput placeholder="URL" type="text" formControlName="Url">
+      <mat-label>URL</mat-label>
+      <input matInput type="text" formControlName="Url">
+      <mat-error *ngIf="form.get('Url').hasError('required')">
+        URL is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="form.get('Url').hasError('pattern')">
+        URL must start with http/https
+      </mat-error>
+      <mat-hint>
+        Artifact repository URL for example https://registry.hub.docker.com
+      </mat-hint>
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput autocomplete="new-password" placeholder="Username" type="text" formControlName="Username">
+      <mat-label>Username</mat-label>
+      <input matInput autocomplete="new-password" type="text" formControlName="Username">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput autocomplete="new-password" placeholder="Password" type="password" formControlName="Password">
+      <mat-label>Password</mat-label>
+      <input matInput autocomplete="new-password" type="password" formControlName="Password">
     </mat-form-field>
     <div class="button-row">
       <button type="button" mat-raised-button routerLink="/settings/repositories">Cancel</button>

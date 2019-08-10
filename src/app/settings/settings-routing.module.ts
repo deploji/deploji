@@ -14,6 +14,9 @@ import { EditRepositoryComponent } from './edit-repository/edit-repository.compo
 import { RepositoriesComponent } from './repositories/repositories.component';
 import { TemplatesComponent } from './templates/templates.component';
 import { EditTemplateComponent } from './edit-template/edit-template.component';
+import { SystemSettingsComponent } from './system-settings/system-settings.component';
+import { UsersComponent } from './users/users.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 const routes: Routes = [
   {
@@ -37,7 +40,7 @@ const routes: Routes = [
             link: '/settings/inventories'
           },
           {
-            label: 'Repositories',
+            label: 'Artifact Repositories',
             link: '/settings/repositories'
           },
           {
@@ -47,6 +50,14 @@ const routes: Routes = [
           {
             label: 'Templates',
             link: '/settings/templates'
+          },
+          {
+            label: 'Users',
+            link: '/settings/users'
+          },
+          {
+            label: 'Settings',
+            link: '/settings/settings'
           }
         ]
       }
@@ -123,6 +134,22 @@ const routes: Routes = [
       {
         path: 'templates/:id',
         component: EditTemplateComponent
+      },
+      {
+        path: 'users',
+        component: UsersComponent
+      },
+      {
+        path: 'users/create',
+        component: EditUserComponent
+      },
+      {
+        path: 'users/:id',
+        component: EditUserComponent
+      },
+      {
+        path: 'settings',
+        component: SystemSettingsComponent
       },
     ]
   }

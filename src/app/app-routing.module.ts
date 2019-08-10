@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { environment } from '../environments/environment';
+import { LoginComponent } from './shared/login/login.component';
+import { NgxPermissionsGuard } from 'ngx-permissions';
 
 
 const routes: Routes = [
@@ -24,6 +26,22 @@ const routes: Routes = [
     path: 'templates',
     loadChildren: () => import('./templates/templates.module').then(m => m.TemplatesModule)
   },
+  {
+    path: 'login',
+    component: LoginComponent,
+    canActivate: [NgxPermissionsGuard],
+    data: {
+      permissions: {
+        only: ['GUEST'],
+        redirectTo: '/deployments'
+      }
+    }
+  },
+  {
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'login'
+  }
 ];
 
 @NgModule({

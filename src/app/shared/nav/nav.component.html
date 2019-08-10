@@ -4,7 +4,7 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>{{nav.title}}</mat-toolbar>
-    <mat-nav-list>
+    <mat-nav-list *ngxPermissionsExcept="RolesEnum.GUEST">
       <a mat-list-item routerLinkActive="active" *ngFor="let item of nav.items"
          [routerLink]="item.link">{{item.label}}</a>
     </mat-nav-list>
@@ -22,6 +22,7 @@
         </button>
         <span class="mr-2">Mastermind</span>
         <button
+          *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
           aria-label="Deployments"
           title="Deployments"
@@ -30,6 +31,7 @@
           Deployments
         </button>
         <button
+          *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
           aria-label="Applications"
           title="Applications"
@@ -38,6 +40,7 @@
           Applications
         </button>
         <button
+          *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
           aria-label="Inventories"
           title="Inventories"
@@ -46,6 +49,7 @@
           Inventories
         </button>
         <button
+          *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
           aria-label="Templates"
           title="Templates"
@@ -54,6 +58,7 @@
           Templates
         </button>
         <button
+          *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
           aria-label="Jobs"
           title="Jobs"
@@ -63,6 +68,7 @@
         </button>
         <span class="flex-fill"></span>
         <button
+          *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
           aria-label="Settings"
           title="Settings"
@@ -72,6 +78,8 @@
           <mat-icon aria-label="Profile">settings</mat-icon>
         </button>
         <button
+          *ngxPermissionsExcept="RolesEnum.GUEST"
+          (click)="logout()"
           type="button"
           aria-label="Logout"
           title="Logout"

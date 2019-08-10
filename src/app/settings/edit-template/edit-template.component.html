@@ -6,7 +6,8 @@
 <mat-card>
   <form [formGroup]="form">
     <mat-form-field class="d-block">
-      <input matInput placeholder="Name" type="text" formControlName="Name">
+      <mat-label>Name</mat-label>
+      <input matInput type="text" formControlName="Name">
     </mat-form-field>
     <app-form-project formControlName="Project"></app-form-project>
     <app-form-inventory formControlName="Inventory"></app-form-inventory>

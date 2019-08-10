@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material';
 import { tap } from 'rxjs/operators';
 import { Collection } from '../core/utils/collection';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Page } from '../core/interfaces/page';
+import { DeploymentFiltersForm } from '../core/forms/deployment-filters.form';
 
 @Component({
   selector: 'app-deployments',
@@ -22,18 +22,13 @@ export class DeploymentsComponent implements OnInit, OnDestroy {
   private currentPage: Page = {page: 0, limit: 10, orderBy: 'id desc'};
   deployments: Collection<Deployment>;
   columnsToDisplay = ['status', 'id', 'application', 'inventory', 'version', 'time', 'actions'];
-  filters: FormGroup;
+  filters = new DeploymentFiltersForm();
 
   constructor(
     private router: Router,
     private deploymentsService: DeploymentsService,
-    private stomp: RxStompService,
-    private fb: FormBuilder
+    private stomp: RxStompService
   ) {
-    this.filters = fb.group({
-      application_id: [],
-      inventory_id: []
-    });
     this.filters.valueChanges.subscribe(value => {
       this.reload(this.currentPage, value);
     });

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InventoriesService } from '../../core/services/inventories.service';
+import { InventoryForm } from '../../core/forms/inventory.form';
 
 @Component({
   selector: 'app-edit-inventory',
@@ -9,20 +9,13 @@ import { InventoriesService } from '../../core/services/inventories.service';
   styleUrls: ['./edit-inventory.component.scss']
 })
 export class EditInventoryComponent implements OnInit {
-  form: FormGroup;
+  form = new InventoryForm();
 
   constructor(
-    private fb: FormBuilder,
     private inventoriesService: InventoriesService,
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.form = fb.group({
-      ID: [],
-      Name: [],
-      Project: [],
-      SourceFile: [],
-    });
   }
 
   ngOnInit() {

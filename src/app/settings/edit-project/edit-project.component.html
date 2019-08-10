@@ -6,16 +6,20 @@
 <mat-card>
   <form [formGroup]="form">
     <mat-form-field class="d-block">
+      <mat-label>Name</mat-label>
       <input matInput placeholder="Name" type="text" formControlName="Name">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput placeholder="Git URL" type="text" formControlName="RepoUrl">
+      <mat-label>Git URL</mat-label>
+      <input matInput type="text" formControlName="RepoUrl">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput placeholder="Git branch" type="text" formControlName="RepoBranch">
+      <mat-label>Git branch</mat-label>
+      <input matInput type="text" formControlName="RepoBranch">
     </mat-form-field>
     <mat-form-field class="d-block">
-      <input matInput placeholder="Git user" type="text" formControlName="RepoUser">
+      <mat-label>Git user</mat-label>
+      <input matInput type="text" formControlName="RepoUser">
     </mat-form-field>
     <app-form-ssh-key formControlName="SshKey" label="SSH key"></app-form-ssh-key>
     <div class="button-row">

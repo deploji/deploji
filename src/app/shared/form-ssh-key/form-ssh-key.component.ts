@@ -25,8 +25,7 @@ export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDest
   constructor(private keysService: SshKeysService) {
   }
 
-  propagateChange = (_: any) => {
-  };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;

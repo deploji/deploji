@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppsService } from '../../core/services/apps.service';
 import { InventoriesService } from '../../core/services/inventories.service';
 import { forkJoin } from 'rxjs';
+import { ApplicationForm } from '../../core/forms/application.form';
 
 @Component({
   selector: 'app-edit-app',
@@ -11,25 +12,14 @@ import { forkJoin } from 'rxjs';
   styleUrls: ['./edit-app.component.scss']
 })
 export class EditAppComponent implements OnInit {
-  form: FormGroup;
+  form = new ApplicationForm();
 
   constructor(
-    private fb: FormBuilder,
     private appsService: AppsService,
     private router: Router,
     private inventoriesService: InventoriesService,
     private route: ActivatedRoute
   ) {
-    this.form = fb.group({
-      ID: [],
-      Name: [],
-      AnsibleName: [],
-      Project: [],
-      AnsiblePlaybook: [],
-      Repository: [],
-      RepositoryArtifact: [],
-      Inventories: fb.array([]),
-    });
   }
 
   ngOnInit() {
@@ -38,16 +28,7 @@ export class EditAppComponent implements OnInit {
         this.appsService.getApp(Number(this.route.snapshot.paramMap.get('id'))),
         this.inventoriesService.getInventories()
       ).subscribe(([app, inventories]) => {
-        inventories.forEach(inventory => {
-          this.inventories.push(
-            this.fb.group({
-              Inventory: [inventory],
-              IsActive: [],
-              Application: [app],
-              ApplicationUrls: []
-            })
-          );
-        });
+        this.form.createApplicationInventories(app, inventories);
         this.form.patchValue(app);
       });
     }
@@ -64,9 +45,5 @@ export class EditAppComponent implements OnInit {
 
   compareFN(opt1: FormControl, opt2: FormControl): boolean {
     return opt1.value.Inventory.ID === opt2.value.Inventory.ID;
-  }
-
-  get inventories(): FormArray {
-    return this.form.get('Inventories') as FormArray;
   }
 }

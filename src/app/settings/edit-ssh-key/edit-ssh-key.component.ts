@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { SshKeysService } from '../../core/services/ssh-keys.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SshKeyForm } from '../../core/forms/ssh-key.form';
 
 @Component({
   selector: 'app-edit-ssh-key',
@@ -9,14 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./edit-ssh-key.component.scss']
 })
 export class EditSshKeyComponent implements OnInit {
-  form: FormGroup;
+  form = new SshKeyForm();
 
-  constructor(private fb: FormBuilder, private keys: SshKeysService, private router: Router, private route: ActivatedRoute) {
-    this.form = fb.group({
-      ID: [],
-      Title: [],
-      Key: []
-    });
+  constructor(private keys: SshKeysService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
