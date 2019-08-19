@@ -59,7 +59,7 @@ export class AuthService {
         this.loadToken();
         this.permissionsService.flushPermissions();
         this.permissionsService.loadPermissions(this.permissions);
-        this.router.navigateByUrl('/deployments');
+        this.router.navigateByUrl('/jobs');
       })
     );
   }

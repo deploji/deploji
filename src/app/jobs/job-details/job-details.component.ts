@@ -1,39 +1,39 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { DeploymentsService } from '../../core/services/deployments.service';
-import { Deployment } from '../../core/interfaces/deployment';
+import { JobsService } from '../../core/services/jobs.service';
 import { RxStompService } from '@stomp/ng2-stompjs';
-import { DeploymentLog } from '../../core/interfaces/deployment-log';
+import { JobLog } from '../../core/interfaces/job-log';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Job } from '../../core/interfaces/job';
 
 @Component({
-  selector: 'app-deployment-details',
-  templateUrl: './deployment-details.component.html',
-  styleUrls: ['./deployment-details.component.scss']
+  selector: 'app-job-details',
+  templateUrl: './job-details.component.html',
+  styleUrls: ['./job-details.component.scss']
 })
-export class DeploymentDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
+export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('scrollMe', {static: false}) private myScrollContainer: CdkVirtualScrollViewport;
-  deployment: Deployment;
-  logs: DeploymentLog[] = [];
+  job: Job;
+  logs: JobLog[] = [];
   autoScroll = new FormControl(true);
   private subscription = new Subscription();
 
-  constructor(private deploymentsService: DeploymentsService, private route: ActivatedRoute, private stomp: RxStompService) {
+  constructor(private jobsService: JobsService, private route: ActivatedRoute, private stomp: RxStompService) {
   }
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
-      this.deploymentsService.getDeployment(Number(this.route.snapshot.paramMap.get('id'))).subscribe(deployment => {
-        this.deployment = deployment;
+      this.jobsService.getJob(Number(this.route.snapshot.paramMap.get('id'))).subscribe(job => {
+        this.job = job;
       });
-      this.deploymentsService.getDeploymentLogs(Number(this.route.snapshot.paramMap.get('id'))).subscribe(logs => {
+      this.jobsService.getJobLogs(Number(this.route.snapshot.paramMap.get('id'))).subscribe(logs => {
         this.logs = logs;
       });
     }
     this.subscription.add(
-      this.stomp.watch(`/exchange/deployment_log_${this.route.snapshot.paramMap.get('id')}`).subscribe(value => {
+      this.stomp.watch(`/exchange/job_log_${this.route.snapshot.paramMap.get('id')}`).subscribe(value => {
         this.logs = [...this.logs, {Message: value.body}];
         if (this.autoScroll.value === true) {
           this.myScrollContainer.scrollTo({bottom: 0});

@@ -1,4 +1,5 @@
 export interface Project {
+  synchronizeJobID?: number;
   synchronizationStatus?: string;
   synchronizing?: boolean;
   ID?: number;

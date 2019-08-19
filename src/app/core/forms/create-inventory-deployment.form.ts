@@ -1,6 +1,7 @@
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Inventory } from '../interfaces/inventory';
 import { Deployment } from '../interfaces/deployment';
+import { JobTypesEnum } from '../enums/job-types.enum';
 
 export class CreateInventoryDeploymentForm extends FormGroup {
   constructor() {
@@ -33,6 +34,11 @@ export class CreateInventoryDeploymentForm extends FormGroup {
   get deploymentsValue(): Deployment[] {
     return this.value.Applications
       .filter(application => application.IsActive)
-      .map(value => ({Application: value.Application, Version: value.Version, Inventory: this.value.Inventory}));
+      .map(value => ({
+        Type: JobTypesEnum.DEPLOYMENT,
+        Application: value.Application,
+        Version: value.Version,
+        Inventory: this.value.Inventory
+      }));
   }
 }

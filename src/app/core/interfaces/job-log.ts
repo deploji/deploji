@@ -1,4 +1,4 @@
-export interface DeploymentLog {
+export interface JobLog {
   ID?: number;
   Order?: number;
   Message: string;

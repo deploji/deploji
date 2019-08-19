@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { DeploymentsService } from '../../core/services/deployments.service';
+import { JobsService } from '../../core/services/jobs.service';
 import { CreateDeploymentForm } from '../../core/forms/create-deployment.form';
 
 @Component({
@@ -11,7 +11,7 @@ import { CreateDeploymentForm } from '../../core/forms/create-deployment.form';
 export class CreateDeploymentComponent implements OnInit {
   form = new CreateDeploymentForm();
 
-  constructor(private deploymentsService: DeploymentsService, private router: Router) {
+  constructor(private jobsService: JobsService, private router: Router) {
   }
 
   ngOnInit() {
@@ -22,8 +22,8 @@ export class CreateDeploymentComponent implements OnInit {
       return;
     }
     this.form.deploymentsValue.forEach(deployment => {
-      this.deploymentsService.save(deployment).subscribe(() => {
-        this.router.navigateByUrl(`/deployments`);
+      this.jobsService.save(deployment).subscribe(() => {
+        this.router.navigateByUrl(`/jobs`);
       });
     });
   }

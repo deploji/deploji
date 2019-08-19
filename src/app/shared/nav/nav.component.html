@@ -24,11 +24,11 @@
         <button
           *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
-          aria-label="Deployments"
-          title="Deployments"
+          aria-label="Jobs"
+          title="Jobs"
           mat-button
-          routerLink="/deployments">
-          Deployments
+          routerLink="/jobs">
+          Jobs
         </button>
         <button
           *ngxPermissionsExcept="RolesEnum.GUEST"
@@ -56,15 +56,6 @@
           mat-button
           routerLink="/templates">
           Templates
-        </button>
-        <button
-          *ngxPermissionsExcept="RolesEnum.GUEST"
-          type="button"
-          aria-label="Jobs"
-          title="Jobs"
-          mat-button
-          routerLink="/jobs">
-          Jobs
         </button>
         <span class="flex-fill"></span>
         <button

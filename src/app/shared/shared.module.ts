@@ -44,6 +44,7 @@ import { DialogSynchronizeComponent } from './dialog-synchronize/dialog-synchron
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { LoginComponent } from './login/login.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { JobTypePipe } from './pipes/job-type.pipe';
 
 const MODULES = [
   MatToolbarModule,
@@ -94,6 +95,7 @@ const PIPES = [
   AnsiPipe,
   TimeAgoPipe,
   DurationPipe,
+  JobTypePipe,
 ];
 
 @NgModule({

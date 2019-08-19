@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
-import { DeploymentsModule } from './deployments/deployments.module';
 import { CoreModule } from './core/core.module';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 import { myRxStompConfig } from './my-rx-stomp.config';
@@ -16,6 +15,7 @@ import { materialConfig } from './material-config';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgxPermissionsModule } from 'ngx-permissions';
+import { JobsModule } from './jobs/jobs.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
     BrowserAnimationsModule,
     SharedModule,
     MatIconModule,
-    DeploymentsModule,
+    JobsModule,
     NgxPermissionsModule.forRoot()
   ],
   providers: [

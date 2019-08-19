@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DeploymentsService } from '../../core/services/deployments.service';
+import { JobsService } from '../../core/services/jobs.service';
 import { Router } from '@angular/router';
 import { CreateInventoryDeploymentForm } from '../../core/forms/create-inventory-deployment.form';
 
@@ -11,7 +11,7 @@ import { CreateInventoryDeploymentForm } from '../../core/forms/create-inventory
 export class CreateInventoryDeploymentComponent {
   form = new CreateInventoryDeploymentForm();
 
-  constructor(private deploymentsService: DeploymentsService, private router: Router) {
+  constructor(private jobsService: JobsService, private router: Router) {
   }
 
   create() {
@@ -19,8 +19,8 @@ export class CreateInventoryDeploymentComponent {
       return;
     }
     this.form.deploymentsValue.forEach(value => {
-      this.deploymentsService.save(value).subscribe((deployment) => {
-        this.router.navigateByUrl(`/deployments`);
+      this.jobsService.save(value).subscribe((deployment) => {
+        this.router.navigateByUrl(`/jobs`);
       });
     });
   }

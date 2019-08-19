@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { App } from '../core/interfaces/app';
 import { AppsService } from '../core/services/apps.service';
-import { DeploymentsService } from '../core/services/deployments.service';
+import { JobsService } from '../core/services/jobs.service';
 import { Deployment } from '../core/interfaces/deployment';
 
 @Component({
@@ -14,14 +14,14 @@ export class ApplicationsComponent implements OnInit {
   columnsToDisplay = ['inventory', 'version', 'urls'];
   latestDeployments: Deployment[];
 
-  constructor(private appsService: AppsService, private deploymentsService: DeploymentsService) {
+  constructor(private appsService: AppsService, private jobsService: JobsService) {
   }
 
   ngOnInit() {
     this.appsService.getApps().subscribe(apps => {
       this.apps = apps;
     });
-    this.deploymentsService.getLatestDeployments().subscribe(deployments => {
+    this.jobsService.getLatestDeployments().subscribe(deployments => {
       this.latestDeployments = deployments;
     });
   }

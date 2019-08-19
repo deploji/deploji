@@ -6,8 +6,8 @@ export class ProjectForm extends FormGroup {
       ID: new FormControl(),
       Name: new FormControl(),
       RepoUrl: new FormControl(),
-      RepoBranch: new FormControl(['master']),
-      RepoUser: new FormControl(['git']),
+      RepoBranch: new FormControl('master'),
+      RepoUser: new FormControl('git'),
       SshKey: new FormControl(),
     });
   }

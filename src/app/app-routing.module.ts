@@ -19,10 +19,6 @@ const routes: Routes = [
     loadChildren: () => import('./inventories/inventories.module').then(m => m.InventoriesModule)
   },
   {
-    path: 'jobs',
-    loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule)
-  },
-  {
     path: 'templates',
     loadChildren: () => import('./templates/templates.module').then(m => m.TemplatesModule)
   },
@@ -33,7 +29,7 @@ const routes: Routes = [
     data: {
       permissions: {
         only: ['GUEST'],
-        redirectTo: '/deployments'
+        redirectTo: '/jobs'
       }
     }
   },
