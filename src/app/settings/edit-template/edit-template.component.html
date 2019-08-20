@@ -9,10 +9,19 @@
       <mat-label>Name</mat-label>
       <input matInput type="text" formControlName="Name">
     </mat-form-field>
+    <mat-slide-toggle formControlName="PromptProject">Prompt on launch</mat-slide-toggle>
     <app-form-project formControlName="Project"></app-form-project>
+    <mat-slide-toggle formControlName="PromptInventory">Prompt on launch</mat-slide-toggle>
     <app-form-inventory formControlName="Inventory"></app-form-inventory>
+    <mat-slide-toggle formControlName="PromptPlaybook">Prompt on launch</mat-slide-toggle>
     <app-form-project-file formControlName="Playbook" label="Playbook" [project]="form.get('Project').value"></app-form-project-file>
+    <mat-slide-toggle formControlName="PromptSshKey">Prompt on launch</mat-slide-toggle>
     <app-form-ssh-key formControlName="SshKey"></app-form-ssh-key>
+    <mat-slide-toggle formControlName="PromptExtraVariables">Prompt on launch</mat-slide-toggle>
+    <mat-form-field class="d-block">
+      <mat-label>Extra variables</mat-label>
+      <textarea cdkTextareaAutosize matInput type="textarea" formControlName="ExtraVariables"></textarea>
+    </mat-form-field>
     <div class="button-row">
       <button type="button" mat-raised-button routerLink="/settings/templates">Cancel</button>
       <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>

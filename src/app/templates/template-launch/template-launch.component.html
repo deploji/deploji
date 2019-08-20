@@ -1,0 +1,17 @@
+<mat-card>
+  <form [formGroup]="form">
+    <h3>Launch template {{template.Name}}</h3>
+    <app-form-project *ngIf="template.PromptProject" formControlName="Project"></app-form-project>
+    <app-form-inventory *ngIf="template.PromptInventory" formControlName="Inventory"></app-form-inventory>
+    <app-form-project-file *ngIf="template.PromptPlaybook" formControlName="Playbook" label="Playbook" [project]="form.get('Project').value"></app-form-project-file>
+    <app-form-ssh-key *ngIf="template.PromptSshKey" formControlName="SshKey"></app-form-ssh-key>
+    <mat-form-field *ngIf="template.PromptExtraVariables" class="d-block">
+      <mat-label>Extra variables</mat-label>
+      <textarea cdkTextareaAutosize matInput type="textarea" formControlName="ExtraVariables"></textarea>
+    </mat-form-field>
+    <div class="button-row">
+      <button type="button" mat-raised-button (click)="cancel()">Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="save()">Launch</button>
+    </div>
+  </form>
+</mat-card>
