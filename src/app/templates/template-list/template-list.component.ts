@@ -8,7 +8,7 @@ import { Template } from '../../core/interfaces/template';
 })
 export class TemplateListComponent implements OnInit {
   @Input() templates: Template[];
-  @Output() select = new EventEmitter<Template>();
+  @Output() selected = new EventEmitter<Template>();
 
   constructor() { }
 
@@ -16,6 +16,6 @@ export class TemplateListComponent implements OnInit {
   }
 
   launch(template: Template) {
-    this.select.emit(template);
+    this.selected.emit(template);
   }
 }

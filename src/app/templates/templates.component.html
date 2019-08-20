@@ -9,7 +9,7 @@
 </div>
 <ng-template [ngTemplateOutlet]="selectedTemplateRef"></ng-template>
 <ng-template #listRef>
-  <app-template-list [templates]="templates" (select)="launch($event)"></app-template-list>
+  <app-template-list [templates]="templates" (selected)="launch($event)"></app-template-list>
 </ng-template>
 <ng-template #launchRef>
   <app-template-launch [template]="selectedTemplate" (cancelEvent)="cancel()"></app-template-launch>
