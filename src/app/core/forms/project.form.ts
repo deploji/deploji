@@ -1,4 +1,4 @@
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export class ProjectForm extends FormGroup {
   constructor() {
@@ -10,5 +10,40 @@ export class ProjectForm extends FormGroup {
       RepoUser: new FormControl('git'),
       SshKey: new FormControl(),
     });
+    this.RepoUrl.valueChanges.subscribe(value => {
+      this.updateValidators(value);
+    });
+  }
+
+  private updateValidators(value) {
+    if (value.match(/http(s)?:\/\/.*/)) {
+      this.SshKey.setValidators([]);
+    } else {
+      this.SshKey.setValidators([Validators.required]);
+    }
+  }
+
+  get ID(): FormControl {
+    return this.get('ID') as FormControl;
+  }
+
+  get Name(): FormControl {
+    return this.get('Name') as FormControl;
+  }
+
+  get RepoUrl(): FormControl {
+    return this.get('RepoUrl') as FormControl;
+  }
+
+  get RepoBranch(): FormControl {
+    return this.get('RepoBranch') as FormControl;
+  }
+
+  get RepoUser(): FormControl {
+    return this.get('RepoUser') as FormControl;
+  }
+
+  get SshKey(): FormControl {
+    return this.get('SshKey') as FormControl;
   }
 }
