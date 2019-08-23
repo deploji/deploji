@@ -1,8 +1,9 @@
-import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { App } from '../../core/interfaces/app';
 import { AppsService } from '../../core/services/apps.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-application',
@@ -16,16 +17,17 @@ import { AppsService } from '../../core/services/apps.service';
     }
   ]
 })
-export class FormApplicationComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class FormApplicationComponent implements ControlValueAccessor, OnInit {
   @Input() label: string;
   control = new FormControl();
   apps: App[];
-  private subscription: Subscription;
+  filteredOptions: Observable<App[]>;
 
   constructor(private appsService: AppsService) {
   }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+  };
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
@@ -43,18 +45,29 @@ export class FormApplicationComponent implements ControlValueAccessor, OnInit, O
   }
 
   ngOnInit(): void {
+    this.filteredOptions = this.control.valueChanges.pipe(
+      map(value => {
+        if (typeof value === 'string') {
+          return value;
+        }
+        this.propagateChange(value);
+        return value.Name;
+      }),
+      map(value => this._filter(value))
+    );
     this.appsService.getApps().subscribe(apps => {
       this.apps = apps;
-    });
-    this.subscription = this.control.valueChanges.subscribe(value => {
-      this.propagateChange(value);
+      this.control.setValue(this.control.value || '');
     });
   }
 
-  ngOnDestroy(): void {
-    if (this.subscription && !this.subscription.closed) {
-      this.subscription.unsubscribe();
-    }
+  displayFn(app?: App): string | undefined {
+    return app ? app.Name : undefined;
+  }
+
+  private _filter(value: string): App[] {
+    const filterValue = value.toLowerCase();
+    return this.apps.filter(option => option.Name.toLowerCase().includes(filterValue));
   }
 
   compareFn(optionOne: App, optionTwo: App): boolean {

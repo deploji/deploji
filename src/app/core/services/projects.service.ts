@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Project } from '../interfaces/project';
-import { ProjectFile } from '../interfaces/project-file';
 import { Job } from '../interfaces/job';
 
 @Injectable({
@@ -36,8 +35,8 @@ export class ProjectsService {
     return this.http.get<Project>(`/api/projects/${id}`);
   }
 
-  getProjectFiles(project: Project): Observable<ProjectFile[]> {
-    return this.http.get<ProjectFile[]>(`/api/projects/${project.ID}/files`);
+  getProjectFiles(project: Project): Observable<string[]> {
+    return this.http.get<string[]>(`/api/projects/${project.ID}/files`);
   }
 
   getProjectSyncStatus(): Observable<Job[]> {

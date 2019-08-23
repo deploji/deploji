@@ -1,9 +1,10 @@
 import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { VersionsService } from '../../core/services/versions.service';
 import { App } from '../../core/interfaces/app';
 import { Version } from '../../core/interfaces/version';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-version',
@@ -22,6 +23,7 @@ export class FormVersionComponent implements ControlValueAccessor, OnInit, OnDes
   @Input() app: App;
   control = new FormControl();
   versions: Version[];
+  filteredOptions: Observable<Version[]>;
   private subscription: Subscription;
 
   constructor(private versionsService: VersionsService) {
@@ -45,15 +47,22 @@ export class FormVersionComponent implements ControlValueAccessor, OnInit, OnDes
   }
 
   ngOnInit(): void {
-    this.subscription = this.control.valueChanges.subscribe(value => {
-      this.propagateChange(value);
-    });
+    this.filteredOptions = this.control.valueChanges.pipe(
+      tap(value => this.propagateChange(value)),
+      map(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): Version[] {
+    const filterValue = value.toLowerCase();
+    return this.versions.filter(option => option.Name.toLowerCase().includes(filterValue));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.app && changes.app.currentValue) {
       this.versionsService.getVersions(changes.app.currentValue).subscribe(versions => {
         this.versions = versions;
+        this.control.setValue(this.control.value || '');
       });
     }
   }

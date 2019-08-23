@@ -45,8 +45,10 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
 import { LoginComponent } from './login/login.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { JobTypePipe } from './pipes/job-type.pipe';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 const MODULES = [
+  MatAutocompleteModule,
   MatToolbarModule,
   MatButtonModule,
   MatSidenavModule,

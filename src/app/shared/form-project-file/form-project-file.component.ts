@@ -1,9 +1,9 @@
 import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Project } from '../../core/interfaces/project';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { ProjectsService } from '../../core/services/projects.service';
-import { ProjectFile } from '../../core/interfaces/project-file';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-form-project-file',
@@ -21,7 +21,8 @@ export class FormProjectFileComponent implements ControlValueAccessor, OnInit, O
   @Input() label: string;
   @Input() project: Project;
   control = new FormControl();
-  files: ProjectFile[];
+  files: string[];
+  filteredOptions: Observable<string[]>;
   private subscription: Subscription;
 
   constructor(private projectsService: ProjectsService) {
@@ -45,15 +46,22 @@ export class FormProjectFileComponent implements ControlValueAccessor, OnInit, O
   }
 
   ngOnInit(): void {
-    this.subscription = this.control.valueChanges.subscribe(value => {
-      this.propagateChange(value);
-    });
+    this.filteredOptions = this.control.valueChanges.pipe(
+      tap(value => this.propagateChange(value)),
+      map(value => this._filter(value))
+    );
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.files.filter(option => option.toLowerCase().includes(filterValue));
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.project && changes.project.currentValue && changes.project.currentValue.ID > 0) {
       this.projectsService.getProjectFiles(changes.project.currentValue).subscribe(files => {
         this.files = files;
+        this.control.setValue(this.control.value || '');
       });
     }
   }

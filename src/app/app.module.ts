@@ -11,11 +11,12 @@ import { myRxStompConfig } from './my-rx-stomp.config';
 import { DialogSynchronizeComponent } from './shared/dialog-synchronize/dialog-synchronize.component';
 import { DialogConfirmComponent } from './shared/dialog-confirm/dialog-confirm.component';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatIconModule, MatIconRegistry } from '@angular/material';
-import { materialConfig } from './material-config';
+import { materialAutocompleteConfig, materialConfig } from './material-config';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { JobsModule } from './jobs/jobs.module';
+import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,10 @@ import { JobsModule } from './jobs/jobs.module';
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
       useValue: materialConfig,
+    },
+    {
+      provide: MAT_AUTOCOMPLETE_DEFAULT_OPTIONS,
+      useValue: materialAutocompleteConfig,
     },
     {
       provide: HTTP_INTERCEPTORS,
