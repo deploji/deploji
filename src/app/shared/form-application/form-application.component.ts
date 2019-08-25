@@ -26,8 +26,7 @@ export class FormApplicationComponent implements ControlValueAccessor, OnInit {
   constructor(private appsService: AppsService) {
   }
 
-  propagateChange = (_: any) => {
-  };
+  propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
