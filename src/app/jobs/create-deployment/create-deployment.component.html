@@ -5,9 +5,9 @@
       <app-form-application label="Application" formControlName="Application"></app-form-application>
     </div>
     <div>
-      <app-form-inventory label="Inventory" formControlName="Inventories"
+      <app-form-application-inventory label="Inventory" formControlName="Inventories"
                           [multiple]="true"
-                          [app]="form.get('Application').value"></app-form-inventory>
+                          [app]="form.get('Application').value"></app-form-application-inventory>
     </div>
     <div>
       <app-form-version label="Version" formControlName="Version"

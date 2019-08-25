@@ -1,9 +1,36 @@
-<h1>Job</h1>
-<mat-slide-toggle [formControl]="autoScroll">Auto scroll</mat-slide-toggle>
-<div class="log-viewport-wrapper">
-  <cdk-virtual-scroll-viewport #scrollMe class="log-viewport" itemSize="15">
-    <ng-container *cdkVirtualFor="let log of logs">
-      <div [innerHTML]="log.Message | ansi"></div>
-    </ng-container>
-  </cdk-virtual-scroll-viewport>
-</div>
+<h1>Job #{{job?.ID}}</h1>
+<mat-card>
+  <mat-card-header >
+    <div class="d-flex w-100 justify-content-center align-items-center">
+      <app-job-status [job]="job"></app-job-status>
+      <div class="properties">
+        <div class="properties__row">
+          <div class="properties__label">Type</div>
+          <div class="properties__label">Inventory</div>
+          <div class="properties__label">Application</div>
+          <div class="properties__label">Version</div>
+        </div>
+        <div class="properties__row">
+          <div class="properties__value">{{job?.Type}}</div>
+          <div class="properties__value">{{job?.Inventory?.Name}}</div>
+          <div class="properties__value">{{job?.Application?.Name}}</div>
+          <div class="properties__value">{{job?.Version}}</div>
+        </div>
+      </div>
+      <div class="flex-fill"></div>
+      <button mat-icon-button title="Relaunch using same parameters" class="mr-2" (click)="relaunch()">
+        <mat-icon svgIcon="rocket"></mat-icon>
+      </button>
+      <mat-slide-toggle [formControl]="autoScroll">Auto scroll</mat-slide-toggle>
+    </div>
+  </mat-card-header>
+  <div class="log-viewport-wrapper">
+    <cdk-virtual-scroll-viewport #scrollMe class="log-viewport" itemSize="15">
+      <ng-container *cdkVirtualFor="let log of logs">
+        <div [innerHTML]="log.Message | ansi"></div>
+      </ng-container>
+    </cdk-virtual-scroll-viewport>
+  </div>
+  <mat-card-content>
+  </mat-card-content>
+</mat-card>

@@ -40,7 +40,7 @@ export class TemplateLaunchComponent implements OnChanges {
       ProjectID: this.form.Project.value.ID,
       InventoryID: this.form.Inventory.value.ID,
       Playbook: this.form.Playbook.value,
-      SshKeyID: this.form.SshKey.value.ID,
+      KeyID: this.form.SshKey.value.ID,
       ExtraVariables: this.form.ExtraVariables.value,
       Type: JobTypesEnum.JOB
     }).subscribe(job => {

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { InventoriesService } from '../core/services/inventories.service';
 import { Inventory } from '../core/interfaces/inventory';
 import { JobsService } from '../core/services/jobs.service';
-import { Deployment } from '../core/interfaces/deployment';
+import { Job } from '../core/interfaces/job';
 
 @Component({
   selector: 'app-inventories',
@@ -12,7 +12,7 @@ import { Deployment } from '../core/interfaces/deployment';
 export class InventoriesComponent implements OnInit {
   inventories: Inventory[];
   columnsToDisplay = ['application', 'version', 'urls'];
-  private latestDeployments: Deployment[];
+  private latestDeployments: Job[];
 
   constructor(private inventoriesService: InventoriesService, private jobsService: JobsService) {
   }

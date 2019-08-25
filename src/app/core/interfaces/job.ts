@@ -4,13 +4,14 @@ import { Project } from './project';
 import { JobTypesEnum } from '../enums/job-types.enum';
 import { Template } from './template';
 import { SshKey } from './ssh-key';
+import { App } from './app';
 
 export interface Job {
   Type?: JobTypesEnum;
   TemplateID?: number;
   Template?: Template;
-  SshKeyID?: number;
-  SshKey?: SshKey;
+  KeyID?: number;
+  Key?: SshKey;
   InventoryID?: number;
   ProjectID?: number;
   ID?: number;
@@ -22,5 +23,7 @@ export interface Job {
   StartedAt?: any;
   FinishedAt?: any;
   Status?: JobStatus;
+  Application?: App;
+  ApplicationID?: number;
   ExtraVariables?: string;
 }

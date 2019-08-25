@@ -19,7 +19,7 @@ export class CreateInventoryDeploymentComponent {
       return;
     }
     this.form.deploymentsValue.forEach(value => {
-      this.jobsService.save(value).subscribe((deployment) => {
+      this.jobsService.save(value).subscribe(() => {
         this.router.navigateByUrl(`/jobs`);
       });
     });

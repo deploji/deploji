@@ -10,7 +10,6 @@ import { StatusMessage } from '../core/interfaces/status-message';
 import { tap } from 'rxjs/operators';
 import { JobsService } from '../core/services/jobs.service';
 import { Job } from '../core/interfaces/job';
-import * as _ from 'lodash';
 
 @Component({
   selector: 'app-jobs',
@@ -68,9 +67,7 @@ export class JobsComponent implements OnInit, OnDestroy {
   }
 
   relaunch(job: Job) {
-    const newJob = _.cloneDeep(job);
-    delete newJob.ID;
-    this.jobsService.save(newJob).subscribe(value => {
+    this.jobsService.relaunch(job).subscribe(value => {
       this.jobs.items.push(value);
       this.router.navigateByUrl(`/jobs/${value.ID}`);
     });

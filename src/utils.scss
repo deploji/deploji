@@ -64,6 +64,10 @@
   justify-content: center !important;
 }
 
+.align-items-center {
+  align-items: center !important;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }
@@ -136,13 +140,14 @@
 
   &__label {
     display: table-cell;
-    padding: 5px 20px 5px 0;
+    padding:  5px;
     color: rgba(0,0,0,.54);
     font-size: 12px;
     font-weight: 500;
   }
 
   &__value {
+    padding: 0 5px;
     display: table-cell;
   }
 }

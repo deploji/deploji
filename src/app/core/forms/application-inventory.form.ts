@@ -8,7 +8,8 @@ export class ApplicationInventoryForm extends FormGroup {
       Inventory: new FormControl(inventory),
       IsActive: new FormControl(),
       Application: new FormControl(app),
-      ApplicationUrls: new FormControl()
+      ApplicationUrls: new FormControl(),
+      Key: new FormControl()
     });
   }
 

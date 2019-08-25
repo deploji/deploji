@@ -1,0 +1,4 @@
+<div matTooltip="Deployment duration">
+  <app-duration [from]="job?.StartedAt" [to]="job?.FinishedAt"></app-duration>
+</div>
+<div matTooltip="{{job?.CreatedAt | date:'yyyy-MM-dd HH:mm:ss'}}">{{job?.CreatedAt | timeAgo}}</div>

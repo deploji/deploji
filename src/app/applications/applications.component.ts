@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { App } from '../core/interfaces/app';
 import { AppsService } from '../core/services/apps.service';
 import { JobsService } from '../core/services/jobs.service';
-import { Deployment } from '../core/interfaces/deployment';
+import { Job } from '../core/interfaces/job';
 
 @Component({
   selector: 'app-applications',
@@ -12,7 +12,7 @@ import { Deployment } from '../core/interfaces/deployment';
 export class ApplicationsComponent implements OnInit {
   apps: App[] = [];
   columnsToDisplay = ['inventory', 'version', 'urls'];
-  latestDeployments: Deployment[];
+  latestDeployments: Job[];
 
   constructor(private appsService: AppsService, private jobsService: JobsService) {
   }

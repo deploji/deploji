@@ -7,6 +7,7 @@ import { Page } from '../interfaces/page';
 import { Collection } from '../utils/collection';
 import { map } from 'rxjs/operators';
 import { HttpParamsBuilder } from '../utils/http-params-builder';
+import * as _ from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +39,11 @@ export class JobsService {
 
   getLatestDeployments() {
     return this.http.get<Job[]>('/api/jobs/latest-deployments');
+  }
+
+  relaunch(job: Job): Observable<Job> {
+    const newJob = _.cloneDeep(job);
+    delete newJob.ID;
+    return this.save(newJob);
   }
 }

@@ -1,7 +1,7 @@
-import { Component, forwardRef, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, forwardRef, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Project } from '../../core/interfaces/project';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { ProjectsService } from '../../core/services/projects.service';
 import { map, tap } from 'rxjs/operators';
 
@@ -17,13 +17,12 @@ import { map, tap } from 'rxjs/operators';
     }
   ]
 })
-export class FormProjectFileComponent implements ControlValueAccessor, OnInit, OnDestroy, OnChanges {
+export class FormProjectFileComponent implements ControlValueAccessor, OnInit, OnChanges {
   @Input() label: string;
   @Input() project: Project;
   control = new FormControl();
-  files: string[];
+  files: string[] = [];
   filteredOptions: Observable<string[]>;
-  private subscription: Subscription;
 
   constructor(private projectsService: ProjectsService) {
   }
@@ -63,12 +62,6 @@ export class FormProjectFileComponent implements ControlValueAccessor, OnInit, O
         this.files = files;
         this.control.setValue(this.control.value || '');
       });
-    }
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription && !this.subscription.closed) {
-      this.subscription.unsubscribe();
     }
   }
 

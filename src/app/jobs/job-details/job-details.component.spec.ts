@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JobDetailsComponent } from './deployment-details.component';
+import { JobDetailsComponent } from './job-details.component';
 
 describe('DeploymentComponent', () => {
   let component: JobDetailsComponent;

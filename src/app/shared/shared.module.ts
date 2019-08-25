@@ -32,11 +32,11 @@ import { FormVersionComponent } from './form-version/form-version.component';
 import { FormProjectComponent } from './form-project/form-project.component';
 import { FormProjectFileComponent } from './form-project-file/form-project-file.component';
 import { FormRepositoryComponent } from './form-repository/form-repository.component';
-import { DeploymentStatusComponent } from './deployment-status/deployment-status.component';
+import { JobStatusComponent } from './job-status/job-status.component';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AnsiPipe } from './pipes/ansi.pipe';
 import { UrlsComponent } from './urls/urls.component';
-import { DeploymentTimeComponent } from './deployment-time/deployment-time.component';
+import { JobTimeComponent } from './job-time/job-time.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { DurationComponent } from './duration/duration.component';
 import { DurationPipe } from './pipes/duration.pipe';
@@ -46,6 +46,7 @@ import { LoginComponent } from './login/login.component';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { JobTypePipe } from './pipes/job-type.pipe';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormApplicationInventoryComponent } from './form-application-inventory/form-application-inventory.component';
 
 const MODULES = [
   MatAutocompleteModule,
@@ -76,8 +77,8 @@ const MODULES = [
 ];
 
 const COMPONENTS = [
-  DeploymentStatusComponent,
-  DeploymentTimeComponent,
+  JobStatusComponent,
+  JobTimeComponent,
   DialogConfirmComponent,
   DialogSynchronizeComponent,
   DurationComponent,
@@ -85,6 +86,7 @@ const COMPONENTS = [
   NavComponent,
   FormSshKeyComponent,
   FormApplicationComponent,
+  FormApplicationInventoryComponent,
   FormInventoryComponent,
   FormVersionComponent,
   FormProjectComponent,

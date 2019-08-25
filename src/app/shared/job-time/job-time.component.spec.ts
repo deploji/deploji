@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeploymentTimeComponent } from './deployment-time.component';
+import { JobTimeComponent } from './job-time.component';
 
 describe('DeploymentTimeComponent', () => {
-  let component: DeploymentTimeComponent;
-  let fixture: ComponentFixture<DeploymentTimeComponent>;
+  let component: JobTimeComponent;
+  let fixture: ComponentFixture<JobTimeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeploymentTimeComponent ]
+      declarations: [ JobTimeComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DeploymentTimeComponent);
+    fixture = TestBed.createComponent(JobTimeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
