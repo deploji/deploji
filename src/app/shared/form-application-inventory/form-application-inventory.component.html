@@ -2,6 +2,6 @@
   <mat-label>{{label}}</mat-label>
   <mat-select [formControl]="control" [multiple]="multiple" [compareWith]="compareFn">
     <mat-option *ngIf="!multiple" [value]=""></mat-option>
-    <mat-option *ngFor="let inventory of app?.Inventories" [value]="inventory">{{inventory.Inventory.Name}}</mat-option>
+    <mat-option *ngFor="let inventory of inventories" [value]="inventory">{{inventory.Inventory.Name}}</mat-option>
   </mat-select>
 </mat-form-field>

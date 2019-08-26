@@ -17,6 +17,13 @@ export class InventoriesComponent implements OnInit {
   constructor(private inventoriesService: InventoriesService, private jobsService: JobsService) {
   }
 
+  getInventories(inventory: Inventory) {
+    if (!inventory || !inventory.ApplicationInventories) {
+      return [];
+    }
+    return inventory.ApplicationInventories.filter(value => value.IsActive === true);
+  }
+
   ngOnInit() {
     this.inventoriesService.getInventories().subscribe(inventories => {
       this.inventories = inventories;

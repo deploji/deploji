@@ -17,6 +17,13 @@ export class ApplicationsComponent implements OnInit {
   constructor(private appsService: AppsService, private jobsService: JobsService) {
   }
 
+  inventories(app: App) {
+    if (!app || !app.Inventories) {
+      return [];
+    }
+    return app.Inventories.filter(value => value.IsActive === true);
+  }
+
   ngOnInit() {
     this.appsService.getApps().subscribe(apps => {
       this.apps = apps;

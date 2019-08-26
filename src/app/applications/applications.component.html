@@ -6,7 +6,7 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <table mat-table [dataSource]="app.Inventories" style="table-layout: fixed">
+    <table mat-table [dataSource]="inventories(app)" style="table-layout: fixed">
       <ng-container matColumnDef="inventory">
         <th mat-header-cell style="width: 33%" *matHeaderCellDef>Inventory</th>
         <td mat-cell *matCellDef="let element"> {{element.Inventory.Name}} </td>

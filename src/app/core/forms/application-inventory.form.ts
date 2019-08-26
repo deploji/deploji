@@ -5,6 +5,7 @@ import { Inventory } from '../interfaces/inventory';
 export class ApplicationInventoryForm extends FormGroup {
   constructor(app: App, inventory: Inventory) {
     super({
+      ID: new FormControl(),
       Inventory: new FormControl(inventory),
       IsActive: new FormControl(),
       Application: new FormControl(app),

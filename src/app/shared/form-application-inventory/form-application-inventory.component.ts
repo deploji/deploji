@@ -23,6 +23,13 @@ export class FormApplicationInventoryComponent implements ControlValueAccessor, 
   control = new FormControl();
   private subscription: Subscription;
 
+  get inventories() {
+    if (!this.app || !this.app.Inventories) {
+      return [];
+    }
+    return this.app.Inventories.filter(value => value.IsActive === true);
+  }
+
   propagateChange = (_: any) => {};
 
   registerOnChange(fn: any): void {
