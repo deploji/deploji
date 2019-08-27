@@ -9,5 +9,6 @@ export interface App {
   AnsiblePlaybook: string;
   Repository: Repository;
   RepositoryArtifact: string;
+  RepositoryGroup: string;
   Inventories: ApplicationInventory[];
 }

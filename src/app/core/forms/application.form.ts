@@ -13,6 +13,7 @@ export class ApplicationForm extends FormGroup {
       AnsiblePlaybook: new FormControl(),
       Repository: new FormControl(),
       RepositoryArtifact: new FormControl(),
+      RepositoryGroup: new FormControl(),
       Inventories: new FormArray([]),
     });
   }
@@ -43,6 +44,10 @@ export class ApplicationForm extends FormGroup {
 
   get RepositoryArtifact() {
     return this.get('RepositoryArtifact') as FormControl;
+  }
+
+  get RepositoryGroup() {
+    return this.get('RepositoryGroup') as FormControl;
   }
 
   get Inventories() {
