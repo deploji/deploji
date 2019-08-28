@@ -7,11 +7,11 @@
     <div>
       <app-form-application-inventory label="Inventory" formControlName="Inventories"
                           [multiple]="true"
-                          [app]="form.get('Application').value"></app-form-application-inventory>
+                          [app]="form.Application.value"></app-form-application-inventory>
     </div>
     <div>
       <app-form-version label="Version" formControlName="Version"
-                        [app]="form.get('Application').value"></app-form-version>
+                        [app]="form.Application.value"></app-form-version>
     </div>
     <div class="button-row">
       <button type="button" mat-raised-button routerLink="/jobs">Cancel</button>

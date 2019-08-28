@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RepositoriesService } from '../../core/services/repositories.service';
 import { RepositoryForm } from '../../core/forms/repository.form';
+import { RepositoryTypesEnum } from '../../core/enums/repository-types.enum';
 
 @Component({
   selector: 'app-edit-repository',
@@ -10,6 +11,7 @@ import { RepositoryForm } from '../../core/forms/repository.form';
 })
 export class EditRepositoryComponent implements OnInit {
   form = new RepositoryForm();
+  RepositoryTypes = RepositoryTypesEnum;
 
   constructor(
     private repositoriesService: RepositoriesService,

@@ -4,6 +4,7 @@ export class ApplicationInventoryForm extends FormGroup {
   constructor() {
     super({
       ID: new FormControl(),
+      Name: new FormControl(),
       Inventory: new FormControl(),
       IsActive: new FormControl(true),
       Application: new FormControl(),

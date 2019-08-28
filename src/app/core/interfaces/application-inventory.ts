@@ -12,5 +12,6 @@ export interface ApplicationInventory {
   InventoryID?: number;
   ApplicationUrls?: string;
   ExtraVariables?: string;
+  Name?: string;
   IsActive: boolean;
 }

@@ -1,6 +1,6 @@
 <h1>
-  <ng-container *ngIf="!form.get('ID').value">Create new</ng-container>
-  <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
+  <ng-container *ngIf="!form.ID.value">Create new</ng-container>
+  <ng-container *ngIf="form.ID.value">Edit</ng-container>
   artifact repository
 </h1>
 <mat-card>
@@ -15,9 +15,9 @@
     <mat-form-field class="d-block">
       <mat-label>Type</mat-label>
       <mat-select formControlName="Type">
-        <mat-option value="docker-v1">Docker registry v1</mat-option>
-        <mat-option value="docker-v2">Docker registry v2</mat-option>
-        <mat-option value="nexus-v3">Nexus v3</mat-option>
+        <mat-option [value]="RepositoryTypes.DOCKER_V1">Docker registry v1</mat-option>
+        <mat-option [value]="RepositoryTypes.DOCKER_V2">Docker registry v2</mat-option>
+        <mat-option [value]="RepositoryTypes.NEXUS_V3_MAVEN">Nexus 3 Maven</mat-option>
       </mat-select>
       <mat-error>
         Type is <strong>required</strong>
@@ -26,15 +26,22 @@
     <mat-form-field class="d-block">
       <mat-label>URL</mat-label>
       <input matInput type="text" formControlName="Url">
-      <mat-error *ngIf="form.get('Url').hasError('required')">
+      <mat-error *ngIf="form.Url.hasError('required')">
         URL is <strong>required</strong>
       </mat-error>
-      <mat-error *ngIf="form.get('Url').hasError('pattern')">
+      <mat-error *ngIf="form.Url.hasError('pattern')">
         URL must start with http/https
       </mat-error>
       <mat-hint>
         Artifact repository URL for example https://registry.hub.docker.com
       </mat-hint>
+    </mat-form-field>
+    <mat-form-field class="d-block">
+      <mat-label>Nexus repository name</mat-label>
+      <input matInput type="text" formControlName="NexusName">
+      <mat-error *ngIf="form.NexusName.hasError('required')">
+        Nexus name is <strong>required</strong>
+      </mat-error>
     </mat-form-field>
     <mat-form-field class="d-block">
       <mat-label>Username</mat-label>
