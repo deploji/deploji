@@ -18,8 +18,8 @@ import { Subscription } from 'rxjs';
 })
 export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDestroy {
   @Input() label = 'SSH key';
+  @Input() keys: SshKey[];
   control = new FormControl();
-  keys: SshKey[];
   private subscription: Subscription;
 
   constructor(private keysService: SshKeysService) {
@@ -43,9 +43,11 @@ export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDest
   }
 
   ngOnInit(): void {
-    this.keysService.getKeys().subscribe(keys => {
-      this.keys = keys;
-    });
+    if (!this.keys) {
+      this.keysService.getKeys().subscribe(keys => {
+        this.keys = keys;
+      });
+    }
     this.subscription = this.control.valueChanges.subscribe(value => {
       this.propagateChange(value);
     });

@@ -21,8 +21,8 @@ export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnD
   @Input() label = 'Inventory';
   @Input() app: App;
   @Input() multiple = false;
+  @Input() inventories: Inventory[];
   control = new FormControl();
-  inventories: Inventory[];
   private subscription: Subscription;
 
   constructor(private inventoriesService: InventoriesService) {
@@ -49,7 +49,7 @@ export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnD
     this.subscription = this.control.valueChanges.subscribe(value => {
       this.propagateChange(value);
     });
-    if (!this.app) {
+    if (!this.app && !this.inventories) {
       this.inventoriesService.getInventories().subscribe(inventories => {
         this.inventories = inventories;
       });

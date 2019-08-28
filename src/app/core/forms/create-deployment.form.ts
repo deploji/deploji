@@ -31,7 +31,8 @@ export class CreateDeploymentForm extends FormGroup {
         ApplicationID: this.value.Application.ID,
         Version: this.value.Version,
         InventoryID: value.Inventory.ID,
-        KeyID: value.KeyID
+        KeyID: value.KeyID,
+        ExtraVariables: value.ExtraVariables
       }));
   }
 }

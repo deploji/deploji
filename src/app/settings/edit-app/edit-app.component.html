@@ -27,7 +27,7 @@
         <mat-form-field class="d-block w-100">
           <mat-label>Ansible name</mat-label>
           <input matInput type="text" formControlName="AnsibleName">
-          <mat-hint>Ansible name is passed to ansible playbook as app variable</mat-hint>
+          <mat-hint>Ansible name is passed to ansible playbook as "app" variable</mat-hint>
         </mat-form-field>
         <div class="w-100">
           <app-form-project label="Ansible Project" formControlName="Project"></app-form-project>
@@ -46,11 +46,20 @@
            *ngFor="let inventory of form.Inventories.controls; let i = index">
         <mat-card class="my-2">
           <div [formGroupName]="i">
-            <h4 class="mt-0 mb-2">{{inventory.value.Inventory.Name}}</h4>
+            <button class="float-right" type="button" mat-icon-button title="Delete inventory" (click)="delete(inventory.value)">
+              <mat-icon color="warn">delete_forever</mat-icon>
+            </button>
             <div class="mb-2">
-              <mat-checkbox formControlName="IsActive">is active</mat-checkbox>
+              <mat-slide-toggle formControlName="IsActive">is active</mat-slide-toggle>
             </div>
-            <app-form-ssh-key formControlName="Key"></app-form-ssh-key>
+            <app-form-inventory [inventories]="inventories" formControlName="Inventory"></app-form-inventory>
+            <app-form-ssh-key [keys]="keys" formControlName="Key"></app-form-ssh-key>
+            <div>
+              <mat-form-field class="w-100">
+                <mat-label>Extra variables</mat-label>
+                <textarea cdkTextareaAutosize matInput formControlName="ExtraVariables"></textarea>
+              </mat-form-field>
+            </div>
             <div>
               <mat-form-field class="w-100">
                 <mat-label>Application URLs</mat-label>
@@ -60,8 +69,12 @@
           </div>
         </mat-card>
       </div>
+      <button mat-raised-button (click)="addInventory()">
+        Add inventory
+        <mat-icon>playlist_add</mat-icon>
+      </button>
     </div>
-    <div class="button-row">
+    <div class="button-row mt-4">
       <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
       <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
     </div>

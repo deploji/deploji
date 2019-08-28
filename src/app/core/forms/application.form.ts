@@ -1,7 +1,7 @@
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
-import { Inventory } from '../interfaces/inventory';
 import { App } from '../interfaces/app';
 import { ApplicationInventoryForm } from './application-inventory.form';
+import { ApplicationInventory } from '../interfaces/application-inventory';
 
 export class ApplicationForm extends FormGroup {
   constructor() {
@@ -54,11 +54,21 @@ export class ApplicationForm extends FormGroup {
     return this.get('Inventories') as FormArray;
   }
 
-  createApplicationInventories(app: App, inventories: Inventory[]) {
-    inventories.forEach(inventory => {
-      this.Inventories.push(
-        new ApplicationInventoryForm(app, inventory)
-      );
+  createApplicationInventories(app: App) {
+    app.Inventories.forEach(inventory => {
+      const inventoryForm = new ApplicationInventoryForm();
+      inventoryForm.patchValue(inventory);
+      this.Inventories.push(inventoryForm);
     });
+  }
+
+  addInventory(appID: number) {
+    const inventoryForm = new ApplicationInventoryForm();
+    inventoryForm.ApplicationID.setValue(appID);
+    this.Inventories.push(inventoryForm);
+  }
+
+  removeInventory(inventory: ApplicationInventory) {
+    this.Inventories.removeAt(this.Inventories.getRawValue().findIndex(value => inventory.ID === value.ID));
   }
 }

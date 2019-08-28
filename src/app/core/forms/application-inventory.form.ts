@@ -1,15 +1,15 @@
 import { FormControl, FormGroup } from '@angular/forms';
-import { App } from '../interfaces/app';
-import { Inventory } from '../interfaces/inventory';
 
 export class ApplicationInventoryForm extends FormGroup {
-  constructor(app: App, inventory: Inventory) {
+  constructor() {
     super({
       ID: new FormControl(),
-      Inventory: new FormControl(inventory),
-      IsActive: new FormControl(),
-      Application: new FormControl(app),
+      Inventory: new FormControl(),
+      IsActive: new FormControl(true),
+      Application: new FormControl(),
+      ApplicationID: new FormControl(),
       ApplicationUrls: new FormControl(),
+      ExtraVariables: new FormControl('---\n'),
       Key: new FormControl()
     });
   }
@@ -24,6 +24,10 @@ export class ApplicationInventoryForm extends FormGroup {
 
   get Application() {
     return this.get('Application') as FormControl;
+  }
+
+  get ApplicationID() {
+    return this.get('ApplicationID') as FormControl;
   }
 
   get ApplicationUrls() {

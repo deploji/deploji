@@ -17,6 +17,7 @@ export class CreateInventoryDeploymentForm extends FormGroup {
             IsActive: new FormControl(true),
             Application: new FormControl(inventory.Application),
             Version: new FormControl(),
+            ExtraVariables: new FormControl(inventory.ExtraVariables),
             KeyID: new FormControl(inventory.KeyID)
           })
         );
@@ -40,7 +41,8 @@ export class CreateInventoryDeploymentForm extends FormGroup {
         ApplicationID: value.Application.ID,
         Version: value.Version,
         InventoryID: this.value.Inventory.ID,
-        KeyID: value.KeyID
+        KeyID: value.KeyID,
+        ExtraVariables: value.ExtraVariables
       }));
   }
 }
