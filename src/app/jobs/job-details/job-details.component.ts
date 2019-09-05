@@ -8,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Job } from '../../core/interfaces/job';
 import { StatusMessage } from '../../core/interfaces/status-message';
+import { JobStatus } from '../../core/enums/job-status.enum';
 
 @Component({
   selector: 'app-job-details',
@@ -83,5 +84,9 @@ export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+  }
+
+  isCompleted(status: JobStatus) {
+    return status === JobStatus.FAILED || status === JobStatus.COMPLETED;
   }
 }

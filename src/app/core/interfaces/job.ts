@@ -5,6 +5,7 @@ import { JobTypesEnum } from '../enums/job-types.enum';
 import { Template } from './template';
 import { SshKey } from './ssh-key';
 import { App } from './app';
+import { User } from './user';
 
 export interface Job {
   Type?: JobTypesEnum;
@@ -25,5 +26,7 @@ export interface Job {
   Status?: JobStatus;
   Application?: App;
   ApplicationID?: number;
+  User?: User;
+  UserID?: number;
   ExtraVariables?: string;
 }

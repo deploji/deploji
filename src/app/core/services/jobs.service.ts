@@ -44,6 +44,10 @@ export class JobsService {
   relaunch(job: Job): Observable<Job> {
     const newJob = _.cloneDeep(job);
     delete newJob.ID;
+    delete newJob.CreatedAt;
+    delete newJob.StartedAt;
+    delete newJob.FinishedAt;
+    delete newJob.Status;
     return this.save(newJob);
   }
 }

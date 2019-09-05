@@ -74,10 +74,16 @@
         <app-job-time [job]="element"></app-job-time>
       </td>
     </ng-container>
+    <ng-container matColumnDef="user">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <app-user-avatar [user]="element.User" [size]="45"></app-user-avatar>
+      </td>
+    </ng-container>
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button title="Relaunch using same parameters" (click)="relaunch(element)">
+        <button mat-icon-button title="Relaunch using same parameters" (click)="relaunch(element)" [disabled]="!isCompleted(element)">
           <mat-icon svgIcon="rocket"></mat-icon>
         </button>
       </td>

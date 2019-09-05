@@ -10,6 +10,7 @@ import { StatusMessage } from '../core/interfaces/status-message';
 import { tap } from 'rxjs/operators';
 import { JobsService } from '../core/services/jobs.service';
 import { Job } from '../core/interfaces/job';
+import { JobStatus } from '../core/enums/job-status.enum';
 
 @Component({
   selector: 'app-jobs',
@@ -21,7 +22,7 @@ export class JobsComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   private currentPage: Page = {page: 0, limit: 10, orderBy: 'id desc'};
   jobs: Collection<Job>;
-  columnsToDisplay = ['status', 'id', 'type', 'project', 'application', 'inventory', 'version', 'time', 'actions'];
+  columnsToDisplay = ['status', 'id', 'type', 'project', 'application', 'inventory', 'version', 'time', 'user', 'actions'];
   filters = new DeploymentFiltersForm();
 
   constructor(
@@ -83,5 +84,9 @@ export class JobsComponent implements OnInit, OnDestroy {
       this.jobs = value;
       this.paginator.length = value.totalCount;
     });
+  }
+
+  isCompleted(job: Job) {
+    return job.Status === JobStatus.FAILED || job.Status === JobStatus.COMPLETED;
   }
 }

@@ -3,7 +3,7 @@
   <mat-card-header>
     <div class="d-flex w-100 justify-content-center align-items-center">
       <app-job-status [job]="job"></app-job-status>
-      <div class="properties">
+      <div class="properties mr-2">
         <div class="properties__row">
           <div class="properties__label">Type</div>
           <div class="properties__label">Inventory</div>
@@ -17,8 +17,9 @@
           <div class="properties__value">{{job?.Version}}</div>
         </div>
       </div>
+      <app-user-avatar [user]="job?.User" [size]="40"></app-user-avatar>
       <div class="flex-fill"></div>
-      <button mat-icon-button title="Relaunch using same parameters" class="mr-2" (click)="relaunch()">
+      <button mat-icon-button title="Relaunch using same parameters" class="mr-2" (click)="relaunch()" [disabled]="!isCompleted(job?.Status)">
         <mat-icon svgIcon="rocket"></mat-icon>
       </button>
       <mat-slide-toggle [formControl]="autoScroll">Auto scroll</mat-slide-toggle>
@@ -27,7 +28,7 @@
   <div class="log-viewport-wrapper">
     <cdk-virtual-scroll-viewport #scrollMe class="log-viewport" itemSize="15">
       <ng-container *cdkVirtualFor="let log of logs">
-        <div [innerHTML]="log.Message | ansi"></div>
+        <div [innerHTML]="log.Message | ansi" class="log-item"></div>
       </ng-container>
     </cdk-virtual-scroll-viewport>
   </div>

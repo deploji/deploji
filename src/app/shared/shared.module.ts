@@ -47,6 +47,7 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { JobTypePipe } from './pipes/job-type.pipe';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormApplicationInventoryComponent } from './form-application-inventory/form-application-inventory.component';
+import { UserAvatarComponent } from './user-avatar/user-avatar.component';
 
 const MODULES = [
   MatAutocompleteModule,
@@ -93,6 +94,7 @@ const COMPONENTS = [
   FormProjectFileComponent,
   FormRepositoryComponent,
   UrlsComponent,
+  UserAvatarComponent,
 ];
 
 const PIPES = [
