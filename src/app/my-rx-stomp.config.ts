@@ -5,7 +5,7 @@ export const myRxStompConfig: InjectableRxStompConfig = {
   // Which server?
   brokerURL: environment.production
     ? `${window.location.protocol === 'https:' ? 'wss' : 'ws'}://${window.location.hostname}:${window.location.port}/stomp/ws`
-    : `ws://localhost/stomp/ws`,
+    : `ws://localhost:15674/ws`,
 
   // Headers
   // Typical keys: login, passcode, host

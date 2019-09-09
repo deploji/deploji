@@ -1,0 +1,34 @@
+import { Component, Input, NgModule, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import * as moment from 'moment';
+import { CommonModule } from '@angular/common';
+import { SharedModule } from '../../shared/shared.module';
+
+@Component({
+  selector: 'app-duration',
+  templateUrl: './duration.component.html',
+  styleUrls: ['./duration.component.scss']
+})
+export class DurationComponent implements OnInit, OnChanges {
+  @Input() from: any;
+  @Input() to: any;
+  time: number;
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.time = moment.duration(moment(changes.to.currentValue).diff(moment(changes.from.currentValue))).as('millisecond');
+  }
+}
+
+@NgModule({
+  declarations: [DurationComponent],
+  exports: [DurationComponent],
+  imports: [
+    CommonModule,
+    SharedModule
+  ]
+})
+export class DurationModule { }

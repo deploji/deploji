@@ -1,101 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatChipsModule,
-  MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatMenuModule,
-  MatPaginatorModule,
-  MatRadioModule,
-  MatRippleModule,
-  MatSelectModule,
-  MatSidenavModule,
-  MatSlideToggleModule,
-  MatTableModule,
-  MatTabsModule,
-  MatToolbarModule,
-  MatTooltipModule
-} from '@angular/material';
-import { NavComponent } from './nav/nav.component';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FormSshKeyComponent } from './form-ssh-key/form-ssh-key.component';
-import { FormApplicationComponent } from './form-application/form-application.component';
-import { FormInventoryComponent } from './form-inventory/form-inventory.component';
-import { FormVersionComponent } from './form-version/form-version.component';
-import { FormProjectComponent } from './form-project/form-project.component';
-import { FormProjectFileComponent } from './form-project-file/form-project-file.component';
-import { FormRepositoryComponent } from './form-repository/form-repository.component';
-import { JobStatusComponent } from './job-status/job-status.component';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { AnsiPipe } from './pipes/ansi.pipe';
-import { UrlsComponent } from './urls/urls.component';
-import { JobTimeComponent } from './job-time/job-time.component';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
-import { DurationComponent } from './duration/duration.component';
 import { DurationPipe } from './pipes/duration.pipe';
-import { DialogSynchronizeComponent } from './dialog-synchronize/dialog-synchronize.component';
-import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
-import { LoginComponent } from './login/login.component';
-import { NgxPermissionsModule } from 'ngx-permissions';
 import { JobTypePipe } from './pipes/job-type.pipe';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormApplicationInventoryComponent } from './form-application-inventory/form-application-inventory.component';
-import { UserAvatarComponent } from './user-avatar/user-avatar.component';
-
-const MODULES = [
-  MatAutocompleteModule,
-  MatToolbarModule,
-  MatButtonModule,
-  MatSidenavModule,
-  MatIconModule,
-  MatListModule,
-  MatMenuModule,
-  MatFormFieldModule,
-  MatInputModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatDialogModule,
-  MatSelectModule,
-  MatRippleModule,
-  MatTableModule,
-  MatTabsModule,
-  MatRadioModule,
-  MatSlideToggleModule,
-  MatChipsModule,
-  MatPaginatorModule,
-  MatSlideToggleModule,
-  MatTooltipModule,
-  ReactiveFormsModule,
-  ScrollingModule,
-  NgxPermissionsModule,
-];
-
-const COMPONENTS = [
-  JobStatusComponent,
-  JobTimeComponent,
-  DialogConfirmComponent,
-  DialogSynchronizeComponent,
-  DurationComponent,
-  LoginComponent,
-  NavComponent,
-  FormSshKeyComponent,
-  FormApplicationComponent,
-  FormApplicationInventoryComponent,
-  FormInventoryComponent,
-  FormVersionComponent,
-  FormProjectComponent,
-  FormProjectFileComponent,
-  FormRepositoryComponent,
-  UrlsComponent,
-  UserAvatarComponent,
-];
+import { DialogSynchronizeComponent } from './dialog/dialog-synchronize/dialog-synchronize.component';
+import { DialogConfirmComponent } from './dialog/dialog-confirm/dialog-confirm.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 const PIPES = [
   AnsiPipe,
@@ -104,21 +17,27 @@ const PIPES = [
   JobTypePipe,
 ];
 
+const DIALOGS = [
+  DialogSynchronizeComponent,
+  DialogConfirmComponent
+];
+
 @NgModule({
   declarations: [
-    ...COMPONENTS,
     ...PIPES,
+    ...DIALOGS,
   ],
   imports: [
     CommonModule,
     RouterModule,
-    ...MODULES,
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports: [
-    ...MODULES,
-    ...COMPONENTS,
     ...PIPES,
-  ]
+    ...DIALOGS,
+  ],
+  entryComponents: [...DIALOGS],
 })
 export class SharedModule {
 }

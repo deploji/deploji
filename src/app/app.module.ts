@@ -1,22 +1,20 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 import { myRxStompConfig } from './my-rx-stomp.config';
-import { DialogSynchronizeComponent } from './shared/dialog-synchronize/dialog-synchronize.component';
-import { DialogConfirmComponent } from './shared/dialog-confirm/dialog-confirm.component';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatIconModule, MatIconRegistry } from '@angular/material';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatIconRegistry } from '@angular/material';
 import { materialAutocompleteConfig, materialConfig } from './material-config';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgxPermissionsModule } from 'ngx-permissions';
-import { JobsModule } from './jobs/jobs.module';
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
+import { ViewModule } from './view/view.module';
+import { NavModule } from './scam/nav/nav.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -25,13 +23,12 @@ import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete
   imports: [
     BrowserModule,
     CoreModule,
-    AppRoutingModule,
-    LayoutModule,
+    ViewModule,
     BrowserAnimationsModule,
     SharedModule,
-    MatIconModule,
-    JobsModule,
-    NgxPermissionsModule.forRoot()
+    MatDialogModule,
+    NgxPermissionsModule.forRoot(),
+    NavModule
   ],
   providers: [
     {
@@ -58,10 +55,6 @@ import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete
     }
   ],
   bootstrap: [AppComponent],
-  entryComponents: [
-    DialogSynchronizeComponent,
-    DialogConfirmComponent,
-  ]
 })
 export class AppModule {
   constructor(matIconRegistry: MatIconRegistry, domSanitizer: DomSanitizer) {
