@@ -2,7 +2,6 @@ import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 import { myRxStompConfig } from './my-rx-stomp.config';
@@ -12,9 +11,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
-import { ViewModule } from './view/view.module';
-import { NavModule } from './scam/nav/nav.component';
+import { NavComponentModule } from './scam/components/shared/nav/nav.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DialogSynchronizeComponentModule } from './scam/components/dialog/dialog-synchronize/dialog-synchronize.component';
+import { DialogConfirmComponentModule } from './scam/components/dialog/dialog-confirm/dialog-confirm.component';
+import { AppRoutingModule } from './routing/app-routing.module';
 
 @NgModule({
   declarations: [
@@ -23,12 +24,13 @@ import { MatDialogModule } from '@angular/material/dialog';
   imports: [
     BrowserModule,
     CoreModule,
-    ViewModule,
+    AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,
     MatDialogModule,
     NgxPermissionsModule.forRoot(),
-    NavModule
+    NavComponentModule,
+    DialogSynchronizeComponentModule,
+    DialogConfirmComponentModule,
   ],
   providers: [
     {
