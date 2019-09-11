@@ -1,16 +1,18 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JobStatusComponent } from './job-status.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 
-describe('DeploymentStatusComponent', () => {
+describe('JobStatusComponent', () => {
   let component: JobStatusComponent;
   let fixture: ComponentFixture<JobStatusComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JobStatusComponent ]
+      declarations: [JobStatusComponent],
+      schemas: [NO_ERRORS_SCHEMA]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

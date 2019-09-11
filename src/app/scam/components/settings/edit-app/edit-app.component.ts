@@ -45,11 +45,11 @@ export class EditAppComponent implements OnInit {
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
-      forkJoin(
+      forkJoin([
         this.appsService.getApp(Number(this.route.snapshot.paramMap.get('id'))),
         this.inventoriesService.getInventories(),
         this.keysService.getKeys()
-      ).subscribe(([app, inventories, keys]) => {
+      ]).subscribe(([app, inventories, keys]) => {
         this.inventories = inventories;
         this.keys = keys;
         this.form.createApplicationInventories(app);

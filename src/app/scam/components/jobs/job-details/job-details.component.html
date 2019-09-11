@@ -28,7 +28,7 @@
   <div class="log-viewport-wrapper">
     <cdk-virtual-scroll-viewport #scrollMe class="log-viewport" itemSize="15">
       <ng-container *cdkVirtualFor="let log of logs">
-        <div [innerHTML]="log.Message | ansi" class="log-item"></div>
+        <div [innerHTML]="log?.Message | ansi" class="log-item"></div>
       </ng-container>
     </cdk-virtual-scroll-viewport>
   </div>

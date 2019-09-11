@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateInventoryDeploymentComponent } from './create-inventory-deployment.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('CreateInventoryDeploymentComponent', () => {
   let component: CreateInventoryDeploymentComponent;
@@ -8,9 +11,11 @@ describe('CreateInventoryDeploymentComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CreateInventoryDeploymentComponent ]
+      imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
+      declarations: [CreateInventoryDeploymentComponent],
+      schemas: [NO_ERRORS_SCHEMA],
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

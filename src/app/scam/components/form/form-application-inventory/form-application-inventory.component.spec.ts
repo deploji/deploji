@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormApplicationInventoryComponent } from './form-application-inventory.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA } from '@angular/core';
 
 describe('FormInventoryComponent', () => {
   let component: FormApplicationInventoryComponent;
@@ -8,6 +9,7 @@ describe('FormInventoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA],
       declarations: [FormApplicationInventoryComponent]
     })
       .compileComponents();

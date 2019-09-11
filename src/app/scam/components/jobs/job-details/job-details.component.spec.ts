@@ -1,14 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { JobDetailsComponent } from './job-details.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { AnsiPipeModule } from '../../../pipes/ansi.pipe';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { RxStompServiceTestingModule } from '../../../../testing/rx-stomp-service.mock';
 
-describe('DeploymentComponent', () => {
+describe('JobDetailsComponent', () => {
   let component: JobDetailsComponent;
   let fixture: ComponentFixture<JobDetailsComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [JobDetailsComponent]
+      declarations: [JobDetailsComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [AnsiPipeModule, ScrollingModule, HttpClientTestingModule, RouterTestingModule, RxStompServiceTestingModule]
     })
       .compileComponents();
   }));

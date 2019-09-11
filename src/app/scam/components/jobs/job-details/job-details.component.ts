@@ -44,13 +44,6 @@ export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
         this.updateStatus(statusMessage);
       })
     );
-    this.subscription.add(
-      this.autoScroll.valueChanges.subscribe(value => {
-        if (value === true) {
-          this.myScrollContainer.scrollTo({bottom: 0});
-        }
-      })
-    );
     this.route.paramMap.subscribe(params => {
       if (params.get('id')) {
         this.jobsService.getJob(Number(this.route.snapshot.paramMap.get('id'))).subscribe(job => {
@@ -63,28 +56,43 @@ export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
       if (this.logsSubscription && !this.logsSubscription.closed) {
         this.logsSubscription.unsubscribe();
       }
-      this.logsSubscription = this.stomp.watch(`/exchange/job_log_${this.route.snapshot.paramMap.get('id')}`).subscribe(value => {
-        this.logs = [...this.logs, {Message: value.body}];
-        if (this.autoScroll.value === true) {
-          this.myScrollContainer.scrollTo({bottom: 0});
-        }
-      });
     });
   }
 
   relaunch() {
+    if (!this.job) {
+      return;
+    }
     this.jobsService.relaunch(this.job).subscribe(value => {
       this.router.navigateByUrl(`/jobs/${value.ID}`);
     });
   }
 
   private updateStatus(message: StatusMessage) {
+    if (!message || !this.job) {
+      return;
+    }
     if (message.ID === this.job.ID) {
       this.job.Status = message.Status;
     }
   }
 
   ngAfterViewInit(): void {
+    this.subscription.add(
+      this.autoScroll.valueChanges.subscribe(value => {
+        if (value === true) {
+          this.myScrollContainer.scrollTo({bottom: 0});
+        }
+      })
+    );
+    this.logsSubscription = this.stomp.watch(`/exchange/job_log_${this.route.snapshot.paramMap.get('id')}`).subscribe(value => {
+      setTimeout(() => {
+        this.logs = [...this.logs, {Message: value.body}];
+      });
+      if (this.autoScroll.value === true) {
+        this.myScrollContainer.scrollTo({bottom: 0});
+      }
+    });
     setTimeout(() => {
       this.myScrollContainer.scrollTo({bottom: 0});
     }, 500);
@@ -100,8 +108,8 @@ export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
 }
 
 @NgModule({
-    declarations: [JobDetailsComponent],
-    exports: [JobDetailsComponent],
+  declarations: [JobDetailsComponent],
+  exports: [JobDetailsComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -115,4 +123,5 @@ export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
     AnsiPipeModule,
   ]
 })
-export class JobDetailsComponentModule {}
+export class JobDetailsComponentModule {
+}

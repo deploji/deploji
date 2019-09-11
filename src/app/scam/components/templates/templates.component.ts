@@ -35,7 +35,9 @@ export class TemplatesComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.selectedTemplateRef = this.listRef;
+    setTimeout(() => {
+      this.selectedTemplateRef = this.listRef;
+    });
   }
 
   cancel() {

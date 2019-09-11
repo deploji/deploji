@@ -30,6 +30,9 @@ export class TemplateLaunchComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    if (!changes.template) {
+      return;
+    }
     this.form.patchValue(changes.template.currentValue);
     if (!this.hasPrompt(changes.template.currentValue)) {
       this.save();
@@ -37,6 +40,9 @@ export class TemplateLaunchComponent implements OnChanges {
   }
 
   private hasPrompt(template: Template): boolean {
+    if (!template) {
+      return false;
+    }
     return template.PromptInventory
       || template.PromptPlaybook
       || template.PromptProject

@@ -36,10 +36,10 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.setProjectSyncStatus(project, statusMessage.Status);
       }
     });
-    forkJoin(
+    forkJoin([
       this.projectsService.getProjectSyncStatus(),
       this.projectsService.getProjects()
-    ).subscribe(([jobs, projects]) => {
+    ]).subscribe(([jobs, projects]) => {
       this.projects = projects;
       jobs.forEach(job => {
         const project = this.projects.find(value => value.ID === job.ProjectID);

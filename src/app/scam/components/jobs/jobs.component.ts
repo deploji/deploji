@@ -65,6 +65,9 @@ export class JobsComponent implements OnInit, OnDestroy {
   }
 
   private updateStatus(message: StatusMessage) {
+    if (!this.jobs) {
+      return;
+    }
     const deployment = this.jobs.items.find(value => {
       return value.ID === message.ID;
     });

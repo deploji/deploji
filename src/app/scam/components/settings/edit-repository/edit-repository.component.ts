@@ -59,4 +59,4 @@ export class EditRepositoryComponent implements OnInit {
     RouterModule,
   ]
 })
-export class EditRepositoryComponentModule{}
+export class EditRepositoryComponentModule {}

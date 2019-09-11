@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FormRepositoryComponent } from './form-repository.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('FormRepositoryComponent', () => {
   let component: FormRepositoryComponent;
@@ -8,7 +10,9 @@ describe('FormRepositoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FormRepositoryComponent]
+      declarations: [FormRepositoryComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientTestingModule]
     })
       .compileComponents();
   }));

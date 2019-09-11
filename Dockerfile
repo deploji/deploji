@@ -26,7 +26,7 @@ COPY . /app
 
 # run tests
 RUN node_modules/.bin/ng lint
-#RUN node_modules/.bin/ng test --watch=false
+RUN node_modules/.bin/ng test --watch=false
 
 # generate build
 RUN ng build --prod

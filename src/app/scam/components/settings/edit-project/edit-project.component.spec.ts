@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditProjectComponent } from './edit-project.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('EditProjectComponent', () => {
   let component: EditProjectComponent;
@@ -8,7 +11,9 @@ describe('EditProjectComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [EditProjectComponent]
+      declarations: [EditProjectComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientTestingModule, RouterTestingModule]
     })
       .compileComponents();
   }));

@@ -34,8 +34,8 @@ export class CreateInventoryDeploymentComponent {
 }
 
 @NgModule({
-    declarations: [CreateInventoryDeploymentComponent],
-    exports: [CreateInventoryDeploymentComponent],
+  declarations: [CreateInventoryDeploymentComponent],
+  exports: [CreateInventoryDeploymentComponent],
   imports: [
     CommonModule,
     MatCardModule,

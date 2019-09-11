@@ -4,6 +4,10 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatIconModule, MatListModule, MatSidenavModule, MatToolbarModule, } from '@angular/material';
 
 import { NavComponent } from './nav.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgxPermissionsModule } from 'ngx-permissions';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -12,6 +16,7 @@ describe('NavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NavComponent],
+      schemas: [NO_ERRORS_SCHEMA],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -20,6 +25,9 @@ describe('NavComponent', () => {
         MatListModule,
         MatSidenavModule,
         MatToolbarModule,
+        NgxPermissionsModule.forRoot(),
+        HttpClientTestingModule,
+        RouterTestingModule
       ]
     }).compileComponents();
   }));

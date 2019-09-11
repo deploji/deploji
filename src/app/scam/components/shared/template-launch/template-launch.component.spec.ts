@@ -1,6 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TemplateLaunchComponent } from './template-launch.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('TemplateLaunchComponent', () => {
   let component: TemplateLaunchComponent;
@@ -8,9 +11,11 @@ describe('TemplateLaunchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemplateLaunchComponent ]
+      declarations: [TemplateLaunchComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [HttpClientTestingModule, RouterTestingModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -23,3 +28,5 @@ describe('TemplateLaunchComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+

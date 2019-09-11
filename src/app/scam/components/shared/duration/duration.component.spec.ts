@@ -1,6 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DurationComponent } from './duration.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { DurationPipeModule } from '../../../pipes/duration.pipe';
 
 describe('DurationComponent', () => {
   let component: DurationComponent;
@@ -8,9 +10,11 @@ describe('DurationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DurationComponent ]
+      declarations: [DurationComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [DurationPipeModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

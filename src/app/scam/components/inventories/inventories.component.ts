@@ -50,8 +50,8 @@ export class InventoriesComponent implements OnInit {
 }
 
 @NgModule({
-    declarations: [InventoriesComponent],
-    exports: [InventoriesComponent],
+  declarations: [InventoriesComponent],
+  exports: [InventoriesComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -59,4 +59,5 @@ export class InventoriesComponent implements OnInit {
     UrlsComponentModule,
   ]
 })
-export class InventoriesComponentModule {}
+export class InventoriesComponentModule {
+}

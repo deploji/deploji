@@ -1,16 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { JobTimeComponent } from './job-time.component';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TimeAgoPipeModule } from '../../../pipes/time-ago.pipe';
 
-describe('DeploymentTimeComponent', () => {
+describe('JobTimeComponent', () => {
   let component: JobTimeComponent;
   let fixture: ComponentFixture<JobTimeComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JobTimeComponent ]
+      declarations: [JobTimeComponent],
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [TimeAgoPipeModule]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
