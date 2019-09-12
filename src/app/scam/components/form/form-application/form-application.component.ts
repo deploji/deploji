@@ -13,7 +13,6 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   selector: 'app-form-application',
   templateUrl: './form-application.component.html',
-  styleUrls: ['./form-application.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-create-inventory-deployment',
   templateUrl: './create-inventory-deployment.component.html',
-  styleUrls: ['./create-inventory-deployment.component.scss']
 })
 export class CreateInventoryDeploymentComponent {
   form = new CreateInventoryDeploymentForm();

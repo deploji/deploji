@@ -10,7 +10,6 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-form-project',
   templateUrl: './form-project.component.html',
-  styleUrls: ['./form-project.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

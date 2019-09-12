@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-inventories',
   templateUrl: './inventories.component.html',
-  styleUrls: ['./inventories.component.scss']
 })
 export class InventoriesComponent implements OnInit {
   inventories: Inventory[] = [];

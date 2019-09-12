@@ -2,21 +2,22 @@
 <mat-card *ngFor="let app of apps" class="my-2">
   <mat-card-header>
     <mat-card-title>
-      <b>{{app?.Name}}</b>
+      <strong>{{app?.Name}}</strong>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <table mat-table [dataSource]="inventories(app)" style="table-layout: fixed">
+      <caption>Applications</caption>
       <ng-container matColumnDef="inventory">
-        <th mat-header-cell style="width: 33%" *matHeaderCellDef>Inventory</th>
+        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Inventory</th>
         <td mat-cell *matCellDef="let element"> {{element.Inventory.Name}} </td>
       </ng-container>
       <ng-container matColumnDef="version">
-        <th mat-header-cell style="width: 33%" *matHeaderCellDef>Version</th>
+        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Version</th>
         <td mat-cell *matCellDef="let element">{{getDeploymentVersion(element.ApplicationID, element.InventoryID)}}</td>
       </ng-container>
       <ng-container matColumnDef="urls">
-        <th mat-header-cell style="width: 34%" *matHeaderCellDef>URLs</th>
+        <th mat-header-cell style="width: 34%" *matHeaderCellDef scope="col">URLs</th>
         <td mat-cell *matCellDef="let element">
           <app-urls [urlsString]="element.ApplicationUrls"></app-urls>
         </td>

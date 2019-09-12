@@ -14,7 +14,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-form-version',
   templateUrl: './form-version.component.html',
-  styleUrls: ['./form-version.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

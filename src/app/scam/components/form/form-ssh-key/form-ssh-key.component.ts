@@ -10,7 +10,6 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-form-ssh-key',
   templateUrl: './form-ssh-key.component.html',
-  styleUrls: ['./form-ssh-key.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

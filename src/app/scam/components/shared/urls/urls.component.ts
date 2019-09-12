@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-urls',
   templateUrl: './urls.component.html',
-  styleUrls: ['./urls.component.scss']
 })
 export class UrlsComponent implements OnChanges {
   @Input() urlsString: string;

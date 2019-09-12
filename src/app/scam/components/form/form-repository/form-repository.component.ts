@@ -11,7 +11,6 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-form-repository',
   templateUrl: './form-repository.component.html',
-  styleUrls: ['./form-repository.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

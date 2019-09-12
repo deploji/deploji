@@ -18,7 +18,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-projects',
   templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   projects: Project[] = [];
@@ -104,9 +103,6 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         synchronizing = false;
         break;
       case JobStatus.PENDING:
-        syncStatus = null;
-        synchronizing = true;
-        break;
       case JobStatus.PROCESSING:
         syncStatus = null;
         synchronizing = true;

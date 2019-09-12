@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-apps',
   templateUrl: './apps.component.html',
-  styleUrls: ['./apps.component.scss']
 })
 export class AppsComponent implements OnInit {
   apps: App[] = [];

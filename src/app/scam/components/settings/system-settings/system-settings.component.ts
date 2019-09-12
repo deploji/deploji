@@ -16,7 +16,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-system-settings',
   templateUrl: './system-settings.component.html',
-  styleUrls: ['./system-settings.component.scss']
 })
 export class SystemSettingsComponent implements OnInit {
   groups: SettingGroup[];

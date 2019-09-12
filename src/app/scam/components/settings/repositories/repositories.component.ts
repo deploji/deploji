@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-repositories',
   templateUrl: './repositories.component.html',
-  styleUrls: ['./repositories.component.scss']
 })
 export class RepositoriesComponent implements OnInit {
   repositories: Repository[] = [];

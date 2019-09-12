@@ -27,7 +27,6 @@ import { JobStatusComponentModule } from '../shared/job-status/job-status.compon
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styleUrls: ['./jobs.component.scss']
 })
 export class JobsComponent implements OnInit, OnDestroy {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;

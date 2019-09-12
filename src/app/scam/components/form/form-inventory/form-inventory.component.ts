@@ -11,7 +11,6 @@ import { MatSelectModule } from '@angular/material/select';
 @Component({
   selector: 'app-form-inventory',
   templateUrl: './form-inventory.component.html',
-  styleUrls: ['./form-inventory.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

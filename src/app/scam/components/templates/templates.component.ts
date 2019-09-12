@@ -10,7 +10,6 @@ import { TemplateLaunchComponentModule } from '../shared/template-launch/templat
 @Component({
   selector: 'app-templates',
   templateUrl: './templates.component.html',
-  styleUrls: ['./templates.component.scss']
 })
 export class TemplatesComponent implements OnInit, AfterViewInit {
   @ViewChild('listRef', {static: false}) listRef;

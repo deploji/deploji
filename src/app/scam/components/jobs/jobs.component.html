@@ -28,26 +28,27 @@
     </div>
   </div>
   <table mat-table [dataSource]="jobs?.items">
+    <caption>Jobs</caption>
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <th mat-header-cell *matHeaderCellDef scope="col">Status</th>
       <td mat-cell *matCellDef="let element">
         <app-job-status [job]="element"></app-job-status>
       </td>
     </ng-container>
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <th mat-header-cell *matHeaderCellDef scope="col">ID</th>
       <td mat-cell *matCellDef="let element">
-        <b class="cursor-pointer" routerLink="/jobs/{{element?.ID}}">#{{element?.ID}}</b>
+        <strong class="cursor-pointer" routerLink="/jobs/{{element?.ID}}">#{{element?.ID}}</strong>
       </td>
     </ng-container>
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef>Type</th>
+      <th mat-header-cell *matHeaderCellDef scope="col">Type</th>
       <td mat-cell *matCellDef="let element">
         {{element?.Type | jobType}}
       </td>
     </ng-container>
     <ng-container matColumnDef="project">
-      <th mat-header-cell *matHeaderCellDef>Project</th>
+      <th mat-header-cell *matHeaderCellDef scope="col">Project</th>
       <td mat-cell *matCellDef="let element">
         {{element?.Project?.Name}}
       </td>
@@ -59,29 +60,29 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="inventory">
-      <th mat-header-cell *matHeaderCellDef>Inventory</th>
+      <th mat-header-cell *matHeaderCellDef scope="col">Inventory</th>
       <td mat-cell *matCellDef="let element">
         {{element?.Inventory?.Name}}
       </td>
     </ng-container>
     <ng-container matColumnDef="version">
-      <th mat-header-cell *matHeaderCellDef>Version</th>
+      <th mat-header-cell *matHeaderCellDef scope="col">Version</th>
       <td mat-cell *matCellDef="let element">{{element?.Version}}</td>
     </ng-container>
     <ng-container matColumnDef="time">
-      <th mat-header-cell *matHeaderCellDef></th>
+      <th mat-header-cell *matHeaderCellDef scope="col"></th>
       <td mat-cell *matCellDef="let element">
         <app-job-time [job]="element"></app-job-time>
       </td>
     </ng-container>
     <ng-container matColumnDef="user">
-      <th mat-header-cell *matHeaderCellDef></th>
+      <th mat-header-cell *matHeaderCellDef scope="col"></th>
       <td mat-cell *matCellDef="let element">
         <app-user-avatar [user]="element.User" [size]="45"></app-user-avatar>
       </td>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef></th>
+      <th mat-header-cell *matHeaderCellDef scope="col"></th>
       <td mat-cell *matCellDef="let element">
         <button mat-icon-button title="Relaunch using same parameters" (click)="relaunch(element)" [disabled]="!isCompleted(element)">
           <mat-icon svgIcon="rocket"></mat-icon>

@@ -1,20 +1,21 @@
 <h1>Inventories</h1>
 <mat-card *ngFor="let inventory of inventories" class="my-2">
   <mat-card-header>
-    <mat-card-title><b>{{inventory?.Name}}</b></mat-card-title>
+    <mat-card-title><strong>{{inventory?.Name}}</strong></mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <table mat-table [dataSource]="getInventories(inventory)">
+      <caption>Inventories</caption>
       <ng-container matColumnDef="application">
-        <th mat-header-cell style="width: 33%" *matHeaderCellDef>Application</th>
+        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Application</th>
         <td mat-cell *matCellDef="let element"> {{element.Application.Name}} </td>
       </ng-container>
       <ng-container matColumnDef="version">
-        <th mat-header-cell style="width: 33%" *matHeaderCellDef>Version</th>
+        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Version</th>
         <td mat-cell *matCellDef="let element">{{getDeploymentVersion(element.ApplicationID, element.InventoryID)}}</td>
       </ng-container>
       <ng-container matColumnDef="urls">
-        <th mat-header-cell style="width: 34%" *matHeaderCellDef>URLs</th>
+        <th mat-header-cell style="width: 34%" *matHeaderCellDef scope="col">URLs</th>
         <td mat-cell *matCellDef="let element">
           <app-urls [urlsString]="element.ApplicationUrls"></app-urls>
         </td>

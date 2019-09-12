@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-create-deployment',
   templateUrl: './create-deployment.component.html',
-  styleUrls: ['./create-deployment.component.scss']
 })
 export class CreateDeploymentComponent implements OnInit {
   form = new CreateDeploymentForm();

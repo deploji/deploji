@@ -11,7 +11,6 @@ import { UrlsComponentModule } from '../shared/urls/urls.component';
 @Component({
   selector: 'app-inventories',
   templateUrl: './inventories.component.html',
-  styleUrls: ['./inventories.component.scss']
 })
 export class InventoriesComponent implements OnInit {
   inventories: Inventory[];

@@ -8,7 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-dialog-synchronize',
   templateUrl: './dialog-synchronize.component.html',
-  styleUrls: ['./dialog-synchronize.component.scss']
 })
 export class DialogSynchronizeComponent {
   constructor(

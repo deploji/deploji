@@ -13,7 +13,6 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
 @Component({
   selector: 'app-form-project-file',
   templateUrl: './form-project-file.component.html',
-  styleUrls: ['./form-project-file.component.scss'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,

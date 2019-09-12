@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-keys',
   templateUrl: './keys.component.html',
-  styleUrls: ['./keys.component.scss']
 })
 export class KeysComponent implements OnInit {
   keys: SshKey[] = [];

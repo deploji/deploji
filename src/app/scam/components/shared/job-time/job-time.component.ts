@@ -8,7 +8,6 @@ import { DurationComponentModule } from '../duration/duration.component';
 @Component({
   selector: 'app-job-time',
   templateUrl: './job-time.component.html',
-  styleUrls: ['./job-time.component.scss']
 })
 export class JobTimeComponent implements OnInit {
   @Input() job: Job;

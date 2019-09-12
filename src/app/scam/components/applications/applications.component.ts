@@ -11,7 +11,6 @@ import { UrlsComponentModule } from '../shared/urls/urls.component';
 @Component({
   selector: 'app-applications',
   templateUrl: './applications.component.html',
-  styleUrls: ['./applications.component.scss']
 })
 export class ApplicationsComponent implements OnInit {
   apps: App[] = [];

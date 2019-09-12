@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-edit-project',
   templateUrl: './edit-project.component.html',
-  styleUrls: ['./edit-project.component.scss']
 })
 export class EditProjectComponent implements OnInit {
   form = new ProjectForm();

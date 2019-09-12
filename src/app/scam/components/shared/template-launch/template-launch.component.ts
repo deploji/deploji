@@ -18,7 +18,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-template-launch',
   templateUrl: './template-launch.component.html',
-  styleUrls: ['./template-launch.component.scss']
 })
 export class TemplateLaunchComponent implements OnChanges {
   @Input() template: Template;

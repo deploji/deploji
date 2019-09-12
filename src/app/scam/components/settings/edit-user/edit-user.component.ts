@@ -13,7 +13,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
 })
 export class EditUserComponent implements OnInit {
   form = new UserForm();

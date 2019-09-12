@@ -12,7 +12,6 @@ import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];

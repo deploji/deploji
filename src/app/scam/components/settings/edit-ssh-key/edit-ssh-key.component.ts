@@ -12,7 +12,6 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
   selector: 'app-edit-ssh-key',
   templateUrl: './edit-ssh-key.component.html',
-  styleUrls: ['./edit-ssh-key.component.scss']
 })
 export class EditSshKeyComponent implements OnInit {
   form = new SshKeyForm();
