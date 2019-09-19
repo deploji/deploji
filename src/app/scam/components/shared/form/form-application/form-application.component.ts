@@ -1,8 +1,8 @@
 import { Component, forwardRef, Input, NgModule, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { App } from '../../../../core/interfaces/app';
-import { AppsService } from '../../../../core/services/apps.service';
+import { App } from '../../../../../core/interfaces/app';
+import { AppsService } from '../../../../../core/services/apps.service';
 import { map } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';

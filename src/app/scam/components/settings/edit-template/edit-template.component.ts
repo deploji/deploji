@@ -8,10 +8,10 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormProjectComponentModule } from '../../form/form-project/form-project.component';
-import { FormInventoryComponentModule } from '../../form/form-inventory/form-inventory.component';
-import { FormProjectFileComponentModule } from '../../form/form-project-file/form-project-file.component';
-import { FormSshKeyComponentModule } from '../../form/form-ssh-key/form-ssh-key.component';
+import { FormProjectComponentModule } from '../../shared/form/form-project/form-project.component';
+import { FormInventoryComponentModule } from '../../shared/form/form-inventory/form-inventory.component';
+import { FormProjectFileComponentModule } from '../../shared/form/form-project-file/form-project-file.component';
+import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

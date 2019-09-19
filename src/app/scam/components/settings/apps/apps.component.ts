@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-apps',
@@ -15,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class AppsComponent implements OnInit {
   apps: App[] = [];
+  columnsToDisplay = ['name', 'project', 'playbook', 'repository', 'artifact', 'actions'];
 
   constructor(private appsService: AppsService, private dialog: MatDialog) {
   }
@@ -49,6 +51,7 @@ export class AppsComponent implements OnInit {
     RouterModule,
     MatCardModule,
     MatIconModule,
+    MatTableModule,
   ]
 })
 export class AppsComponentModule {}

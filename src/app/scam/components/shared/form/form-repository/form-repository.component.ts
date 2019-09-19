@@ -1,30 +1,32 @@
 import { Component, forwardRef, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { Project } from '../../../../../core/interfaces/project';
 import { Subscription } from 'rxjs';
-import { ProjectsService } from '../../../../core/services/projects.service';
-import { Project } from '../../../../core/interfaces/project';
+import { RepositoriesService } from '../../../../../core/services/repositories.service';
+import { Repository } from '../../../../../core/interfaces/repository';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-form-project',
-  templateUrl: './form-project.component.html',
+  selector: 'app-form-repository',
+  templateUrl: './form-repository.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormProjectComponent),
+      useExisting: forwardRef(() => FormRepositoryComponent),
       multi: true
     }
   ]
 })
-export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() label = 'Project';
+export class FormRepositoryComponent implements ControlValueAccessor, OnInit, OnDestroy {
+  @Input() label: string;
+  @Input() project: Project;
   control = new FormControl();
-  projects: Project[];
+  repositories: Repository[];
   private subscription: Subscription;
 
-  constructor(private projectsService: ProjectsService) {
+  constructor(private repositoriesService: RepositoriesService) {
   }
 
   propagateChange = (_: any) => {};
@@ -45,11 +47,11 @@ export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDes
   }
 
   ngOnInit(): void {
-    this.projectsService.getProjects().subscribe(projects => {
-      this.projects = projects;
-    });
     this.subscription = this.control.valueChanges.subscribe(value => {
       this.propagateChange(value);
+    });
+    this.repositoriesService.getRepositories().subscribe(repositories => {
+      this.repositories = repositories;
     });
   }
 
@@ -59,7 +61,7 @@ export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDes
     }
   }
 
-  compareFn(optionOne: Project, optionTwo: Project): boolean {
+  compareFn(optionOne: Repository, optionTwo: Repository): boolean {
     if (!optionOne || !optionTwo) {
       return false;
     }
@@ -68,8 +70,8 @@ export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDes
 }
 
 @NgModule({
-  declarations: [FormProjectComponent],
-  exports: [FormProjectComponent],
+  declarations: [FormRepositoryComponent],
+  exports: [FormRepositoryComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -77,4 +79,4 @@ export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDes
     ReactiveFormsModule
   ]
 })
-export class FormProjectComponentModule { }
+export class FormRepositoryComponentModule { }

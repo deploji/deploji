@@ -6,7 +6,7 @@
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    <table mat-table [dataSource]="inventories(app)" style="table-layout: fixed">
+    <table mat-table [dataSource]="app.Inventories" style="table-layout: fixed">
       <caption>Applications</caption>
       <ng-container matColumnDef="inventory">
         <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Inventory</th>
@@ -14,7 +14,7 @@
       </ng-container>
       <ng-container matColumnDef="version">
         <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Version</th>
-        <td mat-cell *matCellDef="let element">{{getDeploymentVersion(element.ApplicationID, element.InventoryID)}}</td>
+        <td mat-cell *matCellDef="let element">{{element.Version}}</td>
       </ng-container>
       <ng-container matColumnDef="urls">
         <th mat-header-cell style="width: 34%" *matHeaderCellDef scope="col">URLs</th>

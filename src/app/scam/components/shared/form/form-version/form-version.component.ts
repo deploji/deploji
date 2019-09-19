@@ -1,9 +1,9 @@
 import { Component, forwardRef, Input, NgModule, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
-import { VersionsService } from '../../../../core/services/versions.service';
-import { App } from '../../../../core/interfaces/app';
-import { Version } from '../../../../core/interfaces/version';
+import { VersionsService } from '../../../../../core/services/versions.service';
+import { App } from '../../../../../core/interfaces/app';
+import { Version } from '../../../../../core/interfaces/version';
 import { map, tap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';

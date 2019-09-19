@@ -1,35 +1,30 @@
 import { Component, forwardRef, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Inventory } from '../../../../core/interfaces/inventory';
-import { App } from '../../../../core/interfaces/app';
+import { ProjectsService } from '../../../../../core/services/projects.service';
+import { Project } from '../../../../../core/interfaces/project';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-form-application-inventory',
-  templateUrl: './form-application-inventory.component.html',
+  selector: 'app-form-project',
+  templateUrl: './form-project.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormApplicationInventoryComponent),
+      useExisting: forwardRef(() => FormProjectComponent),
       multi: true
     }
   ]
 })
-export class FormApplicationInventoryComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() label = 'Inventory';
-  @Input() app: App;
-  @Input() multiple = false;
+export class FormProjectComponent implements ControlValueAccessor, OnInit, OnDestroy {
+  @Input() label = 'Project';
   control = new FormControl();
+  projects: Project[];
   private subscription: Subscription;
 
-  get inventories() {
-    if (!this.app || !this.app.Inventories) {
-      return [];
-    }
-    return this.app.Inventories.filter(value => value.IsActive === true);
+  constructor(private projectsService: ProjectsService) {
   }
 
   propagateChange = (_: any) => {};
@@ -50,6 +45,9 @@ export class FormApplicationInventoryComponent implements ControlValueAccessor, 
   }
 
   ngOnInit(): void {
+    this.projectsService.getProjects().subscribe(projects => {
+      this.projects = projects;
+    });
     this.subscription = this.control.valueChanges.subscribe(value => {
       this.propagateChange(value);
     });
@@ -61,7 +59,7 @@ export class FormApplicationInventoryComponent implements ControlValueAccessor, 
     }
   }
 
-  compareFn(optionOne: Inventory, optionTwo: Inventory): boolean {
+  compareFn(optionOne: Project, optionTwo: Project): boolean {
     if (!optionOne || !optionTwo) {
       return false;
     }
@@ -70,8 +68,8 @@ export class FormApplicationInventoryComponent implements ControlValueAccessor, 
 }
 
 @NgModule({
-  declarations: [FormApplicationInventoryComponent],
-  exports: [FormApplicationInventoryComponent],
+  declarations: [FormProjectComponent],
+  exports: [FormProjectComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -79,4 +77,4 @@ export class FormApplicationInventoryComponent implements ControlValueAccessor, 
     ReactiveFormsModule
   ]
 })
-export class FormApplicationInventoryComponentModule { }
+export class FormProjectComponentModule { }

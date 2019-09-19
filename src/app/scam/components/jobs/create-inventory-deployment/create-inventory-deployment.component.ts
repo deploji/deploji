@@ -5,9 +5,9 @@ import { CreateInventoryDeploymentForm } from '../../../../core/forms/create-inv
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormInventoryComponentModule } from '../../form/form-inventory/form-inventory.component';
+import { FormInventoryComponentModule } from '../../shared/form/form-inventory/form-inventory.component';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { FormVersionComponentModule } from '../../form/form-version/form-version.component';
+import { FormVersionComponentModule } from '../../shared/form/form-version/form-version.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

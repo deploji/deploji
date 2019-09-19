@@ -6,29 +6,36 @@
     </button>
   </div>
 </div>
-<mat-card *ngFor="let inventory of inventories" class="my-2">
-  <div class="d-flex">
-    <div>
-      <div class="mb-2"><strong>{{inventory?.Name}}</strong></div>
-      <div class="properties">
-        <div class="properties__row">
-          <div class="properties__label">Project</div>
-          <div class="properties__value">{{inventory?.Project?.Name}}</div>
-        </div>
-        <div class="properties__row">
-          <div class="properties__label">File</div>
-          <div class="properties__value">{{inventory?.SourceFile}}</div>
-        </div>
-      </div>
-    </div>
-    <div class="flex-fill"></div>
-    <div>
-      <button type="button" mat-icon-button title="Edit" routerLink="/settings/inventories/{{inventory.ID}}">
-        <mat-icon color="primary">edit</mat-icon>
-      </button>
-      <button type="button" mat-icon-button title="Delete key" (click)="delete(inventory)">
-        <mat-icon color="warn">delete_forever</mat-icon>
-      </button>
-    </div>
-  </div>
+<mat-card class="my-2">
+  <mat-card-content>
+    <table mat-table [dataSource]="inventories">
+      <caption>Inventories</caption>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef scope="col">Name</th>
+        <td mat-cell *matCellDef="let element"> <strong>{{element?.Name}}</strong> </td>
+      </ng-container>
+      <ng-container matColumnDef="project">
+        <th mat-header-cell *matHeaderCellDef scope="col">Project</th>
+        <td mat-cell *matCellDef="let element">{{element?.Project?.Name}}</td>
+      </ng-container>
+      <ng-container matColumnDef="file">
+        <th mat-header-cell *matHeaderCellDef scope="col">File</th>
+        <td mat-cell *matCellDef="let element">{{element?.SourceFile}}</td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
+        <td mat-cell *matCellDef="let element">
+          <button type="button" mat-icon-button title="Edit" routerLink="/settings/inventories/{{element.ID}}">
+            <mat-icon color="primary">edit</mat-icon>
+          </button>
+          <button type="button" mat-icon-button title="Delete key" (click)="delete(element)">
+            <mat-icon color="warn">delete_forever</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+  </mat-card-content>
 </mat-card>

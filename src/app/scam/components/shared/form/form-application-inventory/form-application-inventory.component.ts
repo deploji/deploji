@@ -1,30 +1,35 @@
 import { Component, forwardRef, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { SshKeysService } from '../../../../core/services/ssh-keys.service';
-import { SshKey } from '../../../../core/interfaces/ssh-key';
 import { Subscription } from 'rxjs';
+import { Inventory } from '../../../../../core/interfaces/inventory';
+import { App } from '../../../../../core/interfaces/app';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-form-ssh-key',
-  templateUrl: './form-ssh-key.component.html',
+  selector: 'app-form-application-inventory',
+  templateUrl: './form-application-inventory.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormSshKeyComponent),
+      useExisting: forwardRef(() => FormApplicationInventoryComponent),
       multi: true
     }
   ]
 })
-export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() label = 'SSH key';
-  @Input() keys: SshKey[];
+export class FormApplicationInventoryComponent implements ControlValueAccessor, OnInit, OnDestroy {
+  @Input() label = 'Inventory';
+  @Input() app: App;
+  @Input() multiple = false;
   control = new FormControl();
   private subscription: Subscription;
 
-  constructor(private keysService: SshKeysService) {
+  get inventories() {
+    if (!this.app || !this.app.Inventories) {
+      return [];
+    }
+    return this.app.Inventories.filter(value => value.IsActive === true);
   }
 
   propagateChange = (_: any) => {};
@@ -45,11 +50,6 @@ export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDest
   }
 
   ngOnInit(): void {
-    if (!this.keys) {
-      this.keysService.getKeys().subscribe(keys => {
-        this.keys = keys;
-      });
-    }
     this.subscription = this.control.valueChanges.subscribe(value => {
       this.propagateChange(value);
     });
@@ -61,7 +61,7 @@ export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDest
     }
   }
 
-  compareFn(optionOne: SshKey, optionTwo: SshKey): boolean {
+  compareFn(optionOne: Inventory, optionTwo: Inventory): boolean {
     if (!optionOne || !optionTwo) {
       return false;
     }
@@ -70,8 +70,8 @@ export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDest
 }
 
 @NgModule({
-  declarations: [FormSshKeyComponent],
-  exports: [FormSshKeyComponent],
+  declarations: [FormApplicationInventoryComponent],
+  exports: [FormApplicationInventoryComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -79,4 +79,4 @@ export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDest
     ReactiveFormsModule
   ]
 })
-export class FormSshKeyComponentModule { }
+export class FormApplicationInventoryComponentModule { }

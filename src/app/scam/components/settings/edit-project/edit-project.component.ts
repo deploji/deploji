@@ -7,7 +7,7 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormSshKeyComponentModule } from '../../form/form-ssh-key/form-ssh-key.component';
+import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

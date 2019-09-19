@@ -5,6 +5,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 describe('UsersComponent', () => {
   let component: UsersComponent;
@@ -14,7 +15,7 @@ describe('UsersComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UsersComponent],
       schemas: [NO_ERRORS_SCHEMA],
-      imports: [RouterTestingModule, HttpClientTestingModule, MatDialogModule]
+      imports: [RouterTestingModule, HttpClientTestingModule, MatDialogModule, MatTableModule]
     })
       .compileComponents();
   }));

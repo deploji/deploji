@@ -4,6 +4,7 @@ import { SshKey } from './ssh-key';
 
 export interface ApplicationInventory {
   ID: number;
+  Version?: string;
   Key: SshKey;
   KeyID: number;
   Application: App;

@@ -5,6 +5,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
 
 describe('AppsComponent', () => {
   let component: AppsComponent;
@@ -13,7 +14,7 @@ describe('AppsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AppsComponent],
-      imports: [RouterTestingModule, HttpClientTestingModule, MatDialogModule],
+      imports: [RouterTestingModule, HttpClientTestingModule, MatDialogModule, MatTableModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
       .compileComponents();

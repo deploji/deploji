@@ -13,15 +13,15 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormProjectComponentModule } from '../../form/form-project/form-project.component';
-import { FormProjectFileComponentModule } from '../../form/form-project-file/form-project-file.component';
+import { FormProjectComponentModule } from '../../shared/form/form-project/form-project.component';
+import { FormProjectFileComponentModule } from '../../shared/form/form-project-file/form-project-file.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { FormInventoryComponentModule } from '../../form/form-inventory/form-inventory.component';
-import { FormSshKeyComponentModule } from '../../form/form-ssh-key/form-ssh-key.component';
-import { FormRepositoryComponentModule } from '../../form/form-repository/form-repository.component';
+import { FormInventoryComponentModule } from '../../shared/form/form-inventory/form-inventory.component';
+import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
+import { FormRepositoryComponentModule } from '../../shared/form/form-repository/form-repository.component';
 
 @Component({
   selector: 'app-edit-app',
@@ -82,8 +82,8 @@ export class EditAppComponent implements OnInit {
 }
 
 @NgModule({
-    declarations: [EditAppComponent],
-    exports: [EditAppComponent],
+  declarations: [EditAppComponent],
+  exports: [EditAppComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -101,4 +101,5 @@ export class EditAppComponent implements OnInit {
     FormRepositoryComponentModule,
   ]
 })
-export class EditAppComponentModule {}
+export class EditAppComponentModule {
+}

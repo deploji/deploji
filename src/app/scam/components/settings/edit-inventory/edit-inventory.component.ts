@@ -7,8 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormProjectComponentModule } from '../../form/form-project/form-project.component';
-import { FormProjectFileComponentModule } from '../../form/form-project-file/form-project-file.component';
+import { FormProjectComponentModule } from '../../shared/form/form-project/form-project.component';
+import { FormProjectFileComponentModule } from '../../shared/form/form-project-file/form-project-file.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

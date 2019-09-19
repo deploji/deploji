@@ -1,12 +1,12 @@
 import { Component, forwardRef, Input, NgModule, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Inventory } from '../../../../core/interfaces/inventory';
-import { App } from '../../../../core/interfaces/app';
-import { InventoriesService } from '../../../../core/services/inventories.service';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import { App } from '../../../../../core/interfaces/app';
+import { Inventory } from '../../../../../core/interfaces/inventory';
+import { InventoriesService } from '../../../../../core/services/inventories.service';
 
 @Component({
   selector: 'app-form-inventory',

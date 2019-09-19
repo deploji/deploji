@@ -5,9 +5,9 @@ import { CreateDeploymentForm } from '../../../../core/forms/create-deployment.f
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FormApplicationComponentModule } from '../../form/form-application/form-application.component';
-import { FormApplicationInventoryComponentModule } from '../../form/form-application-inventory/form-application-inventory.component';
-import { FormVersionComponentModule } from '../../form/form-version/form-version.component';
+import { FormApplicationComponentModule } from '../../shared/form/form-application/form-application.component';
+import { FormApplicationInventoryComponentModule } from '../../shared/form/form-application-inventory/form-application-inventory.component';
+import { FormVersionComponentModule } from '../../shared/form/form-version/form-version.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({

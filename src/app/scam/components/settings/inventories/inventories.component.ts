@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-inventories',
@@ -15,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class InventoriesComponent implements OnInit {
   inventories: Inventory[] = [];
+  columnsToDisplay = ['name', 'project', 'file', 'actions'];
 
   constructor(private inventoriesService: InventoriesService, private dialog: MatDialog) {
   }
@@ -49,6 +51,7 @@ export class InventoriesComponent implements OnInit {
     RouterModule,
     MatCardModule,
     MatIconModule,
+    MatTableModule,
   ]
 })
 export class InventoriesComponentModule {}

@@ -1,32 +1,30 @@
 import { Component, forwardRef, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { Project } from '../../../../core/interfaces/project';
+import { SshKeysService } from '../../../../../core/services/ssh-keys.service';
+import { SshKey } from '../../../../../core/interfaces/ssh-key';
 import { Subscription } from 'rxjs';
-import { RepositoriesService } from '../../../../core/services/repositories.service';
-import { Repository } from '../../../../core/interfaces/repository';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
 @Component({
-  selector: 'app-form-repository',
-  templateUrl: './form-repository.component.html',
+  selector: 'app-form-ssh-key',
+  templateUrl: './form-ssh-key.component.html',
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormRepositoryComponent),
+      useExisting: forwardRef(() => FormSshKeyComponent),
       multi: true
     }
   ]
 })
-export class FormRepositoryComponent implements ControlValueAccessor, OnInit, OnDestroy {
-  @Input() label: string;
-  @Input() project: Project;
+export class FormSshKeyComponent implements ControlValueAccessor, OnInit, OnDestroy {
+  @Input() label = 'SSH key';
+  @Input() keys: SshKey[];
   control = new FormControl();
-  repositories: Repository[];
   private subscription: Subscription;
 
-  constructor(private repositoriesService: RepositoriesService) {
+  constructor(private keysService: SshKeysService) {
   }
 
   propagateChange = (_: any) => {};
@@ -47,11 +45,13 @@ export class FormRepositoryComponent implements ControlValueAccessor, OnInit, On
   }
 
   ngOnInit(): void {
+    if (!this.keys) {
+      this.keysService.getKeys().subscribe(keys => {
+        this.keys = keys;
+      });
+    }
     this.subscription = this.control.valueChanges.subscribe(value => {
       this.propagateChange(value);
-    });
-    this.repositoriesService.getRepositories().subscribe(repositories => {
-      this.repositories = repositories;
     });
   }
 
@@ -61,7 +61,7 @@ export class FormRepositoryComponent implements ControlValueAccessor, OnInit, On
     }
   }
 
-  compareFn(optionOne: Repository, optionTwo: Repository): boolean {
+  compareFn(optionOne: SshKey, optionTwo: SshKey): boolean {
     if (!optionOne || !optionTwo) {
       return false;
     }
@@ -70,8 +70,8 @@ export class FormRepositoryComponent implements ControlValueAccessor, OnInit, On
 }
 
 @NgModule({
-  declarations: [FormRepositoryComponent],
-  exports: [FormRepositoryComponent],
+  declarations: [FormSshKeyComponent],
+  exports: [FormSshKeyComponent],
   imports: [
     CommonModule,
     MatFormFieldModule,
@@ -79,4 +79,4 @@ export class FormRepositoryComponent implements ControlValueAccessor, OnInit, On
     ReactiveFormsModule
   ]
 })
-export class FormRepositoryComponentModule { }
+export class FormSshKeyComponentModule { }
