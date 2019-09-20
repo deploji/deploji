@@ -26,13 +26,14 @@ export class CreateDeploymentForm extends FormGroup {
 
   get deploymentsValue(): Job[] {
     return this.value.Inventories
-      .map((value: ApplicationInventory) => ({
+      .map((applicationInventory: ApplicationInventory) => ({
         Type: JobTypesEnum.DEPLOYMENT,
         ApplicationID: this.value.Application.ID,
         Version: this.value.Version,
-        InventoryID: value.Inventory.ID,
-        KeyID: value.KeyID,
-        ExtraVariables: value.ExtraVariables
+        InventoryID: applicationInventory.Inventory.ID,
+        KeyID: applicationInventory.KeyID,
+        ExtraVariables: applicationInventory.ExtraVariables,
+        Playbook: applicationInventory.Playbook ? applicationInventory.Playbook : applicationInventory.Application.AnsiblePlaybook
       }));
   }
 }

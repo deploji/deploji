@@ -36,8 +36,8 @@ export class CreateDeploymentComponent implements OnInit {
 }
 
 @NgModule({
-    declarations: [CreateDeploymentComponent],
-    exports: [CreateDeploymentComponent],
+  declarations: [CreateDeploymentComponent],
+  exports: [CreateDeploymentComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -49,4 +49,5 @@ export class CreateDeploymentComponent implements OnInit {
     RouterModule,
   ]
 })
-export class CreateDeploymentComponentModule {}
+export class CreateDeploymentComponentModule {
+}

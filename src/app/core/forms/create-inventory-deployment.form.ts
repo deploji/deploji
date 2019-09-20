@@ -17,6 +17,7 @@ export class CreateInventoryDeploymentForm extends FormGroup {
             IsActive: new FormControl(true),
             Application: new FormControl(inventory.Application),
             Version: new FormControl(),
+            Playbook: new FormControl(inventory.Playbook),
             ExtraVariables: new FormControl(inventory.ExtraVariables),
             KeyID: new FormControl(inventory.KeyID)
           })
@@ -42,7 +43,8 @@ export class CreateInventoryDeploymentForm extends FormGroup {
         Version: value.Version,
         InventoryID: this.value.Inventory.ID,
         KeyID: value.KeyID,
-        ExtraVariables: value.ExtraVariables
+        ExtraVariables: value.ExtraVariables,
+        Playbook: value.Playbook ? value.Playbook : value.Application.AnsiblePlaybook
       }));
   }
 }

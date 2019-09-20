@@ -15,4 +15,5 @@ export interface ApplicationInventory {
   ExtraVariables?: string;
   Name?: string;
   IsActive: boolean;
+  Playbook: string;
 }

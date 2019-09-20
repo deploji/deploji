@@ -11,7 +11,8 @@ export class ApplicationInventoryForm extends FormGroup {
       ApplicationID: new FormControl(),
       ApplicationUrls: new FormControl(),
       ExtraVariables: new FormControl('---\n'),
-      Key: new FormControl()
+      Key: new FormControl(),
+      Playbook: new FormControl()
     });
   }
 
