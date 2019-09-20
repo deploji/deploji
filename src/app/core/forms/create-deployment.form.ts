@@ -2,6 +2,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { JobTypesEnum } from '../enums/job-types.enum';
 import { Job } from '../interfaces/job';
 import { ApplicationInventory } from '../interfaces/application-inventory';
+import { notEmpty } from '../utils/utils';
 
 export class CreateDeploymentForm extends FormGroup {
   constructor() {
@@ -33,7 +34,7 @@ export class CreateDeploymentForm extends FormGroup {
         InventoryID: applicationInventory.Inventory.ID,
         KeyID: applicationInventory.KeyID,
         ExtraVariables: applicationInventory.ExtraVariables,
-        Playbook: applicationInventory.Playbook ? applicationInventory.Playbook : applicationInventory.Application.AnsiblePlaybook
+        Playbook: notEmpty(applicationInventory.Playbook) ? applicationInventory.Playbook : this.value.Application.AnsiblePlaybook
       }));
   }
 }
