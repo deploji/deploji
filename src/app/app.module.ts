@@ -18,9 +18,7 @@ import { DialogConfirmComponentModule } from './scam/components/dialog/dialog-co
 import { AppRoutingModule } from './routing/app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     CoreModule,

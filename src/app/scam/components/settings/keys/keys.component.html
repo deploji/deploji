@@ -8,7 +8,9 @@
 <mat-card *ngFor="let key of keys" class="my-2">
   <div class="d-flex">
     <div>
-      <div><strong>{{key.Title}}</strong></div>
+        <strong>
+          <a routerLink="/settings/keys/{{key.ID}}">{{key.Title}}</a>
+        </strong>
     </div>
     <div class="flex-fill"></div>
     <button type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">

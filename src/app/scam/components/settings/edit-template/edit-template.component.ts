@@ -13,6 +13,8 @@ import { FormInventoryComponentModule } from '../../shared/form/form-inventory/f
 import { FormProjectFileComponentModule } from '../../shared/form/form-project-file/form-project-file.component';
 import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
 
 @Component({
   selector: 'app-edit-template',
@@ -62,6 +64,8 @@ export class EditTemplateComponent implements OnInit {
     FormSshKeyComponentModule,
     MatButtonModule,
     RouterModule,
+    MatTabsModule,
+    ManagePermissionsComponentModule,
   ]
 })
 export class EditTemplateComponentModule {}

@@ -10,7 +10,11 @@
 <mat-card *ngFor="let repository of repositories" class="my-2">
   <div class="d-flex">
     <div>
-      <div class="mb-2"><strong>{{repository.Name}}</strong></div>
+      <div class="mb-2">
+        <strong>
+          <a routerLink="/settings/repositories/{{repository.ID}}">{{repository.Name}}</a>
+        </strong>
+      </div>
       <div class="properties">
         <div class="properties__row">
           <div class="properties__label">Type</div>
