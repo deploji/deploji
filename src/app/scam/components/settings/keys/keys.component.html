@@ -1,18 +1,16 @@
-<div class="d-flex">
+<div class="flex">
   <h1>SSH keys</h1>
-  <div class="flex-fill"></div>
-  <div class="d-flex flex-column justify-content-center">
+  <div class="flex-auto"></div>
+  <div class="flex flex-column justify-center">
     <button type="button" mat-raised-button color="primary" routerLink="/settings/keys/add">Add key</button>
   </div>
 </div>
-<mat-card *ngFor="let key of keys" class="my-2">
-  <div class="d-flex">
+<mat-card *ngFor="let key of keys" class="my2">
+  <div class="flex">
     <div>
-        <strong>
-          <a routerLink="/settings/keys/{{key.ID}}">{{key.Title}}</a>
-        </strong>
+      <a routerLink="/settings/keys/{{key.ID}}">{{key.Title}}</a>
     </div>
-    <div class="flex-fill"></div>
+    <div class="flex-auto"></div>
     <button type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">
       <mat-icon color="primary">edit</mat-icon>
     </button>

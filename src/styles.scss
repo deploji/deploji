@@ -1,82 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-//@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @import "my-theme.scss";
 @import "utils";
+@import "~basscss/css/basscss-important.css";
 
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
-  //font-family: 'Open Sans', sans-serif;
 }
 
 table {
   width: 100%;
-}
-
-.ansi-black {
-  color: white;
-  font-weight: bold;
-}
-
-.ansi-bright-black {
-  color: #d8d8d8;
-  font-weight: bold;
-}
-
-.ansi-red {
-  color: #ff3a36;
-}
-
-.ansi-bright-red {
-  color: #ffa9a7;
-}
-
-.ansi-green {
-  color: #1ea528;
-}
-
-.ansi-bright-green {
-  color: #88f392;
-}
-
-.ansi-yellow {
-  color: #fff431;
-}
-
-.ansi-bright-yellow {
-  color: #fff9b8;
-}
-
-.ansi-blue {
-  color: #636fff;
-}
-
-.ansi-bright-blue {
-  color: #a3adff;
-}
-
-.ansi-magenta {
-  color: #f248ff;
-}
-
-.ansi-bright-magenta {
-  color: #fd84ff;
-}
-
-.ansi-cyan {
-  color: #75ffee;
-}
-
-.ansi-bright-cyan {
-  color: #b1faff;
-}
-
-.ansi-white {
-  color: #292929;
-}
-
-.ansi-bright-white {
-  color: #000000;
 }
 
 .mat-card {
@@ -114,4 +47,10 @@ mat-form-field {
 
 .mat-card-header-text {
   margin: 0 !important;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
 }

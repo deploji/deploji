@@ -3,11 +3,11 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   team
 </h1>
-<mat-card>
+<mat-card class="p0">
   <mat-tab-group>
     <mat-tab label="Details">
-      <form [formGroup]="form">
-        <mat-form-field class="d-block">
+      <form [formGroup]="form" class="p2">
+        <mat-form-field class="block">
           <mat-label>Name</mat-label>
           <input matInput type="text" formControlName="Name">
           <mat-error>Name is <strong>required</strong></mat-error>
@@ -19,10 +19,14 @@
       </form>
     </mat-tab>
     <mat-tab [disabled]="!form.get('ID').value" label="Users">
-      <app-manage-users></app-manage-users>
+      <div class="p2">
+        <app-manage-users></app-manage-users>
+      </div>
     </mat-tab>
     <mat-tab [disabled]="!form.get('ID').value" label="Permissions">
-      <app-manage-permissions></app-manage-permissions>
+      <div class="p2">
+        <app-manage-permissions></app-manage-permissions>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </mat-card>

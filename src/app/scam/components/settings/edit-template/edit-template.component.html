@@ -3,11 +3,11 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   template
 </h1>
-<mat-card>
+<mat-card class="p0">
   <mat-tab-group>
     <mat-tab label="Details">
-      <form [formGroup]="form">
-        <mat-form-field class="d-block">
+      <form [formGroup]="form" class="p2">
+        <mat-form-field class="block">
           <mat-label>Name</mat-label>
           <input matInput type="text" formControlName="Name">
         </mat-form-field>
@@ -21,7 +21,7 @@
         <mat-slide-toggle formControlName="PromptSshKey">Prompt on launch</mat-slide-toggle>
         <app-form-ssh-key formControlName="SshKey"></app-form-ssh-key>
         <mat-slide-toggle formControlName="PromptExtraVariables" class="">Prompt on launch</mat-slide-toggle>
-        <mat-form-field class="d-block">
+        <mat-form-field class="block">
           <mat-label>Extra variables</mat-label>
           <textarea cdkTextareaAutosize matInput type="textarea" formControlName="ExtraVariables"></textarea>
         </mat-form-field>
@@ -32,7 +32,9 @@
       </form>
     </mat-tab>
     <mat-tab label="Permissions">
-      <app-manage-permissions></app-manage-permissions>
+      <div class="p2">
+        <app-manage-permissions></app-manage-permissions>
+      </div>
     </mat-tab>
   </mat-tab-group>
 </mat-card>

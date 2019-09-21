@@ -9,7 +9,7 @@
          [routerLink]="item.link">{{item.label}}</a>
     </mat-nav-list>
   </mat-sidenav>
-  <mat-sidenav-content class="d-flex flex-column">
+  <mat-sidenav-content class="flex flex-column">
     <header>
       <mat-toolbar color="primary">
         <button
@@ -20,7 +20,7 @@
           *ngIf="isHandset$ | async">
           <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
         </button>
-        <span class="mr-2">Mastermind</span>
+        <span class="mr2">Mastermind</span>
         <button
           *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
@@ -57,7 +57,7 @@
           routerLink="/templates">
           Templates
         </button>
-        <span class="flex-fill"></span>
+        <span class="flex-auto"></span>
         <button
           *ngxPermissionsExcept="RolesEnum.GUEST"
           type="button"
@@ -80,7 +80,7 @@
         </button>
       </mat-toolbar>
     </header>
-    <div class="content flex-grow-1">
+    <div class="p2">
       <router-outlet></router-outlet>
     </div>
     <footer></footer>

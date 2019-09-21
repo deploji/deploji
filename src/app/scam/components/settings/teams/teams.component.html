@@ -1,21 +1,19 @@
-<div class="d-flex">
+<div class="flex">
   <h1>Teams</h1>
-  <div class="flex-fill"></div>
-  <div class="d-flex flex-column justify-content-center">
+  <div class="flex-auto"></div>
+  <div class="flex flex-column justify-center">
     <button type="button" mat-raised-button color="primary" routerLink="/settings/teams/create">
       Create new team
     </button>
   </div>
 </div>
-<mat-card class="my-2">
+<mat-card class="my2 p0">
   <mat-card-content>
     <table mat-table [dataSource]="teams">
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef scope="col">Username</th>
         <td mat-cell *matCellDef="let element">
-          <strong>
-            <a routerLink="/settings/users/{{element.ID}}">{{element.Username}}</a>
-          </strong>
+          <a routerLink="/settings/users/{{element.ID}}">{{element.Username}}</a>
         </td>
       </ng-container>
       <ng-container matColumnDef="name">

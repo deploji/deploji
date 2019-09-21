@@ -1,47 +1,45 @@
-<div class="d-flex">
+<div class="flex">
   <h1>Templates</h1>
-  <div class="flex-fill"></div>
-  <div class="d-flex flex-column justify-content-center">
+  <div class="flex-auto"></div>
+  <div class="flex flex-column justify-center">
     <button type="button" mat-raised-button color="primary" routerLink="/settings/templates/create">Create new
       template
     </button>
   </div>
 </div>
-<mat-card *ngFor="let template of templates" class="my-2">
-  <div class="d-flex">
-    <div>
-      <div class="mb-2">
-        <strong>
-          <a routerLink="/settings/templates/{{template.ID}}">{{template.Name}}</a>
-        </strong>
-      </div>
-      <div class="properties">
-        <div class="properties__row">
-          <div class="properties__label">Project</div>
-          <div class="properties__value">{{template.Project?.Name}}</div>
-        </div>
-        <div class="properties__row">
-          <div class="properties__label">Inventory</div>
-          <div class="properties__value">{{template.Inventory?.Name}}</div>
-        </div>
-        <div class="properties__row">
-          <div class="properties__label">Playbook</div>
-          <div class="properties__value">{{template.Playbook}}</div>
-        </div>
-        <div class="properties__row">
-          <div class="properties__label">SshKey</div>
-          <div class="properties__value">{{template.SshKey?.Title}}</div>
-        </div>
-      </div>
-    </div>
-    <div class="flex-fill"></div>
-    <div>
-      <button type="button" mat-icon-button title="Edit" routerLink="/settings/templates/{{template.ID}}">
-        <mat-icon color="primary">edit</mat-icon>
-      </button>
-      <button type="button" mat-icon-button title="Delete template" (click)="delete(template)">
-        <mat-icon color="warn">delete_forever</mat-icon>
-      </button>
-    </div>
-  </div>
+<mat-card class="p0">
+  <table mat-table [dataSource]="templates">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef scope="col">Project</th>
+      <td mat-cell *matCellDef="let element">
+        <a routerLink="/settings/templates/{{element.ID}}">{{element.Project?.Name}}</a>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="inventory">
+      <th mat-header-cell *matHeaderCellDef scope="col">Inventory</th>
+      <td mat-cell *matCellDef="let element">{{element.Inventory?.Name}}</td>
+    </ng-container>
+    <ng-container matColumnDef="playbook">
+      <th mat-header-cell *matHeaderCellDef scope="col">Playbook</th>
+      <td mat-cell *matCellDef="let element">{{element.Playbook}}</td>
+    </ng-container>
+    <ng-container matColumnDef="sshkey">
+      <th mat-header-cell *matHeaderCellDef scope="col">SshKey</th>
+      <td mat-cell *matCellDef="let element">{{element.SshKey?.Title}}</td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button type="button" mat-icon-button title="Edit" routerLink="/settings/templates/{{element.ID}}">
+          <mat-icon color="primary">edit</mat-icon>
+        </button>
+        <button type="button" mat-icon-button title="Delete template" (click)="delete(element)">
+          <mat-icon color="warn">delete_forever</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+  </table>
 </mat-card>

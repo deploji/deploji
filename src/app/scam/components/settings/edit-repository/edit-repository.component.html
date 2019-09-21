@@ -5,14 +5,14 @@
 </h1>
 <mat-card>
   <form [formGroup]="form">
-    <mat-form-field class="d-block">
+    <mat-form-field class="block">
       <mat-label>Name</mat-label>
       <input matInput type="text" formControlName="Name">
       <mat-error>
         Name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="d-block">
+    <mat-form-field class="block">
       <mat-label>Type</mat-label>
       <mat-select formControlName="Type">
         <mat-option [value]="RepositoryTypes.DOCKER_V1">Docker registry v1</mat-option>
@@ -23,7 +23,7 @@
         Type is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="d-block">
+    <mat-form-field class="block">
       <mat-label>URL</mat-label>
       <input matInput type="text" formControlName="Url">
       <mat-error *ngIf="form.Url.hasError('required')">
@@ -36,18 +36,18 @@
         Artifact repository URL for example https://registry.hub.docker.com
       </mat-hint>
     </mat-form-field>
-    <mat-form-field class="d-block">
+    <mat-form-field class="block">
       <mat-label>Nexus repository name</mat-label>
       <input matInput type="text" formControlName="NexusName">
       <mat-error *ngIf="form.NexusName.hasError('required')">
         Nexus name is <strong>required</strong>
       </mat-error>
     </mat-form-field>
-    <mat-form-field class="d-block">
+    <mat-form-field class="block">
       <mat-label>Username</mat-label>
       <input matInput autocomplete="new-password" type="text" formControlName="Username">
     </mat-form-field>
-    <mat-form-field class="d-block">
+    <mat-form-field class="block">
       <mat-label>Password</mat-label>
       <input matInput autocomplete="new-password" type="password" formControlName="Password">
     </mat-form-field>

@@ -1,9 +1,9 @@
 <h1>Job #{{job?.ID}}</h1>
 <mat-card>
   <mat-card-header>
-    <div class="d-flex w-100 justify-content-center align-items-center">
+    <div class="flex w-100 justify-center items-center">
       <app-job-status [job]="job"></app-job-status>
-      <div class="properties mr-2">
+      <div class="properties mr2">
         <div class="properties__row">
           <div class="properties__label">Type</div>
           <div class="properties__label">Inventory</div>
@@ -18,8 +18,8 @@
         </div>
       </div>
       <app-user-avatar [user]="job?.User" [size]="40"></app-user-avatar>
-      <div class="flex-fill"></div>
-      <button mat-icon-button title="Relaunch using same parameters" class="mr-2" (click)="relaunch()" [disabled]="!isCompleted(job?.Status)">
+      <div class="flex-auto"></div>
+      <button mat-icon-button title="Relaunch using same parameters" class="mr2" (click)="relaunch()" [disabled]="!isCompleted(job?.Status)">
         <mat-icon svgIcon="rocket"></mat-icon>
       </button>
       <mat-slide-toggle [formControl]="autoScroll">Auto scroll</mat-slide-toggle>

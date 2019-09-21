@@ -6,11 +6,11 @@
 <mat-card>
   <form [formGroup]="form">
     <div class="row">
-      <mat-form-field class="d-block w-100 col">
+      <mat-form-field class="block w-100 col">
         <mat-label>Display name</mat-label>
         <input matInput type="text" formControlName="Name">
       </mat-form-field>
-      <mat-form-field class="d-block w-100 col">
+      <mat-form-field class="block w-100 col">
         <mat-label>Ansible name</mat-label>
         <input matInput type="text" formControlName="AnsibleName">
         <mat-hint>Ansible name is passed to ansible playbook as "app" variable</mat-hint>
@@ -33,11 +33,11 @@
       <div class="w-100 col">
         <app-form-repository label="Artifact Repository" formControlName="Repository"></app-form-repository>
       </div>
-      <mat-form-field class="d-block w-100 col">
+      <mat-form-field class="block w-100 col">
         <mat-label>Group name</mat-label>
         <input matInput type="text" formControlName="RepositoryGroup">
       </mat-form-field>
-      <mat-form-field class="d-block w-100 col">
+      <mat-form-field class="block w-100 col">
         <mat-label>Artifact name</mat-label>
         <input matInput type="text" formControlName="RepositoryArtifact">
       </mat-form-field>
@@ -45,15 +45,15 @@
 
     <div>
       <h2>Inventories</h2>
-      <div class="d-flex flex-column" formArrayName="Inventories"
+      <div class="flex flex-column" formArrayName="Inventories"
            *ngFor="let inventory of form.Inventories.controls; let i = index">
-        <mat-card class="my-2">
+        <mat-card class="my2">
           <div [formGroupName]="i">
             <button class="float-right" type="button" mat-icon-button title="Delete inventory"
                     (click)="delete(inventory.value)">
               <mat-icon color="warn">delete_forever</mat-icon>
             </button>
-            <div class="mb-2">
+            <div class="mb2">
               <mat-slide-toggle formControlName="IsActive">is active</mat-slide-toggle>
             </div>
 
@@ -92,7 +92,7 @@
         <mat-icon>playlist_add</mat-icon>
       </button>
     </div>
-    <div class="button-row mt-4">
+    <div class="button-row mt4">
       <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
       <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
     </div>
