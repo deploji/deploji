@@ -11,10 +11,10 @@
       <a routerLink="/settings/keys/{{key.ID}}">{{key.Title}}</a>
     </div>
     <div class="flex-auto"></div>
-    <button type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">
+    <button *ngIf="key.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">
       <mat-icon color="primary">edit</mat-icon>
     </button>
-    <button type="button" mat-icon-button title="Delete key" (click)="delete(key)">
+    <button *ngIf="key.Write" type="button" mat-icon-button title="Delete key" (click)="delete(key)">
       <mat-icon color="warn">delete_forever</mat-icon>
     </button>
   </div>

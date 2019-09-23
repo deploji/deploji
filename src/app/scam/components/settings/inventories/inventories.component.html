@@ -26,10 +26,10 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button type="button" mat-icon-button title="Edit" routerLink="/settings/inventories/{{element.ID}}">
+          <button *ngIf="element.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/inventories/{{element.ID}}">
             <mat-icon color="primary">edit</mat-icon>
           </button>
-          <button type="button" mat-icon-button title="Delete key" (click)="delete(element)">
+          <button *ngIf="element.Write" type="button" mat-icon-button title="Delete key" (click)="delete(element)">
             <mat-icon color="warn">delete_forever</mat-icon>
           </button>
         </td>

@@ -19,14 +19,10 @@
       </form>
     </mat-tab>
     <mat-tab [disabled]="!form.get('ID').value" label="Users">
-      <div class="p2">
-        <app-manage-users></app-manage-users>
-      </div>
+      <app-manage-users [teamId]="teamId"></app-manage-users>
     </mat-tab>
     <mat-tab [disabled]="!form.get('ID').value" label="Permissions">
-      <div class="p2">
-        <app-manage-permissions></app-manage-permissions>
-      </div>
+      <app-manage-permissions [teamId]="teamId"></app-manage-permissions>
     </mat-tab>
   </mat-tab-group>
 </mat-card>

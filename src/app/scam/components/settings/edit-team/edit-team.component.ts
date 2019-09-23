@@ -1,6 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
-import { UserForm } from '../../../../core/forms/user.form';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -12,13 +11,15 @@ import { TeamsService } from '../../../../core/services/teams.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ManageUsersComponentModule } from '../../shared/manage-users/manage-users.component';
 import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
+import { TeamForm } from '../../../../core/forms/team.form';
 
 @Component({
   selector: 'app-edit-team',
   templateUrl: './edit-team.component.html',
 })
 export class EditTeamComponent implements OnInit {
-  form = new UserForm();
+  form = new TeamForm();
+  teamId: number;
 
   constructor(
     private teamsService: TeamsService,
@@ -29,7 +30,8 @@ export class EditTeamComponent implements OnInit {
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
-      this.teamsService.getTeam(Number(this.route.snapshot.paramMap.get('id'))).subscribe(user => {
+      this.teamId = Number(this.route.snapshot.paramMap.get('id'));
+      this.teamsService.getTeam(this.teamId).subscribe(user => {
         this.form.patchValue(user);
       });
     }

@@ -8,6 +8,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
+import { SshKey } from '../../../../core/interfaces/ssh-key';
 
 @Component({
   selector: 'app-edit-ssh-key',
@@ -15,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class EditSshKeyComponent implements OnInit {
   form = new SshKeyForm();
+  key: SshKey;
 
   constructor(private keys: SshKeysService, private router: Router, private route: ActivatedRoute) {
   }
@@ -22,6 +26,7 @@ export class EditSshKeyComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
       this.keys.getKey(Number(this.route.snapshot.paramMap.get('id'))).subscribe(key => {
+        this.key = key;
         this.form.patchValue(key);
       });
     }
@@ -48,6 +53,8 @@ export class EditSshKeyComponent implements OnInit {
     MatInputModule,
     MatButtonModule,
     RouterModule,
+    MatTabsModule,
+    ManagePermissionsComponentModule,
   ]
 })
 export class EditSshKeyComponentModule {}

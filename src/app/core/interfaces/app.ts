@@ -3,6 +3,8 @@ import { Repository } from './repository';
 import { ApplicationInventory } from './application-inventory';
 
 export interface App {
+  Write?: boolean;
+  Admin?: boolean;
   ID?: number;
   Name?: string;
   Project?: Project;

@@ -1,17 +1,70 @@
 <table mat-table [dataSource]="permissions">
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef scope="col">Name</th>
-    <td mat-cell *matCellDef="let element"> <strong>{{element.Name}}</strong> </td>
+  <ng-container matColumnDef="object-type">
+    <th mat-header-cell *matHeaderCellDef scope="col">Object type</th>
+    <td mat-cell *matCellDef="let element">{{element.ObjectType}}</td>
   </ng-container>
-  <ng-container matColumnDef="type">
-    <th mat-header-cell *matHeaderCellDef scope="col">Type</th>
-    <td mat-cell *matCellDef="let element">{{element.Type}}</td>
+  <ng-container matColumnDef="object-name">
+    <th mat-header-cell *matHeaderCellDef scope="col">Object name</th>
+    <td mat-cell *matCellDef="let element"><strong>{{element.ObjectName}}</strong></td>
   </ng-container>
-  <ng-container matColumnDef="role">
-    <th mat-header-cell *matHeaderCellDef scope="col">Role</th>
-    <td mat-cell *matCellDef="let element">{{element.Role}}</td>
+  <ng-container matColumnDef="subject-type">
+    <th mat-header-cell *matHeaderCellDef scope="col">Subject type</th>
+    <td mat-cell *matCellDef="let element">{{element.SubjectType}}</td>
+  </ng-container>
+  <ng-container matColumnDef="subject-name">
+    <th mat-header-cell *matHeaderCellDef scope="col">Subject name</th>
+    <td mat-cell *matCellDef="let element"><strong>{{element.SubjectName}}</strong></td>
+  </ng-container>
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef scope="col">Action</th>
+    <td mat-cell *matCellDef="let element">{{element.Action}}</td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <button *ngIf="editable" type="button" mat-icon-button title="Delete" (click)="delete(element)">
+        <mat-icon color="warn">delete_forever</mat-icon>
+      </button>
+    </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
   <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
 </table>
+
+<ng-container *ngIf="showAddDialog" [formGroup]="form">
+  <div class="px2">
+    <ng-container *ngIf="columnsToDisplay.includes('subject-type')">
+      <mat-form-field class="w-100">
+        <mat-label>Subject type</mat-label>
+        <mat-select formControlName="SubjectType">
+          <mat-option *ngFor="let option of subjectTypes" [value]="option">{{option}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-container [ngSwitch]="form.SubjectType.value">
+        <app-form-user *ngSwitchCase="SubjectTypesEnum.USERS" formControlName="Subject"></app-form-user>
+        <app-form-team *ngSwitchCase="SubjectTypesEnum.TEAMS" formControlName="Subject"></app-form-team>
+      </ng-container>
+    </ng-container>
+    <ng-container *ngIf="columnsToDisplay.includes('object-type')">
+      <mat-form-field class="w-100">
+        <mat-label>Object type</mat-label>
+        <mat-select formControlName="ObjectType">
+          <mat-option *ngFor="let option of objectTypes" [value]="option">{{option}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <ng-container [ngSwitch]="form.ObjectType.value">
+        <app-form-inventory *ngSwitchCase="ObjectTypesEnum.INVENTORY" formControlName="Object"></app-form-inventory>
+        <app-form-ssh-key *ngSwitchCase="ObjectTypesEnum.KEY" formControlName="Object"></app-form-ssh-key>
+        <app-form-application *ngSwitchCase="ObjectTypesEnum.APPLICATION" formControlName="Object"></app-form-application>
+        <app-form-template *ngSwitchCase="ObjectTypesEnum.TEMPLATES" formControlName="Object"></app-form-template>
+      </ng-container>
+    </ng-container>
+    <app-form-action-type [type]="form.ObjectType.value" formControlName="Action"></app-form-action-type>
+    <button mat-raised-button class="mr2" (click)="toggleDialog()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="addPermission()">Save</button>
+  </div>
+</ng-container>
+<div class="p2">
+  <button *ngIf="!showAddDialog && editable" mat-raised-button (click)="toggleDialog()">Add permission</button>
+</div>

@@ -17,7 +17,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 })
 export class UsersComponent implements OnInit {
   users: User[] = [];
-  columnsToDisplay = ['username', 'name', 'surname', 'email', 'active', 'actions'];
+  columnsToDisplay = ['username', 'name', 'surname', 'email', 'type', 'active', 'actions'];
 
   constructor(private usersService: UsersService, private dialog: MatDialog) {
   }

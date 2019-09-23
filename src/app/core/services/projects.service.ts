@@ -22,7 +22,7 @@ export class ProjectsService {
 
   save(project: Project): Observable<Project> {
     if (project.ID) {
-      return this.http.put<Project>('/api/projects', project);
+      return this.http.put<Project>(`/api/projects/${project.ID}`, project);
     }
     return this.http.post<Project>('/api/projects', project);
   }

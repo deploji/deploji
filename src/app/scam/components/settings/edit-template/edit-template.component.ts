@@ -15,6 +15,7 @@ import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-s
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
+import { Template } from '../../../../core/interfaces/template';
 
 @Component({
   selector: 'app-edit-template',
@@ -22,6 +23,7 @@ import { ManagePermissionsComponentModule } from '../../shared/manage-permission
 })
 export class EditTemplateComponent implements OnInit {
   form = new TemplateForm();
+  template: Template;
 
   constructor(
     private templatesService: TemplatesService,
@@ -32,8 +34,9 @@ export class EditTemplateComponent implements OnInit {
 
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
-      this.templatesService.getTemplate(Number(this.route.snapshot.paramMap.get('id'))).subscribe(project => {
-        this.form.patchValue(project);
+      this.templatesService.getTemplate(Number(this.route.snapshot.paramMap.get('id'))).subscribe(template => {
+        this.template = template;
+        this.form.patchValue(template);
       });
     }
   }

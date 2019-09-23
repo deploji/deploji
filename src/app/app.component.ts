@@ -7,7 +7,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'mastermind';
+  title = 'deploji';
 
   constructor(private authService: AuthService, private permissionService: NgxPermissionsService) {
     this.permissionService.loadPermissions(this.authService.permissions);

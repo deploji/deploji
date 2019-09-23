@@ -17,7 +17,7 @@ export class RepositoriesService {
 
   save(repository: Repository): Observable<Repository> {
     if (repository.ID) {
-      return this.http.put<Repository>('/api/repositories', repository);
+      return this.http.put<Repository>(`/api/repositories/${repository.ID}`, repository);
     }
     return this.http.post<Repository>('/api/repositories', repository);
   }

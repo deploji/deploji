@@ -21,7 +21,7 @@ export class AppsService {
 
   save(app: App): Observable<App> {
     if (app.ID) {
-      return this.http.put<App>('/api/applications', app);
+      return this.http.put<App>(`/api/applications/${app.ID}`, app);
     }
     return this.http.post<App>('/api/applications', app);
   }

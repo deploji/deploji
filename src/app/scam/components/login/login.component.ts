@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { DialogConfirmComponent } from '../dialog/dialog-confirm/dialog-confirm.component';
 import { throwError } from 'rxjs';
@@ -11,6 +11,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { ProgressService } from '../../../core/services/progress.service';
 
 @Component({
   selector: 'app-login',
@@ -19,13 +22,14 @@ import { MatButtonModule } from '@angular/material/button';
 export class LoginComponent implements OnInit {
   form = new LoginForm();
 
-  constructor(private authService: AuthService, private dialog: MatDialog) {
+  constructor(private authService: AuthService, private dialog: MatDialog, private progress: ProgressService) {
   }
 
   ngOnInit() {
   }
 
   login(formValue: any) {
+    this.progress.open();
     this.authService.login(formValue).pipe(
       catchError((err) => {
         if (err.status !== 400) {
@@ -36,14 +40,15 @@ export class LoginComponent implements OnInit {
           data: {title: '', hideCancelButton: true, message: `Invalid username or password`}
         });
         return throwError(err);
-      })
+      }),
+      finalize(() => this.progress.close())
     ).subscribe();
   }
 }
 
 @NgModule({
-    declarations: [LoginComponent],
-    exports: [LoginComponent],
+  declarations: [LoginComponent],
+  exports: [LoginComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -51,6 +56,9 @@ export class LoginComponent implements OnInit {
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
+    MatProgressBarModule,
   ]
 })
-export class LoginComponentModule {}
+export class LoginComponentModule {
+}

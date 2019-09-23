@@ -28,7 +28,7 @@ export class TemplatesService {
 
   save(template: Template): Observable<Template> {
     if (template.ID) {
-      return this.http.put<Template>('/api/templates', template);
+      return this.http.put<Template>(`/api/templates/${template.ID}`, template);
     }
     return this.http.post<Template>('/api/templates', template);
   }

@@ -10,8 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
-import { ManageTeamsComponentModule } from '../../shared/manage-teams/manage-teams.component';
 import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
+import { MatSelectModule } from '@angular/material/select';
+import { UserTypesEnum } from '../../../../core/enums/user-types.enum';
 
 @Component({
   selector: 'app-edit-user',
@@ -19,6 +20,7 @@ import { ManagePermissionsComponentModule } from '../../shared/manage-permission
 })
 export class EditUserComponent implements OnInit {
   form = new UserForm();
+  UserTypeEnum = UserTypesEnum;
 
   constructor(
     private usersService: UsersService,
@@ -40,7 +42,7 @@ export class EditUserComponent implements OnInit {
       return;
     }
     this.usersService.save(this.form.value).subscribe(() => {
-      this.router.navigateByUrl('/settings/teams');
+      this.router.navigateByUrl('/settings/users');
     });
   }
 }
@@ -58,8 +60,8 @@ export class EditUserComponent implements OnInit {
     MatButtonModule,
     RouterModule,
     MatTabsModule,
-    ManageTeamsComponentModule,
     ManagePermissionsComponentModule,
+    MatSelectModule,
   ]
 })
 export class EditUserComponentModule {

@@ -5,6 +5,7 @@ export class UserForm extends FormGroup {
     super({
       ID: new FormControl(),
       Username: new FormControl('', [Validators.required]),
+      Type: new FormControl(),
       Name: new FormControl(),
       Surname: new FormControl(),
       Email: new FormControl(),

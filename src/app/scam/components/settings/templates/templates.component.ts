@@ -16,7 +16,7 @@ import { MatTableModule } from '@angular/material/table';
 })
 export class TemplatesComponent implements OnInit {
   templates: Template[] = [];
-  columnsToDisplay = ['name', 'inventory', 'playbook', 'sshkey', 'actions'];
+  columnsToDisplay = ['name', 'project', 'inventory', 'playbook', 'sshkey', 'actions'];
 
   constructor(private templatesService: TemplatesService, private dialog: MatDialog) {
   }

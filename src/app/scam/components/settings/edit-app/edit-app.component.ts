@@ -22,6 +22,9 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { FormInventoryComponentModule } from '../../shared/form/form-inventory/form-inventory.component';
 import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
 import { FormRepositoryComponentModule } from '../../shared/form/form-repository/form-repository.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
+import { App } from '../../../../core/interfaces/app';
 
 @Component({
   selector: 'app-edit-app',
@@ -31,6 +34,7 @@ export class EditAppComponent implements OnInit {
   form = new ApplicationForm();
   inventories: Inventory[];
   keys: SshKey[];
+  app: App;
 
   constructor(
     private appsService: AppsService,
@@ -51,6 +55,7 @@ export class EditAppComponent implements OnInit {
       ]).subscribe(([app, inventories, keys]) => {
         this.inventories = inventories;
         this.keys = keys;
+        this.app = app;
         this.form.createApplicationInventories(app);
         this.form.patchValue(app);
       });
@@ -99,6 +104,8 @@ export class EditAppComponent implements OnInit {
     FormSshKeyComponentModule,
     RouterModule,
     FormRepositoryComponentModule,
+    MatTabsModule,
+    ManagePermissionsComponentModule,
   ]
 })
 export class EditAppComponentModule {

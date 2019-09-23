@@ -27,13 +27,13 @@
         </mat-form-field>
         <div class="button-row">
           <button type="button" mat-raised-button routerLink="/settings/templates">Cancel</button>
-          <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+          <button *ngIf="template?.Write" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
         </div>
       </form>
     </mat-tab>
     <mat-tab label="Permissions">
-      <div class="p2">
-        <app-manage-permissions></app-manage-permissions>
+      <div class="p0">
+        <app-manage-permissions [editable]="template?.Admin" [templateId]="form.ID.value"></app-manage-permissions>
       </div>
     </mat-tab>
   </mat-tab-group>

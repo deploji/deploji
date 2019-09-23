@@ -27,7 +27,7 @@ export class TestWrapperComponent {
 class AppServiceMock {
   getApps(): Observable<App[]> {
     return of([
-      {ID: 1, Name: 'Mastermind'},
+      {ID: 1, Name: 'Deploji'},
       {ID: 2, Name: 'Fake App'},
     ]);
   }

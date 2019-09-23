@@ -13,6 +13,14 @@
           <mat-error>Username is <strong>required</strong></mat-error>
         </mat-form-field>
         <mat-form-field class="block">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="Type" required>
+            <mat-option [value]="UserTypeEnum.REGULAR">Regular</mat-option>
+            <mat-option [value]="UserTypeEnum.ADMIN">Administrator</mat-option>
+            <mat-option [value]="UserTypeEnum.AUDITOR">Auditor</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="block">
           <mat-label>Name</mat-label>
           <input matInput type="text" formControlName="Name">
         </mat-form-field>
@@ -35,14 +43,9 @@
         </div>
       </form>
     </mat-tab>
-    <mat-tab [disabled]="!form.get('ID').value" label="Teams">
-      <div class="p2">
-        <app-manage-teams></app-manage-teams>
-      </div>
-    </mat-tab>
     <mat-tab [disabled]="!form.get('ID').value" label="Permissions">
-      <div class="p2">
-        <app-manage-permissions></app-manage-permissions>
+      <div class="p0">
+        <app-manage-permissions [userId]="form.get('ID').value"></app-manage-permissions>
       </div>
     </mat-tab>
   </mat-tab-group>

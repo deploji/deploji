@@ -22,7 +22,7 @@ export class InventoriesService {
 
   save(inventory: Inventory): Observable<Inventory> {
     if (inventory.ID) {
-      return this.http.put<Inventory>('/api/inventories', inventory);
+      return this.http.put<Inventory>(`/api/inventories/${inventory.ID}`, inventory);
     }
     return this.http.post<Inventory>('/api/inventories', inventory);
   }

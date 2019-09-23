@@ -16,6 +16,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DialogSynchronizeComponentModule } from './scam/components/dialog/dialog-synchronize/dialog-synchronize.component';
 import { DialogConfirmComponentModule } from './scam/components/dialog/dialog-confirm/dialog-confirm.component';
 import { AppRoutingModule } from './routing/app-routing.module';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ProgressBarComponentModule } from './scam/components/shared/progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -25,6 +27,8 @@ import { AppRoutingModule } from './routing/app-routing.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatSnackBarModule,
+    ProgressBarComponentModule,
     NgxPermissionsModule.forRoot(),
     NavComponentModule,
     DialogSynchronizeComponentModule,

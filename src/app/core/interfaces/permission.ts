@@ -1,5 +1,12 @@
+import { ObjectTypesEnum } from '../enums/object-types.enum';
+import { SubjectTypesEnum } from '../enums/subject-types.enum';
+
 export interface Permission {
-  Name?: string;
-  Type?: string;
-  Role?: string;
+  SubjectType?: SubjectTypesEnum;
+  SubjectID?: number;
+  SubjectName?: string;
+  ObjectType?: ObjectTypesEnum;
+  ObjectID?: number;
+  ObjectName?: string;
+  Action?: string;
 }

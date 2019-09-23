@@ -1,100 +1,109 @@
 <h1>
-  <ng-container *ngIf="!form.ID.value">Create new</ng-container>
-  <ng-container *ngIf="form.ID.value">Edit</ng-container>
+  <ng-container *ngIf="!app?.ID">Create new</ng-container>
+  <ng-container *ngIf="app?.ID">Edit</ng-container>
   app
 </h1>
-<mat-card>
-  <form [formGroup]="form">
-    <div class="row">
-      <mat-form-field class="block w-100 col">
-        <mat-label>Display name</mat-label>
-        <input matInput type="text" formControlName="Name">
-      </mat-form-field>
-      <mat-form-field class="block w-100 col">
-        <mat-label>Ansible name</mat-label>
-        <input matInput type="text" formControlName="AnsibleName">
-        <mat-hint>Ansible name is passed to ansible playbook as "app" variable</mat-hint>
-      </mat-form-field>
-    </div>
+<mat-card class="p0">
+  <mat-tab-group>
+    <mat-tab label="Details">
+      <form [formGroup]="form" class="p2">
+        <div class="row">
+          <mat-form-field class="block w-100 col">
+            <mat-label>Display name</mat-label>
+            <input matInput type="text" formControlName="Name">
+          </mat-form-field>
+          <mat-form-field class="block w-100 col">
+            <mat-label>Ansible name</mat-label>
+            <input matInput type="text" formControlName="AnsibleName">
+            <mat-hint>Ansible name is passed to ansible playbook as "app" variable</mat-hint>
+          </mat-form-field>
+        </div>
 
-    <div class="row">
-      <div class="w-100 col">
-        <app-form-project label="Ansible Project" formControlName="Project"></app-form-project>
-      </div>
-      <div class="w-100 col">
-        <app-form-project-file label="Ansible playbook"
-                               formControlName="AnsiblePlaybook"
-                               [project]="form.get('Project').value">
-        </app-form-project-file>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="w-100 col">
-        <app-form-repository label="Artifact Repository" formControlName="Repository"></app-form-repository>
-      </div>
-      <mat-form-field class="block w-100 col">
-        <mat-label>Group name</mat-label>
-        <input matInput type="text" formControlName="RepositoryGroup">
-      </mat-form-field>
-      <mat-form-field class="block w-100 col">
-        <mat-label>Artifact name</mat-label>
-        <input matInput type="text" formControlName="RepositoryArtifact">
-      </mat-form-field>
-    </div>
-
-    <div>
-      <h2>Inventories</h2>
-      <div class="flex flex-column" formArrayName="Inventories"
-           *ngFor="let inventory of form.Inventories.controls; let i = index">
-        <mat-card class="my2">
-          <div [formGroupName]="i">
-            <button class="float-right" type="button" mat-icon-button title="Delete inventory"
-                    (click)="delete(inventory.value)">
-              <mat-icon color="warn">delete_forever</mat-icon>
-            </button>
-            <div class="mb2">
-              <mat-slide-toggle formControlName="IsActive">is active</mat-slide-toggle>
-            </div>
-
-            <mat-form-field class="w-100">
-              <mat-label>Name</mat-label>
-              <input matInput type="text" formControlName="Name">
-            </mat-form-field>
-
-            <div class="row">
-              <div class="col">
-                <app-form-inventory [inventories]="inventories" formControlName="Inventory"></app-form-inventory>
-              </div>
-              <div class="col">
-                <app-form-ssh-key [keys]="keys" formControlName="Key"></app-form-ssh-key>
-              </div>
-            </div>
-            <div class="row">
-              <mat-form-field class="w-100 col">
-                <mat-label>Extra variables</mat-label>
-                <textarea cdkTextareaAutosize matInput formControlName="ExtraVariables"></textarea>
-              </mat-form-field>
-              <mat-form-field class="w-100 col">
-                <mat-label>Application URLs</mat-label>
-                <textarea cdkTextareaAutosize matInput formControlName="ApplicationUrls"></textarea>
-              </mat-form-field>
-              <mat-form-field class="w-100 col">
-                <mat-label>Playbook</mat-label>
-                <input matInput type="text" formControlName="Playbook"/>
-              </mat-form-field>
-            </div>
+        <div class="row">
+          <div class="w-100 col">
+            <app-form-project label="Ansible Project" formControlName="Project"></app-form-project>
           </div>
-        </mat-card>
+          <div class="w-100 col">
+            <app-form-project-file label="Ansible playbook"
+                                   formControlName="AnsiblePlaybook"
+                                   [project]="form.get('Project').value">
+            </app-form-project-file>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="w-100 col">
+            <app-form-repository label="Artifact Repository" formControlName="Repository"></app-form-repository>
+          </div>
+          <mat-form-field class="block w-100 col">
+            <mat-label>Group name</mat-label>
+            <input matInput type="text" formControlName="RepositoryGroup">
+          </mat-form-field>
+          <mat-form-field class="block w-100 col">
+            <mat-label>Artifact name</mat-label>
+            <input matInput type="text" formControlName="RepositoryArtifact">
+          </mat-form-field>
+        </div>
+
+        <div>
+          <h2>Inventories</h2>
+          <div class="flex flex-column" formArrayName="Inventories"
+               *ngFor="let inventory of form.Inventories.controls; let i = index">
+            <mat-card class="my2">
+              <div [formGroupName]="i">
+                <button class="float-right" type="button" mat-icon-button title="Delete inventory"
+                        (click)="delete(inventory.value)">
+                  <mat-icon color="warn">delete_forever</mat-icon>
+                </button>
+                <div class="mb2">
+                  <mat-slide-toggle formControlName="IsActive">is active</mat-slide-toggle>
+                </div>
+
+                <mat-form-field class="w-100">
+                  <mat-label>Name</mat-label>
+                  <input matInput type="text" formControlName="Name">
+                </mat-form-field>
+
+                <div class="row">
+                  <div class="col">
+                    <app-form-inventory [inventories]="inventories" formControlName="Inventory"></app-form-inventory>
+                  </div>
+                  <div class="col">
+                    <app-form-ssh-key [keys]="keys" formControlName="Key"></app-form-ssh-key>
+                  </div>
+                </div>
+                <div class="row">
+                  <mat-form-field class="w-100 col">
+                    <mat-label>Extra variables</mat-label>
+                    <textarea cdkTextareaAutosize matInput formControlName="ExtraVariables"></textarea>
+                  </mat-form-field>
+                  <mat-form-field class="w-100 col">
+                    <mat-label>Application URLs</mat-label>
+                    <textarea cdkTextareaAutosize matInput formControlName="ApplicationUrls"></textarea>
+                  </mat-form-field>
+                  <mat-form-field class="w-100 col">
+                    <mat-label>Playbook</mat-label>
+                    <input matInput type="text" formControlName="Playbook"/>
+                  </mat-form-field>
+                </div>
+              </div>
+            </mat-card>
+          </div>
+          <button *ngIf="app?.Write" mat-raised-button (click)="addInventory()">
+            Add inventory
+            <mat-icon>playlist_add</mat-icon>
+          </button>
+        </div>
+        <div class="button-row mt4">
+          <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
+          <button *ngIf="app?.Write" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Permissions">
+      <div class="p0">
+        <app-manage-permissions [editable]="app?.Admin" [appId]="app?.ID"></app-manage-permissions>
       </div>
-      <button mat-raised-button (click)="addInventory()">
-        Add inventory
-        <mat-icon>playlist_add</mat-icon>
-      </button>
-    </div>
-    <div class="button-row mt4">
-      <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
-      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
-    </div>
-  </form>
+    </mat-tab>
+  </mat-tab-group>
 </mat-card>
