@@ -24,6 +24,8 @@ export class AnsiPipe implements PipeTransform {
       .replace(/\u001b\[0;37m/g, '<span class="ansi-white">')
       .replace(/\u001b\[1;37m/g, '<span class="ansi-bright-white">')
       .replace(/\u001b\[0m/g, '</span>')
+      .replace(/\\n/g, '<br/>')
+      .replace(/\\t/g, '&nbsp&nbsp&nbsp&nbsp')
       ;
   }
 }
