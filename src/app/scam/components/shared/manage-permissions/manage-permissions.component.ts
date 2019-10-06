@@ -141,11 +141,11 @@ export class ManagePermissionsComponent implements OnChanges {
     FormApplicationComponentModule,
     FormRoleComponentModule,
     FormTemplateComponentModule,
+    FormUserComponentModule,
+    FormTeamComponentModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatSelectModule,
-    FormUserComponentModule,
-    FormTeamComponentModule,
   ]
 })
 export class ManagePermissionsComponentModule {

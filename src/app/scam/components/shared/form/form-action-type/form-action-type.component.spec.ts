@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormActionTypeComponent } from './form-action-type.component';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -12,15 +12,18 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ObjectTypesEnum } from '../../../../../core/enums/object-types.enum';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   template: `
     <form [formGroup]="form">
-      <app-form-application formControlName="app" label="App"></app-form-application>
+      <app-form-action-type [type]="ObjectTypesEnum.TEMPLATES" formControlName="app" label="App"></app-form-action-type>
     </form>
   `
 })
 export class TestWrapperComponent {
+  ObjectTypesEnum = ObjectTypesEnum;
   form = new FormGroup({app: new FormControl({ID: 1}, [Validators.required])});
 }
 
@@ -33,7 +36,7 @@ class AppServiceMock {
   }
 }
 
-describe('FormApplicationComponent', () => {
+describe('FormActionTypeComponent', () => {
   let component: FormActionTypeComponent;
   let fixture: ComponentFixture<TestWrapperComponent>;
 
@@ -43,12 +46,12 @@ describe('FormApplicationComponent', () => {
         CommonModule,
         ReactiveFormsModule,
         MatAutocompleteModule,
+        MatSelectModule,
         ScrollingModule,
         MatFormFieldModule,
         MatInputModule,
         NoopAnimationsModule,
       ],
-      schemas: [NO_ERRORS_SCHEMA],
       providers: [{provide: AppsService, useClass: AppServiceMock}],
       declarations: [
         FormActionTypeComponent,

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormApplicationComponent } from './form-application.component';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';

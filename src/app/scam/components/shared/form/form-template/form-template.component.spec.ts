@@ -1,4 +1,4 @@
-import { async, ComponentFixture, fakeAsync, flush, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormTemplateComponent } from './form-template.component';
 import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -12,11 +12,12 @@ import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 @Component({
   template: `
     <form [formGroup]="form">
-      <app-form-application formControlName="app" label="App"></app-form-application>
+      <app-form-template formControlName="app" label="App"></app-form-template>
     </form>
   `
 })
@@ -33,7 +34,7 @@ class AppServiceMock {
   }
 }
 
-describe('FormApplicationComponent', () => {
+describe('FormTemplateComponent', () => {
   let component: FormTemplateComponent;
   let fixture: ComponentFixture<TestWrapperComponent>;
 
@@ -47,6 +48,7 @@ describe('FormApplicationComponent', () => {
         MatFormFieldModule,
         MatInputModule,
         NoopAnimationsModule,
+        HttpClientTestingModule,
       ],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [{provide: AppsService, useClass: AppServiceMock}],
