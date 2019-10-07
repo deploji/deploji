@@ -3,33 +3,50 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   user
 </h1>
-<mat-card>
-  <form [formGroup]="form">
-    <mat-form-field class="d-block">
-      <mat-label>Username</mat-label>
-      <input matInput type="text" formControlName="Username">
-      <mat-error>Username is <strong>required</strong></mat-error>
-    </mat-form-field>
-    <mat-form-field class="d-block">
-      <mat-label>Name</mat-label>
-      <input matInput type="text" formControlName="Name">
-    </mat-form-field>
-    <mat-form-field class="d-block">
-      <mat-label>Surname</mat-label>
-      <input matInput type="text" formControlName="Surname">
-    </mat-form-field>
-    <mat-form-field class="d-block">
-      <mat-label>Email</mat-label>
-      <input matInput type="text" formControlName="Email">
-    </mat-form-field>
-    <mat-form-field class="d-block">
-      <mat-label>Password</mat-label>
-      <input matInput type="text" formControlName="Password">
-    </mat-form-field>
-    <mat-slide-toggle class="mb-4" formControlName="IsActive">Active</mat-slide-toggle>
-    <div class="button-row">
-      <button type="button" mat-raised-button routerLink="/settings/users">Cancel</button>
-      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
-    </div>
-  </form>
+<mat-card class="p0">
+  <mat-tab-group>
+    <mat-tab label="Details">
+      <form [formGroup]="form" class="p2">
+        <mat-form-field class="block">
+          <mat-label>Username</mat-label>
+          <input matInput type="text" formControlName="Username">
+          <mat-error>Username is <strong>required</strong></mat-error>
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Type</mat-label>
+          <mat-select formControlName="Type" required>
+            <mat-option [value]="UserTypeEnum.REGULAR">Regular</mat-option>
+            <mat-option [value]="UserTypeEnum.ADMIN">Administrator</mat-option>
+            <mat-option [value]="UserTypeEnum.AUDITOR">Auditor</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="Name">
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Surname</mat-label>
+          <input matInput type="text" formControlName="Surname">
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Email</mat-label>
+          <input matInput type="text" formControlName="Email">
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Password</mat-label>
+          <input matInput type="text" formControlName="Password">
+        </mat-form-field>
+        <mat-slide-toggle class="mb4" formControlName="IsActive">Active</mat-slide-toggle>
+        <div class="button-row">
+          <button type="button" mat-raised-button routerLink="/settings/users">Cancel</button>
+          <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab [disabled]="!form.get('ID').value" label="Permissions">
+      <div class="p0">
+        <app-manage-permissions [userId]="form.get('ID').value"></app-manage-permissions>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </mat-card>

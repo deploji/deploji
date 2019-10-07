@@ -39,7 +39,7 @@ RUN ng build --prod
 FROM nginx:1.16.0-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # copy artifact build from the 'build environment'
-COPY --from=build /app/dist/mastermind /usr/share/nginx/html
+COPY --from=build /app/dist/deploji /usr/share/nginx/html
 
 # expose port 80
 EXPOSE 80

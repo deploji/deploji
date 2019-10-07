@@ -28,7 +28,7 @@ export class SshKeysService {
 
   save(key: SshKey): Observable<SshKey> {
     if (key.ID) {
-      return this.http.put<SshKey>('/api/ssh-keys', key);
+      return this.http.put<SshKey>(`/api/ssh-keys/${key.ID}`, key);
     }
     return this.http.post<SshKey>('/api/ssh-keys', key);
   }

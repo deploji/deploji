@@ -1,0 +1,28 @@
+<h1>
+  <ng-container *ngIf="!form.get('ID').value">Create new</ng-container>
+  <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
+  team
+</h1>
+<mat-card class="p0">
+  <mat-tab-group>
+    <mat-tab label="Details">
+      <form [formGroup]="form" class="p2">
+        <mat-form-field class="block">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" formControlName="Name">
+          <mat-error>Name is <strong>required</strong></mat-error>
+        </mat-form-field>
+        <div class="button-row">
+          <button type="button" mat-raised-button routerLink="/settings/teams">Cancel</button>
+          <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab [disabled]="!form.get('ID').value" label="Users">
+      <app-manage-users [teamId]="teamId"></app-manage-users>
+    </mat-tab>
+    <mat-tab [disabled]="!form.get('ID').value" label="Permissions">
+      <app-manage-permissions [teamId]="teamId"></app-manage-permissions>
+    </mat-tab>
+  </mat-tab-group>
+</mat-card>

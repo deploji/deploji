@@ -4,6 +4,7 @@ import { environment } from '../../environments/environment';
 import { LoginComponent, LoginComponentModule } from '../scam/components/login/login.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { JobsRoutingModule } from './jobs/jobs-routing.module';
+import { UserTypesEnum } from '../core/enums/user-types.enum';
 
 const routes: Routes = [
   {
@@ -28,7 +29,7 @@ const routes: Routes = [
     canActivate: [NgxPermissionsGuard],
     data: {
       permissions: {
-        only: ['GUEST'],
+        only: [UserTypesEnum.GUEST],
         redirectTo: '/jobs'
       }
     }

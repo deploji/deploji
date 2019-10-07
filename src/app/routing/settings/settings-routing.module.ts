@@ -47,6 +47,11 @@ import {
   EditUserComponent,
   EditUserComponentModule
 } from '../../scam/components/settings/edit-user/edit-user.component';
+import { TeamsComponent, TeamsComponentModule } from '../../scam/components/settings/teams/teams.component';
+import {
+  EditTeamComponent,
+  EditTeamComponentModule
+} from '../../scam/components/settings/edit-team/edit-team.component';
 
 const routes: Routes = [
   {
@@ -84,6 +89,10 @@ const routes: Routes = [
           {
             label: 'Users',
             link: '/settings/users'
+          },
+          {
+            label: 'Teams',
+            link: '/settings/teams'
           },
           {
             label: 'Settings',
@@ -178,6 +187,18 @@ const routes: Routes = [
         component: EditUserComponent
       },
       {
+        path: 'teams',
+        component: TeamsComponent
+      },
+      {
+        path: 'teams/create',
+        component: EditTeamComponent
+      },
+      {
+        path: 'teams/:id',
+        component: EditTeamComponent
+      },
+      {
         path: 'settings',
         component: SystemSettingsComponent
       },
@@ -201,6 +222,8 @@ const routes: Routes = [
     TemplatesComponentModule,
     EditTemplateComponentModule,
     UsersComponentModule,
+    TeamsComponentModule,
+    EditTeamComponentModule,
     EditUserComponentModule,
     SystemSettingsComponentModule,
     RouterModule.forChild(routes)

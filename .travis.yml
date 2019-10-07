@@ -17,6 +17,6 @@ script:
 
 addons:
   sonarcloud:
-    organization: "sotomskir-github"
+    organization: "deploji"
     token:
       secure: "$SONAR_TOKEN"

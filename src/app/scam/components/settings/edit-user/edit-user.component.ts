@@ -9,6 +9,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
+import { MatSelectModule } from '@angular/material/select';
+import { UserTypesEnum } from '../../../../core/enums/user-types.enum';
 
 @Component({
   selector: 'app-edit-user',
@@ -16,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class EditUserComponent implements OnInit {
   form = new UserForm();
+  UserTypeEnum = UserTypesEnum;
 
   constructor(
     private usersService: UsersService,
@@ -43,8 +48,8 @@ export class EditUserComponent implements OnInit {
 }
 
 @NgModule({
-    declarations: [EditUserComponent],
-    exports: [EditUserComponent],
+  declarations: [EditUserComponent],
+  exports: [EditUserComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -54,6 +59,10 @@ export class EditUserComponent implements OnInit {
     MatSlideToggleModule,
     MatButtonModule,
     RouterModule,
+    MatTabsModule,
+    ManagePermissionsComponentModule,
+    MatSelectModule,
   ]
 })
-export class EditUserComponentModule {}
+export class EditUserComponentModule {
+}

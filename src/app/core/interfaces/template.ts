@@ -3,6 +3,8 @@ import { Project } from './project';
 import { Inventory } from './inventory';
 
 export interface Template {
+  Admin?: boolean;
+  Write?: boolean;
   PromptSshKey?: boolean;
   PromptPlaybook?: boolean;
   PromptInventory?: boolean;

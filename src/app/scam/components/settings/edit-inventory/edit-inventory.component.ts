@@ -10,6 +10,9 @@ import { MatInputModule } from '@angular/material/input';
 import { FormProjectComponentModule } from '../../shared/form/form-project/form-project.component';
 import { FormProjectFileComponentModule } from '../../shared/form/form-project-file/form-project-file.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
+import { Inventory } from '../../../../core/interfaces/inventory';
 
 @Component({
   selector: 'app-edit-inventory',
@@ -17,6 +20,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class EditInventoryComponent implements OnInit {
   form = new InventoryForm();
+  inventory: Inventory;
 
   constructor(
     private inventoriesService: InventoriesService,
@@ -28,6 +32,7 @@ export class EditInventoryComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id')) {
       this.inventoriesService.getInventory(Number(this.route.snapshot.paramMap.get('id'))).subscribe(inventory => {
+        this.inventory = inventory;
         this.form.patchValue(inventory);
       });
     }
@@ -56,6 +61,8 @@ export class EditInventoryComponent implements OnInit {
     FormProjectFileComponentModule,
     MatButtonModule,
     RouterModule,
+    MatTabsModule,
+    ManagePermissionsComponentModule,
   ]
 })
 export class EditInventoryComponentModule {}

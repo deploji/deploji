@@ -8,4 +8,8 @@ export class SshKeyForm extends FormGroup {
       Key: new FormControl()
     });
   }
+
+  get ID(): FormControl {
+    return this.get('ID') as FormControl;
+  }
 }

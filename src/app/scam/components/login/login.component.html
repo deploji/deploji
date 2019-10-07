@@ -1,12 +1,12 @@
-<div class="d-flex">
+<div class="flex">
   <div class="w-500px m-auto">
     <mat-card>
       <form [formGroup]="form" (ngSubmit)="login(form.value)">
-        <mat-form-field class="d-block">
+        <mat-form-field class="block">
           <mat-label>Username</mat-label>
           <input matInput type="text" formControlName="Username">
         </mat-form-field>
-        <mat-form-field class="d-block">
+        <mat-form-field class="block">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="Password">
         </mat-form-field>

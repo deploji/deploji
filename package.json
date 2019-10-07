@@ -1,5 +1,5 @@
 {
-  "name": "mastermind",
+  "name": "deploji",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -25,6 +25,7 @@
     "@mdi/font": "^3.8.95",
     "@stomp/ng2-stompjs": "^7.2.0",
     "ansi-html": "^0.0.7",
+    "basscss": "^8.1.0",
     "hammerjs": "^2.0.8",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",

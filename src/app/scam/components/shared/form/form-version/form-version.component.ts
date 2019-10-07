@@ -52,6 +52,7 @@ export class FormVersionComponent implements ControlValueAccessor, OnInit, OnDes
 
   ngOnInit(): void {
     this.filteredOptions = this.control.valueChanges.pipe(
+      map(value => value ? value : ''),
       tap(value => this.propagateChange(value)),
       map(value => this._filter(value))
     );

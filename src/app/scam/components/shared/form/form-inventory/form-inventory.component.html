@@ -4,4 +4,5 @@
     <mat-option *ngIf="!multiple" [value]=""></mat-option>
     <mat-option *ngFor="let inventory of inventories" [value]="inventory">{{inventory.Name}}</mat-option>
   </mat-select>
+  <mat-error>This field is required</mat-error>
 </mat-form-field>

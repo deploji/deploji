@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 
 @Component({
   selector: 'app-templates',
@@ -15,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 export class TemplatesComponent implements OnInit {
   templates: Template[] = [];
+  columnsToDisplay = ['name', 'project', 'inventory', 'playbook', 'sshkey', 'actions'];
 
   constructor(private templatesService: TemplatesService, private dialog: MatDialog) {
   }
@@ -41,14 +43,16 @@ export class TemplatesComponent implements OnInit {
 }
 
 @NgModule({
-    declarations: [TemplatesComponent],
-    exports: [TemplatesComponent],
+  declarations: [TemplatesComponent],
+  exports: [TemplatesComponent],
   imports: [
     CommonModule,
     MatButtonModule,
     RouterModule,
     MatCardModule,
     MatIconModule,
+    MatTableModule,
   ]
 })
-export class TemplatesComponentModule {}
+export class TemplatesComponentModule {
+}

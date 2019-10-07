@@ -1,7 +1,7 @@
-# Mastermind
-[![Build Status](https://travis-ci.org/sotomskir/mastermind.svg?branch=master)](https://travis-ci.org/sotomskir/mastermind)
-[![codecov](https://codecov.io/gh/sotomskir/mastermind/branch/master/graph/badge.svg)](https://codecov.io/gh/sotomskir/mastermind)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sotomskir_mastermind&metric=alert_status)](https://sonarcloud.io/dashboard?id=sotomskir_mastermind)
+# Deploji
+[![Build Status](https://travis-ci.org/deploji/deploji.svg?branch=master)](https://travis-ci.org/deploji/deploji)
+[![codecov](https://codecov.io/gh/deploji/deploji/branch/master/graph/badge.svg)](https://codecov.io/gh/deploji/deploji)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=deploji&metric=alert_status)](https://sonarcloud.io/dashboard?id=deploji)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
 

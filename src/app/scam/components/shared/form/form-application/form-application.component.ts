@@ -22,7 +22,7 @@ import { MatInputModule } from '@angular/material/input';
   ]
 })
 export class FormApplicationComponent implements ControlValueAccessor, OnInit {
-  @Input() label: string;
+  @Input() label = 'Application';
   control = new FormControl();
   apps: App[];
   filteredOptions: Observable<App[]>;
@@ -54,7 +54,7 @@ export class FormApplicationComponent implements ControlValueAccessor, OnInit {
           return value;
         }
         this.propagateChange(value);
-        return value.Name;
+        return value ? value.Name : '';
       }),
       map(value => this._filter(value))
     );

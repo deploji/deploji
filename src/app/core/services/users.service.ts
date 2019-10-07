@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../interfaces/user';
+import { Team } from '../interfaces/team';
 
 @Injectable({
   providedIn: 'root'
@@ -11,21 +12,25 @@ export class UsersService {
   }
 
   getUsers(): Observable<User[]> {
-    return this.http.get<User[]>('/api/auth/users');
+    return this.http.get<User[]>('/api/users');
   }
 
   destroy(id: number) {
-    return this.http.delete(`/api/auth/users/${id}`);
+    return this.http.delete(`/api/users/${id}`);
   }
 
   getUser(id: number): Observable<User> {
-    return this.http.get<User>(`/api/auth/users/${id}`);
+    return this.http.get<User>(`/api/users/${id}`);
   }
 
   save(user: User): Observable<User> {
     if (user.ID) {
-      return this.http.put<User>('/api/auth/users', user);
+      return this.http.put<User>(`/api/users/${user.ID}`, user);
     }
-    return this.http.post<User>('/api/auth/users', user);
+    return this.http.post<User>('/api/users', user);
+  }
+
+  getTeams(userId: number) {
+    return this.http.get<Team[]>(`/api/users/${userId}/teams`);
   }
 }

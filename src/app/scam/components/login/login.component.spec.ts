@@ -6,6 +6,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -16,7 +17,7 @@ describe('LoginComponent', () => {
       declarations: [LoginComponent],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [MatDialogModule],
-      imports: [HttpClientTestingModule, NgxPermissionsModule.forRoot(), RouterTestingModule, MatDialogModule]
+      imports: [MatSnackBarModule, HttpClientTestingModule, NgxPermissionsModule.forRoot(), RouterTestingModule, MatDialogModule]
     })
       .compileComponents();
   }));

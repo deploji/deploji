@@ -1,13 +1,12 @@
 <h1>Applications</h1>
-<mat-card *ngFor="let app of apps" class="my-2">
+<mat-card *ngFor="let app of apps" class="my2 p0">
   <mat-card-header>
-    <mat-card-title>
+    <mat-card-title class="m2">
       <strong>{{app?.Name}}</strong>
     </mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <table mat-table [dataSource]="app.Inventories" style="table-layout: fixed">
-      <caption>Applications</caption>
       <ng-container matColumnDef="inventory">
         <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Inventory</th>
         <td mat-cell *matCellDef="let element"> {{element.Inventory.Name}} </td>
