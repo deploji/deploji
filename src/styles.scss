@@ -20,9 +20,25 @@ table {
 .rotate {
   animation: spin 1.5s ease-in-out infinite;
 }
-@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
-@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+
+@-moz-keyframes spin {
+  100% {
+    -moz-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 
 button.mat-menu-item {
   line-height: 24px !important;
@@ -53,4 +69,24 @@ a {
   text-decoration: none;
   color: black;
   font-weight: bold;
+}
+
+app-root {
+  display: flex;
+  position: absolute;
+  top: 55px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media (max-width: 600px) {
+  app-root {
+    top: 100px;
+  }
+}
+
+app-nav {
+  flex: 1;
+  display: flex;
 }

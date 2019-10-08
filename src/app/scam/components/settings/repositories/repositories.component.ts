@@ -1,7 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { Repository } from '../../../../core/interfaces/repository';
 import { RepositoriesService } from '../../../../core/services/repositories.service';
-import { DialogConfirmComponent } from '../../dialog/dialog-confirm/dialog-confirm.component';
+import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
 import { MatDialog } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';

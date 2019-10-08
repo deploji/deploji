@@ -1,49 +1,29 @@
-import { Component, NgModule, OnInit } from '@angular/core';
-import { App } from '../../../core/interfaces/app';
-import { AppsService } from '../../../core/services/apps.service';
-import { JobsService } from '../../../core/services/jobs.service';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { MatTableModule } from '@angular/material/table';
-import { UrlsComponentModule } from '../shared/urls/urls.component';
-import { forkJoin } from 'rxjs';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { ApplicationsListComponentModule } from './applications-list/applications-list.component';
+import { InventoriesComponentModule } from './inventories/inventories.component';
 
 @Component({
   selector: 'app-applications',
   templateUrl: './applications.component.html',
+  styleUrls: ['./applications.component.scss']
 })
-export class ApplicationsComponent implements OnInit {
-  apps: App[] = [];
-  columnsToDisplay = ['inventory', 'version', 'urls'];
-
-  constructor(private appsService: AppsService, private jobsService: JobsService) {
-  }
-
-  ngOnInit() {
-    forkJoin([
-      this.appsService.getApps(),
-      this.jobsService.getLatestDeployments()
-    ]).subscribe(([apps, lastJobs]) => {
-      apps.forEach(app => {
-        app.Inventories = app.Inventories.filter(value => value.IsActive === true);
-        app.Inventories.forEach(inventory => {
-          const deployment = lastJobs.find(job => job.InventoryID === inventory.ID && job.ApplicationID === app.ID);
-          inventory.Version = deployment ? deployment.Version : '';
-        });
-      });
-      this.apps = apps;
-    });
-  }
+export class ApplicationsComponent {
+  control = new FormControl('app');
 }
 
 @NgModule({
-    declarations: [ApplicationsComponent],
-    exports: [ApplicationsComponent],
+  declarations: [ApplicationsComponent],
+  exports: [ApplicationsComponent],
   imports: [
     CommonModule,
-    MatCardModule,
-    MatTableModule,
-    UrlsComponentModule,
+    MatButtonToggleModule,
+    ReactiveFormsModule,
+    ApplicationsListComponentModule,
+    InventoriesComponentModule,
   ]
 })
-export class ApplicationsComponentModule {}
+export class ApplicationsComponentModule {
+}

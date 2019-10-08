@@ -1,13 +1,13 @@
 import { Component, NgModule, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material';
-import { of, Subscription } from 'rxjs';
+import { Observable, of, Subscription } from 'rxjs';
 import { Page } from '../../../core/interfaces/page';
 import { Collection } from '../../../core/utils/collection';
 import { DeploymentFiltersForm } from '../../../core/forms/deployment-filters.form';
 import { Router, RouterModule } from '@angular/router';
 import { RxStompService } from '@stomp/ng2-stompjs';
 import { StatusMessage } from '../../../core/interfaces/status-message';
-import { tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { JobsService } from '../../../core/services/jobs.service';
 import { Job } from '../../../core/interfaces/job';
 import { JobStatus } from '../../../core/enums/job-status.enum';
@@ -23,6 +23,7 @@ import { JobTimeComponentModule } from '../shared/job-time/job-time.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { JobStatusComponentModule } from '../shared/job-status/job-status.component';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-jobs',
@@ -35,9 +36,14 @@ export class JobsComponent implements OnInit, OnDestroy {
   jobs: Collection<Job>;
   columnsToDisplay = ['status', 'id', 'type', 'project', 'application', 'inventory', 'version', 'time', 'user', 'actions'];
   filters = new DeploymentFiltersForm();
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
 
   constructor(
     private router: Router,
+    private breakpointObserver: BreakpointObserver,
     private jobsService: JobsService,
     private stomp: RxStompService
   ) {
@@ -51,6 +57,13 @@ export class JobsComponent implements OnInit, OnDestroy {
       const statusMessage = JSON.parse(message.body);
       this.updateStatus(statusMessage);
     });
+    this.subscription.add(this.isHandset$.subscribe(isHeadset => {
+      if (isHeadset) {
+        this.columnsToDisplay = ['status', 'id', 'application', 'inventory'];
+      } else {
+        this.columnsToDisplay = ['status', 'id', 'type', 'project', 'application', 'inventory', 'version', 'time', 'user', 'actions'];
+      }
+    }));
     this.jobsService.getJobs().subscribe(jobs => {
       this.jobs = jobs;
       this.paginator.length = jobs.totalCount;
@@ -106,8 +119,8 @@ export class JobsComponent implements OnInit, OnDestroy {
 }
 
 @NgModule({
-    declarations: [JobsComponent],
-    exports: [JobsComponent],
+  declarations: [JobsComponent],
+  exports: [JobsComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -124,4 +137,5 @@ export class JobsComponent implements OnInit, OnDestroy {
     JobStatusComponentModule,
   ]
 })
-export class JobsComponentModule {}
+export class JobsComponentModule {
+}

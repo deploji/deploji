@@ -1,10 +1,10 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { AuthService } from '../../../core/services/auth.service';
+import { AuthService } from '../../../../core/services/auth.service';
 import { catchError, finalize } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
 import { DialogConfirmComponent } from '../dialog/dialog-confirm/dialog-confirm.component';
 import { throwError } from 'rxjs';
-import { LoginForm } from '../../../core/forms/login.form';
+import { LoginForm } from '../../../../core/forms/login.form';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { ProgressService } from '../../../core/services/progress.service';
+import { ProgressService } from '../../../../core/services/progress.service';
 
 @Component({
   selector: 'app-login',

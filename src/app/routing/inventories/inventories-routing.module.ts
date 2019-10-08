@@ -4,7 +4,7 @@ import { NavResolve } from '../../core/resolvers/nav.resolver';
 import {
   InventoriesComponent,
   InventoriesComponentModule
-} from '../../scam/components/inventories/inventories.component';
+} from '../../scam/components/applications/inventories/inventories.component';
 
 
 const routes: Routes = [

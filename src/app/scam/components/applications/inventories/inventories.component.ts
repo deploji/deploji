@@ -1,11 +1,11 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { InventoriesService } from '../../../core/services/inventories.service';
-import { Inventory } from '../../../core/interfaces/inventory';
-import { JobsService } from '../../../core/services/jobs.service';
+import { InventoriesService } from '../../../../core/services/inventories.service';
+import { Inventory } from '../../../../core/interfaces/inventory';
+import { JobsService } from '../../../../core/services/jobs.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
-import { UrlsComponentModule } from '../shared/urls/urls.component';
+import { UrlsComponentModule } from '../../shared/urls/urls.component';
 import { forkJoin } from 'rxjs';
 
 @Component({

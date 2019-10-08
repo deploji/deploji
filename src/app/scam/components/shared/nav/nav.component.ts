@@ -29,6 +29,7 @@ export class NavComponent implements OnInit, OnDestroy {
     );
   nav: Nav;
   opened: boolean;
+  title: string;
 
   constructor(private breakpointObserver: BreakpointObserver, private navService: NavService, private authService: AuthService) {
   }
@@ -39,11 +40,7 @@ export class NavComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.navService.navObservable.subscribe((nav: Nav) => {
       this.nav = nav;
-      if (!nav.items || !Array.isArray(nav.items) || nav.items.length === 0) {
-        this.opened = false;
-      } else {
-        this.opened = true;
-      }
+      this.opened = !(!nav.items || !Array.isArray(nav.items) || nav.items.length === 0);
     });
   }
 

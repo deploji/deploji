@@ -1,7 +1,7 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { App } from '../../../../core/interfaces/app';
 import { AppsService } from '../../../../core/services/apps.service';
-import { DialogConfirmComponent } from '../../dialog/dialog-confirm/dialog-confirm.component';
+import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
 import { MatDialog } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
@@ -9,22 +9,44 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Observable, Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-apps',
   templateUrl: './apps.component.html',
 })
-export class AppsComponent implements OnInit {
+export class AppsComponent implements OnInit, OnDestroy {
   apps: App[] = [];
   columnsToDisplay = ['name', 'project', 'playbook', 'repository', 'artifact', 'actions'];
+  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
+    .pipe(
+      map(result => result.matches)
+    );
+  private subscription: Subscription;
 
-  constructor(private appsService: AppsService, private dialog: MatDialog) {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private appsService: AppsService,
+    private dialog: MatDialog) {
   }
 
   ngOnInit() {
+    this.subscription = this.isHandset$.subscribe(isHeadset => {
+      if (isHeadset) {
+        this.columnsToDisplay = ['name', 'artifact', 'actions'];
+      } else {
+        this.columnsToDisplay = ['name', 'project', 'playbook', 'repository', 'artifact', 'actions'];
+      }
+    });
     this.appsService.getApps().subscribe(apps => {
       this.apps = apps;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   delete(app: App) {

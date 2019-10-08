@@ -2,7 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { SettingsService } from '../../../../core/services/settings.service';
 import { SettingGroup } from '../../../../core/interfaces/settingGroup';
 import { MatDialog } from '@angular/material';
-import { DialogConfirmComponent } from '../../dialog/dialog-confirm/dialog-confirm.component';
+import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
 import { SettingsForm } from '../../../../core/forms/settings.form';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';

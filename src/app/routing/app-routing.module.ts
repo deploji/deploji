@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { environment } from '../../environments/environment';
-import { LoginComponent, LoginComponentModule } from '../scam/components/login/login.component';
+import { LoginComponent, LoginComponentModule } from '../scam/components/shared/login/login.component';
 import { NgxPermissionsGuard } from 'ngx-permissions';
 import { JobsRoutingModule } from './jobs/jobs-routing.module';
 import { UserTypesEnum } from '../core/enums/user-types.enum';

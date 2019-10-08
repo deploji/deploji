@@ -1,23 +1,22 @@
 .sidenav-container {
-  height: 100%;
+  flex: 1;
 }
 
 .sidenav {
   width: 200px;
+  position: fixed;
+  bottom: 0;
+  top: 55px;
+}
+
+@media (max-width: 600px) {
+  .sidenav {
+    top: 100px;
+  }
 }
 
 .sidenav .mat-toolbar {
   background: inherit;
-}
-
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-mat-sidenav-content {
-  min-height: 100vh;
 }
 
 .mat-drawer-container {
@@ -26,4 +25,28 @@ mat-sidenav-content {
 
 .menu-item {
   font-weight: normal;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding-left: 0;
+  min-height: 55px;
+}
+
+.hamburger {
+  margin: 0 8px 0 0;
+  width: 64px;
+  height: 64px;
+}
+
+.second-row {
+  height: 45px;
+}
+
+.first-row {
+  height: 55px;
 }
