@@ -40,6 +40,29 @@ table {
   }
 }
 
+.rotate2 {
+  animation: spin2 2.5s ease-in-out infinite;
+}
+
+@-moz-keyframes spin2 {
+  100% {
+    -moz-transform: rotate(180deg);
+  }
+}
+
+@-webkit-keyframes spin2 {
+  100% {
+    -webkit-transform: rotate(180deg);
+  }
+}
+
+@keyframes spin2 {
+  100% {
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+
 button.mat-menu-item {
   line-height: 24px !important;
 }

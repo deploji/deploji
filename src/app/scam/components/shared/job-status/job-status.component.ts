@@ -4,6 +4,7 @@ import { JobStatus } from '../../../../core/enums/job-status.enum';
 import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-job-status',
@@ -26,7 +27,8 @@ export class JobStatusComponent implements OnInit {
   imports: [
     CommonModule,
     MatChipsModule,
-    RouterModule
+    RouterModule,
+    MatIconModule
   ]
 })
 export class JobStatusComponentModule { }
