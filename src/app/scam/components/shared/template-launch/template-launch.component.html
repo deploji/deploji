@@ -9,7 +9,8 @@
       <mat-label>Extra variables</mat-label>
       <textarea cdkTextareaAutosize matInput type="textarea" formControlName="ExtraVariables"></textarea>
     </mat-form-field>
-    <div class="button-row">
+    <div class="button-row flex">
+      <div class="flex-auto"></div>
       <button type="button" mat-raised-button (click)="cancel()">Cancel</button>
       <button type="button" mat-raised-button color="primary" (click)="save()">Launch</button>
     </div>

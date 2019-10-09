@@ -1,7 +1,12 @@
-<h1>Applications</h1>
-<mat-button-toggle-group [formControl]="control">
-  <mat-button-toggle value="app">Applications</mat-button-toggle>
-  <mat-button-toggle value="inventory">Inventories</mat-button-toggle>
-</mat-button-toggle-group>
+<div class="flex flex-wrap">
+  <h1>Applications</h1>
+  <div class="flex-auto"></div>
+  <div>
+    <mat-button-toggle-group [formControl]="control">
+      <mat-button-toggle value="app">Applications</mat-button-toggle>
+      <mat-button-toggle value="inventory">Inventories</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
 <app-applications-list *ngIf="control.value === 'app'"></app-applications-list>
 <app-inventories *ngIf="control.value === 'inventory'"></app-inventories>

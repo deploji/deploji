@@ -2,7 +2,8 @@
 <div mat-dialog-content>
   <p>{{data.message}}</p>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="flex">
+  <div class="flex-auto"></div>
   <button mat-button [mat-dialog-close]="true">OK</button>
   <button *ngIf="!data.hideCancelButton" mat-button [mat-dialog-close]="false">Cancel</button>
 </div>

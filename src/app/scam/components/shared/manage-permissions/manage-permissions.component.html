@@ -61,10 +61,14 @@
       </ng-container>
     </ng-container>
     <app-form-action-type [type]="form.ObjectType.value" formControlName="Action"></app-form-action-type>
-    <button mat-raised-button class="mr2" (click)="toggleDialog()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="addPermission()">Save</button>
+    <div class="flex">
+      <div class="flex-auto"></div>
+      <button mat-raised-button class="mr2" (click)="toggleDialog()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="addPermission()">Save</button>
+    </div>
   </div>
 </ng-container>
-<div class="p2">
+<div class="p2 flex">
+  <div class="flex-auto"></div>
   <button *ngIf="!showAddDialog && editable" mat-raised-button (click)="toggleDialog()">Add permission</button>
 </div>

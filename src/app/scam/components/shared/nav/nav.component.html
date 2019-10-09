@@ -1,4 +1,4 @@
-<mat-toolbar class="navbar" color="primary">
+<mat-toolbar class="navbar mat-elevation-z6" color="primary">
   <mat-toolbar-row class="pl0 first-row">
     <button
       type="button"
@@ -9,7 +9,7 @@
       <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
     </button>
     <span class="mr2">Deploji</span>
-    <ng-container *ngIf="!(isHandset$ | async)">
+    <ng-container *ngIf="(isHandset$ | async) === false">
       <button
         *ngxPermissionsExcept="UserTypes.GUEST"
         type="button"
@@ -39,16 +39,6 @@
       </button>
     </ng-container>
     <span class="flex-auto"></span>
-    <button
-      *ngxPermissionsExcept="UserTypes.GUEST"
-      type="button"
-      aria-label="Settings"
-      title="Settings"
-      routerLink="/settings"
-      mat-icon-button
-    >
-      <mat-icon aria-label="Profile">settings</mat-icon>
-    </button>
     <button
       *ngxPermissionsExcept="UserTypes.GUEST"
       (click)="logout()"
@@ -99,19 +89,19 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>{{nav.title}}</mat-toolbar>
+    <mat-toolbar>Settings</mat-toolbar>
     <mat-nav-list *ngxPermissionsExcept="UserTypes.GUEST">
       <a mat-list-item class="menu-item" routerLink="/settings/keys">SSH keys</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="UserTypes.ADMIN"
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]"
          routerLink="/settings/projects">Projects</a>
       <a mat-list-item class="menu-item" routerLink="/settings/inventories">Inventories</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="UserTypes.ADMIN" routerLink="/settings/repositories">Artifact
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/repositories">Artifact
         Repositories</a>
       <a mat-list-item class="menu-item" routerLink="/settings/apps">Applications</a>
       <a mat-list-item class="menu-item" routerLink="/settings/templates">Templates</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="UserTypes.ADMIN" routerLink="/settings/users">Users</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="UserTypes.ADMIN" routerLink="/settings/teams">Teams</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="UserTypes.ADMIN"
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/users">Users</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/teams">Teams</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]"
          routerLink="/settings/settings">Settings</a>
     </mat-nav-list>
   </mat-sidenav>

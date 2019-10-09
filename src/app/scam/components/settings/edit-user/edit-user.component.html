@@ -37,7 +37,8 @@
           <input matInput type="text" formControlName="Password">
         </mat-form-field>
         <mat-slide-toggle class="mb4" formControlName="IsActive">Active</mat-slide-toggle>
-        <div class="button-row">
+        <div class="button-row flex">
+          <div class="flex-auto"></div>
           <button type="button" mat-raised-button routerLink="/settings/users">Cancel</button>
           <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
         </div>

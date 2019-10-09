@@ -2,6 +2,7 @@
 <div mat-dialog-content>
   <p>{{data.message | json}}</p>
 </div>
-<div mat-dialog-actions>
+<div mat-dialog-actions class="flex">
+  <div class="flex-auto"></div>
   <button mat-button (click)="dialogRef.close()">OK</button>
 </div>

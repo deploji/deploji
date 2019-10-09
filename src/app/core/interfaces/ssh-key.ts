@@ -1,6 +1,7 @@
+import { Permissions } from './permissions';
+
 export interface SshKey {
-  Admin?: boolean;
-  Write?: boolean;
+  Permissions?: Permissions;
   ID?: number;
   Title: string;
 }

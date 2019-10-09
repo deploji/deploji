@@ -1,4 +1,4 @@
-<div class="flex">
+<div class="flex flex-wrap">
   <h1>SSH keys</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
@@ -11,10 +11,10 @@
       <a routerLink="/settings/keys/{{key.ID}}">{{key.Title}}</a>
     </div>
     <div class="flex-auto"></div>
-    <button *ngIf="key.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">
+    <button *ngIf="key?.Permissions?.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">
       <mat-icon color="primary">edit</mat-icon>
     </button>
-    <button *ngIf="key.Write" type="button" mat-icon-button title="Delete key" (click)="delete(key)">
+    <button *ngIf="key?.Permissions?.Write" type="button" mat-icon-button title="Delete key" (click)="delete(key)">
       <mat-icon color="warn">delete_forever</mat-icon>
     </button>
   </div>

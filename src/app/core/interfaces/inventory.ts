@@ -1,8 +1,9 @@
 import { Project } from './project';
 import { ApplicationInventory } from './application-inventory';
+import { Permissions } from './permissions';
 
 export interface Inventory {
-  Admin?: boolean;
+  Permissions?: Permissions;
   Write?: boolean;
   ID?: number;
   Name: string;

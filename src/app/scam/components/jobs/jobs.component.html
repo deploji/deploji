@@ -2,7 +2,7 @@
   <h1>Jobs</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap m0-8">
       <button type="button" mat-raised-button color="primary" routerLink="/jobs/create" class="m1 flex-auto">
         New application deployment
       </button>
@@ -16,7 +16,7 @@
   </div>
 </div>
 <div class="mat-elevation-z4">
-  <div [formGroup]="filters" class="background-white container-fluid pt3">
+  <div [formGroup]="filters" class="background-white container-fluid">
     <div class="row">
       <div class="col">
         <app-form-application label="Application" formControlName="application_id"></app-form-application>

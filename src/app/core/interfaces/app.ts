@@ -1,10 +1,10 @@
 import { Project } from './project';
 import { Repository } from './repository';
 import { ApplicationInventory } from './application-inventory';
+import { Permissions } from './permissions';
 
 export interface App {
-  Write?: boolean;
-  Admin?: boolean;
+  Permissions?: Permissions;
   ID?: number;
   Name?: string;
   Project?: Project;

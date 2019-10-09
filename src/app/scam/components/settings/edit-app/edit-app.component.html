@@ -89,20 +89,21 @@
               </div>
             </mat-card>
           </div>
-          <button *ngIf="app?.Write" mat-raised-button (click)="addInventory()">
+          <button *ngIf="app?.Permissions?.Write" mat-raised-button (click)="addInventory()">
             Add inventory
             <mat-icon>playlist_add</mat-icon>
           </button>
         </div>
-        <div class="button-row mt4">
+        <div class="button-row mt4 flex">
+          <div class="flex-auto"></div>
           <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
-          <button *ngIf="app?.Write" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+          <button *ngIf="!app || app?.Permissions?.Write" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
         </div>
       </form>
     </mat-tab>
     <mat-tab label="Permissions">
       <div class="p0">
-        <app-manage-permissions [editable]="app?.Admin" [appId]="app?.ID"></app-manage-permissions>
+        <app-manage-permissions [editable]="app?.Permissions?.Admin" [appId]="app?.ID"></app-manage-permissions>
       </div>
     </mat-tab>
   </mat-tab-group>

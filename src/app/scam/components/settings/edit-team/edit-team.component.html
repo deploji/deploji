@@ -12,7 +12,8 @@
           <input matInput type="text" formControlName="Name">
           <mat-error>Name is <strong>required</strong></mat-error>
         </mat-form-field>
-        <div class="button-row">
+        <div class="button-row flex">
+          <div class="flex-auto"></div>
           <button type="button" mat-raised-button routerLink="/settings/teams">Cancel</button>
           <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
         </div>

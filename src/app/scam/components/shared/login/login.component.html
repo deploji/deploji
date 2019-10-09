@@ -1,5 +1,5 @@
 <div class="flex">
-  <div class="w-500px m-auto">
+  <div class="flex-auto m-auto max-width-2">
     <mat-card>
       <form [formGroup]="form" (ngSubmit)="login(form.value)">
         <mat-form-field class="block">
@@ -10,7 +10,10 @@
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="Password">
         </mat-form-field>
-        <button mat-raised-button color="primary" type="submit">SIGN IN</button>
+        <div class="flex">
+          <div class="flex-auto"></div>
+          <button mat-raised-button color="primary" type="submit">SIGN IN</button>
+        </div>
       </form>
     </mat-card>
   </div>

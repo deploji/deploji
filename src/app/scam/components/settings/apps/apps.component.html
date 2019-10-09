@@ -1,4 +1,4 @@
-<div class="flex">
+<div class="flex flex-wrap">
   <h1>Applications</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
@@ -35,10 +35,10 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button *ngIf="element.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/apps/{{element.ID}}">
+          <button *ngIf="element?.Permissions?.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/apps/{{element.ID}}">
             <mat-icon color="primary">edit</mat-icon>
           </button>
-          <button *ngIf="element.Write" type="button" mat-icon-button title="Delete app" (click)="delete(element)">
+          <button *ngIf="element?.Permissions?.Write" type="button" mat-icon-button title="Delete app" (click)="delete(element)">
             <mat-icon color="warn">delete_forever</mat-icon>
           </button>
         </td>
