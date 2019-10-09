@@ -7,9 +7,11 @@ import { Observable, of } from 'rxjs';
 import { Inventory } from '../../../../../core/interfaces/inventory';
 import { CommonModule } from '@angular/common';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
 import { InventoriesService } from '../../../../../core/services/inventories.service';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   template: `
@@ -39,9 +41,11 @@ describe('FormInventoryComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,
-        MatFormFieldModule,
-        MatSelectModule,
         ReactiveFormsModule,
+        MatAutocompleteModule,
+        ScrollingModule,
+        MatFormFieldModule,
+        MatInputModule,
         NoopAnimationsModule,
       ],
       declarations: [
@@ -65,10 +69,5 @@ describe('FormInventoryComponent', () => {
   it('should display label', () => {
     fixture.detectChanges();
     expect(fixture.debugElement.query(By.css('mat-label')).nativeElement.innerText).toEqual('Inventory');
-  });
-
-  it('should display initial value', () => {
-    fixture.detectChanges();
-    expect(fixture.debugElement.query(By.css('.mat-select-value')).nativeElement.innerText).toEqual('Fake inventory 1');
   });
 });
