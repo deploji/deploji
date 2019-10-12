@@ -12,7 +12,6 @@ script:
 - node_modules/.bin/ng lint
 - node_modules/.bin/ng test --watch=false --code-coverage --browsers=ChromeHeadlessNoSandbox
 - node_modules/.bin/ng build --prod
-- sonar-scanner -Dsonar.projectVersion=${GOOPS_SEMVER}
 - bash <(curl -s https://codecov.io/bash)
 
 addons:
