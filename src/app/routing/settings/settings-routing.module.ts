@@ -52,6 +52,10 @@ import {
   EditTeamComponent,
   EditTeamComponentModule
 } from '../../scam/components/settings/edit-team/edit-team.component';
+import {
+  NotificationsComponentModule,
+  NotificationsComponent
+} from 'src/app/scam/components/settings/notifications/notifications.component';
 
 const routes: Routes = [
   {
@@ -97,6 +101,10 @@ const routes: Routes = [
           {
             label: 'Settings',
             link: '/settings/settings'
+          },
+          {
+            label: 'Notifications',
+            link: '/settings/notifications'
           }
         ]
       }
@@ -202,6 +210,10 @@ const routes: Routes = [
         path: 'settings',
         component: SystemSettingsComponent
       },
+      {
+        path: 'notifications',
+        component: NotificationsComponent
+      }
     ]
   }
 ];
@@ -226,6 +238,7 @@ const routes: Routes = [
     EditTeamComponentModule,
     EditUserComponentModule,
     SystemSettingsComponentModule,
+    NotificationsComponentModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
