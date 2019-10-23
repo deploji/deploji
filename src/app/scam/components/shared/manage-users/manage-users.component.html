@@ -18,8 +18,14 @@
 <div class="p2">
   <ng-container *ngIf="showUserSelect">
     <app-form-user [users]="availableUsers" [formControl]="selectedUser" label="User"></app-form-user>
-    <button mat-raised-button class="mr2" (click)="toggleUserSelect()">Cancel</button>
-    <button mat-raised-button color="primary" (click)="addUser()">Save</button>
+    <div class="flex">
+      <div class="flex-auto"></div>
+      <button mat-raised-button class="mr2" (click)="toggleUserSelect()">Cancel</button>
+      <button mat-raised-button color="primary" (click)="addUser()">Save</button>
+    </div>
   </ng-container>
-  <button *ngIf="!showUserSelect" mat-raised-button (click)="toggleUserSelect()">Add user</button>
+  <div class="flex">
+    <div class="flex-auto"></div>
+    <button *ngIf="!showUserSelect" mat-raised-button (click)="toggleUserSelect()">Add user</button>
+  </div>
 </div>
