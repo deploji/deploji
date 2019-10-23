@@ -12,6 +12,8 @@ import { MatTableModule } from '@angular/material/table';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { EditButtonComponentModule } from '../../shared/edit-button/edit-button.component';
+import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-apps',
@@ -74,6 +76,8 @@ export class AppsComponent implements OnInit, OnDestroy {
     MatCardModule,
     MatIconModule,
     MatTableModule,
+    EditButtonComponentModule,
+    DeleteButtonComponentModule,
   ]
 })
 export class AppsComponentModule {}

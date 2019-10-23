@@ -26,20 +26,16 @@
     </div>
     <div class="flex-auto"></div>
     <div>
-      <button type="button" mat-icon-button title="Edit" routerLink="/settings/projects/{{project.ID}}">
-        <mat-icon color="primary">edit</mat-icon>
-      </button>
+      <app-edit-button routerLink="/settings/projects/{{project.ID}}"></app-edit-button>
       <button type="button"
               mat-icon-button
-              title="Synchronize with VCS"
+              matTooltip="Synchronize with VCS"
               [ngClass]="{'rotate': project.synchronizing, 'success': project.synchronizationStatus === 'success', 'error': project.synchronizationStatus === 'error'}"
               [disabled]="project.synchronizing"
               (click)="synchronize(project)">
         <mat-icon>autorenew</mat-icon>
       </button>
-      <button type="button" mat-icon-button title="Delete key" (click)="delete(project)">
-        <mat-icon color="warn">delete_forever</mat-icon>
-      </button>
+      <app-delete-button (click)="delete(project)"></app-delete-button>
     </div>
   </div>
 </mat-card>

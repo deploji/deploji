@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
+import { EditButtonComponentModule } from '../../shared/edit-button/edit-button.component';
+import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-keys',
@@ -49,6 +51,8 @@ export class KeysComponent implements OnInit {
     RouterModule,
     MatCardModule,
     MatIconModule,
+    EditButtonComponentModule,
+    DeleteButtonComponentModule,
   ]
 })
 export class KeysComponentModule {}

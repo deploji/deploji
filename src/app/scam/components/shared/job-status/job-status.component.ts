@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { MatChipsModule } from '@angular/material/chips';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-job-status',
@@ -28,7 +29,8 @@ export class JobStatusComponent implements OnInit {
     CommonModule,
     MatChipsModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule
   ]
 })
 export class JobStatusComponentModule { }

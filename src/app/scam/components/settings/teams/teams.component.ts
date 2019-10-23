@@ -10,6 +10,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TeamsService } from '../../../../core/services/teams.service';
 import { Team } from '../../../../core/interfaces/team';
+import { EditButtonComponentModule } from '../../shared/edit-button/edit-button.component';
+import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-teams',
@@ -54,6 +56,8 @@ export class TeamsComponent implements OnInit {
     MatIconModule,
     MatTableModule,
     MatCheckboxModule,
+    EditButtonComponentModule,
+    DeleteButtonComponentModule,
   ]
 })
 export class TeamsComponentModule {

@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { UserAvatarComponent } from './user-avatar.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 describe('UserAvatarComponent', () => {
   let component: UserAvatarComponent;
@@ -8,6 +9,7 @@ describe('UserAvatarComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [MatTooltipModule],
       declarations: [ UserAvatarComponent ]
     })
     .compileComponents();
