@@ -1,9 +1,9 @@
 import { Component, Inject, NgModule } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { DialogData } from '../../../../../core/interfaces/dialog-data';
 import { CommonModule } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { DialogData } from '../../../../../core/interfaces/dialog-data';
 
 @Component({
   selector: 'app-dialog-confirm',
