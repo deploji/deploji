@@ -1,8 +1,14 @@
-import {Component, NgModule, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
-import {RouterModule} from '@angular/router';
-import {NotificationChannelsComponent} from '../notification-channels/notification-channels.component';
+import { Component, NgModule, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import {Router, RouterModule} from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { NotificationChannel } from '../../../../core/forms/notification-channel.form';
+import {NotificationChannelTypesEnum} from '../../../../core/enums/notification-channel-types.enum';
+import {NotificationChannelsService} from '../../../../core/services/notification-channels.service';
 
 @Component({
   selector: 'app-edit-notification-channel',
@@ -11,11 +17,30 @@ import {NotificationChannelsComponent} from '../notification-channels/notificati
 })
 export class EditNotificationChannelComponent implements OnInit {
 
-  constructor() { }
+  public form = new NotificationChannel();
+
+  public channel: NotificationChannel;
+
+  public NotificationChannelTypesEnum = NotificationChannelTypesEnum;
+
+  public types: any = [
+    NotificationChannelTypesEnum.EMAIL,
+    NotificationChannelTypesEnum.WEBHOOK
+  ];
+
+  constructor(
+    private notchaService: NotificationChannelsService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
   }
 
+  save(): void {
+    this.notchaService.createNotificationChannel(this.form.value).subscribe((response: NotificationChannel) => {
+      this.router.navigateByUrl('/settings/notification-channels');
+    });
+  }
 }
 
 @NgModule({
@@ -26,7 +51,11 @@ export class EditNotificationChannelComponent implements OnInit {
     MatButtonModule,
     RouterModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class EditNotificationChannelComponentModule {}

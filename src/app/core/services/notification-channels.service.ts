@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { NotificationChannel } from '../interfaces/notification-channel';
-import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -25,10 +25,10 @@ export class NotificationChannelsService {
   }
 
   createNotificationChannel(channel: NotificationChannel): Observable<any> {
-    return this.api.post('/api/notification-channels', {});
+    return this.api.post('/api/notification-channels', channel);
   }
 
   updateNotificationChannel(id: number, channel: NotificationChannel): Observable<any> {
-    return this.api.put(`/api/notification-channels/${id}`, {});
+    return this.api.put(`/api/notification-channels/${id}`, channel);
   }
 }

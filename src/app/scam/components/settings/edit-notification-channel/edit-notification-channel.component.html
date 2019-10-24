@@ -1,1 +1,37 @@
-<p>edit-notification-channel works!</p>
+<h1>
+  <ng-container *ngIf="!channel?.ID">Create new</ng-container>
+  <ng-container *ngIf="channel?.ID">Edit</ng-container>
+  notification channel
+</h1>
+
+<mat-card>
+  <form [formGroup]="form">
+    <mat-form-field class="block">
+      <mat-label>Name</mat-label>
+      <input type="text" matInput placeholder="Name" formControlName="Name">
+    </mat-form-field>
+
+    <mat-form-field class="block">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="Type">
+        <mat-option *ngFor="let option of types" [value]="option">{{option}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="block" *ngIf="form.isEmail">
+      <mat-label>Recipients</mat-label>
+      <input type="text" matInput placeholder="Recipients" formControlName="Recipients">
+    </mat-form-field>
+
+    <mat-form-field class="block" *ngIf="form.isWebhook">
+      <mat-label>Webhook</mat-label>
+      <input type="text" matInput placeholder="Webhook" formControlName="Webhook">
+    </mat-form-field>
+
+    <div class="button-row flex">
+      <div class="flex-auto"></div>
+      <button type="button" mat-raised-button routerLink="/settings/notification-channels">Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </form>
+</mat-card>

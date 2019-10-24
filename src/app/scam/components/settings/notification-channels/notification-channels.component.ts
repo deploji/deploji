@@ -1,4 +1,4 @@
-import {ApplicationRef, ChangeDetectionStrategy, ChangeDetectorRef, Component, NgModule, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, NgModule, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {HttpErrorResponse} from '@angular/common/http';
 import {MatButtonModule, MatCardModule, MatDialog, MatIconModule, MatTableModule} from '@angular/material';
@@ -22,9 +22,7 @@ export class NotificationChannelsComponent implements OnInit {
   constructor(
     private notchaService: NotificationChannelsService,
     private router: Router,
-    private detector: ChangeDetectorRef,
     private dialog: MatDialog,
-    private appRef: ApplicationRef
   ) { }
 
   ngOnInit() {
@@ -40,19 +38,19 @@ export class NotificationChannelsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((confirmation: boolean) => {
-      this.notchaService.deleteNotificationChannel(id).subscribe(
-        () => {
-          const index = this.channels.findIndex((channel: NotificationChannel) => channel.ID === id);
+      if (confirmation) {
+        this.notchaService.deleteNotificationChannel(id).subscribe(
+          () => {
+            const index = this.channels.findIndex((channel: NotificationChannel) => channel.ID === id);
 
-          // why is change detection not triggered?
-          this.channels.splice(index, 1);
-
-          this.router.navigateByUrl('/settings');
-        },
-        (error: HttpErrorResponse) => {
-          // todo: handle error
-        }
-      );
+            this.channels.splice(index, 1);
+            this.channels = [...this.channels];
+          },
+          (error: HttpErrorResponse) => {
+            // todo: handle error
+          }
+        );
+      }
     });
   }
 }
