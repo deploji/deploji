@@ -11,6 +11,7 @@ import { NotificationChannel } from '../../../../core/forms/notification-channel
 import { NotificationChannelTypesEnum } from '../../../../core/enums/notification-channel-types.enum';
 import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
 import { NotificationChannel as INotificationChannel } from '../../../../core/interfaces/notification-channel';
+import {EditButtonComponent, EditButtonComponentModule} from '../../shared/edit-button/edit-button.component';
 
 @Component({
   selector: 'app-edit-notification-channel',
@@ -55,20 +56,15 @@ export class EditNotificationChannelComponent implements OnInit {
   }
 
   public save(): void {
-    this.notchaService.createNotificationChannel(this.form.value).subscribe((response: NotificationChannel) => {
+    this.notchaService.createNotificationChannel(this.form.value).subscribe((response: INotificationChannel) => {
       this.router.navigateByUrl('/settings/notification-channels');
     });
   }
 
   public update(): void {
-    this.notchaService.updateNotificationChannel(this.channel.ID, this.form.value).subscribe(
-      (response: INotificationChannel) => {
+    this.notchaService.updateNotificationChannel(this.channel.ID, this.form.value).subscribe((response: INotificationChannel) => {
         this.router.navigateByUrl('/settings/notification-channels');
-      },
-      (error: HttpErrorResponse) => {
-        // todo handle error
-      }
-    );
+    });
   }
 }
 

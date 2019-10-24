@@ -6,6 +6,8 @@ import {Router, RouterModule} from '@angular/router';
 import {NotificationChannel} from '../../../../core/interfaces/notification-channel';
 import {NotificationChannelsService} from '../../../../core/services/notification-channels.service';
 import {DialogConfirmComponent} from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
+import {EditButtonComponentModule} from '../../shared/edit-button/edit-button.component';
+import {DeleteButtonComponentModule} from '../../shared/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-notification-channels',
@@ -39,17 +41,12 @@ export class NotificationChannelsComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((confirmation: boolean) => {
       if (confirmation) {
-        this.notchaService.deleteNotificationChannel(id).subscribe(
-          () => {
-            const index = this.channels.findIndex((channel: NotificationChannel) => channel.ID === id);
+        this.notchaService.deleteNotificationChannel(id).subscribe(() => {
+          const index = this.channels.findIndex((channel: NotificationChannel) => channel.ID === id);
 
-            this.channels.splice(index, 1);
-            this.channels = [...this.channels];
-          },
-          (error: HttpErrorResponse) => {
-            // todo: handle error
-          }
-        );
+          this.channels.splice(index, 1);
+          this.channels = [...this.channels];
+        });
       }
     });
   }
@@ -64,7 +61,9 @@ export class NotificationChannelsComponent implements OnInit {
     RouterModule,
     MatCardModule,
     MatIconModule,
-    MatTableModule
+    MatTableModule,
+    EditButtonComponentModule,
+    DeleteButtonComponentModule
   ]
 })
 export class NotificationChannelsComponentModule {}
