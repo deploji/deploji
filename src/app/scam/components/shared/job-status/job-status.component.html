@@ -1,14 +1,14 @@
 <mat-chip-list [ngSwitch]="job?.Status">
-  <mat-chip title="Waiting" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--pending" *ngSwitchCase="status.PENDING">
+  <mat-chip matTooltip="Waiting" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--pending" *ngSwitchCase="status.PENDING">
     <mat-icon class="rotate2">hourglass_empty</mat-icon>
   </mat-chip>
-  <mat-chip title="Processing" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--processing" *ngSwitchCase="status.PROCESSING">
+  <mat-chip matTooltip="Processing" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--processing" *ngSwitchCase="status.PROCESSING">
     <mat-icon class="rotate">autorenew</mat-icon>
   </mat-chip>
-  <mat-chip title="Completed" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--completed" *ngSwitchCase="status.COMPLETED">
+  <mat-chip matTooltip="Completed" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--completed" *ngSwitchCase="status.COMPLETED">
     <mat-icon>done_outline</mat-icon>
   </mat-chip>
-  <mat-chip title="Failed" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--failed" *ngSwitchCase="status.FAILED">
+  <mat-chip matTooltip="Failed" routerLink="/jobs/{{job?.ID}}" class="job-status job-status--failed" *ngSwitchCase="status.FAILED">
     <mat-icon>clear</mat-icon>
   </mat-chip>
 </mat-chip-list>

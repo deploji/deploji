@@ -9,6 +9,8 @@ import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { EditButtonComponentModule } from '../../shared/edit-button/edit-button.component';
+import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-inventories',
@@ -52,6 +54,8 @@ export class InventoriesComponent implements OnInit {
     MatCardModule,
     MatIconModule,
     MatTableModule,
+    EditButtonComponentModule,
+    DeleteButtonComponentModule,
   ]
 })
 export class InventoriesComponentModule {}

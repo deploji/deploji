@@ -11,11 +11,7 @@
       <a routerLink="/settings/keys/{{key.ID}}">{{key.Title}}</a>
     </div>
     <div class="flex-auto"></div>
-    <button *ngIf="key?.Permissions?.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/keys/{{key.ID}}">
-      <mat-icon color="primary">edit</mat-icon>
-    </button>
-    <button *ngIf="key?.Permissions?.Write" type="button" mat-icon-button title="Delete key" (click)="delete(key)">
-      <mat-icon color="warn">delete_forever</mat-icon>
-    </button>
+    <app-edit-button *ngIf="key?.Permissions?.Write" routerLink="/settings/keys/{{key.ID}}"></app-edit-button>
+    <app-delete-button *ngIf="key?.Permissions?.Write" (click)="delete(key)"></app-delete-button>
   </div>
 </mat-card>

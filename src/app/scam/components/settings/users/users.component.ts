@@ -10,6 +10,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { EditButtonComponentModule } from '../../shared/edit-button/edit-button.component';
+import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-users',
@@ -54,6 +56,8 @@ export class UsersComponent implements OnInit {
     MatIconModule,
     MatTableModule,
     MatCheckboxModule,
+    EditButtonComponentModule,
+    DeleteButtonComponentModule,
   ]
 })
 export class UsersComponentModule {

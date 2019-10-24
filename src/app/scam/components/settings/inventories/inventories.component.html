@@ -2,8 +2,7 @@
   <h1>Inventories</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
-    <button type="button" mat-raised-button color="primary" routerLink="/settings/inventories/create">Create inventory
-    </button>
+    <button type="button" mat-raised-button color="primary" routerLink="/settings/inventories/create">Create inventory</button>
   </div>
 </div>
 <mat-card class="my2 p0">
@@ -26,12 +25,8 @@
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
         <td mat-cell *matCellDef="let element">
-          <button *ngIf="element?.Permissions?.Write" type="button" mat-icon-button title="Edit" routerLink="/settings/inventories/{{element.ID}}">
-            <mat-icon color="primary">edit</mat-icon>
-          </button>
-          <button *ngIf="element?.Permissions?.Write" type="button" mat-icon-button title="Delete key" (click)="delete(element)">
-            <mat-icon color="warn">delete_forever</mat-icon>
-          </button>
+          <app-edit-button *ngIf="element?.Permissions?.Write" routerLink="/settings/inventories/{{element.ID}}"></app-edit-button>
+          <app-delete-button *ngIf="element?.Permissions?.Write" (click)="delete(element)"></app-delete-button>
         </td>
       </ng-container>
 

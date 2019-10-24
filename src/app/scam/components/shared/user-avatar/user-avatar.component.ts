@@ -2,6 +2,7 @@ import { Component, Input, NgModule, OnChanges, SimpleChanges } from '@angular/c
 import { User } from '../../../../core/interfaces/user';
 import { Md5 } from 'ts-md5/dist/md5';
 import { CommonModule } from '@angular/common';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-user-avatar',
@@ -25,7 +26,8 @@ export class UserAvatarComponent implements OnChanges {
   declarations: [UserAvatarComponent],
   exports: [UserAvatarComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    MatTooltipModule
   ]
 })
 export class UserAvatarComponentModule { }

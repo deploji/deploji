@@ -26,12 +26,8 @@
     </div>
     <div class="flex-auto"></div>
     <div>
-      <button type="button" mat-icon-button title="Edit" routerLink="/settings/repositories/{{repository.ID}}">
-        <mat-icon color="primary">edit</mat-icon>
-      </button>
-      <button type="button" mat-icon-button title="Delete key" (click)="delete(repository)">
-        <mat-icon color="warn">delete_forever</mat-icon>
-      </button>
+      <app-edit-button routerLink="/settings/repositories/{{repository.ID}}"></app-edit-button>
+      <app-delete-button (click)="delete(repository)"></app-delete-button>
     </div>
   </div>
 </mat-card>

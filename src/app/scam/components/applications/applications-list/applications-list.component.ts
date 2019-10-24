@@ -27,7 +27,7 @@ export class ApplicationsListComponent implements OnInit {
       apps.forEach(app => {
         app.Inventories = app.Inventories.filter(value => value.IsActive === true);
         app.Inventories.forEach(inventory => {
-          const deployment = lastJobs.find(job => job.InventoryID === inventory.ID && job.ApplicationID === app.ID);
+          const deployment = lastJobs.find(job => job.InventoryID === inventory.InventoryID && job.ApplicationID === app.ID);
           inventory.Version = deployment ? deployment.Version : '';
         });
       });
