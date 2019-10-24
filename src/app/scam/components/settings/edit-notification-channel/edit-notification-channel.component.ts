@@ -1,14 +1,16 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Router, RouterModule} from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { NotificationChannel } from '../../../../core/forms/notification-channel.form';
-import {NotificationChannelTypesEnum} from '../../../../core/enums/notification-channel-types.enum';
-import {NotificationChannelsService} from '../../../../core/services/notification-channels.service';
+import { NotificationChannelTypesEnum } from '../../../../core/enums/notification-channel-types.enum';
+import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
+import { NotificationChannel as INotificationChannel } from '../../../../core/interfaces/notification-channel';
 
 @Component({
   selector: 'app-edit-notification-channel',
@@ -19,9 +21,7 @@ export class EditNotificationChannelComponent implements OnInit {
 
   public form = new NotificationChannel();
 
-  public channel: NotificationChannel;
-
-  public NotificationChannelTypesEnum = NotificationChannelTypesEnum;
+  public channel: INotificationChannel;
 
   public types: any = [
     NotificationChannelTypesEnum.EMAIL,
@@ -30,16 +30,45 @@ export class EditNotificationChannelComponent implements OnInit {
 
   constructor(
     private notchaService: NotificationChannelsService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    if (id) {
+      this.getExistingChannel(id);
+    }
   }
 
-  save(): void {
+  public getExistingChannel(id: number) {
+    this.notchaService.getNotificationChannel(id).subscribe(
+      (channel: INotificationChannel) => {
+        this.form.patchValue(channel);
+        this.channel = channel;
+      },
+      (error: HttpErrorResponse ) => {
+        this.router.navigateByUrl('/settings/notification-channel/create');
+      }
+    );
+  }
+
+  public save(): void {
     this.notchaService.createNotificationChannel(this.form.value).subscribe((response: NotificationChannel) => {
       this.router.navigateByUrl('/settings/notification-channels');
     });
+  }
+
+  public update(): void {
+    this.notchaService.updateNotificationChannel(this.channel.ID, this.form.value).subscribe(
+      (response: INotificationChannel) => {
+        this.router.navigateByUrl('/settings/notification-channels');
+      },
+      (error: HttpErrorResponse) => {
+        // todo handle error
+      }
+    );
   }
 }
 

@@ -8,7 +8,7 @@ export class NotificationChannel extends FormGroup {
       Name: new FormControl(),
       Type: new FormControl(),
       Recipients: new FormControl(),
-      Webhook: new FormControl()
+      WebhookURL: new FormControl()
     });
   }
 
@@ -29,7 +29,7 @@ export class NotificationChannel extends FormGroup {
   }
 
   get Webhook() {
-    return this.get('Webhook') as FormControl;
+    return this.get('WebhookURL') as FormControl;
   }
 
   get isEmail() {
