@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, NgModule, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HttpErrorResponse} from '@angular/common/http';
 import {MatButtonModule, MatCardModule, MatDialog, MatIconModule, MatTableModule} from '@angular/material';
 import {Router, RouterModule} from '@angular/router';
 import {NotificationChannel} from '../../../../core/interfaces/notification-channel';

@@ -37,5 +37,8 @@
         <app-manage-permissions [editable]="template?.Permissions?.Admin" [templateId]="form.ID.value"></app-manage-permissions>
       </div>
     </mat-tab>
+    <mat-tab label="Notifications">
+      <app-notifications-when [templateId]="templateId"></app-notifications-when>
+    </mat-tab>
   </mat-tab-group>
 </mat-card>
