@@ -1,4 +1,4 @@
-import {Component, NgModule, OnInit, ViewChild} from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -31,7 +31,7 @@ export class EditTemplateComponent implements OnInit {
 
   public form = new TemplateForm();
   public template: Template;
-  private templateId: number;
+  public templateId: number;
 
   constructor(
     private templatesService: TemplatesService,

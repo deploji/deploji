@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { NotificationChannel } from '../interfaces/notification-channel';
 import { TemplateNotificationChannel } from '../interfaces/template-notification-channel';
-import {ApplicationNotificationChannel} from '../interfaces/application-notification-channel';
+import { ApplicationNotificationChannel } from '../interfaces/application-notification-channel';
+import {ProjectNotificationChannel} from '../interfaces/project-notification-channel';
 
 @Injectable({
   providedIn: 'root'
@@ -50,8 +51,8 @@ export class NotificationChannelsService {
     return this.api.put(`/api/applications/${payload.ApplicationID}/notifications`, payload);
   }
 
-  assignChannelToProject(id: number, payload: object): Observable<any> {
-    return this.api.put(`/api/projects/${id}/notifications`, payload);
+  assignChannelToProject(payload: ProjectNotificationChannel): Observable<any> {
+    return this.api.put(`/api/projects/${payload.ProjectID}/notifications`, payload);
   }
 
   assignChannelToTemplate(payload: TemplateNotificationChannel): Observable<any> {

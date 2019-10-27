@@ -22,11 +22,8 @@ export class NotificationsWhenComponent implements OnInit {
   @Input()
   public templateId: number;
 
-  @ViewChildren(MatSlideToggle)
-  public matSlideToggleRefs: any;
-
-  public assignedChannels: RelatedNotificationChannel[];
   public allChannels: NotificationChannel[];
+  public assignedChannels: RelatedNotificationChannel[];
   public columnsToDisplay: string[] = ['Name', 'SuccessEnabled', 'FailEnabled'];
   public channelsToEmit: any = new Map();
 
@@ -59,7 +56,7 @@ export class NotificationsWhenComponent implements OnInit {
   }
 
   public onSlide(event: MatSlideToggleChange, element: NotificationChannel, type: string): void {
-    const data: any = this.channelsToEmit.has(element.ID) ? this.channelsToEmit.get(element.ID) : {};
+    const data: RelatedNotificationChannel = this.channelsToEmit.has(element.ID) ? this.channelsToEmit.get(element.ID) : {};
     data[type] = event.checked;
 
     this.channelsToEmit.set(element.ID, data);
