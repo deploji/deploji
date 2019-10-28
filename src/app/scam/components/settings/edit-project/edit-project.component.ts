@@ -9,38 +9,46 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
 import { MatButtonModule } from '@angular/material/button';
+import { NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
+import { MatTabsModule } from '@angular/material';
 
 @Component({
   selector: 'app-edit-project',
   templateUrl: './edit-project.component.html',
 })
 export class EditProjectComponent implements OnInit {
-  form = new ProjectForm();
 
-  constructor(private projectsService: ProjectsService, private router: Router, private route: ActivatedRoute) {
-  }
+  public form = new ProjectForm();
+  public projectId: number;
+
+  constructor(
+    private projectsService: ProjectsService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    if (this.route.snapshot.paramMap.get('id')) {
-      this.projectsService.getProject(Number(this.route.snapshot.paramMap.get('id'))).subscribe(project => {
+    this.projectId = Number(this.route.snapshot.paramMap.get('id'));
+
+    if (this.projectId) {
+      this.projectsService.getProject(this.projectId).subscribe(project => {
         this.form.patchValue(project);
       });
     }
   }
 
   save() {
-    if (!this.form.valid) {
-      return;
+    if (this.form.valid) {
+      this.projectsService.save(this.form.value).subscribe(() => {
+        this.router.navigateByUrl('/settings/projects');
+      });
     }
-    this.projectsService.save(this.form.value).subscribe(() => {
-      this.router.navigateByUrl('/settings/projects');
-    });
   }
 }
 
 @NgModule({
-    declarations: [EditProjectComponent],
-    exports: [EditProjectComponent],
+  declarations: [EditProjectComponent],
+  exports: [EditProjectComponent],
   imports: [
     CommonModule,
     MatCardModule,
@@ -50,6 +58,8 @@ export class EditProjectComponent implements OnInit {
     FormSshKeyComponentModule,
     MatButtonModule,
     RouterModule,
+    NotificationsWhenComponentModule,
+    MatTabsModule
   ]
 })
 export class EditProjectComponentModule {}

@@ -1,10 +1,13 @@
-import {Component, Input, NgModule, OnInit, ViewChildren} from '@angular/core';
+import {Component, Input, NgModule, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatCardModule, MatSlideToggle, MatSlideToggleChange, MatTableModule} from '@angular/material';
+import {MatCardModule, MatSlideToggleChange, MatTableModule} from '@angular/material';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {NotificationChannel} from '../../../../core/interfaces/notification-channel';
 import {NotificationChannelsService} from '../../../../core/services/notification-channels.service';
 import {RelatedNotificationChannel} from '../../../../core/interfaces/related-notification-channel';
+import {ApplicationNotificationChannel} from '../../../../core/interfaces/application-notification-channel';
+import {ProjectNotificationChannel} from '../../../../core/interfaces/project-notification-channel';
+import {TemplateNotificationChannel} from '../../../../core/interfaces/template-notification-channel';
 
 @Component({
   selector: 'app-notifications-when',
@@ -22,20 +25,14 @@ export class NotificationsWhenComponent implements OnInit {
   @Input()
   public templateId: number;
 
-  public allChannels: NotificationChannel[];
   public assignedChannels: RelatedNotificationChannel[];
   public columnsToDisplay: string[] = ['Name', 'SuccessEnabled', 'FailEnabled'];
-  public channelsToEmit: any = new Map();
 
   constructor(
     private notchaService: NotificationChannelsService
   ) {}
 
   ngOnInit() {
-    this.notchaService.getNotificationChannels().subscribe((response: NotificationChannel[]) => {
-      this.allChannels = response;
-    });
-
     this.getRelatedNotificationChannels();
   }
 
@@ -55,28 +52,19 @@ export class NotificationsWhenComponent implements OnInit {
     }
   }
 
-  public onSlide(event: MatSlideToggleChange, element: NotificationChannel, type: string): void {
-    const data: RelatedNotificationChannel = this.channelsToEmit.has(element.ID) ? this.channelsToEmit.get(element.ID) : {};
-    data[type] = event.checked;
+  public onSlide(event: MatSlideToggleChange, element: RelatedNotificationChannel, type: string): void {
+    element[type] = event.checked;
 
-    this.channelsToEmit.set(element.ID, data);
-    this.channelsToEmit.forEach((options: RelatedNotificationChannel, channelId: number) => {
-      options.NotificationChannelID = channelId;
-    });
-  }
-
-  public isChecked(element: NotificationChannel, type: string): boolean {
-    if (this.assignedChannels) {
-      const channel: RelatedNotificationChannel = this.assignedChannels.find((assignedChannel: RelatedNotificationChannel) => {
-        return assignedChannel.NotificationChannelID === element.ID;
-      });
-
-      if (channel) {
-        return type === 'SuccessEnabled' ? channel.SuccessEnabled : channel.FailEnabled;
-      }
+    if (this.applicationId) {
+      const payload: ApplicationNotificationChannel = Object.assign({ApplicationID: this.applicationId}, element);
+      this.notchaService.assignChannelToApplication(payload).subscribe();
+    } else if (this.projectId) {
+      const payload: ProjectNotificationChannel = Object.assign({ProjectID: this.projectId}, element);
+      this.notchaService.assignChannelToProject(payload).subscribe();
+    } else if (this.templateId) {
+      const payload: TemplateNotificationChannel = Object.assign({TemplateID: this.templateId}, element);
+      this.notchaService.assignChannelToTemplate(payload).subscribe();
     }
-
-    return false;
   }
 }
 

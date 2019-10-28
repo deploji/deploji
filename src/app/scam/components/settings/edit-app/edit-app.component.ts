@@ -76,19 +76,9 @@ export class EditAppComponent implements OnInit {
   save() {
     if (this.form.valid) {
       this.appsService.save(this.form.value).subscribe((response: App) => {
-        this.assignChannelsToApplication(response.ID);
-      });
-    }
-  }
-
-  private assignChannelsToApplication(applicationId: number): void {
-    this.notificationsWhenComponentRef.channelsToEmit.forEach((options: ApplicationNotificationChannel) => {
-      options.ApplicationID = applicationId;
-
-      this.notchaService.assignChannelToApplication(options).subscribe((response: any) => {
         this.router.navigateByUrl('/settings/apps');
       });
-    });
+    }
   }
 
   addInventory() {

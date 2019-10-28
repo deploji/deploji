@@ -18,7 +18,6 @@ import { ManagePermissionsComponentModule } from '../../shared/manage-permission
 import { Template } from '../../../../core/interfaces/template';
 import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
 import { NotificationsWhenComponent, NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
-import { TemplateNotificationChannel } from '../../../../core/interfaces/template-notification-channel';
 
 @Component({
   selector: 'app-edit-template',
@@ -55,19 +54,9 @@ export class EditTemplateComponent implements OnInit {
   public save(): void {
     if (this.form.valid) {
       this.templatesService.save(this.form.value).subscribe((response: Template) => {
-        this.assignChannelsToTemplate(response.ID);
-      });
-    }
-  }
-
-  private assignChannelsToTemplate(templateId: number): void {
-    this.notificationsWhenComponentRef.channelsToEmit.forEach((options: TemplateNotificationChannel) => {
-      options.TemplateID = templateId;
-
-      this.notchaService.assignChannelToTemplate(options).subscribe((response: any) => {
         this.router.navigateByUrl('/settings/templates');
       });
-    });
+    }
   }
 }
 

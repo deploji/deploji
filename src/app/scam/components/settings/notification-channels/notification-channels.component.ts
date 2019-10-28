@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, Component, NgModule, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatCardModule, MatDialog, MatIconModule, MatTableModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatDialog, MatDialogRef, MatIconModule, MatTableModule} from '@angular/material';
 import {Router, RouterModule} from '@angular/router';
 import {NotificationChannel} from '../../../../core/interfaces/notification-channel';
 import {NotificationChannelsService} from '../../../../core/services/notification-channels.service';
@@ -33,7 +33,7 @@ export class NotificationChannelsComponent implements OnInit {
   }
 
   public delete(id: number): void {
-    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+    const dialogRef: MatDialogRef<any> = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
       data: {message: 'Do you want to delete the notification channel?'}
     });
