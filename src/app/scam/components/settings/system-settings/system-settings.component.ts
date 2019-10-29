@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { SettingsService } from '../../../../core/services/settings.service';
-import { SettingGroup } from '../../../../core/interfaces/settingGroup';
+import { SettingGroup } from '../../../../core/interfaces/setting-group';
 import { MatDialog } from '@angular/material';
 import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
 import { SettingsForm } from '../../../../core/forms/settings.form';
@@ -35,7 +35,7 @@ export class SystemSettingsComponent implements OnInit {
     this.settingsService.save(this.form.Groups.at(i).value).subscribe(() => {
       this.dialog.open(DialogConfirmComponent, {
         width: '500px',
-        data: {title: 'Settings saved', message: 'Settings have been saved successfully', hideCancelButton: true}
+        data: { title: 'Settings saved', message: 'Settings have been saved successfully', hideCancelButton: true}
       });
     });
   }
@@ -55,4 +55,4 @@ export class SystemSettingsComponent implements OnInit {
     MatButtonModule,
   ]
 })
-export class SystemSettingsComponentModule {}
+export class SystemSettingsComponentModule { }

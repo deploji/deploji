@@ -1,4 +1,4 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { Job } from '../../../../core/interfaces/job';
 import { JobStatus } from '../../../../core/enums/job-status.enum';
 import { CommonModule } from '@angular/common';
@@ -12,14 +12,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   templateUrl: './job-status.component.html',
   styleUrls: ['./job-status.component.scss']
 })
-export class JobStatusComponent implements OnInit {
+export class JobStatusComponent {
   @Input() job: Job;
   status = JobStatus;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 }
 
 @NgModule({

@@ -21,4 +21,4 @@ export class DeleteButtonComponent {
     MatTooltipModule,
   ]
 })
-export class DeleteButtonComponentModule {}
+export class DeleteButtonComponentModule { }

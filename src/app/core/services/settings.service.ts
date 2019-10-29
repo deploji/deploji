@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Setting } from '../interfaces/setting';
-import { SettingGroup } from '../interfaces/settingGroup';
+import { SettingGroup } from '../interfaces/setting-group';
 
 @Injectable({
   providedIn: 'root'

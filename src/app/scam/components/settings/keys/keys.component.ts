@@ -30,7 +30,7 @@ export class KeysComponent implements OnInit {
   delete(key: SshKey) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete key ${key.Title}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete key ${key.Title}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
@@ -55,4 +55,4 @@ export class KeysComponent implements OnInit {
     DeleteButtonComponentModule,
   ]
 })
-export class KeysComponentModule {}
+export class KeysComponentModule { }

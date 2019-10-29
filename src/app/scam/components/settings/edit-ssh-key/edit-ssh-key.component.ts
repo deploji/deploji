@@ -57,4 +57,4 @@ export class EditSshKeyComponent implements OnInit {
     ManagePermissionsComponentModule,
   ]
 })
-export class EditSshKeyComponentModule {}
+export class EditSshKeyComponentModule { }

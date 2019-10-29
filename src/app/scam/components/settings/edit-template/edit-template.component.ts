@@ -71,4 +71,4 @@ export class EditTemplateComponent implements OnInit {
     ManagePermissionsComponentModule,
   ]
 })
-export class EditTemplateComponentModule {}
+export class EditTemplateComponentModule { }

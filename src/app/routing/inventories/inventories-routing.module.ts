@@ -6,7 +6,6 @@ import {
   InventoriesComponentModule
 } from '../../scam/components/applications/inventories/inventories.component';
 
-
 const routes: Routes = [
   {
     path: '',

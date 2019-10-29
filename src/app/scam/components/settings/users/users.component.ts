@@ -33,7 +33,7 @@ export class UsersComponent implements OnInit {
   delete(user: User) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete user ${user.Name}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete user ${user.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {

@@ -33,7 +33,7 @@ export class TeamsComponent implements OnInit {
   delete(team: Team) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete team ${team.Name}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete team ${team.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {

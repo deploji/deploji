@@ -1,9 +1,12 @@
 {
   "extends": "tslint:recommended",
   "rules": {
+    "align": true,
     "array-type": false,
     "arrow-parens": false,
     "deprecation": true,
+    "eofline": true,
+    "class-name": true,
     "component-class-suffix": true,
     "contextual-lifecycle": true,
     "directive-class-suffix": true,
@@ -23,7 +26,12 @@
       true,
       "rxjs/Rx"
     ],
+    "encoding": true,
+    "file-name-casing": [true, "kebab-case"],
+    "import-spacing": true,
+    "indent": [true, "spaces", 2],
     "interface-name": false,
+    "linebreak-style": true,
     "max-classes-per-file": [true, 2],
     "max-line-length": [
       true,
@@ -41,7 +49,7 @@
         ]
       }
     ],
-    "no-consecutive-blank-lines": false,
+    "no-consecutive-blank-lines": true,
     "no-console": [
       true,
       "log",
@@ -51,16 +59,19 @@
       "timeEnd",
       "trace"
     ],
-    "no-empty": false,
+    "no-duplicate-imports": true,
+    "no-empty": true,
     "no-inferrable-types": [
       true,
       "ignore-params"
     ],
+    "no-irregular-whitespace": true,
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
     "no-use-before-declare": false,
-    "no-var-requires": false,
+    "no-var-requires": true,
+    "no-unused-expression": true,
     "object-literal-key-quotes": [
       true,
       "as-needed"
@@ -71,7 +82,7 @@
       true,
       "single"
     ],
-    "trailing-comma": false,
+    "trailing-comma": true,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
@@ -80,11 +91,27 @@
     "no-output-on-prefix": true,
     "no-output-rename": true,
     "no-outputs-metadata-property": true,
+    "no-trailing-whitespace": true,
     "template-banana-in-box": true,
     "template-no-negated-async": true,
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
-    "no-focused-test": true
+    "no-focused-test": true,
+    "variable-name": true,
+    "whitespace": [
+      true,
+      "check-branch",
+      "check-decl",
+      "check-operator",
+      "check-module",
+      "check-separator",
+      "check-rest-spread",
+      "check-type",
+      "check-typecast",
+      "check-type-operator",
+      "check-preblock",
+      "check-postbrace"
+    ]
   },
   "rulesDirectory": [
     "codelyzer",

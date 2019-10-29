@@ -24,7 +24,7 @@ import { AnsiPipeModule } from '../../../pipes/ansi.pipe';
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild('scrollMe', {static: false}) private myScrollContainer: CdkVirtualScrollViewport;
+  @ViewChild('scrollMe', { static: false}) private myScrollContainer: CdkVirtualScrollViewport;
   job: Job;
   logs: JobLog[] = [];
   autoScroll = new FormControl(true);
@@ -81,20 +81,20 @@ export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
     this.subscription.add(
       this.autoScroll.valueChanges.subscribe(value => {
         if (value === true) {
-          this.myScrollContainer.scrollTo({bottom: 0});
+          this.myScrollContainer.scrollTo({ bottom: 0});
         }
       })
     );
     this.logsSubscription = this.stomp.watch(`/exchange/job_log_${this.route.snapshot.paramMap.get('id')}`).subscribe(value => {
       setTimeout(() => {
-        this.logs = [...this.logs, {Message: value.body}];
+        this.logs = [...this.logs, { Message: value.body}];
       });
       if (this.autoScroll.value === true) {
-        this.myScrollContainer.scrollTo({bottom: 0});
+        this.myScrollContainer.scrollTo({ bottom: 0});
       }
     });
     setTimeout(() => {
-      this.myScrollContainer.scrollTo({bottom: 0});
+      this.myScrollContainer.scrollTo({ bottom: 0});
     }, 500);
   }
 

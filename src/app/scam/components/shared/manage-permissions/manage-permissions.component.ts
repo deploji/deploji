@@ -2,7 +2,6 @@ import { Component, Input, NgModule, OnChanges, SimpleChanges } from '@angular/c
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { Permission } from '../../../../core/interfaces/permission';
-import { TeamsService } from '../../../../core/services/teams.service';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -54,19 +53,19 @@ export class ManagePermissionsComponent implements OnChanges {
   ];
   private permissions$: Observable<Permission[]> = of([]);
 
-  constructor(private teamsService: TeamsService, private permissionsService: PermissionsService) {
+  constructor(private permissionsService: PermissionsService) {
   }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.teamId && changes.teamId.currentValue) {
       this.form.SubjectType.setValue(SubjectTypesEnum.TEAMS);
-      this.form.Subject.setValue({ID: changes.teamId.currentValue});
+      this.form.Subject.setValue({ ID: changes.teamId.currentValue});
       this.columnsToDisplay = ['object-type', 'object-name', 'action', 'actions'];
       this.permissions$ = this.permissionsService.getTeamPermissions(changes.teamId.currentValue);
     }
     if (changes.userId && changes.userId.currentValue) {
       this.form.SubjectType.setValue(SubjectTypesEnum.USERS);
-      this.form.Subject.setValue({ID: changes.userId.currentValue});
+      this.form.Subject.setValue({ ID: changes.userId.currentValue});
       this.columnsToDisplay = ['object-type', 'object-name', 'action', 'actions'];
       this.permissions$ = this.permissionsService.getUserPermissions(changes.userId.currentValue);
     }
@@ -89,7 +88,7 @@ export class ManagePermissionsComponent implements OnChanges {
 
   private initializeObjectValues(type: ObjectTypesEnum, id: any) {
     this.form.ObjectType.setValue(type);
-    this.form.Object.setValue({ID: id});
+    this.form.Object.setValue({ ID: id});
     this.columnsToDisplay = ['subject-type', 'subject-name', 'action', 'actions'];
     this.permissions$ = this.permissionsService.getPermissions({
       ObjectType: type,

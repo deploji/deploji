@@ -6,10 +6,7 @@ import { Nav } from '../interfaces/nav';
   providedIn: 'root'
 })
 export class NavService {
-  nav = new BehaviorSubject<Nav>({title: 'Menu', items: []});
-
-  constructor() {
-  }
+  nav = new BehaviorSubject<Nav>({ title: 'Menu', items: []});
 
   get navObservable(): Observable<Nav> {
     return this.nav.asObservable();

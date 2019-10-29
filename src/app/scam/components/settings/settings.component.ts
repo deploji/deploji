@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -6,12 +6,7 @@ import { RouterModule } from '@angular/router';
   selector: 'app-settings',
   templateUrl: './settings.component.html',
 })
-export class SettingsComponent implements OnInit {
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+export class SettingsComponent {
 }
 
 @NgModule({
@@ -22,4 +17,4 @@ export class SettingsComponent implements OnInit {
     RouterModule,
   ]
 })
-export class SettingsComponentModule {}
+export class SettingsComponentModule { }

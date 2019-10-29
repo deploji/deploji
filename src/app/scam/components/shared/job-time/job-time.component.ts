@@ -1,4 +1,4 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
 import { Job } from '../../../../core/interfaces/job';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule } from '@angular/material/tooltip';
@@ -9,13 +9,8 @@ import { DurationComponentModule } from '../duration/duration.component';
   selector: 'app-job-time',
   templateUrl: './job-time.component.html',
 })
-export class JobTimeComponent implements OnInit {
+export class JobTimeComponent {
   @Input() job: Job;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 }
 
 @NgModule({

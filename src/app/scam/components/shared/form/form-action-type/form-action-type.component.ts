@@ -28,17 +28,24 @@ export class FormActionTypeComponent implements ControlValueAccessor, OnInit, On
   control = new FormControl();
   options = [ActionTypesEnum.READ, ActionTypesEnum.WRITE, ActionTypesEnum.ADMIN, ActionTypesEnum.USE];
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+    // do nothing
+  }
+
+  onTouched = (_: any) => {
+    // do nothing
+  }
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
   registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.control.disable();
+    isDisabled ? this.control.disable() : this.control.enable();
   }
 
   writeValue(obj: any): void {

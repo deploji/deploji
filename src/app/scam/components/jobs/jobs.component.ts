@@ -30,9 +30,9 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   templateUrl: './jobs.component.html',
 })
 export class JobsComponent implements OnInit, OnDestroy {
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true}) paginator: MatPaginator;
   private subscription: Subscription;
-  private currentPage: Page = {page: 0, limit: 10, orderBy: 'id desc'};
+  private currentPage: Page = { page: 0, limit: 10, orderBy: 'id desc'};
   jobs: Collection<Job>;
   columnsToDisplay = ['status', 'id', 'type', 'project', 'application', 'inventory', 'version', 'time', 'user', 'actions'];
   filters = new DeploymentFiltersForm();
@@ -102,7 +102,7 @@ export class JobsComponent implements OnInit, OnDestroy {
   }
 
   page(pageEvent: PageEvent) {
-    this.currentPage = {page: pageEvent.pageIndex, limit: pageEvent.pageSize, orderBy: 'id desc'};
+    this.currentPage = { page: pageEvent.pageIndex, limit: pageEvent.pageSize, orderBy: 'id desc'};
     this.reload(this.currentPage, this.filters.value);
   }
 

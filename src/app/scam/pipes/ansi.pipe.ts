@@ -5,7 +5,7 @@ import { NgModule, Pipe, PipeTransform } from '@angular/core';
 })
 export class AnsiPipe implements PipeTransform {
 
-  transform(value: string, ...args: any[]): any {
+  transform(value: string): any {
     return value
       .replace(/\u001b\[0;30m/g, '<span class="ansi-black">')
       .replace(/\u001b\[1;30m/g, '<span class="ansi-bright-black">')
@@ -34,4 +34,4 @@ export class AnsiPipe implements PipeTransform {
   declarations: [AnsiPipe],
   exports: [AnsiPipe],
 })
-export class AnsiPipeModule {}
+export class AnsiPipeModule { }

@@ -52,4 +52,4 @@ export class EditProjectComponent implements OnInit {
     RouterModule,
   ]
 })
-export class EditProjectComponentModule {}
+export class EditProjectComponentModule { }

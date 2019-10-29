@@ -10,9 +10,6 @@ export class UrlsComponent implements OnChanges {
   @Input() delimiter = '\n';
   urls: string[];
 
-  constructor() {
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     this.urls = changes.urlsString.currentValue.split(this.delimiter);
   }

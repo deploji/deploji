@@ -28,7 +28,7 @@ export class JobsService {
     return this.http.get<JobLog[]>(`/api/jobs/${id}/logs`);
   }
 
-  getJobs(filters: any = {}, page: Page = {page: 0, limit: 10, orderBy: 'id desc'}): Observable<Collection<Job>> {
+  getJobs(filters: any = { }, page: Page = { page: 0, limit: 10, orderBy: 'id desc'}): Observable<Collection<Job>> {
     return this.http.get<Job[]>('/api/jobs', {
       observe: 'response',
       params: new HttpParamsBuilder().page(page).filters(filters).build()

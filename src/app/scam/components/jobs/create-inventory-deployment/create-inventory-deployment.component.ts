@@ -46,4 +46,4 @@ export class CreateInventoryDeploymentComponent {
     RouterModule,
   ]
 })
-export class CreateInventoryDeploymentComponentModule {}
+export class CreateInventoryDeploymentComponentModule { }
