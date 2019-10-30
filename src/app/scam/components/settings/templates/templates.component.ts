@@ -32,7 +32,7 @@ export class TemplatesComponent implements OnInit {
   delete(template: Template) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete template ${template.Name}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete template ${template.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {

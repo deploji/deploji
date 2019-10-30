@@ -54,7 +54,7 @@ export class AppsComponent implements OnInit, OnDestroy {
   delete(app: App) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete application ${app.Name}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete application ${app.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
@@ -80,4 +80,4 @@ export class AppsComponent implements OnInit, OnDestroy {
     DeleteButtonComponentModule,
   ]
 })
-export class AppsComponentModule {}
+export class AppsComponentModule { }

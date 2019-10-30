@@ -30,7 +30,7 @@ export class RepositoriesComponent implements OnInit {
   delete(repository: Repository) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete repository ${repository.Name}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete repository ${repository.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
@@ -55,4 +55,4 @@ export class RepositoriesComponent implements OnInit {
     DeleteButtonComponentModule,
   ]
 })
-export class RepositoriesComponentModule {}
+export class RepositoriesComponentModule { }

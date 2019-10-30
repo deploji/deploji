@@ -6,7 +6,6 @@ import {
   ApplicationsComponentModule
 } from '../../scam/components/applications/applications.component';
 
-
 const routes: Routes = [
   {
     path: '',

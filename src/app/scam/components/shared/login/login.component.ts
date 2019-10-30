@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { catchError, finalize } from 'rxjs/operators';
 import { MatDialog } from '@angular/material';
@@ -19,13 +19,10 @@ import { ProgressService } from '../../../../core/services/progress.service';
   selector: 'app-login',
   templateUrl: './login.component.html',
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   form = new LoginForm();
 
   constructor(private authService: AuthService, private dialog: MatDialog, private progress: ProgressService) {
-  }
-
-  ngOnInit() {
   }
 
   login(formValue: any) {
@@ -37,7 +34,7 @@ export class LoginComponent implements OnInit {
         }
         this.dialog.open(DialogConfirmComponent, {
           width: '500px',
-          data: {title: '', hideCancelButton: true, message: `Invalid username or password`}
+          data: { title: '', hideCancelButton: true, message: `Invalid username or password`}
         });
         return throwError(err);
       }),

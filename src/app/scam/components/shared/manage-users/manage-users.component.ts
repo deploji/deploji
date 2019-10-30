@@ -24,7 +24,7 @@ export class ManageUsersComponent implements OnChanges {
   selectedUser = new FormControl();
   showUserSelect = false;
 
-  constructor(private teamsService: TeamsService, private usersService: UsersService) {}
+  constructor(private teamsService: TeamsService, private usersService: UsersService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.teamId && changes.teamId.currentValue) {

@@ -1,6 +1,6 @@
 import { FormArray, FormGroup } from '@angular/forms';
 import { SettingForm } from './setting.form';
-import { SettingGroup } from '../interfaces/settingGroup';
+import { SettingGroup } from '../interfaces/setting-group';
 
 export class SettingsForm extends FormGroup {
   constructor(settings: SettingGroup[]) {

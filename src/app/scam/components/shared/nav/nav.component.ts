@@ -1,4 +1,4 @@
-import { Component, NgModule, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -20,9 +20,9 @@ import { UserTypesEnum } from '../../../../core/enums/user-types.enum';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.scss']
 })
-export class NavComponent implements OnInit, OnDestroy {
-  @ViewChild('drawer', {static: false}) drawer;
-  UserTypes = UserTypesEnum;
+export class NavComponent implements OnInit {
+  @ViewChild('drawer', { static: false}) drawer;
+  userTypes = UserTypesEnum;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
@@ -32,9 +32,6 @@ export class NavComponent implements OnInit, OnDestroy {
   title: string;
 
   constructor(private breakpointObserver: BreakpointObserver, private navService: NavService, private authService: AuthService) {
-  }
-
-  ngOnDestroy(): void {
   }
 
   ngOnInit(): void {

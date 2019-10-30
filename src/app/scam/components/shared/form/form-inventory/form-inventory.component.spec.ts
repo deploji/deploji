@@ -21,14 +21,14 @@ import { MatInputModule } from '@angular/material/input';
   `
 })
 export class TestWrapperComponent {
-  form = new FormGroup({inventory: new FormControl({ID: 1}, [Validators.required])});
+  form = new FormGroup({ inventory: new FormControl({ ID: 1}, [Validators.required])});
 }
 
 class InventoriesServiceMock {
   getInventories(): Observable<Inventory[]> {
     return of([
-      {ID: 1, Name: 'Fake inventory 1'},
-      {ID: 2, Name: 'Fake inventory 2'},
+      { ID: 1, Name: 'Fake inventory 1'},
+      { ID: 2, Name: 'Fake inventory 2'},
     ]);
   }
 }
@@ -53,7 +53,7 @@ describe('FormInventoryComponent', () => {
         TestWrapperComponent,
       ],
       providers: [
-        {provide: InventoriesService, useClass: InventoriesServiceMock}
+        { provide: InventoriesService, useClass: InventoriesServiceMock}
       ]
     })
       .compileComponents();

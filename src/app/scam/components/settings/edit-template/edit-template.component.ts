@@ -81,4 +81,4 @@ export class EditTemplateComponent implements OnInit {
     NotificationsWhenComponentModule
   ]
 })
-export class EditTemplateComponentModule {}
+export class EditTemplateComponentModule { }

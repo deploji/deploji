@@ -5,7 +5,7 @@ import * as moment from 'moment';
   name: 'timeAgo'
 })
 export class TimeAgoPipe implements PipeTransform {
-  transform(value: any, ...args: any[]): any {
+  transform(value: any): any {
     return moment(value).fromNow();
   }
 }
@@ -14,4 +14,4 @@ export class TimeAgoPipe implements PipeTransform {
   declarations: [TimeAgoPipe],
   exports: [TimeAgoPipe],
 })
-export class TimeAgoPipeModule {}
+export class TimeAgoPipeModule { }

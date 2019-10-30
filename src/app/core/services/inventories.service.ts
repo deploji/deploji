@@ -13,7 +13,7 @@ export class InventoriesService {
   }
 
   getInventories(app?: App): Observable<Inventory[]> {
-    return this.http.get<Inventory[]>('/api/inventories', {params: app ? {app: app.ID.toString()} : {}});
+    return this.http.get<Inventory[]>('/api/inventories', { params: app ? { app: app.ID.toString()} : { }});
   }
 
   getInventory(id: number): Observable<Inventory> {

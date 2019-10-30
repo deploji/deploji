@@ -15,9 +15,9 @@
     <mat-form-field class="block">
       <mat-label>Type</mat-label>
       <mat-select formControlName="Type">
-        <mat-option [value]="RepositoryTypes.DOCKER_V1">Docker registry v1</mat-option>
-        <mat-option [value]="RepositoryTypes.DOCKER_V2">Docker registry v2</mat-option>
-        <mat-option [value]="RepositoryTypes.NEXUS_V3_MAVEN">Nexus 3 Maven</mat-option>
+        <mat-option [value]="repositoryTypesEnum.DOCKER_V1">Docker registry v1</mat-option>
+        <mat-option [value]="repositoryTypesEnum.DOCKER_V2">Docker registry v2</mat-option>
+        <mat-option [value]="repositoryTypesEnum.NEXUS_V3_MAVEN">Nexus 3 Maven</mat-option>
       </mat-select>
       <mat-error>
         Type is <strong>required</strong>

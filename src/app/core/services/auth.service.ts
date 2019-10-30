@@ -12,7 +12,6 @@ import { UserTypesEnum } from '../enums/user-types.enum';
 export class AuthService {
   private jwtTokenString: string;
   private decodedToken: any;
-  private perm: string[] = [];
 
   constructor(private http: HttpClient, private permissionsService: NgxPermissionsService, private router: Router) { }
 
@@ -49,7 +48,8 @@ export class AuthService {
     if (this.jwtTokenString) {
       try {
         this.decodedToken = jwt_decode(this.jwtTokenString);
-      } catch (ignored) {
+      } catch (error) {
+        console.warn(error);
       }
     } else {
       this.decodedToken = undefined;
@@ -77,7 +77,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.http.post('/api/auth/refresh', null, {observe: 'response'}).pipe(
+    return this.http.post('/api/auth/refresh', null, { observe: 'response'}).pipe(
       tap((resp: any) => {
         localStorage.setItem('token', resp.body.Token);
         this.loadToken();

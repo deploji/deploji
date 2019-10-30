@@ -13,6 +13,6 @@ export class VersionsService {
   }
 
   getVersions(app: App): Observable<Version[]> {
-    return this.http.get<Version[]>('/api/versions', {params: {app: app.ID.toString()}});
+    return this.http.get<Version[]>('/api/versions', { params: { app: app.ID.toString()}});
   }
 }

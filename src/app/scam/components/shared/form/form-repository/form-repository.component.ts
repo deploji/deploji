@@ -29,17 +29,24 @@ export class FormRepositoryComponent implements ControlValueAccessor, OnInit, On
   constructor(private repositoriesService: RepositoriesService) {
   }
 
-  propagateChange = (_: any) => {};
+  propagateChange = (_: any) => {
+    // do nothing
+  }
+
+  onTouched = (_: any) => {
+    // do nothing
+  }
 
   registerOnChange(fn: any): void {
     this.propagateChange = fn;
   }
 
   registerOnTouched(fn: any): void {
+    this.onTouched = fn;
   }
 
   setDisabledState(isDisabled: boolean): void {
-    this.control.disable();
+    isDisabled ? this.control.disable() : this.control.enable();
   }
 
   writeValue(obj: any): void {

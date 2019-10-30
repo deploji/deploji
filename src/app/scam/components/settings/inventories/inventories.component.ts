@@ -32,7 +32,7 @@ export class InventoriesComponent implements OnInit {
   delete(inventory: Inventory) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete inventory ${inventory.Name}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete inventory ${inventory.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
@@ -58,4 +58,4 @@ export class InventoriesComponent implements OnInit {
     DeleteButtonComponentModule,
   ]
 })
-export class InventoriesComponentModule {}
+export class InventoriesComponentModule { }

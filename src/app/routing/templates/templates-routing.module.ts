@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NavResolve } from '../../core/resolvers/nav.resolver';
 import { TemplatesComponent, TemplatesComponentModule } from '../../scam/components/templates/templates.component';
 
-
 const routes: Routes = [
   {
     path: '',

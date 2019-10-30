@@ -65,4 +65,4 @@ export class EditInventoryComponent implements OnInit {
     ManagePermissionsComponentModule,
   ]
 })
-export class EditInventoryComponentModule {}
+export class EditInventoryComponentModule { }

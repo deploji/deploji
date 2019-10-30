@@ -11,7 +11,7 @@
     <span class="mr2 brand">Deploji</span>
     <ng-container *ngIf="(isHandset$ | async) === false">
       <button
-        *ngxPermissionsExcept="UserTypes.GUEST"
+        *ngxPermissionsExcept="userTypes.GUEST"
         type="button"
         aria-label="Jobs"
         title="Jobs"
@@ -20,7 +20,7 @@
         Jobs
       </button>
       <button
-        *ngxPermissionsExcept="UserTypes.GUEST"
+        *ngxPermissionsExcept="userTypes.GUEST"
         type="button"
         aria-label="Applications"
         title="Applications"
@@ -29,7 +29,7 @@
         Applications
       </button>
       <button
-        *ngxPermissionsExcept="UserTypes.GUEST"
+        *ngxPermissionsExcept="userTypes.GUEST"
         type="button"
         aria-label="Templates"
         title="Templates"
@@ -40,7 +40,7 @@
     </ng-container>
     <span class="flex-auto"></span>
     <button
-      *ngxPermissionsExcept="UserTypes.GUEST"
+      *ngxPermissionsExcept="userTypes.GUEST"
       (click)="logout()"
       type="button"
       aria-label="Logout"
@@ -52,7 +52,7 @@
   </mat-toolbar-row>
   <mat-toolbar-row *ngIf="isHandset$ | async" class="flex p0 second-row">
     <button
-      *ngxPermissionsExcept="UserTypes.GUEST"
+      *ngxPermissionsExcept="userTypes.GUEST"
       class="flex-auto h-100"
       type="button"
       aria-label="Jobs"
@@ -62,7 +62,7 @@
       Jobs
     </button>
     <button
-      *ngxPermissionsExcept="UserTypes.GUEST"
+      *ngxPermissionsExcept="userTypes.GUEST"
       class="flex-auto h-100"
       type="button"
       aria-label="Applications"
@@ -72,7 +72,7 @@
       Applications
     </button>
     <button
-      *ngxPermissionsExcept="UserTypes.GUEST"
+      *ngxPermissionsExcept="userTypes.GUEST"
       class="flex-auto h-100"
       type="button"
       aria-label="Templates"
@@ -90,18 +90,18 @@
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Settings</mat-toolbar>
-    <mat-nav-list *ngxPermissionsExcept="UserTypes.GUEST">
+    <mat-nav-list *ngxPermissionsExcept="userTypes.GUEST">
       <a mat-list-item class="menu-item" routerLink="/settings/keys">SSH keys</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]"
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
          routerLink="/settings/projects">Projects</a>
       <a mat-list-item class="menu-item" routerLink="/settings/inventories">Inventories</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/repositories">Artifact
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/repositories">Artifact
         Repositories</a>
       <a mat-list-item class="menu-item" routerLink="/settings/apps">Applications</a>
       <a mat-list-item class="menu-item" routerLink="/settings/templates">Templates</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/users">Users</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/teams">Teams</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/settings">Settings</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/users">Users</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/teams">Teams</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/settings">Settings</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[UserTypes.ADMIN, UserTypes.AUDITOR]" routerLink="/settings/notification-channels">Notification Channels</a>
     </mat-nav-list>
   </mat-sidenav>

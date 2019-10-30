@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Team } from '../interfaces/team';
 import { User } from '../interfaces/user';
-import { Permission } from '../interfaces/permission';
 
 @Injectable({
   providedIn: 'root'
@@ -36,7 +35,7 @@ export class TeamsService {
   }
 
   addUser(teamId: number, userId: number) {
-    return this.http.post<User>(`/api/teams/${teamId}/users`, {ID: userId});
+    return this.http.post<User>(`/api/teams/${teamId}/users`, { ID: userId});
   }
 
   removeUser(teamId: number, userId: number) {

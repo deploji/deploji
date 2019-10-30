@@ -28,7 +28,7 @@ export class ProjectsService {
   }
 
   synchronize(project: Project): Observable<Job> {
-    return this.http.post<Job>(`/api/projects/${project.ID}/synchronize`, {});
+    return this.http.post<Job>(`/api/projects/${project.ID}/synchronize`, { });
   }
 
   getProject(id: number): Observable<Project> {

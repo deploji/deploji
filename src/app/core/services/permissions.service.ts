@@ -25,7 +25,7 @@ export class PermissionsService {
     return this.http.post<any>(`/api/permissions/delete`, permission);
   }
 
-  getPermissions(filters?: {[param: string]: string}) {
-    return this.http.get<Permission[]>('/api/permissions', {params: filters});
+  getPermissions(filters?: { [param: string]: string}) {
+    return this.http.get<Permission[]>('/api/permissions', { params: filters});
   }
 }

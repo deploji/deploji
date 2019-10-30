@@ -1,4 +1,4 @@
-import { SettingGroup } from './settingGroup';
+import { SettingGroup } from './setting-group';
 
 export interface Setting {
   ID?: number;

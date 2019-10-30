@@ -45,7 +45,7 @@ const routes: Routes = [
   imports: [
     LoginComponentModule,
     JobsRoutingModule,
-    RouterModule.forRoot(routes, {enableTracing: environment.enableRouterTracing})
+    RouterModule.forRoot(routes, { enableTracing: environment.enableRouterTracing})
   ],
   exports: [RouterModule]
 })

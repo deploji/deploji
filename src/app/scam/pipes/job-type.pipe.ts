@@ -5,7 +5,7 @@ import { JobTypesEnum } from '../../core/enums/job-types.enum';
   name: 'jobType'
 })
 export class JobTypePipe implements PipeTransform {
-  transform(value: any, ...args: any[]): any {
+  transform(value: any): any {
     switch (value) {
       case JobTypesEnum.DEPLOYMENT:
         return 'Deployment';
@@ -23,4 +23,4 @@ export class JobTypePipe implements PipeTransform {
   declarations: [JobTypePipe],
   exports: [JobTypePipe],
 })
-export class JobTypePipeModule {}
+export class JobTypePipeModule { }

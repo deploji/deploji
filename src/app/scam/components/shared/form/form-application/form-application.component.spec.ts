@@ -21,14 +21,14 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
   `
 })
 export class TestWrapperComponent {
-  form = new FormGroup({app: new FormControl({ID: 1}, [Validators.required])});
+  form = new FormGroup({ app: new FormControl({ ID: 1}, [Validators.required])});
 }
 
 class AppServiceMock {
   getApps(): Observable<App[]> {
     return of([
-      {ID: 1, Name: 'Deploji'},
-      {ID: 2, Name: 'Fake App'},
+      { ID: 1, Name: 'Deploji'},
+      { ID: 2, Name: 'Fake App'},
     ]);
   }
 }
@@ -49,7 +49,7 @@ describe('FormApplicationComponent', () => {
         NoopAnimationsModule,
       ],
       schemas: [NO_ERRORS_SCHEMA],
-      providers: [{provide: AppsService, useClass: AppServiceMock}],
+      providers: [{ provide: AppsService, useClass: AppServiceMock}],
       declarations: [
         FormApplicationComponent,
         TestWrapperComponent,

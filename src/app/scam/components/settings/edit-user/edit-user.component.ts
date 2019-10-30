@@ -20,7 +20,7 @@ import { UserTypesEnum } from '../../../../core/enums/user-types.enum';
 })
 export class EditUserComponent implements OnInit {
   form = new UserForm();
-  UserTypeEnum = UserTypesEnum;
+  userTypesEnum = UserTypesEnum;
 
   constructor(
     private usersService: UsersService,

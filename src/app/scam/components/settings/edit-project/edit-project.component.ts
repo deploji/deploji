@@ -62,4 +62,4 @@ export class EditProjectComponent implements OnInit {
     MatTabsModule
   ]
 })
-export class EditProjectComponentModule {}
+export class EditProjectComponentModule { }

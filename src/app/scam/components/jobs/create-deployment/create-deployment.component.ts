@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { JobsService } from '../../../../core/services/jobs.service';
 import { CreateDeploymentForm } from '../../../../core/forms/create-deployment.form';
@@ -14,13 +14,10 @@ import { MatButtonModule } from '@angular/material/button';
   selector: 'app-create-deployment',
   templateUrl: './create-deployment.component.html',
 })
-export class CreateDeploymentComponent implements OnInit {
+export class CreateDeploymentComponent {
   form = new CreateDeploymentForm();
 
   constructor(private jobsService: JobsService, private router: Router) {
-  }
-
-  ngOnInit() {
   }
 
   create() {

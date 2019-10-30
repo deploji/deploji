@@ -17,7 +17,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class EditRepositoryComponent implements OnInit {
   form = new RepositoryForm();
-  RepositoryTypes = RepositoryTypesEnum;
+  repositoryTypesEnum = RepositoryTypesEnum;
 
   constructor(
     private repositoriesService: RepositoriesService,
@@ -58,4 +58,4 @@ export class EditRepositoryComponent implements OnInit {
     RouterModule,
   ]
 })
-export class EditRepositoryComponentModule {}
+export class EditRepositoryComponentModule { }

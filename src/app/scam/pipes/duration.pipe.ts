@@ -4,7 +4,7 @@ import { NgModule, Pipe, PipeTransform } from '@angular/core';
   name: 'duration'
 })
 export class DurationPipe implements PipeTransform {
-  transform(milliseconds: any, ...args: any[]): any {
+  transform(milliseconds: any): any {
     const seconds = Math.round(((milliseconds / 1000) % 60) * 100) / 100;
     const minutes = Math.floor(((milliseconds / (1000 * 60)) % 60));
     const hours   = Math.floor(((milliseconds / (1000 * 60 * 60)) % 24));
@@ -16,4 +16,4 @@ export class DurationPipe implements PipeTransform {
   declarations: [DurationPipe],
   exports: [DurationPipe],
 })
-export class DurationPipeModule {}
+export class DurationPipeModule { }

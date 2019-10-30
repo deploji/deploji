@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormActionTypeComponent } from './form-action-type.component';
-import { Component, NO_ERRORS_SCHEMA } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -24,14 +24,14 @@ import { MatSelectModule } from '@angular/material/select';
 })
 export class TestWrapperComponent {
   ObjectTypesEnum = ObjectTypesEnum;
-  form = new FormGroup({app: new FormControl({ID: 1}, [Validators.required])});
+  form = new FormGroup({ app: new FormControl({ ID: 1}, [Validators.required])});
 }
 
 class AppServiceMock {
   getApps(): Observable<App[]> {
     return of([
-      {ID: 1, Name: 'Deploji'},
-      {ID: 2, Name: 'Fake App'},
+      { ID: 1, Name: 'Deploji'},
+      { ID: 2, Name: 'Fake App'},
     ]);
   }
 }
@@ -52,7 +52,7 @@ describe('FormActionTypeComponent', () => {
         MatInputModule,
         NoopAnimationsModule,
       ],
-      providers: [{provide: AppsService, useClass: AppServiceMock}],
+      providers: [{ provide: AppsService, useClass: AppServiceMock}],
       declarations: [
         FormActionTypeComponent,
         TestWrapperComponent,

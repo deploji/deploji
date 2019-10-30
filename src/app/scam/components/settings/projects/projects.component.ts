@@ -24,7 +24,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class ProjectsComponent implements OnInit, OnDestroy {
   projects: Project[] = [];
-  dialogData: DialogData = {title: 'Project synchronization error'};
+  dialogData: DialogData = { title: 'Project synchronization error'};
   private subscription: Subscription;
 
   constructor(private stomp: RxStompService, private projectsService: ProjectsService, private dialog: MatDialog) {
@@ -62,7 +62,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
   delete(project: Project) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {title: 'Are you sure?', message: `Do you want do delete project ${project.Name}?`}
+      data: { title: 'Are you sure?', message: `Do you want do delete project ${project.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
@@ -131,4 +131,4 @@ export class ProjectsComponent implements OnInit, OnDestroy {
     MatTooltipModule,
   ]
 })
-export class ProjectsComponentModule {}
+export class ProjectsComponentModule { }

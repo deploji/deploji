@@ -21,4 +21,4 @@ export class EditButtonComponent {
     MatTooltipModule,
   ]
 })
-export class EditButtonComponentModule {}
+export class EditButtonComponentModule { }
