@@ -1,0 +1,23 @@
+<table mat-table [dataSource]="assignedChannels">
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef scope="col">Name</th>
+    <td mat-cell *matCellDef="let element">{{element.NotificationChannel.Name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="SuccessEnabled">
+    <th mat-header-cell *matHeaderCellDef scope="col">Success</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle [checked]="element.SuccessEnabled" (change)="onSlide($event, element, 'SuccessEnabled')"></mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="FailEnabled">
+    <th mat-header-cell *matHeaderCellDef scope="col">Fail</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle [checked]="element.FailEnabled" (change)="onSlide($event, element, 'FailEnabled')"></mat-slide-toggle>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>

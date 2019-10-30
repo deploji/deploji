@@ -38,6 +38,7 @@ export class ProjectsComponent implements OnInit, OnDestroy {
         this.setProjectSyncStatus(project, statusMessage.Status);
       }
     });
+
     forkJoin([
       this.projectsService.getProjectSyncStatus(),
       this.projectsService.getProjects()

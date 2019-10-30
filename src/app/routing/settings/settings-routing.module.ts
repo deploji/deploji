@@ -52,6 +52,14 @@ import {
   EditTeamComponent,
   EditTeamComponentModule
 } from '../../scam/components/settings/edit-team/edit-team.component';
+import {
+  NotificationChannelsComponent,
+  NotificationChannelsComponentModule
+} from '../../scam/components/settings/notification-channels/notification-channels.component';
+import {
+  EditNotificationChannelComponent,
+  EditNotificationChannelComponentModule
+} from '../../scam/components/settings/edit-notification-channel/edit-notification-channel.component';
 
 const routes: Routes = [
   {
@@ -97,6 +105,10 @@ const routes: Routes = [
           {
             label: 'Settings',
             link: '/settings/settings'
+          },
+          {
+            label: 'Notification Channels',
+            link: '/settings/notification-channels'
           }
         ]
       }
@@ -202,6 +214,18 @@ const routes: Routes = [
         path: 'settings',
         component: SystemSettingsComponent
       },
+      {
+        path: 'notification-channels',
+        component: NotificationChannelsComponent
+      },
+      {
+        path: 'notification-channel/create',
+        component: EditNotificationChannelComponent
+      },
+      {
+        path: 'notification-channel/:id',
+        component: EditNotificationChannelComponent
+      }
     ]
   }
 ];
@@ -226,6 +250,8 @@ const routes: Routes = [
     EditTeamComponentModule,
     EditUserComponentModule,
     SystemSettingsComponentModule,
+    NotificationChannelsComponentModule,
+    EditNotificationChannelComponentModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]

@@ -101,9 +101,14 @@
         </div>
       </form>
     </mat-tab>
-    <mat-tab label="Permissions">
+    <mat-tab label="Permissions" [disabled]="!applicationId">
       <div class="p0">
         <app-manage-permissions [editable]="app?.Permissions?.Admin" [appId]="app?.ID"></app-manage-permissions>
+      </div>
+    </mat-tab>
+    <mat-tab label="Notifications" [disabled]="!applicationId">
+      <div class="p0">
+        <app-notifications-when [applicationId]="applicationId"></app-notifications-when>
       </div>
     </mat-tab>
   </mat-tab-group>

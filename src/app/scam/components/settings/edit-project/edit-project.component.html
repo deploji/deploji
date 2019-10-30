@@ -3,29 +3,36 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   project
 </h1>
-<mat-card>
-  <form [formGroup]="form">
-    <mat-form-field class="block">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" type="text" formControlName="Name">
-    </mat-form-field>
-    <mat-form-field class="block">
-      <mat-label>Git URL</mat-label>
-      <input matInput type="text" formControlName="RepoUrl">
-    </mat-form-field>
-    <mat-form-field class="block">
-      <mat-label>Git branch</mat-label>
-      <input matInput type="text" formControlName="RepoBranch">
-    </mat-form-field>
-    <mat-form-field class="block">
-      <mat-label>Git user</mat-label>
-      <input matInput type="text" formControlName="RepoUser">
-    </mat-form-field>
-    <app-form-ssh-key formControlName="SshKey" label="SSH key"></app-form-ssh-key>
-    <div class="button-row flex">
-      <div class="flex-auto"></div>
-      <button type="button" mat-raised-button routerLink="/settings/projects">Cancel</button>
-      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
-    </div>
-  </form>
+<mat-card class="p0">
+  <mat-tab-group>
+    <mat-tab label="Details">
+      <form [formGroup]="form" class="p2">
+        <mat-form-field class="block">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" type="text" formControlName="Name">
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Git URL</mat-label>
+          <input matInput type="text" formControlName="RepoUrl">
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Git branch</mat-label>
+          <input matInput type="text" formControlName="RepoBranch">
+        </mat-form-field>
+        <mat-form-field class="block">
+          <mat-label>Git user</mat-label>
+          <input matInput type="text" formControlName="RepoUser">
+        </mat-form-field>
+        <app-form-ssh-key formControlName="SshKey" label="SSH key"></app-form-ssh-key>
+        <div class="button-row flex">
+          <div class="flex-auto"></div>
+          <button type="button" mat-raised-button routerLink="/settings/projects">Cancel</button>
+          <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Notifications" [disabled]="!projectId">
+      <app-notifications-when [projectId]="projectId"></app-notifications-when>
+    </mat-tab>
+  </mat-tab-group>
 </mat-card>
