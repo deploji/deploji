@@ -16,7 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 @Component({
   template: `
     <form [formGroup]="form">
-      <app-form-inventory formControlName="inventory" label="Inventory"></app-form-inventory>
+      <app-form-inventory [control]="form.inventory" label="Inventory"></app-form-inventory>
     </form>
   `
 })

@@ -1,78 +1,32 @@
-import { Component, forwardRef, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { Inventory } from '../../../../../core/interfaces/inventory';
+import { Component, Input, NgModule, OnChanges, SimpleChanges } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { App } from '../../../../../core/interfaces/app';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatSelectModule } from '@angular/material/select';
+import { FormSelectComponentModule } from '../form-select/form-select.component';
+import { ApplicationInventory } from '../../../../../core/interfaces/application-inventory';
 
 @Component({
   selector: 'app-form-application-inventory',
   templateUrl: './form-application-inventory.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormApplicationInventoryComponent),
-      multi: true
-    }
-  ]
 })
-export class FormApplicationInventoryComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class FormApplicationInventoryComponent implements OnChanges {
   @Input() label = 'Inventory';
   @Input() app: App;
   @Input() multiple = false;
-  control = new FormControl();
-  private subscription: Subscription;
+  @Input() control = new FormControl();
+  options: ApplicationInventory[] = [];
 
-  get inventories() {
-    if (!this.app || !this.app.Inventories) {
-      return [];
-    }
-    return this.app.Inventories.filter(value => value.IsActive === true);
-  }
-
-  propagateChange = (_: any) => {
-    // do nothing
-  }
-
-  onTouched = (_: any) => {
-    // do nothing
-  }
-
-  registerOnChange(fn: any): void {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    isDisabled ? this.control.disable() : this.control.enable();
-  }
-
-  writeValue(obj: any): void {
-    this.control.setValue(obj);
-  }
-
-  ngOnInit(): void {
-    this.subscription = this.control.valueChanges.subscribe(value => {
-      this.propagateChange(value);
-    });
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription && !this.subscription.closed) {
-      this.subscription.unsubscribe();
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.app && changes.app.currentValue && changes.app.currentValue.Inventories) {
+      this.options = this.app.Inventories.filter(value => value.IsActive === true);
     }
   }
 
-  compareFn(optionOne: Inventory, optionTwo: Inventory): boolean {
-    if (!optionOne || !optionTwo) {
-      return false;
+  displayFn(option: ApplicationInventory) {
+    if (!option || typeof option === 'string') {
+      return option;
     }
-    return optionOne.ID === optionTwo.ID;
+    return option.Name || option.Inventory.Name;
   }
 }
 
@@ -81,9 +35,7 @@ export class FormApplicationInventoryComponent implements ControlValueAccessor, 
   exports: [FormApplicationInventoryComponent],
   imports: [
     CommonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-    ReactiveFormsModule
+    FormSelectComponentModule,
   ]
 })
 export class FormApplicationInventoryComponentModule { }

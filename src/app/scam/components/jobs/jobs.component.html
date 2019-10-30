@@ -19,11 +19,11 @@
   <div [formGroup]="filters" class="background-white container-fluid">
     <div class="row">
       <div class="col">
-        <app-form-application label="Application" formControlName="application_id"></app-form-application>
+        <app-form-application label="Application" [control]="filters.application_id"></app-form-application>
       </div>
       <div class="col">
-        <app-form-inventory label="Inventory" [app]="filters.get('application_id')?.value"
-                            formControlName="inventory_id"></app-form-inventory>
+        <app-form-inventory label="Inventory" [app]="filters.application_id?.value"
+                            [control]="filters.inventory_id"></app-form-inventory>
       </div>
     </div>
   </div>

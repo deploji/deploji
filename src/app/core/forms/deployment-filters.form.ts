@@ -7,4 +7,12 @@ export class DeploymentFiltersForm extends FormGroup {
       inventory_id: new FormControl()
     });
   }
+
+  get application_id(): FormControl {
+    return this.get('application_id') as FormControl;
+  }
+
+  get inventory_id(): FormControl {
+    return this.get('inventory_id') as FormControl;
+  }
 }

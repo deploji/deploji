@@ -43,7 +43,7 @@ export class EditInventoryComponent implements OnInit {
       return;
     }
     this.inventoriesService.save(this.form.value).subscribe(() => {
-      this.router.navigateByUrl('/settings/inventories');
+      this.router.navigateByUrl('/settings/apps');
     });
   }
 }

@@ -1,16 +1,18 @@
 <h1>Create Application deployment</h1>
 <mat-card>
-  <form [formGroup]="form">
+  <div>
     <div>
-      <app-form-application label="Application" formControlName="Application"></app-form-application>
+      <app-form-application label="Application" [control]="form.Application"></app-form-application>
     </div>
     <div>
-      <app-form-application-inventory label="Inventory" formControlName="Inventories"
-                          [multiple]="true"
-                          [app]="form.Application.value"></app-form-application-inventory>
+      <app-form-application-inventory label="Inventory"
+                                      [control]="form.Inventories"
+                                      [multiple]="true"
+                                      [app]="form.Application.value"></app-form-application-inventory>
     </div>
     <div>
-      <app-form-version label="Version" formControlName="Version"
+      <app-form-version label="Version"
+                        [control]="form.Version"
                         [app]="form.Application.value"></app-form-version>
     </div>
     <div class="button-row flex">
@@ -18,5 +20,5 @@
       <button type="button" mat-raised-button routerLink="/jobs">Cancel</button>
       <button type="button" mat-raised-button color="primary" (click)="create()">Save</button>
     </div>
-  </form>
+  </div>
 </mat-card>

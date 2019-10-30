@@ -17,7 +17,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 @Component({
   template: `
     <form [formGroup]="form">
-      <app-form-template formControlName="app" label="App"></app-form-template>
+      <app-form-template [control]="form.app" label="App"></app-form-template>
     </form>
   `
 })

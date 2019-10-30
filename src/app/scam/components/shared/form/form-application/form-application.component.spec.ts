@@ -16,7 +16,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 @Component({
   template: `
     <form [formGroup]="form">
-      <app-form-application formControlName="app" label="App"></app-form-application>
+      <app-form-application [control]="form.app" label="App"></app-form-application>
     </form>
   `
 })

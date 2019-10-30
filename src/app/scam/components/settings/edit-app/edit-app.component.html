@@ -21,11 +21,11 @@
 
         <div class="row">
           <div class="w-100 col">
-            <app-form-project label="Ansible Project" formControlName="Project"></app-form-project>
+            <app-form-project label="Ansible Project" [control]="form.Project"></app-form-project>
           </div>
           <div class="w-100 col">
             <app-form-project-file label="Ansible playbook"
-                                   formControlName="AnsiblePlaybook"
+                                   [control]="form.AnsiblePlaybook"
                                    [project]="form.get('Project').value">
             </app-form-project-file>
           </div>
@@ -33,7 +33,7 @@
 
         <div class="row">
           <div class="w-100 col">
-            <app-form-repository label="Artifact Repository" formControlName="Repository"></app-form-repository>
+            <app-form-repository label="Artifact Repository" [control]="form.Repository"></app-form-repository>
           </div>
           <mat-form-field class="block w-100 col">
             <mat-label>Group name</mat-label>
@@ -66,10 +66,10 @@
 
                 <div class="row">
                   <div class="col">
-                    <app-form-inventory [inventories]="inventories" formControlName="Inventory"></app-form-inventory>
+                    <app-form-inventory [inventories]="inventories" [control]="inventory.get('Inventory')"></app-form-inventory>
                   </div>
                   <div class="col">
-                    <app-form-ssh-key [keys]="keys" formControlName="Key"></app-form-ssh-key>
+                    <app-form-ssh-key [keys]="keys" [control]="inventory.get('Key')"></app-form-ssh-key>
                   </div>
                 </div>
                 <div class="row">

@@ -42,8 +42,8 @@
         </mat-select>
       </mat-form-field>
       <ng-container [ngSwitch]="form.SubjectType.value">
-        <app-form-user *ngSwitchCase="SubjectTypesEnum.USERS" formControlName="Subject"></app-form-user>
-        <app-form-team *ngSwitchCase="SubjectTypesEnum.TEAMS" formControlName="Subject"></app-form-team>
+        <app-form-user *ngSwitchCase="SubjectTypesEnum.USERS" [control]="form.Subject"></app-form-user>
+        <app-form-team *ngSwitchCase="SubjectTypesEnum.TEAMS" [control]="form.Subject"></app-form-team>
       </ng-container>
     </ng-container>
     <ng-container *ngIf="columnsToDisplay.includes('object-type')">
@@ -54,13 +54,13 @@
         </mat-select>
       </mat-form-field>
       <ng-container [ngSwitch]="form.ObjectType.value">
-        <app-form-inventory *ngSwitchCase="ObjectTypesEnum.INVENTORY" formControlName="Object"></app-form-inventory>
-        <app-form-ssh-key *ngSwitchCase="ObjectTypesEnum.KEY" formControlName="Object"></app-form-ssh-key>
-        <app-form-application *ngSwitchCase="ObjectTypesEnum.APPLICATION" formControlName="Object"></app-form-application>
-        <app-form-template *ngSwitchCase="ObjectTypesEnum.TEMPLATES" formControlName="Object"></app-form-template>
+        <app-form-inventory *ngSwitchCase="ObjectTypesEnum.INVENTORY" [control]="form.Object"></app-form-inventory>
+        <app-form-ssh-key *ngSwitchCase="ObjectTypesEnum.KEY" [control]="form.Object"></app-form-ssh-key>
+        <app-form-application *ngSwitchCase="ObjectTypesEnum.APPLICATION" [control]="form.Object"></app-form-application>
+        <app-form-template *ngSwitchCase="ObjectTypesEnum.TEMPLATES" [control]="form.Object"></app-form-template>
       </ng-container>
     </ng-container>
-    <app-form-action-type [type]="form.ObjectType.value" formControlName="Action"></app-form-action-type>
+    <app-form-action-type [type]="form.ObjectType.value" [formControl]="form.Action"></app-form-action-type>
     <div class="flex">
       <div class="flex-auto"></div>
       <button mat-raised-button class="mr2" (click)="toggleDialog()">Cancel</button>
