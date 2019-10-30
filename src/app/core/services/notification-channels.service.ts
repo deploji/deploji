@@ -15,47 +15,47 @@ export class NotificationChannelsService {
     private api: HttpClient
   ) { }
 
-  getNotificationChannels(): Observable<any> {
-    return this.api.get('/api/notification-channels');
+  getNotificationChannels(): Observable<NotificationChannel[]> {
+    return this.api.get<NotificationChannel[]>('/api/notification-channels');
   }
 
-  getNotificationChannel(id: number): Observable<any> {
-    return this.api.get(`/api/notification-channels/${id}`);
+  getNotificationChannel(id: number): Observable<NotificationChannel> {
+    return this.api.get<NotificationChannel>(`/api/notification-channels/${id}`);
   }
 
-  deleteNotificationChannel(id: number): Observable<any> {
-    return this.api.delete(`/api/notification-channels/${id}`);
+  deleteNotificationChannel(id: number): Observable<null> {
+    return this.api.delete<null>(`/api/notification-channels/${id}`);
   }
 
-  createNotificationChannel(channel: NotificationChannel): Observable<any> {
+  createNotificationChannel(channel: NotificationChannel): Observable<NotificationChannel> {
     return this.api.post('/api/notification-channels', channel);
   }
 
-  updateNotificationChannel(id: number, channel: NotificationChannel): Observable<any> {
+  updateNotificationChannel(id: number, channel: NotificationChannel): Observable<NotificationChannel> {
     return this.api.put(`/api/notification-channels/${id}`, channel);
   }
 
-  getApplicationNotificationChannels(id: number): Observable<any> {
-    return this.api.get(`/api/applications/${id}/notifications`);
+  getApplicationNotificationChannels(id: number): Observable<ApplicationNotificationChannel[]> {
+    return this.api.get<ApplicationNotificationChannel[]>(`/api/applications/${id}/notifications`);
   }
 
-  getProjectNotificationChannels(id: number): Observable<any> {
-    return this.api.get(`/api/projects/${id}/notifications`);
+  getProjectNotificationChannels(id: number): Observable<ProjectNotificationChannel[]> {
+    return this.api.get<ProjectNotificationChannel[]>(`/api/projects/${id}/notifications`);
   }
 
-  getTemplateNotificationChannels(id: number): Observable<any> {
-    return this.api.get(`/api/templates/${id}/notifications`);
+  getTemplateNotificationChannels(id: number): Observable<TemplateNotificationChannel[]> {
+    return this.api.get<TemplateNotificationChannel[]>(`/api/templates/${id}/notifications`);
   }
 
-  assignChannelToApplication(payload: ApplicationNotificationChannel): Observable<any> {
-    return this.api.put(`/api/applications/${payload.ApplicationID}/notifications`, payload);
+  assignChannelToApplication(payload: ApplicationNotificationChannel): Observable<ApplicationNotificationChannel[]> {
+    return this.api.put<ApplicationNotificationChannel[]>(`/api/applications/${payload.ApplicationID}/notifications`, payload);
   }
 
-  assignChannelToProject(payload: ProjectNotificationChannel): Observable<any> {
-    return this.api.put(`/api/projects/${payload.ProjectID}/notifications`, payload);
+  assignChannelToProject(payload: ProjectNotificationChannel): Observable<ProjectNotificationChannel[]> {
+    return this.api.put<ProjectNotificationChannel[]>(`/api/projects/${payload.ProjectID}/notifications`, payload);
   }
 
-  assignChannelToTemplate(payload: TemplateNotificationChannel): Observable<any> {
-    return this.api.put(`/api/templates/${payload.TemplateID}/notifications`, payload);
+  assignChannelToTemplate(payload: TemplateNotificationChannel): Observable<TemplateNotificationChannel[]> {
+    return this.api.put<TemplateNotificationChannel[]>(`/api/templates/${payload.TemplateID}/notifications`, payload);
   }
 }
