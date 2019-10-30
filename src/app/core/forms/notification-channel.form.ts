@@ -1,11 +1,7 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationChannelTypesEnum } from '../enums/notification-channel-types.enum';
-import { OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
 
-export class NotificationChannel extends FormGroup implements OnInit, OnDestroy {
-
-  private subscription: Subscription;
+export class NotificationChannel extends FormGroup {
 
   constructor() {
     super({
@@ -15,28 +11,6 @@ export class NotificationChannel extends FormGroup implements OnInit, OnDestroy 
       Recipients: new FormControl(),
       WebhookURL: new FormControl()
     });
-  }
-
-  ngOnInit(): void {
-    this.subscribeToForm();
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
-  private subscribeToForm(): void {
-    const typeSubscription = this.Type.valueChanges.subscribe((value: string) => {
-      if (NotificationChannelTypesEnum.EMAIL === value) {
-        this.Recipients.setValidators([Validators.required]);
-        this.Webhook.clearValidators();
-      } else if (NotificationChannelTypesEnum.WEBHOOK === value) {
-        this.Webhook.setValidators([Validators.required]);
-        this.Recipients.clearValidators();
-      }
-    });
-
-    this.subscription.add(typeSubscription);
   }
 
   get ID() {
