@@ -1,12 +1,12 @@
-import {ChangeDetectionStrategy, Component, NgModule, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatButtonModule, MatCardModule, MatDialog, MatDialogRef, MatIconModule, MatTableModule} from '@angular/material';
-import {Router, RouterModule} from '@angular/router';
-import {NotificationChannel} from '../../../../core/interfaces/notification-channel';
-import {NotificationChannelsService} from '../../../../core/services/notification-channels.service';
-import {DialogConfirmComponent} from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
-import {EditButtonComponentModule} from '../../shared/edit-button/edit-button.component';
-import {DeleteButtonComponentModule} from '../../shared/delete-button/delete-button.component';
+import { ChangeDetectionStrategy, Component, NgModule, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule, MatCardModule, MatDialog, MatDialogRef, MatIconModule, MatTableModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { NotificationChannel } from '../../../../core/interfaces/notification-channel';
+import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
+import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
+import { EditButtonComponentModule } from '../../shared/edit-button/edit-button.component';
+import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-button.component';
 
 @Component({
   selector: 'app-notification-channels',
@@ -22,7 +22,6 @@ export class NotificationChannelsComponent implements OnInit {
 
   constructor(
     private notchaService: NotificationChannelsService,
-    private router: Router,
     private dialog: MatDialog,
   ) { }
 
@@ -35,7 +34,7 @@ export class NotificationChannelsComponent implements OnInit {
   public delete(id: number): void {
     const dialogRef: MatDialogRef<any> = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: {message: 'Do you want to delete the notification channel?'}
+      data: { message: 'Do you want to delete the notification channel?'}
     });
 
     dialogRef.afterClosed().subscribe((confirmation: boolean) => {
@@ -65,4 +64,4 @@ export class NotificationChannelsComponent implements OnInit {
     DeleteButtonComponentModule
   ]
 })
-export class NotificationChannelsComponentModule {}
+export class NotificationChannelsComponentModule { }

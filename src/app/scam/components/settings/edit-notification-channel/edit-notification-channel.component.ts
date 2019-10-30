@@ -1,6 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule, MatCardModule, MatIconModule } from '@angular/material';
@@ -11,7 +10,6 @@ import { NotificationChannel } from '../../../../core/forms/notification-channel
 import { NotificationChannelTypesEnum } from '../../../../core/enums/notification-channel-types.enum';
 import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
 import { NotificationChannel as INotificationChannel } from '../../../../core/interfaces/notification-channel';
-import {EditButtonComponent, EditButtonComponentModule} from '../../shared/edit-button/edit-button.component';
 
 @Component({
   selector: 'app-edit-notification-channel',
@@ -21,9 +19,7 @@ import {EditButtonComponent, EditButtonComponentModule} from '../../shared/edit-
 export class EditNotificationChannelComponent implements OnInit {
 
   public form = new NotificationChannel();
-
   public channel: INotificationChannel;
-
   public types: any = [
     NotificationChannelTypesEnum.EMAIL,
     NotificationChannelTypesEnum.WEBHOOK
@@ -49,20 +45,20 @@ export class EditNotificationChannelComponent implements OnInit {
         this.form.patchValue(channel);
         this.channel = channel;
       },
-      (error: HttpErrorResponse ) => {
+      () => {
         this.router.navigateByUrl('/settings/notification-channel/create');
       }
     );
   }
 
   public save(): void {
-    this.notchaService.createNotificationChannel(this.form.value).subscribe((response: INotificationChannel) => {
+    this.notchaService.createNotificationChannel(this.form.value).subscribe(() => {
       this.router.navigateByUrl('/settings/notification-channels');
     });
   }
 
   public update(): void {
-    this.notchaService.updateNotificationChannel(this.channel.ID, this.form.value).subscribe((response: INotificationChannel) => {
+    this.notchaService.updateNotificationChannel(this.channel.ID, this.form.value).subscribe(() => {
         this.router.navigateByUrl('/settings/notification-channels');
     });
   }
@@ -83,4 +79,4 @@ export class EditNotificationChannelComponent implements OnInit {
     MatSelectModule
   ]
 })
-export class EditNotificationChannelComponentModule {}
+export class EditNotificationChannelComponentModule { }

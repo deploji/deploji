@@ -3,10 +3,10 @@
   <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
   project
 </h1>
-<mat-card>
+<mat-card class="p0">
   <mat-tab-group>
     <mat-tab label="Details">
-      <form [formGroup]="form">
+      <form [formGroup]="form" class="p2">
         <mat-form-field class="block">
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" type="text" formControlName="Name">

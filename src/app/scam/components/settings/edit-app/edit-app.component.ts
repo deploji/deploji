@@ -26,8 +26,6 @@ import { FormRepositoryComponentModule } from '../../shared/form/form-repository
 import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
 import { App } from '../../../../core/interfaces/app';
 import { NotificationsWhenComponent, NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
-import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
-import { ApplicationNotificationChannel } from '../../../../core/interfaces/application-notification-channel';
 
 @Component({
   selector: 'app-edit-app',
@@ -35,7 +33,7 @@ import { ApplicationNotificationChannel } from '../../../../core/interfaces/appl
 })
 export class EditAppComponent implements OnInit {
 
-  @ViewChild(NotificationsWhenComponent, {static: false})
+  @ViewChild(NotificationsWhenComponent, { static: false})
   public notificationsWhenComponentRef: any;
 
   public form = new ApplicationForm();
@@ -50,8 +48,7 @@ export class EditAppComponent implements OnInit {
     private inventoriesService: InventoriesService,
     private applicationInventoryService: ApplicationInventoriesService,
     private keysService: SshKeysService,
-    private route: ActivatedRoute,
-    private notchaService: NotificationChannelsService
+    private route: ActivatedRoute
   ) {
   }
 
@@ -75,7 +72,7 @@ export class EditAppComponent implements OnInit {
 
   save() {
     if (this.form.valid) {
-      this.appsService.save(this.form.value).subscribe((response: App) => {
+      this.appsService.save(this.form.value).subscribe(() => {
         this.router.navigateByUrl('/settings/apps');
       });
     }

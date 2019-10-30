@@ -1,4 +1,4 @@
-import {NotificationChannel} from './notification-channel';
+import { NotificationChannel } from './notification-channel';
 
 export interface RelatedNotificationChannel {
   NotificationChannel?: NotificationChannel;

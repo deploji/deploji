@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { NotificationChannel } from '../interfaces/notification-channel';
 import { TemplateNotificationChannel } from '../interfaces/template-notification-channel';
 import { ApplicationNotificationChannel } from '../interfaces/application-notification-channel';
-import {ProjectNotificationChannel} from '../interfaces/project-notification-channel';
+import { ProjectNotificationChannel } from '../interfaces/project-notification-channel';
 
 @Injectable({
   providedIn: 'root'

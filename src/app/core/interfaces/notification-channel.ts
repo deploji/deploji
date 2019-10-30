@@ -1,4 +1,4 @@
-import {NotificationChannelTypesEnum} from '../enums/notification-channel-types.enum';
+import { NotificationChannelTypesEnum } from '../enums/notification-channel-types.enum';
 
 export interface NotificationChannel {
   ID?: number;

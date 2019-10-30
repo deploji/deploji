@@ -1,13 +1,12 @@
-import {Component, Input, NgModule, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {MatCardModule, MatSlideToggleChange, MatTableModule} from '@angular/material';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {NotificationChannel} from '../../../../core/interfaces/notification-channel';
-import {NotificationChannelsService} from '../../../../core/services/notification-channels.service';
-import {RelatedNotificationChannel} from '../../../../core/interfaces/related-notification-channel';
-import {ApplicationNotificationChannel} from '../../../../core/interfaces/application-notification-channel';
-import {ProjectNotificationChannel} from '../../../../core/interfaces/project-notification-channel';
-import {TemplateNotificationChannel} from '../../../../core/interfaces/template-notification-channel';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MatCardModule, MatSlideToggleChange, MatTableModule } from '@angular/material';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
+import { RelatedNotificationChannel } from '../../../../core/interfaces/related-notification-channel';
+import { ApplicationNotificationChannel } from '../../../../core/interfaces/application-notification-channel';
+import { ProjectNotificationChannel } from '../../../../core/interfaces/project-notification-channel';
+import { TemplateNotificationChannel } from '../../../../core/interfaces/template-notification-channel';
 
 @Component({
   selector: 'app-notifications-when',
@@ -30,7 +29,7 @@ export class NotificationsWhenComponent implements OnInit {
 
   constructor(
     private notchaService: NotificationChannelsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.getRelatedNotificationChannels();
@@ -56,13 +55,13 @@ export class NotificationsWhenComponent implements OnInit {
     element[type] = event.checked;
 
     if (this.applicationId) {
-      const payload: ApplicationNotificationChannel = Object.assign({ApplicationID: this.applicationId}, element);
+      const payload: ApplicationNotificationChannel = Object.assign({ ApplicationID: this.applicationId}, element);
       this.notchaService.assignChannelToApplication(payload).subscribe();
     } else if (this.projectId) {
-      const payload: ProjectNotificationChannel = Object.assign({ProjectID: this.projectId}, element);
+      const payload: ProjectNotificationChannel = Object.assign({ ProjectID: this.projectId}, element);
       this.notchaService.assignChannelToProject(payload).subscribe();
     } else if (this.templateId) {
-      const payload: TemplateNotificationChannel = Object.assign({TemplateID: this.templateId}, element);
+      const payload: TemplateNotificationChannel = Object.assign({ TemplateID: this.templateId}, element);
       this.notchaService.assignChannelToTemplate(payload).subscribe();
     }
   }
@@ -78,4 +77,4 @@ export class NotificationsWhenComponent implements OnInit {
     MatSlideToggleModule
   ]
 })
-export class NotificationsWhenComponentModule {}
+export class NotificationsWhenComponentModule { }

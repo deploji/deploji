@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -16,8 +16,7 @@ import { FormProjectFileComponentModule } from '../../shared/form/form-project-f
 import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
 import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
 import { Template } from '../../../../core/interfaces/template';
-import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
-import { NotificationsWhenComponent, NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
+import { NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
 
 @Component({
   selector: 'app-edit-template',
@@ -25,16 +24,12 @@ import { NotificationsWhenComponent, NotificationsWhenComponentModule } from '..
 })
 export class EditTemplateComponent implements OnInit {
 
-  @ViewChild(NotificationsWhenComponent, {static: false})
-  public notificationsWhenComponentRef: any;
-
   public form = new TemplateForm();
   public template: Template;
   public templateId: number;
 
   constructor(
     private templatesService: TemplatesService,
-    private notchaService: NotificationChannelsService,
     private router: Router,
     private route: ActivatedRoute
   ) {
@@ -53,7 +48,7 @@ export class EditTemplateComponent implements OnInit {
 
   public save(): void {
     if (this.form.valid) {
-      this.templatesService.save(this.form.value).subscribe((response: Template) => {
+      this.templatesService.save(this.form.value).subscribe(() => {
         this.router.navigateByUrl('/settings/templates');
       });
     }

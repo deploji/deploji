@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { NotificationChannelsService } from './notification-channels.service';
-import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('NotificationChannelsService', () => {
   beforeEach(() => TestBed.configureTestingModule({
