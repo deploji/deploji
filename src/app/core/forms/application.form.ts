@@ -50,8 +50,12 @@ export class ApplicationForm extends FormGroup {
     return this.get('RepositoryGroup') as FormControl;
   }
 
-  get Inventories() {
+  get InventoriesArray(): FormArray {
     return this.get('Inventories') as FormArray;
+  }
+
+  get Inventories(): ApplicationInventoryForm[] {
+    return this.InventoriesArray.controls as ApplicationInventoryForm[];
   }
 
   createApplicationInventories(app: App) {
@@ -69,6 +73,6 @@ export class ApplicationForm extends FormGroup {
   }
 
   removeInventory(inventory: ApplicationInventory) {
-    this.Inventories.removeAt(this.Inventories.getRawValue().findIndex(value => inventory.ID === value.ID));
+    this.InventoriesArray.removeAt(this.InventoriesArray.getRawValue().findIndex(value => inventory.ID === value.ID));
   }
 }

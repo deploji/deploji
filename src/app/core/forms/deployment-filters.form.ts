@@ -8,11 +8,11 @@ export class DeploymentFiltersForm extends FormGroup {
     });
   }
 
-  get application_id(): FormControl {
+  get applicationId(): FormControl {
     return this.get('application_id') as FormControl;
   }
 
-  get inventory_id(): FormControl {
+  get inventoryId(): FormControl {
     return this.get('inventory_id') as FormControl;
   }
 }

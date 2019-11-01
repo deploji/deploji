@@ -20,6 +20,10 @@ export class ApplicationInventoryForm extends FormGroup {
     return this.get('Inventory') as FormControl;
   }
 
+  get Key() {
+    return this.get('Key') as FormControl;
+  }
+
   get IsActive() {
     return this.get('IsActive') as FormControl;
   }

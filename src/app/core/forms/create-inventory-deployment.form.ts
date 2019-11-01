@@ -3,6 +3,7 @@ import { Inventory } from '../interfaces/inventory';
 import { JobTypesEnum } from '../enums/job-types.enum';
 import { Job } from '../interfaces/job';
 import { notEmpty } from '../utils/utils';
+import { DeploymentApplicationForm } from './deployment-application.form';
 
 export class CreateInventoryDeploymentForm extends FormGroup {
   constructor() {
@@ -11,28 +12,21 @@ export class CreateInventoryDeploymentForm extends FormGroup {
       Applications: new FormArray([]),
     });
     this.Inventory.valueChanges.subscribe((selectedInventory: Inventory) => {
-      this.Applications.clear();
-      selectedInventory.ApplicationInventories.forEach(inventory => {
-        this.Applications.push(
-          new FormGroup({
-            IsActive: new FormControl(true),
-            Application: new FormControl(inventory.Application),
-            Version: new FormControl(),
-            Playbook: new FormControl(inventory.Playbook),
-            ExtraVariables: new FormControl(inventory.ExtraVariables),
-            KeyID: new FormControl(inventory.KeyID)
-          })
-        );
-      });
+      this.ApplicationsArray.clear();
+      selectedInventory.ApplicationInventories.forEach(inventory => this.ApplicationsArray.push(new DeploymentApplicationForm(inventory)));
     });
   }
 
   get Inventory() {
-    return this.get('Inventory') as FormGroup;
+    return this.get('Inventory') as FormControl;
+  }
+
+  get ApplicationsArray() {
+    return this.get('Applications') as FormArray;
   }
 
   get Applications() {
-    return this.get('Applications') as FormArray;
+    return this.ApplicationsArray.controls as DeploymentApplicationForm[];
   }
 
   get deploymentsValue(): Job[] {

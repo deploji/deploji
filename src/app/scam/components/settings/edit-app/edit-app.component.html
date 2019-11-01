@@ -48,9 +48,9 @@
         <div>
           <h2>Inventories</h2>
           <div class="flex flex-column" formArrayName="Inventories"
-               *ngFor="let inventory of form.Inventories.controls; let i = index">
+               *ngFor="let inventory of form.Inventories; let i = index">
             <mat-card class="my2">
-              <div [formGroupName]="i">
+              <div [formGroupName]="i.toString(10)">
                 <button class="float-right" type="button" mat-icon-button title="Delete inventory"
                         (click)="delete(inventory.value)">
                   <mat-icon color="warn">delete_forever</mat-icon>
@@ -66,10 +66,10 @@
 
                 <div class="row">
                   <div class="col">
-                    <app-form-inventory [inventories]="inventories" [control]="inventory.get('Inventory')"></app-form-inventory>
+                    <app-form-inventory [inventories]="inventories" [control]="inventory.Inventory"></app-form-inventory>
                   </div>
                   <div class="col">
-                    <app-form-ssh-key [keys]="keys" [control]="inventory.get('Key')"></app-form-ssh-key>
+                    <app-form-ssh-key [keys]="keys" [control]="inventory.Key"></app-form-ssh-key>
                   </div>
                 </div>
                 <div class="row">
