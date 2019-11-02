@@ -19,9 +19,9 @@ import { Subscription } from 'rxjs';
 })
 export class EditNotificationChannelComponent implements OnInit, OnDestroy {
 
-  public form = new NotificationChannel();
+  public form: NotificationChannel = new NotificationChannel();
   public channel: INotificationChannel;
-  public types: any = [
+  public types: string[] = [
     NotificationChannelTypesEnum.EMAIL,
     NotificationChannelTypesEnum.WEBHOOK
   ];
