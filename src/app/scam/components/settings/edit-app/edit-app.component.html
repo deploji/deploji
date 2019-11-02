@@ -49,6 +49,7 @@
           <h2>Inventories</h2>
           <mat-accordion>
             <mat-expansion-panel formArrayName="Inventories"
+                                 class="mat-elevation-z0"
                                  [expanded]="!inventory.get('ID').value"
                                  *ngFor="let inventory of form.Inventories.controls; let i = index">
               <mat-expansion-panel-header>

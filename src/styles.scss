@@ -17,6 +17,14 @@ table {
   border: 1px solid #ddd;
 }
 
+.mat-expansion-panel {
+  border: 1px solid #ddd;
+}
+
+.mat-expansion-panel:not(.mat-expanded) {
+  margin-bottom: -1px !important;
+}
+
 .rotate {
   animation: spin 1.5s ease-in-out infinite;
 }
