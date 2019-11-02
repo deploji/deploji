@@ -18,7 +18,7 @@ export class UserAvatarComponent implements OnChanges {
     if (!changes.user || !changes.user.currentValue || !changes.user.currentValue.Email) {
       return;
     }
-    this.hash = this.md5.appendStr(changes.user.currentValue.Email.toLowerCase()).end();
+    this.hash = this.md5.start().appendStr(changes.user.currentValue.Email.toLowerCase()).end();
   }
 }
 
