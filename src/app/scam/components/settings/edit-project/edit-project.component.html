@@ -23,7 +23,7 @@
           <mat-label>Git user</mat-label>
           <input matInput type="text" formControlName="RepoUser">
         </mat-form-field>
-        <app-form-ssh-key formControlName="SshKey" label="SSH key"></app-form-ssh-key>
+        <app-form-ssh-key [control]="form.SshKey" label="SSH key"></app-form-ssh-key>
         <div class="button-row flex">
           <div class="flex-auto"></div>
           <button type="button" mat-raised-button routerLink="/settings/projects">Cancel</button>

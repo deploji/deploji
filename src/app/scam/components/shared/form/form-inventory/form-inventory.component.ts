@@ -1,111 +1,39 @@
-import { AfterViewInit, Component, forwardRef, Input, NgModule, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, Input, NgModule, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { Inventory } from '../../../../../core/interfaces/inventory';
 import { InventoriesService } from '../../../../../core/services/inventories.service';
 import { App } from '../../../../../core/interfaces/app';
+import { FormSelectComponentModule } from '../form-select/form-select.component';
 
 @Component({
   selector: 'app-form-inventory',
   templateUrl: './form-inventory.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormInventoryComponent),
-      multi: true
-    }
-  ]
 })
-export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnChanges, AfterViewInit {
+export class FormInventoryComponent implements OnInit, OnChanges {
   @Input() label = 'Inventory';
   @Input() app: App;
+  @Input() control = new FormControl();
   @Input() inventories: Inventory[] = [];
-  control = new FormControl('');
-  filteredOptions: Observable<Inventory[]>;
+  @Input() multiple = false;
 
   constructor(private inventoriesService: InventoriesService) {
-  }
-
-  propagateChange = (_: any) => {
-    // do nothing
-  }
-
-  onTouched = (_: any) => {
-    // do nothing
-  }
-
-  registerOnChange(fn: any): void {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    isDisabled ? this.control.disable() : this.control.enable();
-  }
-
-  writeValue(obj: any): void {
-    this.control.setValue(obj);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.app && changes.app.currentValue) {
       this.inventoriesService.getInventoriesByAppID(changes.app.currentValue.ID).subscribe(value => {
         this.inventories = value;
-        this.control.setValue(this.control.value || '');
       });
     }
   }
 
   ngOnInit(): void {
-    this.filteredOptions = this.control.valueChanges.pipe(
-      map(value => {
-        if (typeof value === 'string') {
-          return value;
-        }
-        this.propagateChange(value);
-        return value ? value.Name : '';
-      }),
-      map(value => this._filter(value))
-    );
     if (this.inventories.length === 0) {
       this.inventoriesService.getInventories().subscribe(inventories => {
         this.inventories = inventories;
       });
     }
-  }
-
-  ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.control.setValue(this.control.value || '');
-    });
-  }
-
-  displayFn(inventory?: Inventory): string | undefined {
-    return inventory ? inventory.Name : undefined;
-  }
-
-  private _filter(value: string): Inventory[] {
-    if (!value || !this.inventories) {
-      return [];
-    }
-    const filterValue = value.toLowerCase();
-    return this.inventories.filter(option => option.Name.toLowerCase().includes(filterValue));
-  }
-
-  compareFn(optionOne: Inventory, optionTwo: Inventory): boolean {
-    if (!optionOne || !optionTwo) {
-      return false;
-    }
-    return optionOne.ID === optionTwo.ID;
   }
 }
 
@@ -114,11 +42,7 @@ export class FormInventoryComponent implements ControlValueAccessor, OnInit, OnC
   exports: [FormInventoryComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    ScrollingModule,
-    MatFormFieldModule,
-    MatInputModule
+    FormSelectComponentModule
   ]
 })
 export class FormInventoryComponentModule { }

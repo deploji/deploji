@@ -13,6 +13,9 @@ export class PermissionForm extends FormGroup {
     this.ObjectType.valueChanges.subscribe(() => {
       this.Object.reset();
     });
+    this.SubjectType.valueChanges.subscribe(() => {
+      this.Subject.reset();
+    });
   }
 
   get SubjectType() {

@@ -12,10 +12,10 @@
           <input matInput type="text" formControlName="Name">
         </mat-form-field>
         <div>
-          <app-form-project label="Project" formControlName="Project"></app-form-project>
+          <app-form-project label="Project" [control]="form.Project"></app-form-project>
         </div>
         <div>
-          <app-form-project-file label="Source file" formControlName="SourceFile" [project]="form.get('Project').value">
+          <app-form-project-file label="Source file" [control]="form.SourceFile" [project]="form.get('Project').value">
           </app-form-project-file>
         </div>
         <div class="button-row flex">

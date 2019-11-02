@@ -21,11 +21,11 @@
 
         <div class="row">
           <div class="w-100 col">
-            <app-form-project label="Ansible Project" formControlName="Project"></app-form-project>
+            <app-form-project label="Ansible Project" [control]="form.Project"></app-form-project>
           </div>
           <div class="w-100 col">
             <app-form-project-file label="Ansible playbook"
-                                   formControlName="AnsiblePlaybook"
+                                   [control]="form.AnsiblePlaybook"
                                    [project]="form.get('Project').value">
             </app-form-project-file>
           </div>
@@ -33,7 +33,7 @@
 
         <div class="row">
           <div class="w-100 col">
-            <app-form-repository label="Artifact Repository" formControlName="Repository"></app-form-repository>
+            <app-form-repository label="Artifact Repository" [control]="form.Repository"></app-form-repository>
           </div>
           <mat-form-field class="block w-100 col">
             <mat-label>Group name</mat-label>
@@ -47,49 +47,56 @@
 
         <div>
           <h2>Inventories</h2>
-          <div class="flex flex-column" formArrayName="Inventories"
-               *ngFor="let inventory of form.Inventories.controls; let i = index">
-            <mat-card class="my2">
-              <div [formGroupName]="i">
-                <button class="float-right" type="button" mat-icon-button title="Delete inventory"
-                        (click)="delete(inventory.value)">
-                  <mat-icon color="warn">delete_forever</mat-icon>
-                </button>
-                <div class="mb2">
-                  <mat-slide-toggle formControlName="IsActive">is active</mat-slide-toggle>
-                </div>
-
-                <mat-form-field class="w-100">
-                  <mat-label>Name</mat-label>
-                  <input matInput type="text" formControlName="Name">
-                </mat-form-field>
-
-                <div class="row">
-                  <div class="col">
-                    <app-form-inventory [inventories]="inventories" formControlName="Inventory"></app-form-inventory>
+          <mat-accordion>
+            <mat-expansion-panel formArrayName="Inventories"
+                                 [expanded]="!inventory.get('ID').value"
+                                 *ngFor="let inventory of form.Inventories.controls; let i = index">
+              <mat-expansion-panel-header>
+                <mat-panel-title>{{ inventory.get('Name').value || inventory.get('Inventory').value?.Name || 'New inventory'}}</mat-panel-title>
+              </mat-expansion-panel-header>
+              <ng-template matExpansionPanelContent>
+                <div [formGroupName]="i">
+                  <button class="float-right" type="button" mat-icon-button title="Delete inventory"
+                          (click)="delete(inventory.value)">
+                    <mat-icon color="warn">delete_forever</mat-icon>
+                  </button>
+                  <div class="mb2">
+                    <mat-slide-toggle formControlName="IsActive">is active</mat-slide-toggle>
                   </div>
-                  <div class="col">
-                    <app-form-ssh-key [keys]="keys" formControlName="Key"></app-form-ssh-key>
+
+                  <mat-form-field class="w-100">
+                    <mat-label>Name</mat-label>
+                    <input matInput type="text" formControlName="Name">
+                  </mat-form-field>
+
+                  <div class="row">
+                    <div class="col">
+                      <app-form-inventory [inventories]="inventories"
+                                          [control]="inventory.get('Inventory')"></app-form-inventory>
+                    </div>
+                    <div class="col">
+                      <app-form-ssh-key [keys]="keys" [control]="inventory.get('Key')"></app-form-ssh-key>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <mat-form-field class="w-100 col">
+                      <mat-label>Extra variables</mat-label>
+                      <textarea cdkTextareaAutosize matInput formControlName="ExtraVariables"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="w-100 col">
+                      <mat-label>Application URLs</mat-label>
+                      <textarea cdkTextareaAutosize matInput formControlName="ApplicationUrls"></textarea>
+                    </mat-form-field>
+                    <mat-form-field class="w-100 col">
+                      <mat-label>Playbook</mat-label>
+                      <input matInput type="text" formControlName="Playbook"/>
+                    </mat-form-field>
                   </div>
                 </div>
-                <div class="row">
-                  <mat-form-field class="w-100 col">
-                    <mat-label>Extra variables</mat-label>
-                    <textarea cdkTextareaAutosize matInput formControlName="ExtraVariables"></textarea>
-                  </mat-form-field>
-                  <mat-form-field class="w-100 col">
-                    <mat-label>Application URLs</mat-label>
-                    <textarea cdkTextareaAutosize matInput formControlName="ApplicationUrls"></textarea>
-                  </mat-form-field>
-                  <mat-form-field class="w-100 col">
-                    <mat-label>Playbook</mat-label>
-                    <input matInput type="text" formControlName="Playbook"/>
-                  </mat-form-field>
-                </div>
-              </div>
-            </mat-card>
-          </div>
-          <button *ngIf="app?.Permissions?.Write" mat-raised-button (click)="addInventory()">
+              </ng-template>
+            </mat-expansion-panel>
+          </mat-accordion>
+          <button class="mt2" *ngIf="app?.Permissions?.Write" mat-raised-button (click)="addInventory()">
             Add inventory
             <mat-icon>playlist_add</mat-icon>
           </button>
@@ -97,7 +104,9 @@
         <div class="button-row mt4 flex">
           <div class="flex-auto"></div>
           <button type="button" mat-raised-button routerLink="/settings/apps">Cancel</button>
-          <button *ngIf="!app || app?.Permissions?.Write" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+          <button *ngIf="!app || app?.Permissions?.Write" type="button" mat-raised-button color="primary"
+                  (click)="save()">Save
+          </button>
         </div>
       </form>
     </mat-tab>

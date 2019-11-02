@@ -1,12 +1,7 @@
-<mat-form-field class="w-100">
-  <mat-label>{{label}}</mat-label>
-  <input type="text" matInput [formControl]="control"
-         [matAutocomplete]="auto">
-  <mat-autocomplete #auto="matAutocomplete">
-    <cdk-virtual-scroll-viewport [itemSize]="48" [style.height.px]=5*48 minBufferPx="500" maxBufferPx="1000">
-      <mat-option *cdkVirtualFor="let version of filteredOptions | async" [value]="version.Name">
-        {{version.Name}}
-      </mat-option>
-    </cdk-virtual-scroll-viewport>
-  </mat-autocomplete>
-</mat-form-field>
+<app-form-select [control]="control"
+                 [options]="versions"
+                 [label]="label"
+                 [displayFn]="displayFn"
+                 [compareFn]="compareFn"
+                 [multiple]="multiple">
+</app-form-select>
