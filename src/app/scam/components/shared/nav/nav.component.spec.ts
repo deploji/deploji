@@ -8,6 +8,7 @@ import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MatMenuModule } from '@angular/material/menu';
 
 describe('NavComponent', () => {
   let component: NavComponent;
@@ -26,6 +27,7 @@ describe('NavComponent', () => {
         MatSidenavModule,
         MatToolbarModule,
         NgxPermissionsModule.forRoot(),
+        MatMenuModule,
         HttpClientTestingModule,
         RouterTestingModule
       ]
