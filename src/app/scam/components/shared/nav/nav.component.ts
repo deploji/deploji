@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, NgModule, OnInit, Output, ViewChild } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
@@ -14,6 +14,8 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { UserTypesEnum } from '../../../../core/enums/user-types.enum';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'app-nav',
@@ -21,6 +23,7 @@ import { UserTypesEnum } from '../../../../core/enums/user-types.enum';
   styleUrls: ['./nav.component.scss']
 })
 export class NavComponent implements OnInit {
+  @Output() theme = new EventEmitter<string>();
   @ViewChild('drawer', { static: false}) drawer;
   userTypes = UserTypesEnum;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -44,6 +47,10 @@ export class NavComponent implements OnInit {
   logout() {
     this.authService.logout();
   }
+
+  setTheme(theme: string) {
+    this.theme.emit(theme);
+  }
 }
 
 @NgModule({
@@ -57,7 +64,9 @@ export class NavComponent implements OnInit {
     MatListModule,
     NgxPermissionsModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MatTooltipModule,
+    MatMenuModule
   ]
 })
 export class NavComponentModule { }

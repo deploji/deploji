@@ -7,10 +7,6 @@
   cursor: pointer;
 }
 
-.background-white {
-  background-color: white !important;
-}
-
 .background-transparent {
   background-color: transparent !important;
 }
@@ -131,7 +127,6 @@
   &__label {
     display: table-cell;
     padding:  5px;
-    color: rgba(0,0,0,.54);
     font-size: 12px;
     font-weight: 500;
   }

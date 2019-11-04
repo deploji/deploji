@@ -1,0 +1,39 @@
+@import '../node_modules/@angular/material/theming';
+
+@mixin app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .mat-drawer-container {
+    background-color: mat-color($background);
+  }
+
+  .mat-card {
+    box-shadow: none !important;
+    border: 1px solid mat-color($foreground, divider);
+  }
+
+  .mat-expansion-panel {
+    border: 1px solid mat-color($foreground, divider);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: mat-color($foreground);
+  }
+
+  a {
+    text-decoration: none;
+    color: mat-color($foreground, text);
+    font-weight: bold;
+  }
+
+  .background-white {
+    background-color: mat-color($primary, 'A100') !important;
+  }
+
+  .properties__label {
+    color: mat-color($foreground, text);
+  }
+}
