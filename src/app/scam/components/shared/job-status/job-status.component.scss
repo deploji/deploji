@@ -1,23 +1,23 @@
 .job-status {
-  cursor: pointer;
+  cursor: pointer !important;
 
   &--completed {
-    color: #228b22;
-    background-color: #73de83;
+    color: #228b22 !important;
+    background-color: #73de83 !important;
   }
 
   &--processing {
-    //color: white;
-    background-color: #ffe99a;
+    color: black !important;
+    background-color: #ffe99a !important;
   }
 
   &--pending {
-    color: #3b6baa;
-    background-color: #79c2ff;
+    color: #3b6baa !important;
+    background-color: #79c2ff !important;
   }
 
   &--failed {
-    color: #850000;
-    background-color: #ff7276;
+    color: #850000 !important;
+    background-color: #ff7276 !important;
   }
 }

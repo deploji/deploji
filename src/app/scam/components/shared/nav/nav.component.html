@@ -40,13 +40,23 @@
     </ng-container>
     <span class="flex-auto"></span>
     <button
+      type="button"
+      title="Select a theme"
+      [matMenuTriggerFor]="themeMenu"
+      mat-icon-button>
+      <mat-icon>format_color_fill</mat-icon>
+    </button>
+    <mat-menu #themeMenu="matMenu">
+      <button (click)="setTheme('light-theme')" mat-menu-item>Light</button>
+      <button (click)="setTheme('dark-theme')" mat-menu-item>Dark</button>
+    </mat-menu>
+    <button
       *ngxPermissionsExcept="userTypes.GUEST"
       (click)="logout()"
       type="button"
       aria-label="Logout"
       title="Logout"
-      mat-icon-button
-    >
+      mat-icon-button>
       <mat-icon aria-label="Logout">exit_to_app</mat-icon>
     </button>
   </mat-toolbar-row>
@@ -95,14 +105,19 @@
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
          routerLink="/settings/projects">Projects</a>
       <a mat-list-item class="menu-item" routerLink="/settings/inventories">Inventories</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/repositories">Artifact
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
+         routerLink="/settings/repositories">Artifact
         Repositories</a>
       <a mat-list-item class="menu-item" routerLink="/settings/apps">Applications</a>
       <a mat-list-item class="menu-item" routerLink="/settings/templates">Templates</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/users">Users</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/teams">Teams</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/settings">Settings</a>
-      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]" routerLink="/settings/notification-channels">Notification Channels</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
+         routerLink="/settings/users">Users</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
+         routerLink="/settings/teams">Teams</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
+         routerLink="/settings/settings">Settings</a>
+      <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
+         routerLink="/settings/notification-channels">Notification Channels</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="flex flex-column">

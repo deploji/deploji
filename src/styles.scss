@@ -12,15 +12,6 @@ table {
   width: 100%;
 }
 
-.mat-card {
-  box-shadow: none !important;
-  border: 1px solid #ddd;
-}
-
-.mat-expansion-panel {
-  border: 1px solid #ddd;
-}
-
 .mat-expansion-panel:not(.mat-expanded) {
   margin-bottom: -1px !important;
 }
@@ -84,22 +75,12 @@ a.mat-menu-item > mat-icon {
   width: 24px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  color: #565656;
-}
-
 mat-form-field {
   margin: 10px 0;
 }
 
 .mat-card-header-text {
   margin: 0 !important;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-  font-weight: bold;
 }
 
 app-root {
