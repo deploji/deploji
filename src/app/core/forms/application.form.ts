@@ -50,8 +50,12 @@ export class ApplicationForm extends FormGroup {
     return this.get('RepositoryGroup') as FormControl;
   }
 
-  get Inventories() {
+  get Inventories(): FormArray {
     return this.get('Inventories') as FormArray;
+  }
+
+  get ApplicationInventories(): ApplicationInventoryForm[] {
+    return this.Inventories.controls as ApplicationInventoryForm[];
   }
 
   createApplicationInventories(app: App) {

@@ -17,7 +17,7 @@
 </table>
 <div class="p2">
   <ng-container *ngIf="showUserSelect">
-    <app-form-user [users]="availableUsers" [formControl]="selectedUser" label="User"></app-form-user>
+    <app-form-user [users]="availableUsers" [control]="selectedUser" label="User"></app-form-user>
     <div class="flex">
       <div class="flex-auto"></div>
       <button mat-raised-button class="mr2" (click)="toggleUserSelect()">Cancel</button>

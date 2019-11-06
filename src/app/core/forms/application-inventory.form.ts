@@ -16,8 +16,20 @@ export class ApplicationInventoryForm extends FormGroup {
     });
   }
 
+  get ID() {
+    return this.get('ID') as FormControl;
+  }
+
+  get Name() {
+    return this.get('Name') as FormControl;
+  }
+
   get Inventory() {
     return this.get('Inventory') as FormControl;
+  }
+
+  get Key() {
+    return this.get('Key') as FormControl;
   }
 
   get IsActive() {
@@ -34,5 +46,13 @@ export class ApplicationInventoryForm extends FormGroup {
 
   get ApplicationUrls() {
     return this.get('ApplicationUrls') as FormControl;
+  }
+
+  get ExtraVariables() {
+    return this.get('ExtraVariables') as FormControl;
+  }
+
+  get Playbook() {
+    return this.get('Playbook') as FormControl;
   }
 }

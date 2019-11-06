@@ -1,22 +1,23 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { InventoriesService } from '../../../../core/services/inventories.service';
-import { Inventory } from '../../../../core/interfaces/inventory';
 import { JobsService } from '../../../../core/services/jobs.service';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table';
 import { UrlsComponentModule } from '../../shared/urls/urls.component';
 import { forkJoin } from 'rxjs';
+import { FormInventoryComponentModule } from '../../shared/form/form-inventory/form-inventory.component';
+import { FilterableComponent } from '../../../../core/classes/filterable.component';
 
 @Component({
   selector: 'app-inventories',
   templateUrl: './inventories.component.html',
 })
-export class InventoriesComponent implements OnInit {
-  inventories: Inventory[];
+export class InventoriesComponent extends FilterableComponent implements OnInit, OnDestroy {
   columnsToDisplay = ['application', 'version', 'urls'];
 
   constructor(private inventoriesService: InventoriesService, private jobsService: JobsService) {
+    super();
   }
 
   ngOnInit() {
@@ -31,8 +32,15 @@ export class InventoriesComponent implements OnInit {
           value.Version = deployment ? deployment.Version : '';
         });
       });
-      this.inventories = inventories;
+      this.options = inventories;
+      this.filter();
     });
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription && !this.subscription.closed) {
+      this.subscription.unsubscribe();
+    }
   }
 }
 
@@ -44,6 +52,7 @@ export class InventoriesComponent implements OnInit {
     MatCardModule,
     MatTableModule,
     UrlsComponentModule,
+    FormInventoryComponentModule,
   ]
 })
 export class InventoriesComponentModule {

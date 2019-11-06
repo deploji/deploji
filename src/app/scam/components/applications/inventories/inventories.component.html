@@ -1,4 +1,5 @@
-<mat-card *ngFor="let inventory of inventories" class="my2 p0">
+<app-form-inventory label="Filters" [control]="filterControl" [multiple]="true"></app-form-inventory>
+<mat-card *ngFor="let inventory of filteredOptions" class="my2 p0">
   <mat-card-header>
     <mat-card-title class="m2"><strong>{{inventory?.Name}}</strong></mat-card-title>
   </mat-card-header>

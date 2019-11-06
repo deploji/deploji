@@ -4,6 +4,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ApplicationsListComponentModule } from './applications-list/applications-list.component';
 import { InventoriesComponentModule } from './inventories/inventories.component';
+import { FormApplicationComponentModule } from '../shared/form/form-application/form-application.component';
 
 @Component({
   selector: 'app-applications',
@@ -12,6 +13,7 @@ import { InventoriesComponentModule } from './inventories/inventories.component'
 })
 export class ApplicationsComponent {
   control = new FormControl('app');
+  filterControl = new FormControl();
 }
 
 @NgModule({
@@ -23,6 +25,7 @@ export class ApplicationsComponent {
     ReactiveFormsModule,
     ApplicationsListComponentModule,
     InventoriesComponentModule,
+    FormApplicationComponentModule,
   ]
 })
 export class ApplicationsComponentModule {

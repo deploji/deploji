@@ -1,4 +1,5 @@
-<mat-card *ngFor="let app of apps" class="my2 p0">
+<app-form-application label="Filters" [control]="filterControl" [multiple]="true"></app-form-application>
+<mat-card *ngFor="let app of filteredOptions" class="mb2 p0">
   <mat-card-header>
     <mat-card-title class="m2">
       <strong>{{app?.Name}}</strong>

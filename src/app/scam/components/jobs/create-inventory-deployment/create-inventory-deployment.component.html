@@ -2,14 +2,14 @@
 <mat-card>
   <form [formGroup]="form">
     <div>
-      <app-form-inventory label="Inventory" formControlName="Inventory"></app-form-inventory>
+      <app-form-inventory label="Inventory" [control]="form.Inventory"></app-form-inventory>
     </div>
-    <div formArrayName="Applications" *ngFor="let application of form.Applications.controls; let i = index">
-      <div [formGroupName]="i">
+    <div formArrayName="Applications" *ngFor="let application of form.Applications; let i = index">
+      <div [formGroupName]="i.toString(10)">
         <div>
           <mat-checkbox formControlName="IsActive">{{application?.value?.Application?.Name}}</mat-checkbox>
         </div>
-        <app-form-version [hidden]="!application?.value?.IsActive" label="Version" formControlName="Version"
+        <app-form-version [hidden]="!application?.value?.IsActive" label="Version" [control]="application.Version"
                           [app]="application.value?.Application"></app-form-version>
       </div>
     </div>

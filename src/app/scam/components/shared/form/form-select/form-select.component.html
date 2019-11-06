@@ -1,0 +1,30 @@
+<mat-form-field class="w-100">
+  <mat-label>{{label}}</mat-label>
+  <mat-chip-list #chipList aria-label="Fruit selection">
+    <mat-chip
+      *ngFor="let option of selectedOptions"
+      [selectable]="false"
+      [removable]="true"
+      (removed)="remove(option)">
+      {{displayFn(option)}}
+      <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input #selectInput
+           name="search"
+           [formControl]="searchControl"
+           [matAutocomplete]="auto"
+           [matChipInputFor]="chipList"
+           [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+           [matChipInputAddOnBlur]="false">
+  </mat-chip-list>
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="add($event)">
+    <cdk-virtual-scroll-viewport [itemSize]="48"
+                                 [style.height.px]="filteredOptions.length < 5 ? filteredOptions.length*48 : 5*48"
+                                 minBufferPx="500"
+                                 maxBufferPx="1000">
+      <mat-option *cdkVirtualFor="let option of filteredOptions" [value]="option" [disabled]="option?.selected">
+        {{displayFn(option)}}
+      </mat-option>
+    </cdk-virtual-scroll-viewport>
+  </mat-autocomplete>
+</mat-form-field>

@@ -26,6 +26,7 @@ import { FormRepositoryComponentModule } from '../../shared/form/form-repository
 import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
 import { App } from '../../../../core/interfaces/app';
 import { NotificationsWhenComponent, NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @Component({
   selector: 'app-edit-app',
@@ -113,7 +114,8 @@ export class EditAppComponent implements OnInit {
     FormRepositoryComponentModule,
     MatTabsModule,
     ManagePermissionsComponentModule,
-    NotificationsWhenComponentModule
+    NotificationsWhenComponentModule,
+    MatExpansionModule
   ]
 })
 export class EditAppComponentModule {

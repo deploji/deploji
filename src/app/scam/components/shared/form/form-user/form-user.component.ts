@@ -1,104 +1,33 @@
-import { Component, forwardRef, Input, NgModule, OnDestroy, OnInit } from '@angular/core';
-import { ControlValueAccessor, FormControl, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
-import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { ScrollingModule } from '@angular/cdk/scrolling';
 import { User } from '../../../../../core/interfaces/user';
 import { UsersService } from '../../../../../core/services/users.service';
+import { FormSelectComponentModule } from '../form-select/form-select.component';
 
 @Component({
   selector: 'app-form-user',
   templateUrl: './form-user.component.html',
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => FormUserComponent),
-      multi: true
-    }
-  ]
 })
-export class FormUserComponent implements ControlValueAccessor, OnInit, OnDestroy {
+export class FormUserComponent implements OnInit {
   @Input() label = 'User';
-  @Input() users: User[];
-  control = new FormControl();
-  filteredOptions: User[];
-  private subscription: Subscription;
+  @Input() users: User[] = [];
+  @Input() control = new FormControl();
+  @Input() multiple = false;
 
   constructor(private usersService: UsersService) {
   }
 
-  propagateChange = (_: any) => {
-    // do nothing
-  }
-
-  onTouched = (_: any) => {
-    // do nothing
-  }
-
-  registerOnChange(fn: any): void {
-    this.propagateChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    isDisabled ? this.control.disable() : this.control.enable();
-  }
-
-  writeValue(obj: any): void {
-    this.control.setValue(obj);
-  }
-
   ngOnInit(): void {
-    this.control.valueChanges.pipe(
-      map(value => {
-        if (value && typeof value === 'string') {
-          return value;
-        }
-        this.propagateChange(value);
-        return value ? value.Username : '';
-      }),
-      map(value => this._filter(value))
-    ).subscribe(value => {
-      this.filteredOptions = value;
-    });
-    if (!this.users) {
+    if (this.users.length === 0) {
       this.usersService.getUsers().subscribe(users => {
         this.users = users;
-        this.filteredOptions = users;
       });
-    }
-  }
-
-  private _filter(value: string): User[] {
-    const filterValue = value ? value.toLowerCase() : '';
-    if (!this.users) {
-      return [];
-    }
-    return this.users.filter(option => option.Username.toLowerCase().indexOf(filterValue) !== -1);
-  }
-
-  ngOnDestroy(): void {
-    if (this.subscription && !this.subscription.closed) {
-      this.subscription.unsubscribe();
     }
   }
 
   displayFn(user?: User): string | undefined {
     return user ? user.Username : undefined;
-  }
-
-  compareFn(optionOne: string, optionTwo: string): boolean {
-    if (!optionOne || !optionTwo) {
-      return false;
-    }
-    return optionOne === optionTwo;
   }
 }
 
@@ -107,11 +36,7 @@ export class FormUserComponent implements ControlValueAccessor, OnInit, OnDestro
   exports: [FormUserComponent],
   imports: [
     CommonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MatAutocompleteModule,
-    ScrollingModule
+    FormSelectComponentModule,
   ]
 })
 export class FormUserComponentModule { }
