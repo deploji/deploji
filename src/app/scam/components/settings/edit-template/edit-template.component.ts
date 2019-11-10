@@ -17,7 +17,7 @@ import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-s
 import { ManagePermissionsComponentModule } from '../../shared/manage-permissions/manage-permissions.component';
 import { Template } from '../../../../core/interfaces/template';
 import { NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
-import {SurveysComponentModule} from '../../templates/surveys/surveys.component';
+import { SurveysComponentModule } from '../../templates/surveys/surveys.component';
 
 @Component({
   selector: 'app-edit-template',
