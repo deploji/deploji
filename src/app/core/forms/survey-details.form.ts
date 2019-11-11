@@ -1,4 +1,5 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { SurveyInput } from '../interfaces/survey-input';
 
 export class SurveyDetailsForm extends FormGroup {
   constructor() {
@@ -8,6 +9,15 @@ export class SurveyDetailsForm extends FormGroup {
       VariableName: new FormControl({value: '', disabled: true}, Validators.required),
       Type: new FormControl({value: '', disabled: true}, Validators.required)
     });
+  }
+
+  get new(): SurveyInput {
+    return {
+      VariableName: '',
+      Label: '',
+      Hint: '',
+      Type: ''
+    };
   }
 
   get Label(): FormControl  {

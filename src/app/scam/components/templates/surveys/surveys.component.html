@@ -1,7 +1,6 @@
 <div class="flex">
   <div class="preview">
     <h4>Survey preview</h4>
-<!--    <div *ngIf="survey && survey.Inputs.length" [formGroup]="formList">-->
     <div *ngIf="survey && survey.Inputs.length">
       <div>
         <div *ngFor="let item of survey.Inputs; let i = index">
@@ -9,14 +8,13 @@
             <mat-label>{{item.Label}}</mat-label>
             <input matInput type="text" readonly [value]="item.VariableName">
           </mat-form-field>
-          <button mat-raised-button (click)="editExtraVariable(item)">Edit</button>
-          <button mat-raised-button (click)="deleteExtraVariable(item)" color="warn">Delete</button>
+          <button mat-raised-button (click)="editExtraVariable(i, item)">Edit</button>
+          <button mat-raised-button (click)="deleteExtraVariable(i, item)" color="warn">Delete</button>
         </div>
       </div>
     </div>
 
     <button mat-raised-button (click)="addControl()">Add control</button>
-<!--    <br>-->
     <button mat-raised-button color="accent" (click)="save()">Save</button>
   </div>
 
@@ -42,5 +40,3 @@
     </div>
   </div>
 </div>
-
-<!--{{survey.Inputs | json}}-->

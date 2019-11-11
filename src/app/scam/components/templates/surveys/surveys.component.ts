@@ -22,6 +22,7 @@ export class SurveysComponent implements OnInit {
   public formDetails: SurveyDetailsForm = new SurveyDetailsForm();
   public templateId: number;
   public survey: Survey;
+  private surveyIdToEdit: number;
 
   constructor(
     private surveyService: SurveyService,
@@ -33,7 +34,7 @@ export class SurveysComponent implements OnInit {
 
     this.getSurvey();
 
-    console.log(this.formList);
+    this.subscribeToForm();
   }
 
   private getSurvey(): void {
@@ -45,34 +46,60 @@ export class SurveysComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         console.error(error);
-        // throw new Error(error.message);
       });
   }
 
-  private assignSurveyInputsToForm() {
+  private assignSurveyInputsToForm(): void {
     this.survey.Inputs.forEach((input: SurveyInput) => {
-      console.log(input)
       this.formList.addControl(input.VariableName);
     });
   }
 
   public addControl(): void {
-    console.log(this.survey.Inputs);
-    // this.survey.Inputs.push({});
+    this.survey.Inputs.push(this.formDetails.new);
   }
 
-  public editExtraVariable(item: SurveyInput): void {
-    console.log(item);
-    this.formDetails.enable();
+  public editExtraVariable(index: number, item: SurveyInput): void {
+    this.surveyIdToEdit = index;
+
     this.formDetails.patchValue(item);
+    this.formDetails.enable();
   }
 
   public save(): void {
-    // todo
+    this.surveyIdToEdit = null;
+    this.formDetails.reset();
+    this.formDetails.disable();
+
+    this.saveInputs();
   }
 
-  public deleteExtraVariable(item: SurveyInput) {
-    // todo
+  private saveInputs(): void {
+    this.survey.Inputs.forEach((item: SurveyInput) => {
+      if (item.ID) {
+        this.surveyService.updateSurveyInput(this.templateId, item).subscribe();
+      } else {
+        this.surveyService.createSurveyInput(this.templateId, item).subscribe();
+      }
+    });
+  }
+
+  public deleteExtraVariable(index: number, item: SurveyInput) {
+    this.surveyService.deleteSurveyInput(this.templateId, item).subscribe(() => {
+      this.survey.Inputs.splice(index, 1);
+      this.survey.Inputs = [...this.survey.Inputs];
+    });
+  }
+
+  private subscribeToForm() {
+    this.formDetails.valueChanges.subscribe((values) => {
+      if (this.surveyIdToEdit) {
+        this.survey.Inputs[this.surveyIdToEdit].Label = values.Label;
+        this.survey.Inputs[this.surveyIdToEdit].VariableName = values.VariableName;
+        this.survey.Inputs[this.surveyIdToEdit].Hint = values.Hint;
+        this.survey.Inputs[this.surveyIdToEdit].Type = values.Type;
+      }
+    });
   }
 }
 

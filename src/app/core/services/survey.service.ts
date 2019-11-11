@@ -38,10 +38,10 @@ export class SurveyService {
   }
 
   public updateSurveyInput(id: number, payload: SurveyInput) {
-    return this.api.put<SurveyInput>(`/api/templates/${id}/survey/inputs`, payload);
+    return this.api.put<SurveyInput>(`/api/templates/${id}/survey/inputs/${payload.ID}`, payload);
   }
 
-  public deleteSurveyInput(id: number): void {
-    this.api.delete(`/api/templates/${id}/survey/inputs`).subscribe();
+  public deleteSurveyInput(id: number, payload: SurveyInput): Observable<any> {
+    return this.api.delete(`/api/templates/${id}/survey/inputs/${payload.ID}`);
   }
 }
