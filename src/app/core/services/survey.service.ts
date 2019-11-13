@@ -33,6 +33,14 @@ export class SurveyService {
     return this.api.get<SurveyInput[]>(`/api/templates/${id}/survey/inputs`);
   }
 
+  public sendSurveyInput(id: number, payload: SurveyInput): Observable<SurveyInput> {
+    if (payload.ID) {
+      return this.updateSurveyInput(id, payload);
+    } else {
+      return this.createSurveyInput(id, payload);
+    }
+  }
+
   public createSurveyInput(id: number, payload: SurveyInput): Observable<SurveyInput> {
     return this.api.post<SurveyInput>(`/api/templates/${id}/survey/inputs`, payload);
   }

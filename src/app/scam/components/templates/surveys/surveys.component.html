@@ -1,4 +1,8 @@
-<div class="flex">
+<div *ngIf="!survey">
+  <mat-slide-toggle></mat-slide-toggle> Survey enabled
+</div>
+
+<div *ngIf="survey" class="flex">
   <div class="preview">
     <h4>Survey preview</h4>
     <div *ngIf="survey && survey.Inputs.length">

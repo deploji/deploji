@@ -1,10 +1,10 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SurveyService } from '../../../../core/services/survey.service';
 import { Survey } from '../../../../core/interfaces/survey';
 import { SurveyInput } from '../../../../core/interfaces/survey-input';
@@ -27,7 +27,7 @@ export class SurveysComponent implements OnInit {
   constructor(
     private surveyService: SurveyService,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.templateId = Number(this.route.snapshot.paramMap.get('id'));
@@ -44,8 +44,8 @@ export class SurveysComponent implements OnInit {
 
         this.assignSurveyInputsToForm();
       },
-      (error: HttpErrorResponse) => {
-        console.error(error);
+      () => {
+        this.surveyService.createSurvey(this.templateId, {Enabled: true}).subscribe(() => this.getSurvey());
       });
   }
 
@@ -76,28 +76,27 @@ export class SurveysComponent implements OnInit {
 
   private saveInputs(): void {
     this.survey.Inputs.forEach((item: SurveyInput) => {
-      if (item.ID) {
-        this.surveyService.updateSurveyInput(this.templateId, item).subscribe();
-      } else {
-        this.surveyService.createSurveyInput(this.templateId, item).subscribe();
-      }
+      this.surveyService.sendSurveyInput(this.templateId, item).subscribe(() => this.getSurvey());
     });
   }
 
   public deleteExtraVariable(index: number, item: SurveyInput) {
-    this.surveyService.deleteSurveyInput(this.templateId, item).subscribe(() => {
-      this.survey.Inputs.splice(index, 1);
-      this.survey.Inputs = [...this.survey.Inputs];
-    });
+    if (item.ID) {
+      this.surveyService.deleteSurveyInput(this.templateId, item).subscribe();
+    }
+
+    this.updateSurveyInputList(index);
+  }
+
+  private updateSurveyInputList(index: number): void {
+    this.survey.Inputs.splice(index, 1);
+    this.survey.Inputs = [...this.survey.Inputs];
   }
 
   private subscribeToForm() {
     this.formDetails.valueChanges.subscribe((values) => {
-      if (this.surveyIdToEdit) {
-        this.survey.Inputs[this.surveyIdToEdit].Label = values.Label;
-        this.survey.Inputs[this.surveyIdToEdit].VariableName = values.VariableName;
-        this.survey.Inputs[this.surveyIdToEdit].Hint = values.Hint;
-        this.survey.Inputs[this.surveyIdToEdit].Type = values.Type;
+      if (this.surveyIdToEdit !== null) {
+        Object.assign(this.survey.Inputs[this.surveyIdToEdit], values);
       }
     });
   }
@@ -110,7 +109,8 @@ export class SurveysComponent implements OnInit {
     CommonModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSlideToggleModule
   ]
 })
 export class SurveysComponentModule {}
