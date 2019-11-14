@@ -1,8 +1,9 @@
-<div *ngIf="!survey">
-  <mat-slide-toggle></mat-slide-toggle> Survey enabled
+<div *ngIf="survey" class="preview">
+  <h4>Survey settings</h4>
+  <mat-slide-toggle [checked]="survey.Enabled" (change)="changeSurveyStatus($event)">Activate survey</mat-slide-toggle>
 </div>
 
-<div *ngIf="survey" class="flex">
+<div class="flex">
   <div class="preview">
     <h4>Survey preview</h4>
     <div *ngIf="survey && survey.Inputs.length">

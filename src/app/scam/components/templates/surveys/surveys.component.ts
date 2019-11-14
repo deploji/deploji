@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { SurveyService } from '../../../../core/services/survey.service';
 import { Survey } from '../../../../core/interfaces/survey';
 import { SurveyInput } from '../../../../core/interfaces/survey-input';
@@ -45,8 +45,13 @@ export class SurveysComponent implements OnInit {
         this.assignSurveyInputsToForm();
       },
       () => {
-        this.surveyService.createSurvey(this.templateId, {Enabled: true}).subscribe(() => this.getSurvey());
+        this.surveyService.createSurvey(this.templateId, {Enabled: false}).subscribe(() => this.getSurvey());
       });
+  }
+
+  public changeSurveyStatus(event: MatSlideToggleChange) {
+    this.survey.Enabled = event.checked;
+    this.surveyService.updateSurvey(this.templateId, this.survey).subscribe();
   }
 
   private assignSurveyInputsToForm(): void {
