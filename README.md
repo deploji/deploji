@@ -3,28 +3,13 @@
 [![codecov](https://codecov.io/gh/deploji/deploji/branch/master/graph/badge.svg)](https://codecov.io/gh/deploji/deploji)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=deploji&metric=alert_status)](https://sonarcloud.io/dashboard?id=deploji)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.1.
+Deploji is an open-source web application designed as a graphical user interface for Ansible. It uses Angular on the frontend and relies on backend written mostly in Go and partly in Java.
 
-## Development server
+Some of the feature include:
+- Easy deploying of any application onto a development enviroment
+- Defining templates for specific usage of Ansible playbooks
+- Storing SSH keys and inventories
+- Creating and managing users
+- Creating channels for email or webhook notifications
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Deploji is being actively maintained and developed. If you encounter any problem or want to submit a new idea, please report them in the issue section of this repository.
