@@ -4,7 +4,6 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
-import {MatSlideToggleChange, MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { SurveyService } from '../../../../core/services/survey.service';
 import { Survey } from '../../../../core/interfaces/survey';
 import { SurveyInput } from '../../../../core/interfaces/survey-input';
@@ -37,20 +36,32 @@ export class SurveysComponent implements OnInit {
     this.subscribeToForm();
   }
 
-  private getSurvey(): void {
-    this.surveyService.getSurvey(this.templateId).subscribe(
-      (response: Survey) => {
-        this.survey = response;
-
-        this.assignSurveyInputsToForm();
-      },
-      () => {
-        this.surveyService.createSurvey(this.templateId, {Enabled: false}).subscribe(() => this.getSurvey());
-      });
+  public createSurvey(): void {
+    this.surveyService.createSurvey(this.templateId, {Enabled: false}).subscribe(() => this.getSurvey());
   }
 
-  public changeSurveyStatus(event: MatSlideToggleChange) {
-    this.survey.Enabled = event.checked;
+  public deleteSurvey(): void {
+    this.surveyService.deleteSurvey(this.templateId).subscribe(() => this.survey = null);
+  }
+
+  private getSurvey(): void {
+    this.surveyService.getSurvey(this.templateId).subscribe((response: Survey) => {
+      this.survey = response;
+
+      this.assignSurveyInputsToForm();
+    });
+  }
+
+  public isSurveyActive(): boolean {
+    if (this.survey) {
+      return this.survey.Enabled;
+    }
+
+    return false;
+  }
+
+  public changeSurveyStatus(status: boolean): void {
+    this.survey.Enabled = status;
     this.surveyService.updateSurvey(this.templateId, this.survey).subscribe();
   }
 
@@ -80,6 +91,7 @@ export class SurveysComponent implements OnInit {
   }
 
   private saveInputs(): void {
+    // todo use callback getSurvey only on last item to avoid unexpected behavior
     this.survey.Inputs.forEach((item: SurveyInput) => {
       this.surveyService.sendSurveyInput(this.templateId, item).subscribe(() => this.getSurvey());
     });
@@ -114,8 +126,7 @@ export class SurveysComponent implements OnInit {
     CommonModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatInputModule,
-    MatSlideToggleModule
+    MatInputModule
   ]
 })
 export class SurveysComponentModule {}

@@ -25,8 +25,8 @@ export class SurveyService {
     return this.api.put<Survey>(`/api/templates/${id}/survey`, payload);
   }
 
-  public deleteSurvey(id: number): void {
-    this.api.delete(`/api/templates/${id}/survey`).subscribe();
+  public deleteSurvey(id: number): Observable<any> {
+    return this.api.delete(`/api/templates/${id}/survey`);
   }
 
   public getSurveyInputs(id: number): Observable<SurveyInput[]> {

@@ -1,11 +1,18 @@
-<div *ngIf="survey" class="preview">
-  <h4>Survey settings</h4>
-  <mat-slide-toggle [checked]="survey.Enabled" (change)="changeSurveyStatus($event)">Activate survey</mat-slide-toggle>
+<div class="preview">
+  <h4>Settings</h4>
+  <div *ngIf="survey">
+    <button *ngIf="isSurveyActive()" (click)="changeSurveyStatus(false)" mat-raised-button color="warn">Deactivate</button>
+    <button *ngIf="!isSurveyActive()" (click)="changeSurveyStatus(true)" mat-raised-button color="accent">Activate</button>
+  </div>
+  <div>
+    <button *ngIf="!survey" (click)="createSurvey()" mat-raised-button color="accent">Create</button>
+    <button *ngIf="survey" (click)="deleteSurvey()" mat-raised-button color="warn">Delete</button>
+  </div>
 </div>
 
-<div class="flex">
+<div *ngIf="survey" class="flex">
   <div class="preview">
-    <h4>Survey preview</h4>
+    <h4>Preview</h4>
     <div *ngIf="survey && survey.Inputs.length">
       <div>
         <div *ngFor="let item of survey.Inputs; let i = index">
