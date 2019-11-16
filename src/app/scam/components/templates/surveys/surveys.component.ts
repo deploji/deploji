@@ -83,15 +83,18 @@ export class SurveysComponent implements OnInit {
   }
 
   public save(): void {
-    this.surveyIdToEdit = null;
-    this.formDetails.reset();
-    this.formDetails.disable();
-
+    this.resetForm();
     this.saveInputs();
   }
 
+  private resetForm(): void {
+    this.surveyIdToEdit = null;
+    this.formDetails.reset();
+    this.formDetails.disable();
+  }
+
   private saveInputs(): void {
-    // todo use callback getSurvey only on last item to avoid unexpected behavior
+    // todo is calling getSurvey after every call causing unexpected behavior?
     this.survey.Inputs.forEach((item: SurveyInput) => {
       this.surveyService.sendSurveyInput(this.templateId, item).subscribe(() => this.getSurvey());
     });
@@ -103,6 +106,7 @@ export class SurveysComponent implements OnInit {
     }
 
     this.updateSurveyInputList(index);
+    this.resetForm();
   }
 
   private updateSurveyInputList(index: number): void {
