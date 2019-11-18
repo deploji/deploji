@@ -1,4 +1,4 @@
-<div style='text-align: center;font-family:"Lobster Two",Roboto,sans-serif;color:rgb(255, 111, 97)'>Deploji</div>
+# Deploji
 
 [![Build Status](https://travis-ci.org/deploji/deploji.svg?branch=master)](https://travis-ci.org/deploji/deploji)
 [![codecov](https://codecov.io/gh/deploji/deploji/branch/master/graph/badge.svg)](https://codecov.io/gh/deploji/deploji)
