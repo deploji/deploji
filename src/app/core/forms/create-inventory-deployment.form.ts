@@ -35,7 +35,7 @@ export class CreateInventoryDeploymentForm extends FormGroup {
       .map(value => ({
         Type: JobTypesEnum.DEPLOYMENT,
         ApplicationID: value.Application.ID,
-        Version: value.Version,
+        Version: value.Version.Value,
         InventoryID: this.value.Inventory.ID,
         KeyID: value.KeyID,
         ExtraVariables: value.ExtraVariables,
