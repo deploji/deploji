@@ -4,6 +4,7 @@ import { VersionsService } from '../../../../../core/services/versions.service';
 import { App } from '../../../../../core/interfaces/app';
 import { CommonModule } from '@angular/common';
 import { FormSelectComponentModule } from '../form-select/form-select.component';
+import { Version } from '../../../../../core/interfaces/version';
 
 @Component({
   selector: 'app-form-version',
@@ -14,7 +15,7 @@ export class FormVersionComponent implements OnChanges {
   @Input() app: App;
   @Input() control = new FormControl();
   @Input() multiple = false;
-  versions: string[] = [];
+  versions: Version[] = [];
 
   constructor(private versionsService: VersionsService) {
   }
@@ -22,17 +23,17 @@ export class FormVersionComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.app && changes.app.currentValue) {
       this.versionsService.getVersions(changes.app.currentValue).subscribe(versions => {
-        this.versions = versions.map(version => version.Name);
+        this.versions = versions;
       });
     }
   }
 
   displayFn(version) {
-    return version;
+    return version.Name;
   }
 
   compareFn(version1, version2) {
-    return version1 === version2;
+    return version1.Value === version2.Value;
   }
 }
 
