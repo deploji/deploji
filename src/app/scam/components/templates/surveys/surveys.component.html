@@ -1,50 +1,9 @@
-<div class="max-width-2 p2">
-  <h4>Settings</h4>
-  <div *ngIf="survey" class="p1">
-    <div *ngIf="isSurveyActive()" class="flex justify-between">
-      <span class="line-height-2-1">Deactivate survey associated with the template</span>
-      <button (click)="changeSurveyStatus(false)" mat-raised-button color="warn">Deactivate</button>
-    </div>
-    <div *ngIf="!isSurveyActive()" class="flex justify-between">
-      <span class="line-height-2-1">Activate the survey associated with the template</span>
-      <button (click)="changeSurveyStatus(true)" mat-raised-button color="accent">Activate</button>
-    </div>
-  </div>
-  <div class="p1">
-    <div *ngIf="!survey" class="flex justify-between">
-      <span class="line-height-2-1">Create a survey</span>
-      <button (click)="createSurvey()" mat-raised-button color="accent">Create</button>
-    </div>
-    <div *ngIf="survey" class="flex justify-between">
-      <span class="line-height-2-1">Delete the survey</span>
-      <button (click)="deleteSurvey()" mat-raised-button color="warn">Delete</button>
-    </div>
-  </div>
+<div *ngIf="!survey" class="p2">
+  <button (click)="createSurvey()" mat-raised-button color="accent">Create survey</button>
 </div>
 
 <div *ngIf="survey" class="flex">
-  <div class="preview p2">
-    <h4>Preview</h4>
-    <div *ngIf="survey && survey.Inputs.length">
-      <div>
-        <div *ngFor="let item of survey.Inputs; let i = index">
-          <mat-form-field>
-            <mat-label>{{item.Label}}</mat-label>
-            <input matInput type="text" readonly [value]="item.VariableName">
-          </mat-form-field>
-          <button class="ml2" mat-raised-button (click)="editExtraVariable(i, item)">Edit</button>
-          <button class="ml2" mat-raised-button (click)="deleteExtraVariable(i, item)" color="warn">Delete</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex justify-between p1">
-      <button mat-raised-button (click)="addControl()">Add control</button>
-      <button mat-raised-button color="accent" (click)="save()">Save survey</button>
-    </div>
-  </div>
-
-  <div class="editor">
+  <div class="editor p2">
     <h4>Editor</h4>
     <div [formGroup]="formDetails" class="flex flex-column">
       <mat-form-field>
@@ -61,8 +20,39 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Type</mat-label>
-        <input matInput type="text" formControlName="Type">
+        <mat-select formControlName="Type">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
+    </div>
+  </div>
+
+  <div class="preview p2">
+    <h4>Preview</h4>
+    <div *ngIf="survey && survey.Inputs.length">
+        <div *ngFor="let item of survey.Inputs; let i = index" class="flex flex-column">
+          <mat-form-field>
+            <mat-label>{{item.Label}}</mat-label>
+            <div class="flex">
+              <input matInput type="text" readonly [value]="item.Hint">
+              <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+              <mat-icon (click)="deleteExtraVariable(i, item)" class="icon">delete</mat-icon>
+            </div>
+          </mat-form-field>
+        </div>
+    </div>
+
+    <div class="flex justify-between p1">
+      <button mat-raised-button (click)="addControl()">Add control</button>
+    </div>
+
+    <div class="flex justify-between p1">
+      <button mat-raised-button color="warn" (click)="deleteSurvey()">Delete survey</button>
+      <button *ngIf="!isSurveyActive()" mat-raised-button color="warn" (click)="changeSurveyStatus(true)">Activate survey</button>
+      <button *ngIf="isSurveyActive()" mat-raised-button color="warn" (click)="changeSurveyStatus(false)">Deactivate survey</button>
+      <button mat-raised-button color="accent" (click)="save()">Save survey</button>
     </div>
   </div>
 </div>

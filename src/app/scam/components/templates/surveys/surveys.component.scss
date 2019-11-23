@@ -2,6 +2,16 @@
   width: 50%;
 }
 
-.line-height-2-1 {
-  line-height: 2.1;
+.icon {
+  width: 18px;
+  height: 18px;
+  margin-top: -5px;
+  padding: 0 5px;
+  position: static;
+}
+
+.icon:hover {
+  position: relative;
+  top: 1px;
+  left: 1px;
 }

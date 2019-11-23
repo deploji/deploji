@@ -1,6 +1,9 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatSelectModule } from '@angular/material/select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +20,7 @@ import { SurveyDetailsForm } from '../../../../core/forms/survey-details.form';
 })
 export class SurveysComponent implements OnInit {
 
+  public types: string[] = ['text', 'select', 'textarea'];
   public formList: SurveyListForm = new SurveyListForm();
   public formDetails: SurveyDetailsForm = new SurveyDetailsForm();
   public templateId: number;
@@ -25,7 +29,8 @@ export class SurveysComponent implements OnInit {
 
   constructor(
     private surveyService: SurveyService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -98,6 +103,8 @@ export class SurveysComponent implements OnInit {
     this.survey.Inputs.forEach((item: SurveyInput) => {
       this.surveyService.sendSurveyInput(this.templateId, item).subscribe(() => this.getSurvey());
     });
+
+    this.snackBar.open('Survey was saved', 'OK', {duration: 3000});
   }
 
   public deleteExtraVariable(index: number, item: SurveyInput) {
@@ -130,7 +137,10 @@ export class SurveysComponent implements OnInit {
     CommonModule,
     MatButtonModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatIconModule,
+    MatSelectModule,
+    MatSnackBarModule
   ]
 })
 export class SurveysComponentModule {}
