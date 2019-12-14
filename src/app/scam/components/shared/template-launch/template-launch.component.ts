@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Template } from '../../../../core/interfaces/template';
 import { JobTypesEnum } from '../../../../core/enums/job-types.enum';
 import { JobsService } from '../../../../core/services/jobs.service';
