@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, NgModule, OnChanges, Output, SimpleChanges } from '@angular/core';
+import {Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import { Template } from '../../../../core/interfaces/template';
 import { JobTypesEnum } from '../../../../core/enums/job-types.enum';
 import { JobsService } from '../../../../core/services/jobs.service';
@@ -14,27 +14,47 @@ import { FormSshKeyComponentModule } from '../form/form-ssh-key/form-ssh-key.com
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { SurveyService } from '../../../../core/services/survey.service';
+import { Survey } from '../../../../core/interfaces/survey';
+import { SurveySendComponentModule } from '../../templates/survey-send/survey-send.component';
+import { SurveyInputManagerService } from '../../../../core/services/survey-input-manager.service';
 
 @Component({
   selector: 'app-template-launch',
   templateUrl: './template-launch.component.html',
 })
-export class TemplateLaunchComponent implements OnChanges {
+export class TemplateLaunchComponent implements OnInit, OnChanges {
   @Input() template: Template;
   @Output() cancelEvent = new EventEmitter<void>();
 
-  form = new TemplateForm();
+  public form = new TemplateForm();
+  public survey: Survey;
 
-  constructor(private jobsService: JobsService, private router: Router) {
+  constructor(
+    private jobsService: JobsService,
+    private router: Router,
+    private surveyService: SurveyService,
+    private surveyInputManager: SurveyInputManagerService
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.surveyInputManager.inputSource.subscribe((extraVariables: string) => {
+      this.form.ExtraVariables.setValue(extraVariables);
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (!changes.template) {
-      return;
-    }
-    this.form.patchValue(changes.template.currentValue);
-    if (!this.hasPrompt(changes.template.currentValue)) {
-      this.save();
+    if (changes.template) {
+      this.form.patchValue(changes.template.currentValue);
+
+      this.surveyService.getSurvey(changes.template.currentValue.ID).subscribe((survey: Survey) => {
+        this.survey = survey;
+
+        if (!this.hasPrompt(changes.template.currentValue) && survey.Inputs.length === 0) {
+          this.save();
+        }
+      });
     }
   }
 
@@ -42,11 +62,12 @@ export class TemplateLaunchComponent implements OnChanges {
     if (!template) {
       return false;
     }
-    return template.PromptInventory
-      || template.PromptPlaybook
-      || template.PromptProject
-      || template.PromptSshKey
-      || template.PromptExtraVariables;
+
+    return template.PromptInventory ||
+           template.PromptPlaybook ||
+           template.PromptProject ||
+           template.PromptSshKey ||
+           template.PromptExtraVariables;
   }
 
   save() {
@@ -81,7 +102,8 @@ export class TemplateLaunchComponent implements OnChanges {
     FormSshKeyComponentModule,
     MatFormFieldModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    SurveySendComponentModule
   ]
 })
 export class TemplateLaunchComponentModule { }

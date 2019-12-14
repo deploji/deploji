@@ -5,10 +5,7 @@
     <app-form-inventory *ngIf="template?.PromptInventory" [control]="form.Inventory"></app-form-inventory>
     <app-form-project-file *ngIf="template?.PromptPlaybook" [control]="form.Playbook" label="Playbook" [project]="form.get('Project').value"></app-form-project-file>
     <app-form-ssh-key *ngIf="template?.PromptSshKey" [control]="form.SshKey"></app-form-ssh-key>
-    <mat-form-field *ngIf="template?.PromptExtraVariables" class="block">
-      <mat-label>Extra variables</mat-label>
-      <textarea cdkTextareaAutosize matInput type="textarea" formControlName="ExtraVariables"></textarea>
-    </mat-form-field>
+    <app-survey-send *ngIf="survey && survey.Enabled && survey.Inputs.length" [survey]="survey"></app-survey-send>
     <div class="button-row flex">
       <div class="flex-auto"></div>
       <button type="button" mat-raised-button (click)="cancel()">Cancel</button>

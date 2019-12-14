@@ -12,6 +12,8 @@ import { Survey } from '../../../../core/interfaces/survey';
 import { SurveyInput } from '../../../../core/interfaces/survey-input';
 import { SurveyListForm } from '../../../../core/forms/survey-list.form';
 import { SurveyDetailsForm } from '../../../../core/forms/survey-details.form';
+import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-surveys',
@@ -30,7 +32,8 @@ export class SurveysComponent implements OnInit {
   constructor(
     private surveyService: SurveyService,
     private route: ActivatedRoute,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -46,7 +49,16 @@ export class SurveysComponent implements OnInit {
   }
 
   public deleteSurvey(): void {
-    this.surveyService.deleteSurvey(this.templateId).subscribe(() => this.survey = null);
+    const dialogRef = this.dialog.open(DialogConfirmComponent, {
+      width: '500px',
+      data: {message: `Are you sure you want to delete the survey?`}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.surveyService.deleteSurvey(this.templateId).subscribe(() => this.survey = null);
+      }
+    });
   }
 
   private getSurvey(): void {
@@ -58,11 +70,7 @@ export class SurveysComponent implements OnInit {
   }
 
   public isSurveyActive(): boolean {
-    if (this.survey) {
-      return this.survey.Enabled;
-    }
-
-    return false;
+    return this.survey ? this.survey.Enabled : false;
   }
 
   public changeSurveyStatus(status: boolean): void {
@@ -99,7 +107,6 @@ export class SurveysComponent implements OnInit {
   }
 
   private saveInputs(): void {
-    // todo is calling getSurvey after every call causing unexpected behavior?
     this.survey.Inputs.forEach((item: SurveyInput) => {
       this.surveyService.sendSurveyInput(this.templateId, item).subscribe(() => this.getSurvey());
     });

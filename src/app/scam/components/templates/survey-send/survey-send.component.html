@@ -1,0 +1,30 @@
+<div [formGroup]="form">
+  <div formArrayName="extraVariables">
+    <div *ngFor="let input of survey.Inputs; let i = index">
+      <div [ngSwitch]="input.Type">
+        <div *ngSwitchCase="surveyTypes.TEXT">
+          <mat-form-field class="w-100">
+            <mat-label>{{input.Label}}</mat-label>
+            <input matInput type="text" [placeholder]="input.Hint" formControlName="{{i}}">
+          </mat-form-field>
+        </div>
+        <div *ngSwitchCase="surveyTypes.TEXTAREA">
+          <mat-form-field class="w-100">
+            <mat-label>{{input.Label}}</mat-label>
+            <textarea matInput [placeholder]="input.Hint" formControlName="{{i}}"></textarea>
+          </mat-form-field>
+        </div>
+        <div *ngSwitchCase="surveyTypes.SELECT">
+          <mat-form-field class="w-100">
+            <mat-label>{{input.Label}}</mat-label>
+            <mat-select formControlName="{{i}}">
+              <mat-option *ngFor="let item of selectItems(input.Hint)" [value]="item">
+                {{ item }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
