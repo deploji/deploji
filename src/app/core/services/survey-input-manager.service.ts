@@ -25,7 +25,7 @@ export class SurveyInputManagerService {
     let result = '';
 
     survey.Inputs.forEach((input: SurveyInput, index: number) => {
-      result += `${input.VariableName}:${values[index]}.\n`;
+      result += `${input.VariableName}:${values[index]}\n`;
     });
 
     return result;

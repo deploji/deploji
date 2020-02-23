@@ -5,23 +5,26 @@
         <div *ngSwitchCase="surveyTypes.TEXT">
           <mat-form-field class="w-100">
             <mat-label>{{input.Label}}</mat-label>
-            <input matInput type="text" [placeholder]="input.Hint" formControlName="{{i}}">
+            <input matInput type="text" formControlName="{{i}}">
+            <mat-hint>{{input.Hint}}</mat-hint>
           </mat-form-field>
         </div>
         <div *ngSwitchCase="surveyTypes.TEXTAREA">
           <mat-form-field class="w-100">
             <mat-label>{{input.Label}}</mat-label>
-            <textarea matInput [placeholder]="input.Hint" formControlName="{{i}}"></textarea>
+            <textarea matInput formControlName="{{i}}"></textarea>
+            <mat-hint>{{input.Hint}}</mat-hint>
           </mat-form-field>
         </div>
         <div *ngSwitchCase="surveyTypes.SELECT">
           <mat-form-field class="w-100">
             <mat-label>{{input.Label}}</mat-label>
             <mat-select formControlName="{{i}}">
-              <mat-option *ngFor="let item of selectItems(input.Hint)" [value]="item">
+              <mat-option *ngFor="let item of selectItems(input.Options)" [value]="item">
                 {{ item }}
               </mat-option>
             </mat-select>
+            <mat-hint>{{input.Hint}}</mat-hint>
           </mat-form-field>
         </div>
       </div>

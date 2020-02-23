@@ -32,23 +32,24 @@
   <div class="preview p2">
     <h4>Preview</h4>
     <div *ngIf="survey && survey.Inputs.length">
-        <div *ngFor="let item of survey.Inputs; let i = index" class="flex flex-column">
-          <mat-form-field>
-            <mat-label>{{item.Label}}</mat-label>
-            <div class="flex">
-              <input matInput type="text" readonly [value]="item.Hint">
-              <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
-              <mat-icon (click)="deleteExtraVariable(i, item)" class="icon">delete</mat-icon>
-            </div>
-          </mat-form-field>
-        </div>
+      <div *ngFor="let item of survey.Inputs; let i = index" class="flex flex-column">
+        <mat-form-field>
+          <mat-label>{{item.Label}}</mat-label>
+          <div class="flex">
+            <input matInput type="text" readonly>
+            <mat-hint>{{item.Hint}}</mat-hint>
+            <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+            <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+          </div>
+        </mat-form-field>
+      </div>
     </div>
 
-    <div class="flex justify-between p1">
+    <div class="flex justify-between py1">
       <button mat-raised-button (click)="addControl()">Add control</button>
     </div>
 
-    <div class="flex justify-between p1">
+    <div class="flex justify-between py1">
       <button mat-raised-button color="warn" (click)="deleteSurvey()">Delete survey</button>
       <button *ngIf="!isSurveyActive()" mat-raised-button color="warn" (click)="changeSurveyStatus(true)">Activate survey</button>
       <button *ngIf="isSurveyActive()" mat-raised-button color="warn" (click)="changeSurveyStatus(false)">Deactivate survey</button>

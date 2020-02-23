@@ -14,6 +14,7 @@ import { SurveyListForm } from '../../../../core/forms/survey-list.form';
 import { SurveyDetailsForm } from '../../../../core/forms/survey-details.form';
 import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
 import { MatDialog } from '@angular/material';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-surveys',
@@ -28,6 +29,7 @@ export class SurveysComponent implements OnInit {
   public templateId: number;
   public survey: Survey;
   private surveyIdToEdit: number;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private surveyService: SurveyService,
@@ -86,6 +88,7 @@ export class SurveysComponent implements OnInit {
 
   public addControl(): void {
     this.survey.Inputs.push(this.formDetails.new);
+    this.formDetails.enable();
   }
 
   public editExtraVariable(index: number, item: SurveyInput): void {
@@ -129,11 +132,13 @@ export class SurveysComponent implements OnInit {
   }
 
   private subscribeToForm() {
-    this.formDetails.valueChanges.subscribe((values) => {
+    const formDetailsSub = this.formDetails.valueChanges.subscribe((values) => {
       if (this.surveyIdToEdit !== null) {
         Object.assign(this.survey.Inputs[this.surveyIdToEdit], values);
       }
     });
+
+    this.subscription.add(formDetailsSub);
   }
 }
 

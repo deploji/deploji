@@ -1,34 +1,36 @@
-import { Component, EventEmitter, Input, NgModule, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
+import {Component, EventEmitter, Input, NgModule, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { Template } from '../../../../core/interfaces/template';
 import { JobTypesEnum } from '../../../../core/enums/job-types.enum';
 import { JobsService } from '../../../../core/services/jobs.service';
-import { Router } from '@angular/router';
 import { TemplateForm } from '../../../../core/forms/template.form';
-import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
 import { FormProjectComponentModule } from '../form/form-project/form-project.component';
 import { FormInventoryComponentModule } from '../form/form-inventory/form-inventory.component';
 import { FormProjectFileComponentModule } from '../form/form-project-file/form-project-file.component';
 import { FormSshKeyComponentModule } from '../form/form-ssh-key/form-ssh-key.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
 import { SurveyService } from '../../../../core/services/survey.service';
 import { Survey } from '../../../../core/interfaces/survey';
 import { SurveySendComponentModule } from '../../templates/survey-send/survey-send.component';
 import { SurveyInputManagerService } from '../../../../core/services/survey-input-manager.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-template-launch',
   templateUrl: './template-launch.component.html',
 })
-export class TemplateLaunchComponent implements OnInit, OnChanges {
+export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
   @Input() template: Template;
   @Output() cancelEvent = new EventEmitter<void>();
 
   public form = new TemplateForm();
   public survey: Survey;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private jobsService: JobsService,
@@ -39,9 +41,11 @@ export class TemplateLaunchComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(): void {
-    this.surveyInputManager.inputSource.subscribe((extraVariables: string) => {
+    const inputSourceSub = this.surveyInputManager.inputSource.subscribe((extraVariables: string) => {
       this.form.ExtraVariables.setValue(extraVariables);
     });
+
+    this.subscription.add(inputSourceSub);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -56,6 +60,10 @@ export class TemplateLaunchComponent implements OnInit, OnChanges {
         }
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   private hasPrompt(template: Template): boolean {

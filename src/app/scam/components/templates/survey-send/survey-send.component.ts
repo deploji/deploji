@@ -1,4 +1,4 @@
-import { Component, Input, NgModule, OnInit } from '@angular/core';
+import {Component, Input, NgModule, OnDestroy, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
@@ -7,20 +7,20 @@ import { Survey } from '../../../../core/interfaces/survey';
 import { SurveyListForm } from '../../../../core/forms/survey-list.form';
 import { SurveyInputTypes } from '../../../../core/enums/survey-input-types';
 import { SurveyInputManagerService } from '../../../../core/services/survey-input-manager.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-survey-send',
   templateUrl: './survey-send.component.html',
   styles: []
 })
-export class SurveySendComponent implements OnInit {
+export class SurveySendComponent implements OnInit, OnDestroy {
 
   @Input()
   public survey: Survey;
-
   public form: SurveyListForm = new SurveyListForm();
-
   public surveyTypes = SurveyInputTypes;
+  private subscription: Subscription = new Subscription();
 
   constructor(
     private surveyInputManager: SurveyInputManagerService
@@ -29,6 +29,10 @@ export class SurveySendComponent implements OnInit {
   ngOnInit() {
     this.createControls();
     this.subscribe();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   private createControls(): void {
@@ -42,9 +46,11 @@ export class SurveySendComponent implements OnInit {
   }
 
   private subscribe(): void {
-    this.form.extraVariables.valueChanges.subscribe((values: any) => {
+    const extraVarsSubscription = this.form.extraVariables.valueChanges.subscribe((values: any) => {
       this.surveyInputManager.send(this.survey, values);
     });
+
+    this.subscription.add(extraVarsSubscription);
   }
 }
 
