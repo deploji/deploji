@@ -1,7 +1,7 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { User } from '../../../../core/interfaces/user';
 import { UsersService } from '../../../../core/services/users.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';

@@ -1,7 +1,8 @@
 import { Component, Input, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule, MatSlideToggleChange, MatTableModule } from '@angular/material';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatCardModule } from '@angular/material/card';
+import { MatSlideToggleChange, MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatTableModule } from '@angular/material/table';
 import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';
 import { RelatedNotificationChannel } from '../../../../core/interfaces/related-notification-channel';
 import { ApplicationNotificationChannel } from '../../../../core/interfaces/application-notification-channel';

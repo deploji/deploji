@@ -8,7 +8,7 @@ describe('NotificationChannelsService', () => {
   }));
 
   it('should be created', () => {
-    const service: NotificationChannelsService = TestBed.get(NotificationChannelsService);
+    const service: NotificationChannelsService = TestBed.inject(NotificationChannelsService);
     expect(service).toBeTruthy();
   });
 });

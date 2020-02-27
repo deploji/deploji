@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormSshKeyComponentModule } from '../../shared/form/form-ssh-key/form-ssh-key.component';
 import { MatButtonModule } from '@angular/material/button';
 import { NotificationsWhenComponentModule } from '../../shared/notifications-when/notifications-when.component';
-import { MatTabsModule } from '@angular/material';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-edit-project',

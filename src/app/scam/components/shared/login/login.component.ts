@@ -1,7 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
 import { catchError, finalize } from 'rxjs/operators';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogConfirmComponent } from '../dialog/dialog-confirm/dialog-confirm.component';
 import { throwError } from 'rxjs';
 import { LoginForm } from '../../../../core/forms/login.form';

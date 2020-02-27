@@ -1,6 +1,10 @@
 import { ChangeDetectionStrategy, Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatCardModule, MatDialog, MatDialogRef, MatIconModule, MatTableModule } from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
 import { NotificationChannel } from '../../../../core/interfaces/notification-channel';
 import { NotificationChannelsService } from '../../../../core/services/notification-channels.service';

@@ -24,7 +24,7 @@ import { MatMenuModule } from '@angular/material/menu';
 })
 export class NavComponent implements OnInit {
   @Output() theme = new EventEmitter<string>();
-  @ViewChild('drawer', { static: false}) drawer;
+  @ViewChild('drawer') drawer;
   userTypes = UserTypesEnum;
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(

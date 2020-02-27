@@ -1,7 +1,7 @@
 import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { Project } from '../../../../core/interfaces/project';
 import { ProjectsService } from '../../../../core/services/projects.service';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogSynchronizeComponent } from '../../shared/dialog/dialog-synchronize/dialog-synchronize.component';
 import { DialogData } from '../../../../core/interfaces/dialog-data';
 import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
