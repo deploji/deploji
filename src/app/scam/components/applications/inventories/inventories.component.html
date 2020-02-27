@@ -1,4 +1,4 @@
-<app-form-inventory label="Filters" [control]="filterControl" [multiple]="true"></app-form-inventory>
+<app-form-inventory label="Filters" i18n-label [control]="filterControl" [multiple]="true"></app-form-inventory>
 <mat-card *ngFor="let inventory of filteredOptions" class="my2 p0">
   <mat-card-header>
     <mat-card-title class="m2"><strong>{{inventory?.Name}}</strong></mat-card-title>
@@ -6,15 +6,15 @@
   <mat-card-content>
     <table mat-table [dataSource]="inventory.ApplicationInventories">
       <ng-container matColumnDef="application">
-        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Application</th>
+        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col" i18n>Application</th>
         <td mat-cell *matCellDef="let element"> {{element.Application.Name}} </td>
       </ng-container>
       <ng-container matColumnDef="version">
-        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col">Version</th>
+        <th mat-header-cell style="width: 33%" *matHeaderCellDef scope="col" i18n>Version</th>
         <td mat-cell *matCellDef="let element">{{element.Version}}</td>
       </ng-container>
       <ng-container matColumnDef="urls">
-        <th mat-header-cell style="width: 34%" *matHeaderCellDef scope="col">URLs</th>
+        <th mat-header-cell style="width: 34%" *matHeaderCellDef scope="col" i18n>URLs</th>
         <td mat-cell *matCellDef="let element">
           <app-urls [urlsString]="element.ApplicationUrls"></app-urls>
         </td>

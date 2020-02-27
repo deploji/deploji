@@ -1,50 +1,50 @@
 <h1>
-  <ng-container *ngIf="!form.get('ID').value">Create new</ng-container>
-  <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
-  user
+  <ng-container *ngIf="!form.get('ID').value" i18n>Create new</ng-container>
+  <ng-container *ngIf="form.get('ID').value" i18n>Edit</ng-container>
+  <span i18n>user</span>
 </h1>
 <mat-card class="p0">
   <mat-tab-group>
-    <mat-tab label="Details">
+    <mat-tab label="Details" i18n-label>
       <form [formGroup]="form" class="p2">
         <mat-form-field class="block">
-          <mat-label>Username</mat-label>
+          <mat-label i18n>Username</mat-label>
           <input matInput type="text" formControlName="Username">
-          <mat-error>Username is <strong>required</strong></mat-error>
+          <mat-error><span i18n>Username is</span> <strong i18n>required</strong></mat-error>
         </mat-form-field>
         <mat-form-field class="block">
-          <mat-label>Type</mat-label>
+          <mat-label i18n>Type</mat-label>
           <mat-select formControlName="Type" required>
-            <mat-option [value]="userTypesEnum.REGULAR">Regular</mat-option>
-            <mat-option [value]="userTypesEnum.ADMIN">Administrator</mat-option>
-            <mat-option [value]="userTypesEnum.AUDITOR">Auditor</mat-option>
+            <mat-option [value]="userTypesEnum.REGULAR" i18n="type of user">Regular</mat-option>
+            <mat-option [value]="userTypesEnum.ADMIN" i18n>Administrator</mat-option>
+            <mat-option [value]="userTypesEnum.AUDITOR" i18n>Auditor</mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field class="block">
-          <mat-label>Name</mat-label>
+          <mat-label i18n="name of the user">Name</mat-label>
           <input matInput type="text" formControlName="Name">
         </mat-form-field>
         <mat-form-field class="block">
-          <mat-label>Surname</mat-label>
+          <mat-label i18n>Surname</mat-label>
           <input matInput type="text" formControlName="Surname">
         </mat-form-field>
         <mat-form-field class="block">
-          <mat-label>Email</mat-label>
+          <mat-label i18n>Email</mat-label>
           <input matInput type="text" formControlName="Email">
         </mat-form-field>
         <mat-form-field class="block">
-          <mat-label>Password</mat-label>
+          <mat-label i18n>Password</mat-label>
           <input matInput type="text" formControlName="Password">
         </mat-form-field>
-        <mat-slide-toggle class="mb4" formControlName="IsActive">Active</mat-slide-toggle>
+        <mat-slide-toggle class="mb4" formControlName="IsActive" i18n>Active</mat-slide-toggle>
         <div class="button-row flex">
           <div class="flex-auto"></div>
-          <button type="button" mat-raised-button routerLink="/settings/users">Cancel</button>
-          <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+          <button type="button" mat-raised-button routerLink="/settings/users" i18n>Cancel</button>
+          <button type="button" mat-raised-button color="primary" (click)="save()" i18n>Save</button>
         </div>
       </form>
     </mat-tab>
-    <mat-tab [disabled]="!form.get('ID').value" label="Permissions">
+    <mat-tab [disabled]="!form.get('ID').value" label="Permissions" i18n-label>
       <div class="p0">
         <app-manage-permissions [userId]="form.get('ID').value"></app-manage-permissions>
       </div>

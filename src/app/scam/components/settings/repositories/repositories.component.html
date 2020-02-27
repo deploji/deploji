@@ -1,9 +1,9 @@
 <div class="flex flex-wrap">
-  <h1>Artifact Repositories</h1>
+  <h1 i18n>Artifact Repositories</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
-    <button type="button" mat-raised-button color="primary" routerLink="/settings/repositories/create">Create new
-      repository
+    <button type="button" mat-raised-button color="primary" routerLink="/settings/repositories/create">
+      <ng-container i18n>Create new repository</ng-container>
     </button>
   </div>
 </div>
@@ -15,11 +15,11 @@
       </div>
       <div class="properties">
         <div class="properties__row">
-          <div class="properties__label">Type</div>
+          <div class="properties__label" i18n>Type</div>
           <div class="properties__value">{{repository.Type}}</div>
         </div>
         <div class="properties__row">
-          <div class="properties__label">Repository URL</div>
+          <div class="properties__label" i18n>Repository URL</div>
           <div class="properties__value">{{repository.Url}}</div>
         </div>
       </div>

@@ -13,10 +13,17 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "pl": "src/locale/messages.pl.xtb"
+        }
+      },
+      "architect":  {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "i18nMissingTranslation": "warning",
             "outputPath": "dist/deploji",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -60,6 +67,9 @@
                   "maximumWarning": "6kb"
                 }
               ]
+            },
+            "pl": {
+              "localize": ["pl"]
             }
           }
         },
@@ -72,6 +82,9 @@
           "configurations": {
             "production": {
               "browserTarget": "deploji:build:production"
+            },
+            "pl": {
+              "browserTarget": "deploji:build:pl"
             }
           }
         },

@@ -1,15 +1,15 @@
 <div class="flex flex-wrap">
-  <h1>Jobs</h1>
+  <h1 i18n>Jobs</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
     <div class="flex flex-wrap m0-8">
-      <button type="button" mat-raised-button color="primary" routerLink="/jobs/create" class="m1 flex-auto">
+      <button type="button" mat-raised-button color="primary" routerLink="/jobs/create" class="m1 flex-auto" i18n>
         New application deployment
       </button>
-      <button type="button" mat-raised-button color="primary" routerLink="/jobs/create-inventory" class="m1 flex-auto">
+      <button type="button" mat-raised-button color="primary" routerLink="/jobs/create-inventory" class="m1 flex-auto" i18n>
         New inventory deployment
       </button>
-      <button type="button" mat-raised-button color="primary" routerLink="/templates" class="m1 flex-auto">
+      <button type="button" mat-raised-button color="primary" routerLink="/templates" class="m1 flex-auto" i18n>
         New job
       </button>
     </div>
@@ -19,17 +19,17 @@
   <div [formGroup]="filters" class="container-fluid">
     <div class="row">
       <div class="col">
-        <app-form-application label="Application" [control]="filters.applicationId"></app-form-application>
+        <app-form-application label="Application" i18n-label [control]="filters.applicationId"></app-form-application>
       </div>
       <div class="col">
-        <app-form-inventory label="Inventory" [app]="filters.applicationId?.value"
+        <app-form-inventory label="Inventory" i18n-label [app]="filters.applicationId?.value"
                             [control]="filters.inventoryId"></app-form-inventory>
       </div>
     </div>
   </div>
   <table mat-table [dataSource]="jobs?.items">
     <ng-container matColumnDef="status">
-      <th mat-header-cell *matHeaderCellDef scope="col">Status</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Status</th>
       <td mat-cell *matCellDef="let element">
         <app-job-status [job]="element"></app-job-status>
       </td>
@@ -41,31 +41,31 @@
       </td>
     </ng-container>
     <ng-container matColumnDef="type">
-      <th mat-header-cell *matHeaderCellDef scope="col">Type</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Type</th>
       <td mat-cell *matCellDef="let element">
         {{element?.Type | jobType}}
       </td>
     </ng-container>
     <ng-container matColumnDef="project">
-      <th mat-header-cell *matHeaderCellDef scope="col">Project</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Project</th>
       <td mat-cell *matCellDef="let element">
         {{element?.Project?.Name}}
       </td>
     </ng-container>
     <ng-container matColumnDef="application">
-      <th mat-header-cell *matHeaderCellDef scope="col">Application</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Application</th>
       <td mat-cell *matCellDef="let element">
         {{element?.Application?.Name}}
       </td>
     </ng-container>
     <ng-container matColumnDef="inventory">
-      <th mat-header-cell *matHeaderCellDef scope="col">Inventory</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Inventory</th>
       <td mat-cell *matCellDef="let element">
         {{element?.Inventory?.Name}}
       </td>
     </ng-container>
     <ng-container matColumnDef="version">
-      <th mat-header-cell *matHeaderCellDef scope="col">Version</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Version</th>
       <td mat-cell *matCellDef="let element">{{element?.Version}}</td>
     </ng-container>
     <ng-container matColumnDef="time">
@@ -83,7 +83,7 @@
     <ng-container matColumnDef="actions">
       <th mat-header-cell *matHeaderCellDef scope="col"></th>
       <td mat-cell *matCellDef="let element">
-        <button mat-icon-button title="Relaunch using same parameters" (click)="relaunch(element)"
+        <button mat-icon-button title="Relaunch using same parameters" i18n-title (click)="relaunch(element)"
                 [disabled]="!isCompleted(element)">
           <mat-icon svgIcon="rocket"></mat-icon>
         </button>

@@ -1,24 +1,24 @@
-<h1>Add new ssh key</h1>
+<h1 i18n>Add new ssh key</h1>
 <mat-card class="p0">
   <mat-tab-group>
-    <mat-tab label="Details">
+    <mat-tab label="Details" i18n-label>
       <form [formGroup]="form" class="p2">
         <mat-form-field class="block">
-          <mat-label>Title</mat-label>
+          <mat-label i18n>Title</mat-label>
           <input matInput type="text" formControlName="Title">
         </mat-form-field>
         <mat-form-field class="block">
-          <mat-label>Key</mat-label>
+          <mat-label i18n>Key</mat-label>
           <textarea cdkTextareaAutosize matInput type="textarea" formControlName="Key"></textarea>
         </mat-form-field>
         <div class="button-row flex">
           <div class="flex-auto"></div>
-          <button type="button" mat-raised-button routerLink="/settings/keys">Cancel</button>
-          <button *ngIf="!key || key?.Permissions?.Admin" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+          <button type="button" mat-raised-button routerLink="/settings/keys" i18n>Cancel</button>
+          <button *ngIf="!key || key?.Permissions?.Admin" type="button" mat-raised-button color="primary" (click)="save()" i18n>Save</button>
         </div>
       </form>
     </mat-tab>
-    <mat-tab label="Permissions">
+    <mat-tab label="Permissions" i18n-label>
       <div class="p0">
         <app-manage-permissions [editable]="key?.Permissions?.Admin" [keyId]="form.ID.value"></app-manage-permissions>
       </div>

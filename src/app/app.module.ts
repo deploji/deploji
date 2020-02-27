@@ -19,6 +19,13 @@ import { DialogConfirmComponentModule } from './scam/components/shared/dialog/di
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProgressBarComponentModule } from './scam/components/shared/progress-bar/progress-bar.component';
+import localeEn from '@angular/common/locales/en';
+import localePl from '@angular/common/locales/pl';
+
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEn);
+registerLocaleData(localePl);
 
 @NgModule({
   declarations: [AppComponent],
