@@ -16,7 +16,9 @@
       "i18n": {
         "sourceLocale": "en",
         "locales": {
-          "pl": "src/locale/messages.pl.xtb"
+          "pl": "src/locale/messages.pl.xtb",
+          "es": "src/locale/messages.es.xtb",
+          "de": "src/locale/messages.de.xtb"
         }
       },
       "architect":  {
@@ -70,6 +72,12 @@
             },
             "pl": {
               "localize": ["pl"]
+            },
+            "es": {
+              "localize": ["es"]
+            },
+            "de": {
+              "localize": ["de"]
             }
           }
         },
@@ -85,6 +93,12 @@
             },
             "pl": {
               "browserTarget": "deploji:build:pl"
+            },
+            "es": {
+              "browserTarget": "deploji:build:es"
+            },
+            "de": {
+              "browserTarget": "deploji:build:de"
             }
           }
         },

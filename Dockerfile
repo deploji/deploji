@@ -28,9 +28,11 @@ COPY . /app
 RUN node_modules/.bin/ng lint
 RUN node_modules/.bin/ng test --watch=false --browsers=ChromeHeadlessNoSandbox
 RUN wget -O src/locale/messages.pl.xtb `curl -sX POST https://api.poeditor.com/v2/projects/export -d api_token="8b03f1ce83f44c99d20ea1f6bc4d5f07" -d id="320639" -d language="pl" -d type="xtb" | jq -r .result.url`
+RUN wget -O src/locale/messages.es.xtb `curl -sX POST https://api.poeditor.com/v2/projects/export -d api_token="8b03f1ce83f44c99d20ea1f6bc4d5f07" -d id="320639" -d language="es" -d type="xtb" | jq -r .result.url`
+RUN wget -O src/locale/messages.de.xtb `curl -sX POST https://api.poeditor.com/v2/projects/export -d api_token="8b03f1ce83f44c99d20ea1f6bc4d5f07" -d id="320639" -d language="de" -d type="xtb" | jq -r .result.url`
 
 # generate build
-RUN ng build --prod
+RUN ng build --prod --localize
 
 ############
 ### prod ###
