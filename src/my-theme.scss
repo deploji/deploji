@@ -105,11 +105,80 @@ $mat-barrier-reef: (
   )
 );
 
+$md-classicblue: (
+  50 : #e0e9f0,
+  100 : #b3c8d9,
+  200 : #80a3c0,
+  300 : #4d7ea6,
+  400 : #266293,
+  500 : #004680,
+  600 : #003f78,
+  700 : #00376d,
+  800 : #002f63,
+  900 : #002050,
+  A100 : #83a8ff,
+  A200 : #5084ff,
+  A400 : #1d60ff,
+  A700 : #034eff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+  )
+);
+
+$md-jasminegreen: (
+  50 : #f0f8e9,
+  100 : #d9efc7,
+  200 : #bfe4a2,
+  300 : #a5d97c,
+  400 : #92d060,
+  500 : #7fc844,
+  600 : #77c23e,
+  700 : #6cbb35,
+  800 : #62b42d,
+  900 : #4fa71f,
+  A100 : #eaffe0,
+  A200 : #c8ffad,
+  A400 : #a6ff7a,
+  A700 : #94ff61,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #000000,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
+
+
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
 $app-primary: mat-palette($mat-living-coral);
 $app-accent: mat-palette($mat-barrier-reef);
+$app-primary-2020: mat-palette($md-classicblue);
+$app-accent-2020: mat-palette($md-jasminegreen);
 
 // The warn palette is optional (defaults to red).
 $app-warn: mat-palette($mat-red);
@@ -117,6 +186,8 @@ $app-warn: mat-palette($mat-red);
 // Create the theme object (a Sass map containing all of the palettes).
 $app-light-theme: mat-light-theme($app-primary, $app-accent, $app-warn);
 $app-dark-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
+$app-light-theme-2020: mat-light-theme($app-primary-2020, $app-accent-2020, $app-warn);
+$app-dark-theme-2020: mat-dark-theme($app-primary-2020, $app-accent-2020, $app-warn);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -127,4 +198,12 @@ $app-dark-theme: mat-dark-theme($app-primary, $app-accent, $app-warn);
 .dark-theme {
   @include angular-material-theme($app-dark-theme);
   @include app-theme($app-dark-theme);
+}
+.dark-theme-2020 {
+  @include angular-material-theme($app-dark-theme-2020);
+  @include app-theme($app-dark-theme-2020);
+}
+.light-theme-2020 {
+  @include angular-material-theme($app-light-theme-2020);
+  @include app-theme($app-light-theme-2020);
 }

@@ -48,8 +48,18 @@
       <mat-icon>format_color_fill</mat-icon>
     </button>
     <mat-menu #themeMenu="matMenu">
-      <button (click)="setTheme('light-theme')" mat-menu-item i18n>Light</button>
-      <button (click)="setTheme('dark-theme')" mat-menu-item i18n>Dark</button>
+      <button (click)="setTheme('light-theme')" mat-menu-item>
+        <span class="palette-picker palette-picker--light"></span>
+      </button>
+      <button (click)="setTheme('dark-theme')" mat-menu-item>
+        <span class="palette-picker palette-picker--dark"></span>
+      </button>
+      <button (click)="setTheme('light-theme-2020')" mat-menu-item>
+        <span class="palette-picker palette-picker--light-2020"></span>
+      </button>
+      <button (click)="setTheme('dark-theme-2020')" mat-menu-item>
+        <span class="palette-picker palette-picker--dark-2020"></span>
+      </button>
     </mat-menu>
     <button
       type="button"
