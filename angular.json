@@ -18,6 +18,9 @@
         "locales": {
           "pl": "src/locale/messages.pl.xtb",
           "es": "src/locale/messages.es.xtb",
+          "ru": "src/locale/messages.ru.xtb",
+          "pt": "src/locale/messages.pt.xtb",
+          "fr": "src/locale/messages.fr.xtb",
           "de": "src/locale/messages.de.xtb"
         }
       },
@@ -76,6 +79,15 @@
             "es": {
               "localize": ["es"]
             },
+            "ru": {
+              "localize": ["ru"]
+            },
+            "pt": {
+              "localize": ["pt"]
+            },
+            "fr": {
+              "localize": ["fr"]
+            },
             "de": {
               "localize": ["de"]
             }
@@ -99,6 +111,15 @@
             },
             "de": {
               "browserTarget": "deploji:build:de"
+            },
+            "ru": {
+              "browserTarget": "deploji:build:ru"
+            },
+            "pt": {
+              "browserTarget": "deploji:build:pt"
+            },
+            "fr": {
+              "browserTarget": "deploji:build:fr"
             }
           }
         },
