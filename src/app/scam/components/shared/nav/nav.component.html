@@ -60,10 +60,13 @@
       <mat-icon svgIcon="web"></mat-icon>
     </button>
     <mat-menu #langMenu="matMenu">
-      <a href="/pl/" mat-menu-item>Polski</a>
-      <a href="/en/" mat-menu-item>English</a>
-      <a href="/es/" mat-menu-item>Español</a>
-      <a href="/de/" mat-menu-item>Deutsch</a>
+      <a href="/de/" mat-menu-item><span class="mr1 flag-icon flag-icon-de"></span>Deutsch</a>
+      <a href="/en/" mat-menu-item><span class="mr1 flag-icon flag-icon-gb"></span>English</a>
+      <a href="/es/" mat-menu-item><span class="mr1 flag-icon flag-icon-es"></span>Español</a>
+      <a href="/fr/" mat-menu-item><span class="mr1 flag-icon flag-icon-fr"></span>Français</a>
+      <a href="/pl/" mat-menu-item><span class="mr1 flag-icon flag-icon-pl"></span>Polski</a>
+      <a href="/pt/" mat-menu-item><span class="mr1 flag-icon flag-icon-pt"></span>Português</a>
+      <a href="/ru/" mat-menu-item><span class="mr1 flag-icon flag-icon-ru"></span>Русский</a>
     </mat-menu>
     <button
       *ngxPermissionsExcept="userTypes.GUEST"
