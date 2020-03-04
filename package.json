@@ -1,6 +1,7 @@
 {
   "name": "deploji",
   "version": "0.0.0",
+  "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -11,7 +12,7 @@
     "build-i18n": "for lang in en pl; do ng build --output-path=dist/$lang --aot --prod --base-href /$lang/ ; done",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^9.0.3",
     "@angular/cdk": "^9.1.0",
