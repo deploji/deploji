@@ -34,7 +34,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 })
 export class EditAppComponent implements OnInit {
 
-  @ViewChild(NotificationsWhenComponent, { static: false})
+  @ViewChild(NotificationsWhenComponent)
   public notificationsWhenComponentRef: any;
 
   public form = new ApplicationForm();

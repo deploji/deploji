@@ -3,16 +3,16 @@
     <mat-card>
       <form [formGroup]="form" (ngSubmit)="login(form.value)">
         <mat-form-field class="block">
-          <mat-label>Username</mat-label>
+          <mat-label i18n>Username</mat-label>
           <input matInput type="text" formControlName="Username">
         </mat-form-field>
         <mat-form-field class="block">
-          <mat-label>Password</mat-label>
+          <mat-label i18n>Password</mat-label>
           <input matInput type="password" formControlName="Password">
         </mat-form-field>
         <div class="flex">
           <div class="flex-auto"></div>
-          <button mat-raised-button color="primary" type="submit">SIGN IN</button>
+          <button mat-raised-button color="primary" type="submit" i18n>SIGN IN</button>
         </div>
       </form>
     </mat-card>

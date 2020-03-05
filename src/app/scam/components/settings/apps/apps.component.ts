@@ -2,7 +2,7 @@ import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { App } from '../../../../core/interfaces/app';
 import { AppsService } from '../../../../core/services/apps.service';
 import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';

@@ -1,0 +1,13 @@
+@if variable-exists(include) {
+  @each $country in $include {
+    @include flag-icon($country);
+  }
+} @else {
+  @include flag-icon(pl);
+  @include flag-icon(es);
+  @include flag-icon(de);
+  @include flag-icon(fr);
+  @include flag-icon(ru);
+  @include flag-icon(pt);
+  @include flag-icon(gb);
+}

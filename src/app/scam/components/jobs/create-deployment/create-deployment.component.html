@@ -2,23 +2,25 @@
 <mat-card>
   <div>
     <div>
-      <app-form-application label="Application" [control]="form.Application"></app-form-application>
+      <app-form-application label="Application" i18n-label [control]="form.Application"></app-form-application>
     </div>
     <div>
       <app-form-application-inventory label="Inventory"
+                                      i18n-label
                                       [control]="form.Inventories"
                                       [multiple]="true"
                                       [app]="form.Application.value"></app-form-application-inventory>
     </div>
     <div>
       <app-form-version label="Version"
+                        i18n-label
                         [control]="form.Version"
                         [app]="form.Application.value"></app-form-version>
     </div>
     <div class="button-row flex">
       <div class="flex-auto"></div>
-      <button type="button" mat-raised-button routerLink="/jobs">Cancel</button>
-      <button type="button" mat-raised-button color="primary" (click)="create()">Save</button>
+      <button type="button" mat-raised-button routerLink="/jobs" i18n>Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="create()" i18n>Save</button>
     </div>
   </div>
 </mat-card>

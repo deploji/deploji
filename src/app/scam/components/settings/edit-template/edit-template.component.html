@@ -1,43 +1,48 @@
 <h1>
-  <ng-container *ngIf="!form.get('ID').value">Create new</ng-container>
-  <ng-container *ngIf="form.get('ID').value">Edit</ng-container>
-  template
+  <ng-container *ngIf="!form.get('ID').value" i18n>Create new</ng-container>
+  <ng-container *ngIf="form.get('ID').value" i18n>Edit</ng-container>
+  <span i18n>template</span>
 </h1>
 <mat-card class="p0">
   <mat-tab-group>
-    <mat-tab label="Details">
+    <mat-tab label="Details" i18n-label>
       <form [formGroup]="form" class="p2">
         <mat-form-field class="block">
-          <mat-label>Name</mat-label>
+          <mat-label i18n>Name</mat-label>
           <input matInput type="text" formControlName="Name">
         </mat-form-field>
-        <mat-slide-toggle formControlName="PromptProject">Prompt on launch</mat-slide-toggle>
+        <mat-slide-toggle formControlName="PromptProject" i18n>Prompt on launch</mat-slide-toggle>
         <app-form-project [control]="form.Project"></app-form-project>
-        <mat-slide-toggle formControlName="PromptInventory">Prompt on launch</mat-slide-toggle>
+        <mat-slide-toggle formControlName="PromptInventory" i18n>Prompt on launch</mat-slide-toggle>
         <app-form-inventory [control]="form.Inventory"></app-form-inventory>
-        <mat-slide-toggle formControlName="PromptPlaybook">Prompt on launch</mat-slide-toggle>
-        <app-form-project-file [control]="form.Playbook" label="Playbook"
+        <mat-slide-toggle formControlName="PromptPlaybook" i18n>Prompt on launch</mat-slide-toggle>
+        <app-form-project-file [control]="form.Playbook" label="Playbook" i18n-label
                                [project]="form.get('Project').value"></app-form-project-file>
-        <mat-slide-toggle formControlName="PromptSshKey">Prompt on launch</mat-slide-toggle>
+        <mat-slide-toggle formControlName="PromptSshKey" i18n>Prompt on launch</mat-slide-toggle>
         <app-form-ssh-key [control]="form.SshKey"></app-form-ssh-key>
-        <mat-slide-toggle formControlName="PromptExtraVariables" class="">Prompt on launch</mat-slide-toggle>
+        <mat-slide-toggle formControlName="PromptExtraVariables" i18n>Prompt on launch</mat-slide-toggle>
         <mat-form-field class="block">
-          <mat-label>Extra variables</mat-label>
+          <mat-label i18n>Extra variables</mat-label>
           <textarea cdkTextareaAutosize matInput type="textarea" formControlName="ExtraVariables"></textarea>
         </mat-form-field>
         <div class="button-row flex">
           <div class="flex-auto"></div>
-          <button type="button" mat-raised-button routerLink="/settings/templates">Cancel</button>
-          <button *ngIf="!template || template?.Permissions?.Write" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+          <button type="button" mat-raised-button routerLink="/settings/templates" i18n>Cancel</button>
+          <button *ngIf="!template || template?.Permissions?.Write"
+                  type="button"
+                  mat-raised-button
+                  color="primary"
+                  i18n
+                  (click)="save()">Save</button>
         </div>
       </form>
     </mat-tab>
-    <mat-tab label="Permissions" [disabled]="!templateId">
+    <mat-tab label="Permissions" i18n-label [disabled]="!templateId">
       <div class="p0">
         <app-manage-permissions [editable]="template?.Permissions?.Admin" [templateId]="form.ID.value"></app-manage-permissions>
       </div>
     </mat-tab>
-    <mat-tab label="Notifications" [disabled]="!templateId">
+    <mat-tab label="Notifications" i18n-label [disabled]="!templateId">
       <app-notifications-when [templateId]="templateId"></app-notifications-when>
     </mat-tab>
     <mat-tab label="Surveys" [disabled]="!template">

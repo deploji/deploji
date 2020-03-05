@@ -1,8 +1,9 @@
 <div class="flex flex-wrap">
-  <h1>Projects</h1>
+  <h1 i18n>Projects</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
-    <button type="button" mat-raised-button color="primary" routerLink="/settings/projects/create">Create new project
+    <button type="button" mat-raised-button color="primary" routerLink="/settings/projects/create">
+      <ng-container i18n>Create new project</ng-container>
     </button>
   </div>
 </div>
@@ -15,11 +16,11 @@
       </div>
       <div class="properties">
         <div class="properties__row">
-          <div class="properties__label">Repository URL</div>
+          <div class="properties__label" i18n>Repository URL</div>
           <div class="properties__value">{{project.RepoUrl}}</div>
         </div>
         <div class="properties__row">
-          <div class="properties__label">Branch</div>
+          <div class="properties__label" i18n>Branch</div>
           <div class="properties__value">{{project.RepoBranch}}</div>
         </div>
       </div>
@@ -30,6 +31,7 @@
       <button type="button"
               mat-icon-button
               matTooltip="Synchronize with VCS"
+              i18n-matTooltip
               [ngClass]="{'rotate': project.synchronizing, 'success': project.synchronizationStatus === 'success', 'error': project.synchronizationStatus === 'error'}"
               [disabled]="project.synchronizing"
               (click)="synchronize(project)">

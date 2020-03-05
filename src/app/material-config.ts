@@ -1,4 +1,4 @@
-import { MatFormFieldDefaultOptions } from '@angular/material';
+import { MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MatAutocompleteDefaultOptions } from '@angular/material/autocomplete';
 
 export const materialConfig: MatFormFieldDefaultOptions = {

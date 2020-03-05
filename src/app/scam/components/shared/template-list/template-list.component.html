@@ -4,19 +4,19 @@
       <div class="mb2"><strong>{{template.Name}}</strong></div>
       <div class="properties">
         <div class="properties__row">
-          <div class="properties__label">Project</div>
+          <div class="properties__label" i18n>Project</div>
           <div class="properties__value">{{template.Project?.Name}}</div>
         </div>
         <div class="properties__row">
-          <div class="properties__label">Inventory</div>
+          <div class="properties__label" i18n>Inventory</div>
           <div class="properties__value">{{template.Inventory?.Name}}</div>
         </div>
         <div class="properties__row">
-          <div class="properties__label">Playbook</div>
+          <div class="properties__label" i18n>Playbook</div>
           <div class="properties__value">{{template.Playbook}}</div>
         </div>
         <div class="properties__row">
-          <div class="properties__label">SshKey</div>
+          <div class="properties__label" i18n>SshKey</div>
           <div class="properties__value">{{template.SshKey?.Title}}</div>
         </div>
       </div>
@@ -24,7 +24,7 @@
     <div class="flex-auto"></div>
     <div class="flex justify-center flex-column">
       <div>
-        <button type="button" mat-icon-button title="Launch" (click)="launch(template)">
+        <button type="button" mat-icon-button title="Launch" i18n-title (click)="launch(template)">
           <mat-icon svgIcon="rocket"></mat-icon>
         </button>
       </div>

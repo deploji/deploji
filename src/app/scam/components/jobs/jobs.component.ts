@@ -1,5 +1,5 @@
 import { Component, NgModule, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { Observable, of, Subscription } from 'rxjs';
 import { Page } from '../../../core/interfaces/page';
 import { Collection } from '../../../core/utils/collection';
@@ -21,7 +21,6 @@ import { JobTypePipeModule } from '../../pipes/job-type.pipe';
 import { UserAvatarComponentModule } from '../shared/user-avatar/user-avatar.component';
 import { JobTimeComponentModule } from '../shared/job-time/job-time.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatPaginatorModule } from '@angular/material/paginator';
 import { JobStatusComponentModule } from '../shared/job-status/job-status.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';

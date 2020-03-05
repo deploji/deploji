@@ -1,38 +1,38 @@
 <div class="flex flex-wrap">
-  <h1>Templates</h1>
+  <h1 i18n>Templates</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
-    <button type="button" mat-raised-button color="primary" routerLink="/settings/templates/create">Create new
-      template
+    <button type="button" mat-raised-button color="primary" routerLink="/settings/templates/create">
+      <ng-container i18n>Create new template</ng-container>
     </button>
   </div>
 </div>
 <mat-card class="p0">
   <table mat-table [dataSource]="templates">
     <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef scope="col">Name</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Name</th>
       <td mat-cell *matCellDef="let element">
         <a routerLink="/settings/templates/{{element.ID}}">{{element?.Name}}</a>
       </td>
     </ng-container>
     <ng-container matColumnDef="project">
-      <th mat-header-cell *matHeaderCellDef scope="col">Project</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Project</th>
       <td mat-cell *matCellDef="let element">{{element.Project?.Name}}</td>
     </ng-container>
     <ng-container matColumnDef="inventory">
-      <th mat-header-cell *matHeaderCellDef scope="col">Inventory</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Inventory</th>
       <td mat-cell *matCellDef="let element">{{element.Inventory?.Name}}</td>
     </ng-container>
     <ng-container matColumnDef="playbook">
-      <th mat-header-cell *matHeaderCellDef scope="col">Playbook</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Playbook</th>
       <td mat-cell *matCellDef="let element">{{element.Playbook}}</td>
     </ng-container>
     <ng-container matColumnDef="sshkey">
-      <th mat-header-cell *matHeaderCellDef scope="col">SshKey</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>SshKey</th>
       <td mat-cell *matCellDef="let element">{{element.SshKey?.Title}}</td>
     </ng-container>
     <ng-container matColumnDef="actions">
-      <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
+      <th mat-header-cell *matHeaderCellDef scope="col" i18n>Actions</th>
       <td mat-cell *matCellDef="let element">
         <app-edit-button *ngIf="element?.Permissions?.Write" routerLink="/settings/templates/{{element.ID}}"></app-edit-button>
         <app-delete-button *ngIf="element?.Permissions?.Write" (click)="delete(element)"></app-delete-button>
