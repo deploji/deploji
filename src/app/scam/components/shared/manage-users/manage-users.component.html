@@ -1,12 +1,12 @@
 <table mat-table [dataSource]="teamUsers">
   <ng-container matColumnDef="username">
-    <th mat-header-cell *matHeaderCellDef scope="col">Username</th>
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Username</th>
     <td mat-cell *matCellDef="let element"><strong>{{element.Username}}</strong></td>
   </ng-container>
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef scope="col">Actions</th>
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Actions</th>
     <td mat-cell *matCellDef="let element">
-      <button type="button" mat-icon-button title="Delete" (click)="delete(element)">
+      <button type="button" mat-icon-button title="Delete" i18n-title (click)="delete(element)">
         <mat-icon color="warn">delete_forever</mat-icon>
       </button>
     </td>
@@ -17,15 +17,15 @@
 </table>
 <div class="p2">
   <ng-container *ngIf="showUserSelect">
-    <app-form-user [users]="availableUsers" [control]="selectedUser" label="User"></app-form-user>
+    <app-form-user [users]="availableUsers" [control]="selectedUser" label="User" i18n-label></app-form-user>
     <div class="flex">
       <div class="flex-auto"></div>
-      <button mat-raised-button class="mr2" (click)="toggleUserSelect()">Cancel</button>
-      <button mat-raised-button color="primary" (click)="addUser()">Save</button>
+      <button mat-raised-button class="mr2" (click)="toggleUserSelect()" i18n>Cancel</button>
+      <button mat-raised-button color="primary" (click)="addUser()" i18n>Save</button>
     </div>
   </ng-container>
   <div class="flex">
     <div class="flex-auto"></div>
-    <button *ngIf="!showUserSelect" mat-raised-button (click)="toggleUserSelect()">Add user</button>
+    <button *ngIf="!showUserSelect" mat-raised-button (click)="toggleUserSelect()" i18n>Add user</button>
   </div>
 </div>

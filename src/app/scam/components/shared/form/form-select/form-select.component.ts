@@ -31,8 +31,8 @@ export class FormSelectComponent implements OnChanges, OnInit, OnDestroy {
   selectedOptions: any[] = [];
   searchControl = new FormControl();
   private subscription = new Subscription();
-  @ViewChild('selectInput', {static: false}) selectInput: ElementRef<HTMLInputElement>;
-  @ViewChild('auto', {static: false}) matAutocomplete: MatAutocomplete;
+  @ViewChild('selectInput') selectInput: ElementRef<HTMLInputElement>;
+  @ViewChild('auto') matAutocomplete: MatAutocomplete;
   @Input() label = 'Application';
   @Input() multiple = false;
   @Input() control = new FormControl();

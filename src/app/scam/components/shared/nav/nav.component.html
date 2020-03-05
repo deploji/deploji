@@ -17,7 +17,7 @@
         title="Jobs"
         mat-button
         routerLink="/jobs">
-        Jobs
+        <ng-container i18n>Jobs</ng-container>
       </button>
       <button
         *ngxPermissionsExcept="userTypes.GUEST"
@@ -26,7 +26,7 @@
         title="Applications"
         mat-button
         routerLink="/applications">
-        Applications
+        <ng-container i18n>Applications</ng-container>
       </button>
       <button
         *ngxPermissionsExcept="userTypes.GUEST"
@@ -35,20 +35,48 @@
         title="Templates"
         mat-button
         routerLink="/templates">
-        Templates
+        <ng-container i18n>Templates</ng-container>
       </button>
     </ng-container>
     <span class="flex-auto"></span>
     <button
       type="button"
       title="Select a theme"
+      i18n-title
       [matMenuTriggerFor]="themeMenu"
       mat-icon-button>
       <mat-icon>format_color_fill</mat-icon>
     </button>
     <mat-menu #themeMenu="matMenu">
-      <button (click)="setTheme('light-theme')" mat-menu-item>Light</button>
-      <button (click)="setTheme('dark-theme')" mat-menu-item>Dark</button>
+      <button (click)="setTheme('light-theme')" mat-menu-item>
+        <span class="palette-picker palette-picker--light"></span>
+      </button>
+      <button (click)="setTheme('dark-theme')" mat-menu-item>
+        <span class="palette-picker palette-picker--dark"></span>
+      </button>
+      <button (click)="setTheme('light-theme-2020')" mat-menu-item>
+        <span class="palette-picker palette-picker--light-2020"></span>
+      </button>
+      <button (click)="setTheme('dark-theme-2020')" mat-menu-item>
+        <span class="palette-picker palette-picker--dark-2020"></span>
+      </button>
+    </mat-menu>
+    <button
+      type="button"
+      title="Language"
+      i18n-title
+      [matMenuTriggerFor]="langMenu"
+      mat-icon-button>
+      <mat-icon svgIcon="web"></mat-icon>
+    </button>
+    <mat-menu #langMenu="matMenu">
+      <a href="/de/" mat-menu-item><span class="mr1 flag-icon flag-icon-de"></span>Deutsch</a>
+      <a href="/en/" mat-menu-item><span class="mr1 flag-icon flag-icon-gb"></span>English</a>
+      <a href="/es/" mat-menu-item><span class="mr1 flag-icon flag-icon-es"></span>Español</a>
+      <a href="/fr/" mat-menu-item><span class="mr1 flag-icon flag-icon-fr"></span>Français</a>
+      <a href="/pl/" mat-menu-item><span class="mr1 flag-icon flag-icon-pl"></span>Polski</a>
+      <a href="/pt/" mat-menu-item><span class="mr1 flag-icon flag-icon-pt"></span>Português</a>
+      <a href="/ru/" mat-menu-item><span class="mr1 flag-icon flag-icon-ru"></span>Русский</a>
     </mat-menu>
     <button
       *ngxPermissionsExcept="userTypes.GUEST"
@@ -56,6 +84,7 @@
       type="button"
       aria-label="Logout"
       title="Logout"
+      i18n-title
       mat-icon-button>
       <mat-icon aria-label="Logout">exit_to_app</mat-icon>
     </button>
@@ -67,9 +96,10 @@
       type="button"
       aria-label="Jobs"
       title="Jobs"
+      i18n-title
       mat-button
       routerLink="/jobs">
-      Jobs
+      <ng-container i18n>Jobs</ng-container>
     </button>
     <button
       *ngxPermissionsExcept="userTypes.GUEST"
@@ -77,9 +107,10 @@
       type="button"
       aria-label="Applications"
       title="Applications"
+      i18n-title
       mat-button
       routerLink="/applications">
-      Applications
+      <ng-container i18n>Applications</ng-container>
     </button>
     <button
       *ngxPermissionsExcept="userTypes.GUEST"
@@ -87,9 +118,10 @@
       type="button"
       aria-label="Templates"
       title="Templates"
+      i18n-title
       mat-button
       routerLink="/templates">
-      Templates
+      <ng-container i18n>Templates</ng-container>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
@@ -99,25 +131,24 @@
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Settings</mat-toolbar>
+    <mat-toolbar i18n>Settings</mat-toolbar>
     <mat-nav-list *ngxPermissionsExcept="userTypes.GUEST">
-      <a mat-list-item class="menu-item" routerLink="/settings/keys">SSH keys</a>
+      <a mat-list-item class="menu-item" routerLink="/settings/keys" i18n>SSH keys</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
-         routerLink="/settings/projects">Projects</a>
-      <a mat-list-item class="menu-item" routerLink="/settings/inventories">Inventories</a>
+         routerLink="/settings/projects" i18n>Projects</a>
+      <a mat-list-item class="menu-item" routerLink="/settings/inventories" i18n>Inventories</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
-         routerLink="/settings/repositories">Artifact
-        Repositories</a>
-      <a mat-list-item class="menu-item" routerLink="/settings/apps">Applications</a>
-      <a mat-list-item class="menu-item" routerLink="/settings/templates">Templates</a>
+         routerLink="/settings/repositories" i18n>Artifact Repositories</a>
+      <a mat-list-item class="menu-item" routerLink="/settings/apps" i18n>Applications</a>
+      <a mat-list-item class="menu-item" routerLink="/settings/templates" i18n>Templates</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
-         routerLink="/settings/users">Users</a>
+         routerLink="/settings/users" i18n>Users</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
-         routerLink="/settings/teams">Teams</a>
+         routerLink="/settings/teams" i18n>Teams</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
-         routerLink="/settings/settings">Settings</a>
+         routerLink="/settings/settings" i18n>Settings</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
-         routerLink="/settings/notification-channels">Notification Channels</a>
+         routerLink="/settings/notification-channels" i18n>Notification Channels</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="flex flex-column">

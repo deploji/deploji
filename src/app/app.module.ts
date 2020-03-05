@@ -5,7 +5,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { InjectableRxStompConfig, RxStompService, rxStompServiceFactory } from '@stomp/ng2-stompjs';
 import { myRxStompConfig } from './my-rx-stomp.config';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatIconRegistry } from '@angular/material';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatIconRegistry } from '@angular/material/icon';
 import { materialAutocompleteConfig, materialConfig } from './material-config';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
@@ -18,6 +19,13 @@ import { DialogConfirmComponentModule } from './scam/components/shared/dialog/di
 import { AppRoutingModule } from './routing/app-routing.module';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ProgressBarComponentModule } from './scam/components/shared/progress-bar/progress-bar.component';
+import localeEn from '@angular/common/locales/en';
+import localePl from '@angular/common/locales/pl';
+
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(localeEn);
+registerLocaleData(localePl);
 
 @NgModule({
   declarations: [AppComponent],

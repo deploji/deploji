@@ -1,31 +1,35 @@
 <h1>
-  <ng-container *ngIf="!inventory?.ID">Create new</ng-container>
-  <ng-container *ngIf="inventory?.ID">Edit</ng-container>
-  inventory
+  <ng-container *ngIf="!inventory?.ID" i18n>Create new</ng-container>
+  <ng-container *ngIf="inventory?.ID" i18n>Edit</ng-container>
+  <span i18n>inventory</span>
 </h1>
 <mat-card class="p0">
   <mat-tab-group>
-    <mat-tab label="Details">
+    <mat-tab label="Details" i18n-label>
       <form [formGroup]="form" class="p2">
         <mat-form-field class="block">
-          <mat-label>Name</mat-label>
+          <mat-label i18n>Name</mat-label>
           <input matInput type="text" formControlName="Name">
         </mat-form-field>
         <div>
-          <app-form-project label="Project" [control]="form.Project"></app-form-project>
+          <app-form-project label="Project" i18n-label [control]="form.Project"></app-form-project>
         </div>
         <div>
-          <app-form-project-file label="Source file" [control]="form.SourceFile" [project]="form.get('Project').value">
+          <app-form-project-file label="Source file" i18n-label [control]="form.SourceFile" [project]="form.get('Project').value">
           </app-form-project-file>
         </div>
         <div class="button-row flex">
           <div class="flex-auto"></div>
-          <button type="button" mat-raised-button routerLink="/settings/inventories">Cancel</button>
-          <button *ngIf="!inventory || inventory?.Permissions?.Write" type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+          <button type="button" mat-raised-button routerLink="/settings/inventories" i18n>Cancel</button>
+          <button *ngIf="!inventory || inventory?.Permissions?.Write"
+                  type="button"
+                  mat-raised-button
+                  color="primary"
+                  (click)="save()" i18n>Save</button>
         </div>
       </form>
     </mat-tab>
-    <mat-tab label="Permissions">
+    <mat-tab label="Permissions" i18n-label>
       <div class="p0">
         <app-manage-permissions [editable]="inventory?.Permissions?.Admin" [inventoryId]="inventory?.ID"></app-manage-permissions>
       </div>

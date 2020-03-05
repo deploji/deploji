@@ -13,16 +13,28 @@
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
-      "architect": {
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "pl": "src/locale/messages.pl.xtb",
+          "es": "src/locale/messages.es.xtb",
+          "ru": "src/locale/messages.ru.xtb",
+          "pt": "src/locale/messages.pt.xtb",
+          "fr": "src/locale/messages.fr.xtb",
+          "de": "src/locale/messages.de.xtb"
+        }
+      },
+      "architect":  {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "i18nMissingTranslation": "warning",
             "outputPath": "dist/deploji",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
-            "aot": false,
+            "aot": true,
             "assets": [
               "src/favicon.ico",
               "src/assets",
@@ -46,7 +58,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -55,8 +66,30 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
+            },
+            "pl": {
+              "localize": ["pl"]
+            },
+            "es": {
+              "localize": ["es"]
+            },
+            "ru": {
+              "localize": ["ru"]
+            },
+            "pt": {
+              "localize": ["pt"]
+            },
+            "fr": {
+              "localize": ["fr"]
+            },
+            "de": {
+              "localize": ["de"]
             }
           }
         },
@@ -69,6 +102,24 @@
           "configurations": {
             "production": {
               "browserTarget": "deploji:build:production"
+            },
+            "pl": {
+              "browserTarget": "deploji:build:pl"
+            },
+            "es": {
+              "browserTarget": "deploji:build:es"
+            },
+            "de": {
+              "browserTarget": "deploji:build:de"
+            },
+            "ru": {
+              "browserTarget": "deploji:build:ru"
+            },
+            "pt": {
+              "browserTarget": "deploji:build:pt"
+            },
+            "fr": {
+              "browserTarget": "deploji:build:fr"
             }
           }
         },
@@ -121,6 +172,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "deploji"
+    }
+  },
+  "defaultProject": "deploji",
+  "cli": {
+    "packageManager": "yarn"
+  }
 }

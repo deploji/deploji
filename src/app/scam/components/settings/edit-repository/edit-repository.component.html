@@ -1,60 +1,60 @@
 <h1>
-  <ng-container *ngIf="!form.ID.value">Create new</ng-container>
-  <ng-container *ngIf="form.ID.value">Edit</ng-container>
-  artifact repository
+  <ng-container *ngIf="!form.ID.value" i18n>Create new</ng-container>
+  <ng-container *ngIf="form.ID.value" i18n>Edit</ng-container>
+  <span i18n>artifact repository</span>
 </h1>
 <mat-card>
   <form [formGroup]="form">
     <mat-form-field class="block">
-      <mat-label>Name</mat-label>
+      <mat-label i18n>Name</mat-label>
       <input matInput type="text" formControlName="Name">
       <mat-error>
-        Name is <strong>required</strong>
+        <span i18n>Name is</span> <strong i18n>required</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="block">
-      <mat-label>Type</mat-label>
+      <mat-label i18n>Type</mat-label>
       <mat-select formControlName="Type">
-        <mat-option [value]="repositoryTypesEnum.DOCKER_V1">Docker registry v1</mat-option>
-        <mat-option [value]="repositoryTypesEnum.DOCKER_V2">Docker registry v2</mat-option>
-        <mat-option [value]="repositoryTypesEnum.NEXUS_V3_MAVEN">Nexus 3 Maven</mat-option>
+        <mat-option [value]="repositoryTypesEnum.DOCKER_V1" i18n>Docker registry v1</mat-option>
+        <mat-option [value]="repositoryTypesEnum.DOCKER_V2" i18n>Docker registry v2</mat-option>
+        <mat-option [value]="repositoryTypesEnum.NEXUS_V3_MAVEN" i18n>Nexus 3 Maven</mat-option>
       </mat-select>
       <mat-error>
-        Type is <strong>required</strong>
+        <span i18n>Type is</span> <strong i18n>required</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="block">
-      <mat-label>URL</mat-label>
+      <mat-label i18n>URL</mat-label>
       <input matInput type="text" formControlName="Url">
       <mat-error *ngIf="form.Url.hasError('required')">
-        URL is <strong>required</strong>
+        <span i18n>URL is</span> <strong i18n>required</strong>
       </mat-error>
       <mat-error *ngIf="form.Url.hasError('pattern')">
-        URL must start with http/https
+        <span i18n>URL must start with http/https</span>
       </mat-error>
       <mat-hint>
-        Artifact repository URL for example https://registry.hub.docker.com
+        <ng-container i18n>Artifact repository URL for example https://registry.hub.docker.com</ng-container>
       </mat-hint>
     </mat-form-field>
     <mat-form-field class="block">
-      <mat-label>Nexus repository name</mat-label>
+      <mat-label i18n>Nexus repository name</mat-label>
       <input matInput type="text" formControlName="NexusName">
       <mat-error *ngIf="form.NexusName.hasError('required')">
-        Nexus name is <strong>required</strong>
+        <span i18n>Nexus name is</span> <strong i18n>required</strong>
       </mat-error>
     </mat-form-field>
     <mat-form-field class="block">
-      <mat-label>Username</mat-label>
+      <mat-label i18n>Username</mat-label>
       <input matInput autocomplete="new-password" type="text" formControlName="Username">
     </mat-form-field>
     <mat-form-field class="block">
-      <mat-label>Password</mat-label>
+      <mat-label i18n>Password</mat-label>
       <input matInput autocomplete="new-password" type="password" formControlName="Password">
     </mat-form-field>
     <div class="button-row flex">
       <div class="flex-auto"></div>
-      <button type="button" mat-raised-button routerLink="/settings/repositories">Cancel</button>
-      <button type="button" mat-raised-button color="primary" (click)="save()">Save</button>
+      <button type="button" mat-raised-button routerLink="/settings/repositories" i18n>Cancel</button>
+      <button type="button" mat-raised-button color="primary" (click)="save()" i18n>Save</button>
     </div>
   </form>
 </mat-card>

@@ -24,7 +24,7 @@ import { AnsiPipeModule } from '../../../pipes/ansi.pipe';
   styleUrls: ['./job-details.component.scss']
 })
 export class JobDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
-  @ViewChild('scrollMe', { static: false}) private myScrollContainer: CdkVirtualScrollViewport;
+  @ViewChild('scrollMe') private myScrollContainer: CdkVirtualScrollViewport;
   job: Job;
   logs: JobLog[] = [];
   autoScroll = new FormControl(true);

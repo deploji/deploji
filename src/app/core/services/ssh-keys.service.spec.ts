@@ -8,7 +8,7 @@ describe('SshKeysService', () => {
   }));
 
   it('should be created', () => {
-    const service: SshKeysService = TestBed.get(SshKeysService);
+    const service: SshKeysService = TestBed.inject(SshKeysService);
     expect(service).toBeTruthy();
   });
 });

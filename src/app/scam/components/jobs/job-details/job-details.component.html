@@ -1,14 +1,14 @@
-<h1>Job #{{job?.ID}}</h1>
+<h1><span i18n>Job</span> #{{job?.ID}}</h1>
 <mat-card>
   <mat-card-header>
     <div class="flex w-100 justify-center items-center">
       <app-job-status [job]="job"></app-job-status>
       <div class="properties mr2">
         <div class="properties__row">
-          <div class="properties__label">Type</div>
-          <div class="properties__label">Inventory</div>
-          <div class="properties__label">Application</div>
-          <div class="properties__label">Version</div>
+          <div class="properties__label" i18n>Type</div>
+          <div class="properties__label" i18n>Inventory</div>
+          <div class="properties__label" i18n>Application</div>
+          <div class="properties__label" i18n>Version</div>
         </div>
         <div class="properties__row">
           <div class="properties__value">{{job?.Type}}</div>
@@ -22,7 +22,7 @@
       <button mat-icon-button title="Relaunch using same parameters" class="mr2" (click)="relaunch()" [disabled]="!isCompleted(job?.Status)">
         <mat-icon svgIcon="rocket"></mat-icon>
       </button>
-      <mat-slide-toggle [formControl]="autoScroll">Auto scroll</mat-slide-toggle>
+      <mat-slide-toggle [formControl]="autoScroll" i18n>Auto scroll</mat-slide-toggle>
     </div>
   </mat-card-header>
   <div class="log-viewport-wrapper">
