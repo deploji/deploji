@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, NgModule, OnChanges, OnDestroy, OnInit, Output, SimpleChanges} from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +18,7 @@ import { SurveyService } from '../../../../core/services/survey.service';
 import { Survey } from '../../../../core/interfaces/survey';
 import { SurveySendComponentModule } from '../../templates/survey-send/survey-send.component';
 import { SurveyInputManagerService } from '../../../../core/services/survey-input-manager.service';
-import {Subscription} from 'rxjs';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-template-launch',

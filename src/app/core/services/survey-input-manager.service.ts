@@ -9,7 +9,6 @@ import { Survey } from '../interfaces/survey';
 export class SurveyInputManagerService {
 
   private subject: Subject<string>;
-
   public inputSource: Observable<string>;
 
   constructor() {

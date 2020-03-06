@@ -7,14 +7,15 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialog } from '@angular/material/dialog';
+import { Subscription } from 'rxjs';
 import { SurveyService } from '../../../../core/services/survey.service';
 import { Survey } from '../../../../core/interfaces/survey';
 import { SurveyInput } from '../../../../core/interfaces/survey-input';
 import { SurveyListForm } from '../../../../core/forms/survey-list.form';
 import { SurveyDetailsForm } from '../../../../core/forms/survey-details.form';
 import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
-import { MatDialog } from '@angular/material';
-import {Subscription} from 'rxjs';
+import { SurveyInputTypes } from '../../../../core/enums/survey-input-types';
 
 @Component({
   selector: 'app-surveys',
@@ -23,7 +24,8 @@ import {Subscription} from 'rxjs';
 })
 export class SurveysComponent implements OnInit {
 
-  public types: string[] = ['text', 'select', 'textarea'];
+  public types: string[] = [SurveyInputTypes.TEXT, SurveyInputTypes.SELECT, SurveyInputTypes.TEXTAREA];
+  public surveyTypes = SurveyInputTypes;
   public formList: SurveyListForm = new SurveyListForm();
   public formDetails: SurveyDetailsForm = new SurveyDetailsForm();
   public templateId: number;
@@ -84,6 +86,10 @@ export class SurveysComponent implements OnInit {
     this.survey.Inputs.forEach((input: SurveyInput) => {
       this.formList.addControl(input.VariableName);
     });
+  }
+
+  public parseSelectItems(options: string): Array<any> {
+    return options.replace(/\s/g, '').split(',');
   }
 
   public addControl(): void {

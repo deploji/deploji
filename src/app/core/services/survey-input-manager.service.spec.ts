@@ -6,7 +6,7 @@ describe('SurveyInputManagerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SurveyInputManagerService = TestBed.get(SurveyInputManagerService);
+    const service: SurveyInputManagerService = TestBed.inject(SurveyInputManagerService);
     expect(service).toBeTruthy();
   });
 });
