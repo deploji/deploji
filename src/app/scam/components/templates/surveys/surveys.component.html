@@ -26,6 +26,10 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <mat-form-field *ngIf="isSelectType">
+        <mat-label>Options</mat-label>
+        <textarea matInput formControlName="Options"></textarea>
+      </mat-form-field>
     </div>
   </div>
 

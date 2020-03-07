@@ -1,6 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
@@ -137,14 +137,24 @@ export class SurveysComponent implements OnInit {
     this.survey.Inputs = [...this.survey.Inputs];
   }
 
-  private subscribeToForm() {
-    const formDetailsSub = this.formDetails.valueChanges.subscribe((values) => {
+  private subscribeToForm(): void {
+    const formDetailsSub = this.formDetails.valueChanges.subscribe((values: SurveyInput) => {
       if (this.surveyIdToEdit !== null) {
         Object.assign(this.survey.Inputs[this.surveyIdToEdit], values);
+      }
+
+      if (values.Type === this.surveyTypes.SELECT) {
+        this.formDetails.Options.setValidators([Validators.required]);
+      } else {
+        this.formDetails.Options.clearValidators();
       }
     });
 
     this.subscription.add(formDetailsSub);
+  }
+
+  get isSelectType(): boolean {
+    return this.formDetails.Type.value === this.surveyTypes.SELECT;
   }
 }
 

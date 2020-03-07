@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, NgModule, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,7 +24,7 @@ import { Subscription } from 'rxjs';
   selector: 'app-template-launch',
   templateUrl: './template-launch.component.html',
 })
-export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
+export class TemplateLaunchComponent implements OnChanges, OnDestroy {
   @Input() template: Template;
   @Output() cancelEvent = new EventEmitter<void>();
 
@@ -38,14 +38,6 @@ export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
     private surveyService: SurveyService,
     private surveyInputManager: SurveyInputManagerService
   ) {
-  }
-
-  ngOnInit(): void {
-    const inputSourceSub = this.surveyInputManager.inputSource.subscribe((extraVariables: string) => {
-      this.form.ExtraVariables.setValue(extraVariables);
-    });
-
-    this.subscription.add(inputSourceSub);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -85,11 +77,15 @@ export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
       InventoryID: this.form.Inventory.value.ID,
       Playbook: this.form.Playbook.value,
       KeyID: this.form.SshKey.value.ID,
-      ExtraVariables: this.form.ExtraVariables.value,
+      ExtraVariables: this.allExtraVars(),
       Type: JobTypesEnum.JOB
     }).subscribe(job => {
       this.router.navigateByUrl(`/jobs/${job.ID}`);
     });
+  }
+
+  private allExtraVars(): string {
+    return `${this.form.ExtraVariables.value.replace(/=/g, ':')}\n${this.surveyInputManager.lastValue}`;
   }
 
   cancel() {

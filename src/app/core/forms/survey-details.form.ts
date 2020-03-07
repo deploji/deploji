@@ -7,7 +7,8 @@ export class SurveyDetailsForm extends FormGroup {
       Label: new FormControl({value: '', disabled: true}, Validators.required),
       Hint: new FormControl({value: '', disabled: true}, Validators.required),
       VariableName: new FormControl({value: '', disabled: true}, Validators.required),
-      Type: new FormControl({value: '', disabled: true}, Validators.required)
+      Type: new FormControl({value: '', disabled: true}, Validators.required),
+      Options: new FormControl({value: '', disabled: true}, Validators.required)
     });
   }
 
@@ -16,7 +17,8 @@ export class SurveyDetailsForm extends FormGroup {
       VariableName: '',
       Label: '',
       Hint: '',
-      Type: ''
+      Type: '',
+      Options: ''
     };
   }
 
@@ -34,5 +36,9 @@ export class SurveyDetailsForm extends FormGroup {
 
   get Type(): FormControl {
     return this.get('Type') as FormControl;
+  }
+
+  get Options(): FormControl {
+    return this.get('Options') as FormControl;
   }
 }
