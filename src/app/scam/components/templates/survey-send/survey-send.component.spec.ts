@@ -14,8 +14,14 @@ describe('SurveySendComponent', () => {
   }));
 
   beforeEach(() => {
+    const survey = {
+      Inputs: [],
+      Enabled: true
+    };
+
     fixture = TestBed.createComponent(SurveySendComponent);
     component = fixture.componentInstance;
+    component.survey = survey;
     fixture.detectChanges();
   });
 
