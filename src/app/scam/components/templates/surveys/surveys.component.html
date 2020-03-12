@@ -39,25 +39,33 @@
       <div *ngFor="let item of survey.Inputs; let i = index" class="flex flex-column">
         <div [ngSwitch]="item.Type">
           <div *ngSwitchCase="surveyTypes.TEXT">
-            <mat-form-field class="w-88">
+            <mat-form-field class="w-84">
               <mat-label>{{item.Label}}</mat-label>
               <input matInput type="text" readonly>
               <mat-hint>{{item.Hint}}</mat-hint>
             </mat-form-field>
-            <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
-            <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
           </div>
           <div *ngSwitchCase="surveyTypes.TEXTAREA" class="">
-            <mat-form-field class="w-88">
+            <mat-form-field class="w-84">
               <mat-label>{{item.Label}}</mat-label>
               <textarea class="survey-input__textarea" matInput type="text" readonly></textarea>
               <mat-hint>{{item.Hint}}</mat-hint>
             </mat-form-field>
-            <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
-            <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
           </div>
           <div *ngSwitchCase="surveyTypes.SELECT">
-            <mat-form-field class="w-88">
+            <mat-form-field class="w-84">
               <mat-label>{{item.Label}}</mat-label>
               <mat-select>
                 <mat-option *ngFor="let option of parseSelectItems(item.Hint)" [value]="option">
@@ -66,8 +74,25 @@
               </mat-select>
               <mat-hint>{{item.Hint}}</mat-hint>
             </mat-form-field>
-            <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
-            <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div *ngSwitchDefault>
+            <mat-form-field class="w-84">
+              <mat-label>{{item.Label}}</mat-label>
+              <input matInput type="text" readonly>
+              <mat-hint>{{item.Hint}}</mat-hint>
+            </mat-form-field>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
           </div>
         </div>
       </div>

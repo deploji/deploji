@@ -139,7 +139,7 @@ export class SurveysComponent implements OnInit {
 
   private subscribeToForm(): void {
     const formDetailsSub = this.formDetails.valueChanges.subscribe((values: SurveyInput) => {
-      if (this.surveyIdToEdit !== null) {
+      if (this.surveyIdToEdit) {
         Object.assign(this.survey.Inputs[this.surveyIdToEdit], values);
       }
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, NgModule, OnChanges, OnDestroy, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, NgModule, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -24,12 +24,13 @@ import { Subscription } from 'rxjs';
   selector: 'app-template-launch',
   templateUrl: './template-launch.component.html',
 })
-export class TemplateLaunchComponent implements OnChanges, OnDestroy {
+export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
   @Input() template: Template;
   @Output() cancelEvent = new EventEmitter<void>();
 
   public form = new TemplateForm();
   public survey: Survey;
+  private predefinedExtraVars = '';
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -38,6 +39,12 @@ export class TemplateLaunchComponent implements OnChanges, OnDestroy {
     private surveyService: SurveyService,
     private surveyInputManager: SurveyInputManagerService
   ) {
+  }
+
+  ngOnInit() {
+    this.surveyInputManager.inputSource.subscribe((extraVars: string) => {
+      this.predefinedExtraVars = extraVars;
+    });
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -85,7 +92,7 @@ export class TemplateLaunchComponent implements OnChanges, OnDestroy {
   }
 
   private allExtraVars(): string {
-    return `${this.form.ExtraVariables.value.replace(/=/g, ':')}\n${this.surveyInputManager.lastValue}`;
+    return `${this.form.ExtraVariables.value.replace(/=/g, ':')}\n${this.predefinedExtraVars}`;
   }
 
   cancel() {

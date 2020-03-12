@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { SurveyInput } from '../interfaces/survey-input';
 import { Survey } from '../interfaces/survey';
 
@@ -8,23 +8,19 @@ import { Survey } from '../interfaces/survey';
 })
 export class SurveyInputManagerService {
 
-  private subject: BehaviorSubject<string>;
+  private subject: Subject<string>;
   public inputSource: Observable<string>;
 
   constructor() {
-    this.subject = new BehaviorSubject(null);
+    this.subject = new Subject();
     this.inputSource = this.subject.asObservable();
   }
 
-  get lastValue() {
-    return this.subject.getValue();
-  }
-
-  public send(survey, value): void {
+  public send(survey: Survey, value: string[]): void {
     this.subject.next(this.transform(survey, value));
   }
 
-  private transform(survey: Survey, values: any): string {
+  private transform(survey: Survey, values: string[]): string {
     let result = '';
 
     survey.Inputs.forEach((input: SurveyInput, index: number) => {
