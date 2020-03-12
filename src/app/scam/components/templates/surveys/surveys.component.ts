@@ -30,7 +30,7 @@ export class SurveysComponent implements OnInit {
   public formDetails: SurveyDetailsForm = new SurveyDetailsForm();
   public templateId: number;
   public survey: Survey;
-  private surveyIdToEdit: number;
+  private surveyIdToEdit: number = null;
   private subscription: Subscription = new Subscription();
 
   constructor(
@@ -66,11 +66,15 @@ export class SurveysComponent implements OnInit {
   }
 
   private getSurvey(): void {
-    this.surveyService.getSurvey(this.templateId).subscribe((response: Survey) => {
-      this.survey = response;
+    if (this.templateId) {
+        this.surveyService.getSurvey(this.templateId).subscribe((response: Survey) => {
+          this.survey = response;
 
-      this.assignSurveyInputsToForm();
-    });
+          if (this.survey) {
+            this.assignSurveyInputsToForm();
+          }
+        });
+    }
   }
 
   public isSurveyActive(): boolean {
@@ -139,7 +143,7 @@ export class SurveysComponent implements OnInit {
 
   private subscribeToForm(): void {
     const formDetailsSub = this.formDetails.valueChanges.subscribe((values: SurveyInput) => {
-      if (this.surveyIdToEdit) {
+      if (this.surveyIdToEdit !== null) {
         Object.assign(this.survey.Inputs[this.surveyIdToEdit], values);
       }
 

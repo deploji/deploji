@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Survey } from '../interfaces/survey';
 import { SurveyInput } from '../interfaces/survey-input';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,7 @@ export class SurveyService {
   ) {}
 
   public getSurvey(id: number): Observable<Survey> {
-    return this.api.get<Survey>(`/api/templates/${id}/survey`);
+    return this.api.get<Survey>(`/api/templates/${id}/survey`).pipe(catchError(() => of(null)));
   }
 
   public createSurvey(id: number, payload: Survey): Observable<any> {
