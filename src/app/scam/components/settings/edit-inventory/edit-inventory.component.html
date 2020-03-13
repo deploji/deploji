@@ -1,7 +1,8 @@
 <h1>
   <ng-container *ngIf="!inventory?.ID" i18n>Create new</ng-container>
   <ng-container *ngIf="inventory?.ID" i18n>Edit</ng-container>
-  <span i18n>inventory</span>
+  <ng-container>&nbsp;</ng-container>
+  <ng-container i18n>inventory</ng-container>
 </h1>
 <mat-card class="p0">
   <mat-tab-group>

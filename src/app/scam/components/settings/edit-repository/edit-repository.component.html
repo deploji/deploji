@@ -1,7 +1,8 @@
 <h1>
   <ng-container *ngIf="!form.ID.value" i18n>Create new</ng-container>
   <ng-container *ngIf="form.ID.value" i18n>Edit</ng-container>
-  <span i18n>artifact repository</span>
+  <ng-container>&nbsp;</ng-container>
+  <ng-container i18n>artifact repository</ng-container>
 </h1>
 <mat-card>
   <form [formGroup]="form">

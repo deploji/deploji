@@ -1,7 +1,8 @@
 <h1>
   <ng-container *ngIf="!form.get('ID').value" i18n>Create new</ng-container>
   <ng-container *ngIf="form.get('ID').value" i18n>Edit</ng-container>
-  <span i18n>template</span>
+  <ng-container>&nbsp;</ng-container>
+  <ng-container i18n>template</ng-container>
 </h1>
 <mat-card class="p0">
   <mat-tab-group>
@@ -45,7 +46,7 @@
     <mat-tab label="Notifications" i18n-label [disabled]="!templateId">
       <app-notifications-when [templateId]="templateId"></app-notifications-when>
     </mat-tab>
-    <mat-tab label="Surveys" [disabled]="!template">
+    <mat-tab label="Surveys" i18n-label [disabled]="!template">
       <app-surveys></app-surveys>
     </mat-tab>
   </mat-tab-group>
