@@ -1,7 +1,8 @@
 <h1>
   <ng-container *ngIf="!form.get('ID').value" i18n>Create new</ng-container>
   <ng-container *ngIf="form.get('ID').value" i18n>Edit</ng-container>
-  <span i18n>team</span>
+  <ng-container>&nbsp;</ng-container>
+  <ng-container i18n>team</ng-container>
 </h1>
 <mat-card class="p0">
   <mat-tab-group>
