@@ -1,4 +1,4 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, NgModule, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
@@ -22,7 +22,7 @@ import { SurveyInputTypes } from '../../../../core/enums/survey-input-types';
   templateUrl: './surveys.component.html',
   styleUrls: ['./surveys.component.scss']
 })
-export class SurveysComponent implements OnInit {
+export class SurveysComponent implements OnInit, OnDestroy {
 
   public types: string[] = [SurveyInputTypes.TEXT, SurveyInputTypes.SELECT, SurveyInputTypes.TEXTAREA];
   public surveyTypes = SurveyInputTypes;
@@ -46,6 +46,10 @@ export class SurveysComponent implements OnInit {
     this.getSurvey();
 
     this.subscribeToForm();
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 
   public createSurvey(): void {

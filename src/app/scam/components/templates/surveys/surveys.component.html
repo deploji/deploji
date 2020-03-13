@@ -68,7 +68,7 @@
             <mat-form-field class="w-84">
               <mat-label>{{item.Label}}</mat-label>
               <mat-select>
-                <mat-option *ngFor="let option of parseSelectItems(item.Hint)" [value]="option">
+                <mat-option *ngFor="let option of parseSelectItems(item.Options)" [value]="option">
                   {{ option }}
                 </mat-option>
               </mat-select>
