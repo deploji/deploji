@@ -21,7 +21,6 @@ import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-b
 export class NotificationChannelsComponent implements OnInit {
 
   public channels: NotificationChannel[] = [];
-
   public columnsToDisplay: string[] = ['Name', 'Type', 'Recipients', 'Webhook', 'Actions'];
 
   constructor(

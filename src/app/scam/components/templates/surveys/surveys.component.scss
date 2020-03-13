@@ -1,0 +1,29 @@
+.preview, .editor {
+  width: 50%;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  margin-top: -5px;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+.icon--delete {
+  color: #DC143C;
+}
+
+.icon:hover {
+  position: relative;
+  top: 1px;
+  left: 1px;
+}
+
+.survey-input__textarea {
+  height: 11px;
+}
+
+.icons-container {
+  display: inline-block;
+}

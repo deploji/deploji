@@ -1,0 +1,112 @@
+<div *ngIf="!survey" class="p2">
+  <button (click)="createSurvey()" mat-raised-button color="accent">Create survey</button>
+</div>
+
+<div *ngIf="survey" class="flex">
+  <div class="editor p2">
+    <h4>Editor</h4>
+    <div [formGroup]="formDetails" class="flex flex-column">
+      <mat-form-field>
+        <mat-label>Label</mat-label>
+        <input matInput type="text" formControlName="Label">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Hint</mat-label>
+        <input matInput type="text" formControlName="Hint">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Variable name</mat-label>
+        <input matInput type="text" formControlName="VariableName">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="Type">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="isSelectType">
+        <mat-label>Options</mat-label>
+        <textarea matInput formControlName="Options"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="preview p2">
+    <h4>Preview</h4>
+    <div *ngIf="survey && survey.Inputs.length">
+      <div *ngFor="let item of survey.Inputs; let i = index" class="flex flex-column">
+        <div [ngSwitch]="item.Type">
+          <div *ngSwitchCase="surveyTypes.TEXT">
+            <mat-form-field class="w-84">
+              <mat-label>{{item.Label}}</mat-label>
+              <input matInput type="text" readonly>
+              <mat-hint>{{item.Hint}}</mat-hint>
+            </mat-form-field>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div *ngSwitchCase="surveyTypes.TEXTAREA" class="">
+            <mat-form-field class="w-84">
+              <mat-label>{{item.Label}}</mat-label>
+              <textarea class="survey-input__textarea" matInput type="text" readonly></textarea>
+              <mat-hint>{{item.Hint}}</mat-hint>
+            </mat-form-field>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div *ngSwitchCase="surveyTypes.SELECT">
+            <mat-form-field class="w-84">
+              <mat-label>{{item.Label}}</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let option of parseSelectItems(item.Options)" [value]="option">
+                  {{ option }}
+                </mat-option>
+              </mat-select>
+              <mat-hint>{{item.Hint}}</mat-hint>
+            </mat-form-field>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
+          </div>
+          <div *ngSwitchDefault>
+            <mat-form-field class="w-84">
+              <mat-label>{{item.Label}}</mat-label>
+              <input matInput type="text" readonly>
+              <mat-hint>{{item.Hint}}</mat-hint>
+            </mat-form-field>
+            <div class="w-16 icons-container">
+              <div class="flex justify-evenly">
+                <mat-icon (click)="editExtraVariable(i, item)" class="icon">edit</mat-icon>
+                <mat-icon (click)="deleteExtraVariable(i, item)" class="icon icon--delete">delete</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-between py1">
+      <button mat-raised-button (click)="addControl()">Add control</button>
+    </div>
+
+    <div class="flex justify-between py1">
+      <button mat-raised-button color="warn" (click)="deleteSurvey()">Delete survey</button>
+      <button *ngIf="!isSurveyActive()" mat-raised-button color="warn" (click)="changeSurveyStatus(true)">Activate survey</button>
+      <button *ngIf="isSurveyActive()" mat-raised-button color="warn" (click)="changeSurveyStatus(false)">Deactivate survey</button>
+      <button mat-raised-button color="accent" (click)="save()">Save survey</button>
+    </div>
+  </div>
+</div>

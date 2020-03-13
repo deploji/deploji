@@ -12,8 +12,9 @@ import { TemplateLaunchComponentModule } from '../shared/template-launch/templat
   templateUrl: './templates.component.html',
 })
 export class TemplatesComponent implements OnInit, AfterViewInit {
-  @ViewChild('listRef', { static: false}) listRef;
-  @ViewChild('launchRef', { static: false}) launchRef;
+
+  @ViewChild('listRef', {static: false}) listRef;
+  @ViewChild('launchRef', {static: false}) launchRef;
 
   templates: Template[] = [];
   selectedTemplate: Template;
