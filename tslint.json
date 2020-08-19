@@ -4,6 +4,8 @@
     "align": true,
     "array-type": false,
     "arrow-parens": false,
+    "arrow-return-shorthand": true,
+    "curly": true,
     "deprecation": true,
     "eofline": true,
     "class-name": true,
@@ -69,7 +71,6 @@
     "no-non-null-assertion": true,
     "no-redundant-jsdoc": true,
     "no-switch-case-fall-through": true,
-    "no-use-before-declare": false,
     "no-var-requires": true,
     "no-unused-expression": true,
     "object-literal-key-quotes": [
@@ -82,6 +83,20 @@
       true,
       "single"
     ],
+    "semicolon": {
+      "options": [
+        "always"
+      ]
+    },
+    "space-before-function-paren": {
+      "options": {
+        "anonymous": "never",
+        "asyncArrow": "always",
+        "constructor": "never",
+        "method": "never",
+        "named": "never"
+      }
+    },
     "trailing-comma": true,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
@@ -94,6 +109,24 @@
     "no-trailing-whitespace": true,
     "template-banana-in-box": true,
     "template-no-negated-async": true,
+    "typedef-whitespace": {
+      "options": [
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ]
+    },
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "no-focused-test": true,

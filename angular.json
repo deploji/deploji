@@ -24,7 +24,7 @@
           "de": "src/locale/messages.de.xtb"
         }
       },
-      "architect":  {
+      "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
@@ -38,7 +38,11 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              { "glob": "mdi.svg", "input": "node_modules/@mdi/angular-material/", "output": "./assets" }
+              {
+                "glob": "mdi.svg",
+                "input": "node_modules/@mdi/angular-material/",
+                "output": "./assets"
+              }
             ],
             "styles": [
               "src/styles.scss"
@@ -74,22 +78,34 @@
               ]
             },
             "pl": {
-              "localize": ["pl"]
+              "localize": [
+                "pl"
+              ]
             },
             "es": {
-              "localize": ["es"]
+              "localize": [
+                "es"
+              ]
             },
             "ru": {
-              "localize": ["ru"]
+              "localize": [
+                "ru"
+              ]
             },
             "pt": {
-              "localize": ["pt"]
+              "localize": [
+                "pt"
+              ]
             },
             "fr": {
-              "localize": ["fr"]
+              "localize": [
+                "fr"
+              ]
             },
             "de": {
-              "localize": ["de"]
+              "localize": [
+                "de"
+              ]
             }
           }
         },
@@ -176,6 +192,7 @@
   },
   "defaultProject": "deploji",
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": false
   }
 }
