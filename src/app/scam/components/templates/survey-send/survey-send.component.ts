@@ -41,8 +41,8 @@ export class SurveySendComponent implements OnInit, OnDestroy {
     });
   }
 
-  public selectItems(hint: string): string[] {
-    return hint.replace(/\s/g, '').split(',');
+  public selectItems(options: string): string[] {
+    return this.surveyInputManager.parseOptions(options);
   }
 
   private subscribe(): void {

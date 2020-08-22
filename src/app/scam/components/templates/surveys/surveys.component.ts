@@ -16,6 +16,7 @@ import { SurveyListForm } from '../../../../core/forms/survey-list.form';
 import { SurveyDetailsForm } from '../../../../core/forms/survey-details.form';
 import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialog-confirm.component';
 import { SurveyInputTypes } from '../../../../core/enums/survey-input-types';
+import { SurveyInputManagerService } from '../../../../core/services/survey-input-manager.service';
 
 @Component({
   selector: 'app-surveys',
@@ -35,6 +36,7 @@ export class SurveysComponent implements OnInit, OnDestroy {
 
   constructor(
     private surveyService: SurveyService,
+    private surveyInputManager: SurveyInputManagerService,
     private route: ActivatedRoute,
     private snackBar: MatSnackBar,
     private dialog: MatDialog
@@ -96,8 +98,8 @@ export class SurveysComponent implements OnInit, OnDestroy {
     });
   }
 
-  public parseSelectItems(options: string): Array<any> {
-    return options.replace(/\s/g, '').split(',');
+  public parseSelectItems(options: string): string[] {
+    return this.surveyInputManager.parseOptions(options);
   }
 
   public addControl(): void {
