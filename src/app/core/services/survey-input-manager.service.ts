@@ -20,6 +20,12 @@ export class SurveyInputManagerService {
     this.subject.next(this.transform(survey, value));
   }
 
+  public parseOptions(options: string): string[] {
+    return options.replace(/\s/g, ',')
+                  .replace(/;/g, ',')
+                  .split(',');
+  }
+
   private transform(survey: Survey, values: string[]): string {
     let result = '';
 
