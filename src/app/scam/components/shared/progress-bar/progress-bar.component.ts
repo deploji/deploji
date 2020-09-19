@@ -5,7 +5,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 @Component({
   template: `
     <div class="center">
-      <div class="mb1">Loading...</div>
+      <div class="mb1" i18n>Loading...</div>
       <mat-progress-bar mode="query"></mat-progress-bar>
     </div>
   `
