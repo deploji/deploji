@@ -13,10 +13,13 @@ import { NgxPermissionsModule } from 'ngx-permissions';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MatMenuModule } from '@angular/material/menu';
+import { NavService } from '../../../../core/services/nav.service';
 
 describe('NavComponent', () => {
   let component: NavComponent;
   let fixture: ComponentFixture<NavComponent>;
+
+  const navServiceMock = new NavService();
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -34,7 +37,8 @@ describe('NavComponent', () => {
         MatMenuModule,
         HttpClientTestingModule,
         RouterTestingModule
-      ]
+      ],
+      providers: [{ provide: NavService, useValue: navServiceMock }]
     }).compileComponents();
   }));
 
@@ -46,5 +50,21 @@ describe('NavComponent', () => {
 
   it('should compile', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should close the side navigation', () => {
+    fixture = TestBed.createComponent(NavComponent);
+    component = fixture.componentInstance;
+    navServiceMock.setNav({ title: 'Menu', items: []});
+    fixture.detectChanges();
+    expect(component.opened).toBe(false);
+  });
+
+  it('should open the side navigation', () => {
+    fixture = TestBed.createComponent(NavComponent);
+    component = fixture.componentInstance;
+    navServiceMock.setNav({ title: 'Settings', items: [{label: 'SSH Keys', link: '/settings/keys'}]});
+    fixture.detectChanges();
+    expect(component.opened).toBe(true);
   });
 });
