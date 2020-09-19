@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { NgxPermissionsService } from 'ngx-permissions';
+import { DEFAULT_THEME } from './app.module';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { NgxPermissionsService } from 'ngx-permissions';
 })
 export class AppComponent {
   title = 'deploji';
-  theme = localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light-theme';
+  theme = localStorage.getItem('theme') || DEFAULT_THEME;
 
   constructor(private authService: AuthService, private permissionService: NgxPermissionsService) {
     this.permissionService.loadPermissions(this.authService.permissions);
