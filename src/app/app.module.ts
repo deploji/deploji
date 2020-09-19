@@ -28,8 +28,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ConfigService } from './core/services/config.service';
 
-export const DEFAULT_THEME = 'light-theme';
-
 registerLocaleData(localeEn);
 registerLocaleData(localePl);
 
