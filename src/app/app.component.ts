@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { NgxPermissionsService } from 'ngx-permissions';
-import { DEFAULT_THEME } from './app.module';
+import { DEFAULT_THEME } from '../themes';
 
 @Component({
   selector: 'app-root',

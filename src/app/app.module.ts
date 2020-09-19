@@ -24,8 +24,6 @@ import localePl from '@angular/common/locales/pl';
 
 import { registerLocaleData } from '@angular/common';
 
-export const DEFAULT_THEME = 'light-theme';
-
 registerLocaleData(localeEn);
 registerLocaleData(localePl);
 
