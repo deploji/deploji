@@ -14,6 +14,7 @@ export class FormApplicationComponent implements OnInit {
   @Input() control = new FormControl();
   @Input() apps: App[] = [];
   @Input() multiple = false;
+  @Input() deployment = false;
 
   constructor(private appsService: AppsService) {
   }
@@ -21,9 +22,13 @@ export class FormApplicationComponent implements OnInit {
   ngOnInit(): void {
     if (this.apps.length === 0) {
       this.appsService.getApps().subscribe(value => {
-        this.apps = value;
+        this.apps = value.filter(this.withUsePermission());
       });
     }
+  }
+
+  private withUsePermission() {
+    return app => !this.deployment || app.Permissions.Use;
   }
 }
 

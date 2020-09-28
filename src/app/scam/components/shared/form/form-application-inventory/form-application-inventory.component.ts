@@ -18,7 +18,7 @@ export class FormApplicationInventoryComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.app && changes.app.currentValue && changes.app.currentValue.Inventories) {
-      this.options = this.app.Inventories.filter(value => value.IsActive === true);
+      this.options = this.app.Inventories.filter(value => value.IsActive === true && value.Inventory.Permissions.Use);
     }
   }
 

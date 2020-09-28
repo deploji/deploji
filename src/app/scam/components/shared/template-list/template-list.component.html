@@ -24,6 +24,10 @@
     <div class="flex-auto"></div>
     <div class="flex justify-center flex-column">
       <div>
+        <button *ngIf="template.Permissions.Write" type="button" mat-icon-button title="Edit" i18n-title
+                routerLink="/settings/templates/{{template.ID}}">
+          <mat-icon>edit</mat-icon>
+        </button>
         <button type="button" mat-icon-button title="Launch" i18n-title (click)="launch(template)">
           <mat-icon svgIcon="rocket"></mat-icon>
         </button>

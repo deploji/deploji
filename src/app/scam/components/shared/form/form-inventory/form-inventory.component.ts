@@ -16,14 +16,15 @@ export class FormInventoryComponent implements OnInit, OnChanges {
   @Input() control = new FormControl();
   @Input() inventories: Inventory[] = [];
   @Input() multiple = false;
+  @Input() deployment = false;
 
   constructor(private inventoriesService: InventoriesService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes.app && changes.app.currentValue) {
-      this.inventoriesService.getInventoriesByAppID(changes.app.currentValue.ID).subscribe(value => {
-        this.inventories = value;
+      this.inventoriesService.getInventoriesByAppID(changes.app.currentValue.ID).subscribe(inventories => {
+        this.inventories = inventories.filter(this.withUsePermission());
       });
     }
   }
@@ -31,9 +32,13 @@ export class FormInventoryComponent implements OnInit, OnChanges {
   ngOnInit(): void {
     if (this.inventories.length === 0) {
       this.inventoriesService.getInventories().subscribe(inventories => {
-        this.inventories = inventories;
+        this.inventories = inventories.filter(this.withUsePermission());
       });
     }
+  }
+
+  private withUsePermission() {
+    return inventory => !this.deployment || inventory.Permissions.Use;
   }
 }
 
@@ -45,4 +50,5 @@ export class FormInventoryComponent implements OnInit, OnChanges {
     FormSelectComponentModule
   ]
 })
-export class FormInventoryComponentModule { }
+export class FormInventoryComponentModule {
+}

@@ -13,7 +13,11 @@ export class CreateInventoryDeploymentForm extends FormGroup {
     });
     this.Inventory.valueChanges.subscribe((selectedInventory: Inventory) => {
       this.ApplicationsArray.clear();
-      selectedInventory.ApplicationInventories.forEach(inventory => this.ApplicationsArray.push(new DeploymentApplicationForm(inventory)));
+      selectedInventory.ApplicationInventories.forEach(inventory => {
+        if (inventory.Application.Permissions.Use) {
+          this.ApplicationsArray.push(new DeploymentApplicationForm(inventory));
+        }
+      });
     });
   }
 

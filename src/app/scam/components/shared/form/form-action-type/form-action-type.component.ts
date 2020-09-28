@@ -65,10 +65,10 @@ export class FormActionTypeComponent implements ControlValueAccessor, OnInit, On
           this.options = [ActionTypesEnum.USE, ActionTypesEnum.ADMIN, ActionTypesEnum.WRITE, ActionTypesEnum.READ];
           break;
         case ObjectTypesEnum.APPLICATION:
-          this.options = [ActionTypesEnum.ADMIN, ActionTypesEnum.WRITE, ActionTypesEnum.READ];
+          this.options = [ActionTypesEnum.USE, ActionTypesEnum.ADMIN, ActionTypesEnum.WRITE, ActionTypesEnum.READ];
           break;
         case ObjectTypesEnum.INVENTORY:
-          this.options = [ActionTypesEnum.ADMIN, ActionTypesEnum.WRITE, ActionTypesEnum.READ];
+          this.options = [ActionTypesEnum.USE, ActionTypesEnum.ADMIN, ActionTypesEnum.WRITE, ActionTypesEnum.READ];
           break;
         case ObjectTypesEnum.TEMPLATES:
           this.options = [ActionTypesEnum.ADMIN, ActionTypesEnum.WRITE, ActionTypesEnum.READ];
