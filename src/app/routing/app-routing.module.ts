@@ -24,6 +24,10 @@ const routes: Routes = [
     loadChildren: () => import('./templates/templates-routing.module').then(m => m.TemplatesRoutingModule)
   },
   {
+    path: 'schedules',
+    loadChildren: () => import('./schedules/schedules-routing.module').then(m => m.SchedulesRoutingModule)
+  },
+  {
     path: 'login',
     component: LoginComponent,
     canActivate: [NgxPermissionsGuard],

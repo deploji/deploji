@@ -10,6 +10,20 @@
     background-color: mat-color($background);
   }
 
+  .color-accent {
+    color: mat-color($accent) !important;
+  }
+
+  .mat-tab-group.mat-primary .mat-ink-bar, .dark-theme-2020 .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+    background-color: mat-color($accent);
+  }
+
+  .mat-form-field-appearance-outline.mat-focused {
+    .mat-form-field-outline-thick, .mat-form-field-label {
+      color: mat-color($accent) !important;
+    }
+  }
+
   .mat-card {
     box-shadow: none !important;
     border: 1px solid mat-color($foreground, divider);

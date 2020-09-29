@@ -1,9 +1,8 @@
-<mat-tab label="Schedules">
-  <div class="p2">
+  <form [formGroup]="form" class="p2">
     <div class="flex flex-column">
       <mat-form-field>
         <mat-label>Start</mat-label>
-        <input matInput [matDatepicker]="picker" placeholder="Start">
+        <input matInput formControlName="StartFrom" [matDatepicker]="picker" placeholder="Start">
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
@@ -30,16 +29,19 @@
         <input matInput value="1">
         <span matSuffix>Week</span>
       </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Cron</mat-label>
+        <input matInput formControlName="CronExpression" value="1">
+      </mat-form-field>
       <mat-form-field>
         <mat-label>End</mat-label>
-        <input matInput [matDatepicker]="picker2" placeholder="End">
+        <input matInput formControlName="EndOn" [matDatepicker]="picker2" placeholder="End">
         <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
         <mat-datepicker #picker2></mat-datepicker>
       </mat-form-field>
     </div>
     <div class="flex">
       <div class="flex-auto"></div>
-      <button mat-raised-button color="primary">Save</button>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
     </div>
-  </div>
-</mat-tab>
+  </form>

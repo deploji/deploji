@@ -7,30 +7,36 @@
     </button>
   </div>
 </div>
+
+<mat-form-field class="w-100">
+  <mat-label>Search</mat-label>
+  <input name="search" matInput [formControl]="searchControl"/>
+</mat-form-field>
+
 <mat-card class="my2 p0">
   <mat-card-content>
-    <table mat-table [dataSource]="apps">
+    <table mat-table [dataSource]="filteredApps">
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Name</th>
         <td mat-cell *matCellDef="let element">
-          <a routerLink="/settings/apps/{{element.ID}}">{{element?.Name}}</a>
+          <a routerLink="/settings/apps/{{element.ID}}" [appHighlight]="element?.Name" [appHighlightTerm]="searchControl.value"></a>
         </td>
       </ng-container>
       <ng-container matColumnDef="project">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Project</th>
-        <td mat-cell *matCellDef="let element">{{element?.Project?.Name}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlight]="element?.Project?.Name" [appHighlightTerm]="searchControl.value"></td>
       </ng-container>
       <ng-container matColumnDef="playbook">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Playbook</th>
-        <td mat-cell *matCellDef="let element">{{element?.AnsiblePlaybook}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlight]="element?.AnsiblePlaybook" [appHighlightTerm]="searchControl.value"></td>
       </ng-container>
       <ng-container matColumnDef="repository">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Repository</th>
-        <td mat-cell *matCellDef="let element">{{element?.Repository?.Name}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlight]="element?.Repository?.Name" [appHighlightTerm]="searchControl.value"></td>
       </ng-container>
       <ng-container matColumnDef="artifact">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Artifact</th>
-        <td mat-cell *matCellDef="let element">{{element?.RepositoryArtifact}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlight]="element?.RepositoryArtifact" [appHighlightTerm]="searchControl.value"></td>
       </ng-container>
       <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Actions</th>

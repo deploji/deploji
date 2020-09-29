@@ -24,6 +24,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { JobStatusComponentModule } from '../shared/job-status/job-status.component';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
+import { FormUserComponentModule } from '../shared/form/form-user/form-user.component';
 
 @Component({
   selector: 'app-jobs',
@@ -136,6 +137,7 @@ export class JobsComponent implements OnInit, OnDestroy {
     MatPaginatorModule,
     JobStatusComponentModule,
     MatCardModule,
+    FormUserComponentModule,
   ]
 })
 export class JobsComponentModule {

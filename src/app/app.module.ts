@@ -23,6 +23,7 @@ import localeEn from '@angular/common/locales/en';
 import localePl from '@angular/common/locales/pl';
 
 import { registerLocaleData } from '@angular/common';
+import { MatNativeDateModule } from '@angular/material/core';
 
 registerLocaleData(localeEn);
 registerLocaleData(localePl);
@@ -36,6 +37,7 @@ registerLocaleData(localePl);
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
+    MatNativeDateModule,
     ProgressBarComponentModule,
     NgxPermissionsModule.forRoot(),
     NavComponentModule,

@@ -7,25 +7,31 @@
     </button>
   </div>
 </div>
+
+<mat-form-field class="w-100">
+  <mat-label>Search</mat-label>
+  <input name="search" matInput [formControl]="searchControl"/>
+</mat-form-field>
+
 <mat-card class="p0">
-  <table mat-table [dataSource]="templates">
+  <table mat-table [dataSource]="filteredTemplates">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef scope="col" i18n>Name</th>
       <td mat-cell *matCellDef="let element">
-        <a routerLink="/settings/templates/{{element.ID}}">{{element?.Name}}</a>
+        <a routerLink="/settings/templates/{{element.ID}}" [appHighlightTerm]="searchControl.value" [appHighlight]="element?.Name"></a>
       </td>
     </ng-container>
     <ng-container matColumnDef="project">
       <th mat-header-cell *matHeaderCellDef scope="col" i18n>Project</th>
-      <td mat-cell *matCellDef="let element">{{element.Project?.Name}}</td>
+      <td mat-cell *matCellDef="let element" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Project?.Name"></td>
     </ng-container>
     <ng-container matColumnDef="inventory">
       <th mat-header-cell *matHeaderCellDef scope="col" i18n>Inventory</th>
-      <td mat-cell *matCellDef="let element">{{element.Inventory?.Name}}</td>
+      <td mat-cell *matCellDef="let element" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Inventory?.Name"></td>
     </ng-container>
     <ng-container matColumnDef="playbook">
       <th mat-header-cell *matHeaderCellDef scope="col" i18n>Playbook</th>
-      <td mat-cell *matCellDef="let element">{{element.Playbook}}</td>
+      <td mat-cell *matCellDef="let element" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Playbook"></td>
     </ng-container>
     <ng-container matColumnDef="sshkey">
       <th mat-header-cell *matHeaderCellDef scope="col" i18n>SshKey</th>
