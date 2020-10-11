@@ -46,9 +46,17 @@
             <input matInput type="text" formControlName="RepositoryArtifact">
           </mat-form-field>
         </div>
-
-        <div>
-          <h2 i18n>Inventories</h2>
+        <div class="button-row mt4 flex">
+          <div class="flex-auto"></div>
+          <button type="button" mat-raised-button routerLink="/settings/apps" i18n>Cancel</button>
+          <button *ngIf="!app || app?.Permissions?.Write" type="button" mat-raised-button color="primary"
+                  (click)="save()" i18n>Save</button>
+        </div>
+      </form>
+    </mat-tab>
+    <mat-tab label="Inventories" i18n-label [disabled]="!applicationId">
+      <div class="p0">
+        <form [formGroup]="form" class="p2">
           <mat-accordion>
             <mat-expansion-panel formArrayName="Inventories"
                                  class="mat-elevation-z0"
@@ -79,7 +87,10 @@
                                           [control]="inventory.get('Inventory')"></app-form-inventory>
                     </div>
                     <div class="col">
-                      <app-form-ssh-key [keys]="keys" [control]="inventory.get('Key')"></app-form-ssh-key>
+                      <app-form-ssh-key [keys]="keys" [control]="inventory.get('Key')" label="SSH key"></app-form-ssh-key>
+                    </div>
+                    <div class="col">
+                      <app-form-ssh-key [keys]="keys" [control]="inventory.get('VaultKey')" label="Vault key"></app-form-ssh-key>
                     </div>
                   </div>
                   <div class="row">
@@ -104,14 +115,14 @@
             <span i18n>Add inventory</span>
             <mat-icon>playlist_add</mat-icon>
           </button>
-        </div>
-        <div class="button-row mt4 flex">
-          <div class="flex-auto"></div>
-          <button type="button" mat-raised-button routerLink="/settings/apps" i18n>Cancel</button>
-          <button *ngIf="!app || app?.Permissions?.Write" type="button" mat-raised-button color="primary"
-                  (click)="save()" i18n>Save</button>
-        </div>
-      </form>
+          <div class="button-row mt4 flex">
+            <div class="flex-auto"></div>
+            <button type="button" mat-raised-button routerLink="/settings/apps" i18n>Cancel</button>
+            <button *ngIf="!app || app?.Permissions?.Write" type="button" mat-raised-button color="primary"
+                    (click)="save()" i18n>Save</button>
+          </div>
+        </form>
+      </div>
     </mat-tab>
     <mat-tab label="Permissions" i18n-label [disabled]="!applicationId">
       <div class="p0">

@@ -20,7 +20,9 @@
         <app-form-project-file [control]="form.Playbook" label="Playbook" i18n-label
                                [project]="form.get('Project').value"></app-form-project-file>
         <mat-slide-toggle formControlName="PromptSshKey" i18n>Prompt on launch</mat-slide-toggle>
-        <app-form-ssh-key [control]="form.SshKey"></app-form-ssh-key>
+        <app-form-ssh-key [control]="form.SshKey" label="SSH key"></app-form-ssh-key>
+        <mat-slide-toggle formControlName="PromptVaultKey" i18n>Prompt on launch</mat-slide-toggle>
+        <app-form-ssh-key [control]="form.VaultKey" label="Vault key"></app-form-ssh-key>
         <mat-slide-toggle formControlName="PromptExtraVariables" i18n>Prompt on launch</mat-slide-toggle>
         <mat-form-field class="block">
           <mat-label i18n>Extra variables</mat-label>

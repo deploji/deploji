@@ -60,6 +60,7 @@ import {
   EditNotificationChannelComponent,
   EditNotificationChannelComponentModule
 } from '../../scam/components/settings/edit-notification-channel/edit-notification-channel.component';
+import { VaultComponent, VaultComponentModule } from '../../scam/components/settings/vault/vault.component';
 
 const routes: Routes = [
   {
@@ -71,7 +72,7 @@ const routes: Routes = [
         title: 'Settings',
         items: [
           {
-            label: 'SSH keys',
+            label: 'Keys',
             link: '/settings/keys'
           },
           {
@@ -109,7 +110,11 @@ const routes: Routes = [
           {
             label: 'Notification Channels',
             link: '/settings/notification-channels'
-          }
+          },
+          {
+            label: 'Vault',
+            link: '/settings/vault'
+          },
         ]
       }
     },
@@ -225,7 +230,11 @@ const routes: Routes = [
       {
         path: 'notification-channel/:id',
         component: EditNotificationChannelComponent
-      }
+      },
+      {
+        path: 'vault',
+        component: VaultComponent
+      },
     ]
   }
 ];
@@ -252,7 +261,8 @@ const routes: Routes = [
     SystemSettingsComponentModule,
     NotificationChannelsComponentModule,
     EditNotificationChannelComponentModule,
-    RouterModule.forChild(routes)
+    VaultComponentModule,
+    RouterModule.forChild(routes),
   ],
   exports: [RouterModule]
 })

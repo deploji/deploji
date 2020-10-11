@@ -123,6 +123,15 @@
     </button>
     <button
       *ngxPermissionsExcept="userTypes.GUEST"
+      type="button"
+      aria-label="Inventories"
+      title="Inventories"
+      mat-button
+      routerLink="/inventories">
+      <ng-container i18n>Inventories</ng-container>
+    </button>
+    <button
+      *ngxPermissionsExcept="userTypes.GUEST"
       class="flex-auto h-100"
       type="button"
       aria-label="Templates"
@@ -142,7 +151,7 @@
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar i18n>Settings</mat-toolbar>
     <mat-nav-list *ngxPermissionsExcept="userTypes.GUEST">
-      <a mat-list-item class="menu-item" routerLink="/settings/keys" i18n>SSH keys</a>
+      <a mat-list-item class="menu-item" routerLink="/settings/keys" i18n>Keys</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
          routerLink="/settings/projects" i18n>Projects</a>
       <a mat-list-item class="menu-item" routerLink="/settings/inventories" i18n>Inventories</a>
@@ -153,11 +162,12 @@
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
          routerLink="/settings/users" i18n>Users</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
-         routerLink="/settings/teams" i18n>Teams</a>
+         routerLink="/settings/teams" i18n>Groups</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
          routerLink="/settings/settings" i18n>Settings</a>
       <a mat-list-item class="menu-item" *ngxPermissionsOnly="[userTypes.ADMIN, userTypes.AUDITOR]"
          routerLink="/settings/notification-channels" i18n>Notification Channels</a>
+      <a mat-list-item class="menu-item" routerLink="/settings/vault" i18n>Vault</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="flex flex-column">

@@ -6,6 +6,7 @@ import { Permissions } from './permissions';
 export interface Template {
   Permissions?: Permissions;
   PromptSshKey?: boolean;
+  PromptVaultKey?: boolean;
   PromptPlaybook?: boolean;
   PromptInventory?: boolean;
   PromptProject?: boolean;
@@ -16,5 +17,6 @@ export interface Template {
   Project?: Project;
   Playbook?: string;
   SshKey?: SshKey;
+  VaultKey?: SshKey;
   ExtraVariables?: string;
 }

@@ -33,6 +33,7 @@ export class CreateDeploymentForm extends FormGroup {
         Version: this.value.Version.Value,
         InventoryID: applicationInventory.Inventory.ID,
         KeyID: applicationInventory.KeyID,
+        VaultKeyID: applicationInventory.VaultKeyID,
         ExtraVariables: applicationInventory.ExtraVariables,
         Playbook: notEmpty(applicationInventory.Playbook) ? applicationInventory.Playbook : this.value.Application.AnsiblePlaybook
       }));

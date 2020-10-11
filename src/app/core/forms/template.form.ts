@@ -10,6 +10,8 @@ export class TemplateForm extends FormGroup {
       Playbook: new FormControl(),
       SshKey: new FormControl(),
       PromptSshKey: new FormControl(),
+      VaultKey: new FormControl(),
+      PromptVaultKey: new FormControl(),
       PromptPlaybook: new FormControl(),
       PromptInventory: new FormControl(),
       PromptProject: new FormControl(),
@@ -41,8 +43,16 @@ export class TemplateForm extends FormGroup {
   get SshKey(): FormControl {
     return this.get('SshKey') as FormControl;
   }
+
   get PromptSshKey(): FormControl {
     return this.get('PromptSshKey') as FormControl;
+  }
+
+  get VaultKey(): FormControl {
+    return this.get('VaultKey') as FormControl;
+  }
+  get PromptVaultKey(): FormControl {
+    return this.get('PromptVaultKey') as FormControl;
   }
 
   get PromptPlaybook(): FormControl {

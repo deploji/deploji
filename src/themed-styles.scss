@@ -18,10 +18,19 @@
     background-color: mat-color($accent);
   }
 
+  .mat-input-element {
+    caret-color: mat-color($accent);
+  }
+
   .mat-form-field-appearance-outline.mat-focused {
     .mat-form-field-outline-thick, .mat-form-field-label {
       color: mat-color($accent) !important;
     }
+
+  }
+
+  .mat-form-field.mat-focused.mat-primary .mat-select-arrow {
+    color: mat-color($accent);
   }
 
   .mat-card {

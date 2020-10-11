@@ -74,6 +74,7 @@ export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
            template.PromptPlaybook ||
            template.PromptProject ||
            template.PromptSshKey ||
+           template.PromptVaultKey ||
            template.PromptExtraVariables;
   }
 
@@ -84,6 +85,7 @@ export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
       InventoryID: this.form.Inventory.value.ID,
       Playbook: this.form.Playbook.value,
       KeyID: this.form.SshKey.value.ID,
+      VaultKeyID: this.form.VaultKey.value.ID,
       ExtraVariables: this.allExtraVars(),
       Type: JobTypesEnum.JOB
     }).subscribe(job => {
