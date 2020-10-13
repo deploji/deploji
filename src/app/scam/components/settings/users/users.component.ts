@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { HighlightDirectiveModule } from '../../../directives/highlight.directive';
+import { UserAvatarComponentModule } from '../../shared/user-avatar/user-avatar.component';
 
 @Component({
   selector: 'app-users',
@@ -24,7 +25,7 @@ import { HighlightDirectiveModule } from '../../../directives/highlight.directiv
 export class UsersComponent implements OnInit, OnDestroy {
   users: User[] = [];
   filteredUsers: User[] = [];
-  columnsToDisplay = ['username', 'name', 'surname', 'email', 'type', 'active', 'actions'];
+  columnsToDisplay = ['avatar', 'username', 'name', 'surname', 'email', 'type', 'active', 'actions'];
   searchControl = new FormControl();
   private subscription = new Subscription();
 
@@ -84,6 +85,7 @@ export class UsersComponent implements OnInit, OnDestroy {
     MatInputModule,
     ReactiveFormsModule,
     HighlightDirectiveModule,
+    UserAvatarComponentModule,
   ]
 })
 export class UsersComponentModule {
