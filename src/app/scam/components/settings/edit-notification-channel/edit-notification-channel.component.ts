@@ -25,7 +25,8 @@ export class EditNotificationChannelComponent implements OnInit, OnDestroy {
   public channel: INotificationChannel;
   public types: string[] = [
     NotificationChannelTypesEnum.EMAIL,
-    NotificationChannelTypesEnum.WEBHOOK
+    NotificationChannelTypesEnum.WEBHOOK,
+    NotificationChannelTypesEnum.WEBPUSH
   ];
   private subscription: Subscription = new Subscription();
 

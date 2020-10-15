@@ -4,6 +4,13 @@
     <td mat-cell *matCellDef="let element">{{element.NotificationChannel.Name}}</td>
   </ng-container>
 
+  <ng-container matColumnDef="StartEnabled">
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Start</th>
+    <td mat-cell *matCellDef="let element">
+      <mat-slide-toggle [checked]="element.StartEnabled" (change)="onSlide($event, element, 'StartEnabled')"></mat-slide-toggle>
+    </td>
+  </ng-container>
+
   <ng-container matColumnDef="SuccessEnabled">
     <th mat-header-cell *matHeaderCellDef scope="col" i18n>Success</th>
     <td mat-cell *matCellDef="let element">

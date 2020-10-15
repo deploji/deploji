@@ -26,11 +26,12 @@ export class NotificationsWhenComponent implements OnInit {
   public templateId: number;
 
   public assignedChannels: RelatedNotificationChannel[];
-  public columnsToDisplay: string[] = ['Name', 'SuccessEnabled', 'FailEnabled'];
+  public columnsToDisplay: string[] = ['Name', 'StartEnabled', 'SuccessEnabled', 'FailEnabled'];
 
   constructor(
     private notchaService: NotificationChannelsService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.getRelatedNotificationChannels();
@@ -56,14 +57,26 @@ export class NotificationsWhenComponent implements OnInit {
     element[type] = event.checked;
 
     if (this.applicationId) {
-      const payload: ApplicationNotificationChannel = Object.assign({ ApplicationID: this.applicationId}, element);
-      this.notchaService.assignChannelToApplication(payload).subscribe();
+      const payload: ApplicationNotificationChannel = Object.assign({ApplicationID: this.applicationId}, element);
+      this.notchaService.assignChannelToApplication(payload).subscribe(() => {
+        element[type] = event.checked;
+      }, () => {
+        element[type] = !event.checked;
+      });
     } else if (this.projectId) {
-      const payload: ProjectNotificationChannel = Object.assign({ ProjectID: this.projectId}, element);
-      this.notchaService.assignChannelToProject(payload).subscribe();
+      const payload: ProjectNotificationChannel = Object.assign({ProjectID: this.projectId}, element);
+      this.notchaService.assignChannelToProject(payload).subscribe(() => {
+        element[type] = event.checked;
+      }, () => {
+        element[type] = !event.checked;
+      });
     } else if (this.templateId) {
-      const payload: TemplateNotificationChannel = Object.assign({ TemplateID: this.templateId}, element);
-      this.notchaService.assignChannelToTemplate(payload).subscribe();
+      const payload: TemplateNotificationChannel = Object.assign({TemplateID: this.templateId}, element);
+      this.notchaService.assignChannelToTemplate(payload).subscribe(() => {
+        element[type] = event.checked;
+      }, () => {
+        element[type] = !event.checked;
+      });
     }
   }
 }
@@ -78,4 +91,5 @@ export class NotificationsWhenComponent implements OnInit {
     MatSlideToggleModule
   ]
 })
-export class NotificationsWhenComponentModule { }
+export class NotificationsWhenComponentModule {
+}

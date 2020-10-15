@@ -6,7 +6,7 @@ import { DialogConfirmComponent } from '../../shared/dialog/dialog-confirm/dialo
 import { SettingsForm } from '../../../../core/forms/settings.form';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormArray, ReactiveFormsModule } from '@angular/forms';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -36,6 +36,19 @@ export class SystemSettingsComponent implements OnInit {
       this.dialog.open(DialogConfirmComponent, {
         width: '500px',
         data: { title: 'Settings saved', message: 'Settings have been saved successfully', hideCancelButton: true}
+      });
+    });
+  }
+
+  generate(i: number) {
+    this.settingsService.generateVapidKeys().subscribe(keys => {
+      this.groups[i].Settings.forEach((setting, index) => {
+        if (setting.Key === 'privateKey') {
+          (this.form.Groups.at(i) as FormArray).at(index).get('Value').patchValue(keys.PrivateKey);
+        }
+        if (setting.Key === 'publicKey') {
+          (this.form.Groups.at(i) as FormArray).at(index).get('Value').patchValue(keys.PublicKey);
+        }
       });
     });
   }

@@ -4,6 +4,7 @@
     <mat-tab-group>
       <mat-tab *ngFor="let group of groups; let i = index" [label]="group.Name" formArrayName="Groups">
         <div class="p2" [formGroupName]="i">
+          <button class="my2" *ngIf="group.Name === 'PUSH'" mat-raised-button color="primary" (click)="generate(i)">Generate keys</button>
           <ng-container *ngFor="let setting of group.Settings; let j = index">
             <div [ngSwitch]="setting.ValueType" [formGroupName]="j">
               <mat-form-field *ngSwitchCase="'text'" class="w-100 my1">

@@ -1,5 +1,5 @@
 import { BrowserModule, DomSanitizer } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
@@ -8,7 +8,7 @@ import { myRxStompConfig } from './my-rx-stomp.config';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatIconRegistry } from '@angular/material/icon';
 import { materialAutocompleteConfig, materialConfig } from './material-config';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { NgxPermissionsModule } from 'ngx-permissions';
 import { MAT_AUTOCOMPLETE_DEFAULT_OPTIONS } from '@angular/material/autocomplete';
@@ -24,6 +24,9 @@ import localePl from '@angular/common/locales/pl';
 
 import { registerLocaleData } from '@angular/common';
 import { MatNativeDateModule } from '@angular/material/core';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import { ConfigService } from './core/services/config.service';
 
 registerLocaleData(localeEn);
 registerLocaleData(localePl);
@@ -34,6 +37,7 @@ registerLocaleData(localePl);
     BrowserModule,
     CoreModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatDialogModule,
     MatSnackBarModule,
@@ -43,6 +47,7 @@ registerLocaleData(localePl);
     NavComponentModule,
     DialogSynchronizeComponentModule,
     DialogConfirmComponentModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [
     {
@@ -65,8 +70,14 @@ registerLocaleData(localePl);
     {
       provide: HTTP_INTERCEPTORS,
       multi: true,
-      useClass: AuthInterceptor
-    }
+      useClass: AuthInterceptor,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (config: ConfigService) => config.loadSettings(),
+      deps: [ConfigService],
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })

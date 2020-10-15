@@ -25,6 +25,9 @@ import { JobStatusComponentModule } from '../shared/job-status/job-status.compon
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatCardModule } from '@angular/material/card';
 import { FormUserComponentModule } from '../shared/form/form-user/form-user.component';
+import { SwPush } from '@angular/service-worker';
+import { NotificationsService } from '../../../core/services/notifications.service';
+import { ConfigService } from '../../../core/services/config.service';
 
 @Component({
   selector: 'app-jobs',
@@ -46,7 +49,10 @@ export class JobsComponent implements OnInit, OnDestroy {
     private router: Router,
     private breakpointObserver: BreakpointObserver,
     private jobsService: JobsService,
-    private stomp: RxStompService
+    private stomp: RxStompService,
+    private swPush: SwPush,
+    private config: ConfigService,
+    private notificationsService: NotificationsService,
   ) {
     this.filters.valueChanges.subscribe(value => {
       this.reload(this.currentPage, value);
@@ -54,6 +60,7 @@ export class JobsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.subscribeToNotifications();
     this.subscription = this.stomp.watch('/exchange/job_statuses').subscribe((message) => {
       const statusMessage = JSON.parse(message.body);
       this.updateStatus(statusMessage);
@@ -75,6 +82,14 @@ export class JobsComponent implements OnInit, OnDestroy {
     if (this.subscription && !this.subscription.closed) {
       this.subscription.unsubscribe();
     }
+  }
+
+  private subscribeToNotifications() {
+    this.swPush.requestSubscription({
+      serverPublicKey: this.config.getSettings('PUSH.publicKey')
+    })
+      .then(sub => this.notificationsService.addPushSubscriber(sub).subscribe())
+      .catch(err => console.error('Could not subscribe to notifications', err));
   }
 
   private updateStatus(message: StatusMessage) {

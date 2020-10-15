@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Setting } from '../interfaces/setting';
 import { SettingGroup } from '../interfaces/setting-group';
+import { VapidKeys } from '../interfaces/vapid-keys';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,9 @@ export class SettingsService {
 
   getSettings(): Observable<SettingGroup[]> {
     return this.http.get<SettingGroup[]>('/api/settings');
+  }
+
+  generateVapidKeys() {
+    return this.http.get<VapidKeys>('/api/settings/generate-vapid-keys');
   }
 }

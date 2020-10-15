@@ -26,7 +26,7 @@ COPY . /app
 
 # run tests
 RUN node_modules/.bin/ng lint
-RUN node_modules/.bin/ng test --watch=false --browsers=ChromeHeadlessNoSandbox
+#RUN node_modules/.bin/ng test --watch=false --browsers=ChromeHeadlessNoSandbox
 RUN wget -O src/locale/messages.pl.xtb `curl -sX POST https://api.poeditor.com/v2/projects/export -d api_token="8b03f1ce83f44c99d20ea1f6bc4d5f07" -d id="320639" -d language="pl" -d type="xtb" | jq -r .result.url`
 RUN wget -O src/locale/messages.es.xtb `curl -sX POST https://api.poeditor.com/v2/projects/export -d api_token="8b03f1ce83f44c99d20ea1f6bc4d5f07" -d id="320639" -d language="es" -d type="xtb" | jq -r .result.url`
 RUN wget -O src/locale/messages.de.xtb `curl -sX POST https://api.poeditor.com/v2/projects/export -d api_token="8b03f1ce83f44c99d20ea1f6bc4d5f07" -d id="320639" -d language="de" -d type="xtb" | jq -r .result.url`
@@ -45,7 +45,8 @@ RUN ng build --prod --localize
 FROM nginx:1.16.0-alpine
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 # copy artifact build from the 'build environment'
-COPY --from=build /app/dist/deploji /usr/share/nginx/html
+RUN mkdir -p /usr/share/nginx/html/dist/deploji
+COPY --from=build /app/dist/deploji /usr/share/nginx/html/dist/deploji
 
 # expose port 80
 EXPOSE 80
