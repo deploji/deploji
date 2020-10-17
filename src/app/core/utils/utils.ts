@@ -1,3 +1,3 @@
-export function notEmpty(value: string) {
-  return value && value !== '';
+export function notEmpty(value: string): boolean {
+  return Boolean(value && value !== '');
 }
