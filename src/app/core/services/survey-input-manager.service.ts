@@ -23,7 +23,8 @@ export class SurveyInputManagerService {
   public parseOptions(options: string): string[] {
     return options.replace(/\s/g, ',')
                   .replace(/;/g, ',')
-                  .split(',');
+                  .split(',')
+                  .filter((item) => item !== '');
   }
 
   private transform(survey: Survey, values: string[]): string {

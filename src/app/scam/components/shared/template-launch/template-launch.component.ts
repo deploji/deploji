@@ -44,6 +44,7 @@ export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.surveyInputManager.inputSource.subscribe((extraVars: string) => {
       this.predefinedExtraVars = extraVars;
+      console.log(this.predefinedExtraVars);
     });
   }
 
@@ -94,6 +95,7 @@ export class TemplateLaunchComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   private allExtraVars(): string {
+    console.log(`${this.form.ExtraVariables.value.replace(/=/g, ':')}\n${this.predefinedExtraVars}`);
     return `${this.form.ExtraVariables.value.replace(/=/g, ':')}\n${this.predefinedExtraVars}`;
   }
 

@@ -41,7 +41,7 @@ export class EditAppComponent implements OnInit {
   public inventories: Inventory[];
   public keys: SshKey[];
   public app: App;
-  public applicationId;
+  public applicationId: number;
 
   constructor(
     private appsService: AppsService,
