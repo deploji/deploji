@@ -10,6 +10,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 export class EditButtonComponent {
   @Input() tooltip = 'Edit';
+  @Input() icon = 'edit';
 }
 @NgModule({
   declarations: [EditButtonComponent],

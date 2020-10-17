@@ -25,6 +25,9 @@
         <app-form-inventory label="Inventory" i18n-label [app]="filters.applicationId?.value"
                             [control]="filters.inventoryId"></app-form-inventory>
       </div>
+      <div class="col">
+        <app-form-user label="User" i18n-label [control]="filters.userId"></app-form-user>
+      </div>
     </div>
   </div>
   <table mat-table [dataSource]="jobs?.items">

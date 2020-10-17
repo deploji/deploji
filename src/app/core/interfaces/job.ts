@@ -13,6 +13,8 @@ export interface Job {
   Template?: Template;
   KeyID?: number;
   Key?: SshKey;
+  VaultKeyID?: number;
+  VaultKey?: SshKey;
   InventoryID?: number;
   ProjectID?: number;
   ID?: number;

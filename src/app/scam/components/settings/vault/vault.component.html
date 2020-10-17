@@ -1,0 +1,21 @@
+<div class="flex flex-wrap">
+  <h1 i18n>Vault encrypt</h1>
+</div>
+<form [formGroup]="form" (ngSubmit)="encrypt()">
+  <app-form-ssh-key [control]="form.get('key')"></app-form-ssh-key>
+  <mat-form-field class="w-100">
+    <mat-label i18n>Name</mat-label>
+    <input type="text" matInput formControlName="name"/>
+    <mat-error i18n>Name is required</mat-error>
+  </mat-form-field>
+  <mat-form-field class="w-100">
+    <mat-label i18n>Content</mat-label>
+    <textarea matInput formControlName="content"></textarea>
+    <mat-error i18n>Content is required</mat-error>
+  </mat-form-field>
+  <button mat-raised-button color="primary" type="submit">Encrypt</button>
+</form>
+<div *ngIf="encrypted" class="w-100 mt2">
+  <mat-label i18n>Encrypted content <button (click)="copy()" mat-icon-button><mat-icon>content_copy</mat-icon></button></mat-label>
+  <pre [innerText]="encrypted"></pre>
+</div>

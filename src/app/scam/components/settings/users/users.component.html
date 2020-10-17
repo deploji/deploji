@@ -7,30 +7,42 @@
     </button>
   </div>
 </div>
+
+<mat-form-field class="w-100">
+  <mat-label>Search</mat-label>
+  <input name="search" matInput [formControl]="searchControl"/>
+</mat-form-field>
+
 <mat-card class="my2 p0">
   <mat-card-content>
-    <table mat-table [dataSource]="users">
+    <table mat-table [dataSource]="filteredUsers">
+      <ng-container matColumnDef="avatar">
+        <th mat-header-cell *matHeaderCellDef scope="col" i18n></th>
+        <td mat-cell *matCellDef="let element">
+          <app-user-avatar [user]="element"></app-user-avatar>
+        </td>
+      </ng-container>
       <ng-container matColumnDef="username">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Username</th>
         <td mat-cell *matCellDef="let element">
-          <a routerLink="/settings/users/{{element.ID}}">{{element.Username}}</a>
+          <a routerLink="/settings/users/{{element.ID}}" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Username"></a>
         </td>
       </ng-container>
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n="name of the user">Name</th>
-        <td mat-cell *matCellDef="let element">{{element.Name}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Name"></td>
       </ng-container>
       <ng-container matColumnDef="surname">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Surname</th>
-        <td mat-cell *matCellDef="let element">{{element.Surname}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Surname"></td>
       </ng-container>
       <ng-container matColumnDef="email">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>E-mail</th>
-        <td mat-cell *matCellDef="let element">{{element.Email}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Email"></td>
       </ng-container>
       <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Type</th>
-        <td mat-cell *matCellDef="let element">{{element.Type}}</td>
+        <td mat-cell *matCellDef="let element" [appHighlightTerm]="searchControl.value" [appHighlight]="element.Type"></td>
       </ng-container>
       <ng-container matColumnDef="active">
         <th mat-header-cell *matHeaderCellDef scope="col" i18n>Is active</th>

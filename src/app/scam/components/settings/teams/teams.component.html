@@ -1,9 +1,9 @@
 <div class="flex flex-wrap">
-  <h1 i18n>Teams</h1>
+  <h1 i18n>Group</h1>
   <div class="flex-auto"></div>
   <div class="flex flex-column justify-center">
     <button type="button" mat-raised-button color="primary" routerLink="/settings/teams/create">
-      <ng-container i18n>Create new team</ng-container>
+      <ng-container i18n>Create new group</ng-container>
     </button>
   </div>
 </div>
@@ -11,7 +11,7 @@
   <mat-card-content>
     <table mat-table [dataSource]="teams">
       <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef scope="col" i18n="name of the team">Name</th>
+        <th mat-header-cell *matHeaderCellDef scope="col" i18n="name of the group">Name</th>
         <td mat-cell *matCellDef="let element">
           <a routerLink="/settings/teams/{{element.ID}}">{{element.Name}}</a>
         </td>

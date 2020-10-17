@@ -1,0 +1,47 @@
+  <form [formGroup]="form" class="p2">
+    <div class="flex flex-column">
+      <mat-form-field>
+        <mat-label>Start</mat-label>
+        <input matInput formControlName="StartFrom" [matDatepicker]="picker" placeholder="Start">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+      <div class="w-100 flex">
+        <mat-form-field style="flex-basis: 30%" class="mr1">
+          <mat-label>HH</mat-label>
+          <input matInput value="23">
+        </mat-form-field>
+        <mat-form-field style="flex-basis: 30%" class="mr1">
+          <mat-label>MM</mat-label>
+          <input matInput value="30">
+        </mat-form-field>
+        <mat-form-field style="flex-basis: 30%">
+          <mat-label>SS</mat-label>
+          <input matInput value="00">
+        </mat-form-field>
+      </div>
+      <mat-form-field class="w-100">
+        <mat-label>Repeat frequency</mat-label>
+        <input matInput value="Week">
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Every</mat-label>
+        <input matInput value="1">
+        <span matSuffix>Week</span>
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>Cron</mat-label>
+        <input matInput formControlName="CronExpression" value="1">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>End</mat-label>
+        <input matInput formControlName="EndOn" [matDatepicker]="picker2" placeholder="End">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="flex">
+      <div class="flex-auto"></div>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </form>

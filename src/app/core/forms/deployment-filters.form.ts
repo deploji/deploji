@@ -4,6 +4,7 @@ export class DeploymentFiltersForm extends FormGroup {
   constructor() {
     super({
       application_id: new FormControl(),
+      user_id: new FormControl(),
       inventory_id: new FormControl()
     });
   }
@@ -14,5 +15,9 @@ export class DeploymentFiltersForm extends FormGroup {
 
   get inventoryId(): FormControl {
     return this.get('inventory_id') as FormControl;
+  }
+
+  get userId(): FormControl {
+    return this.get('user_id') as FormControl;
   }
 }

@@ -13,7 +13,11 @@ export class CreateInventoryDeploymentForm extends FormGroup {
     });
     this.Inventory.valueChanges.subscribe((selectedInventory: Inventory) => {
       this.ApplicationsArray.clear();
-      selectedInventory.ApplicationInventories.forEach(inventory => this.ApplicationsArray.push(new DeploymentApplicationForm(inventory)));
+      selectedInventory.ApplicationInventories.forEach(inventory => {
+        if (inventory.Application.Permissions.Use) {
+          this.ApplicationsArray.push(new DeploymentApplicationForm(inventory));
+        }
+      });
     });
   }
 
@@ -38,6 +42,7 @@ export class CreateInventoryDeploymentForm extends FormGroup {
         Version: value.Version.Value,
         InventoryID: this.value.Inventory.ID,
         KeyID: value.KeyID,
+        VaultKeyID: value.VaultKeyID,
         ExtraVariables: value.ExtraVariables,
         Playbook: notEmpty(value.Playbook) ? value.Playbook : value.Application.AnsiblePlaybook
       }));

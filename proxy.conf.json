@@ -1,7 +1,15 @@
 {
-  "/api/*": {
-    "target": "https://demo.deploji.com",
+  "/api/schedules/*": {
+    "target": "http://127.0.0.1:8001",
     "secure": false,
     "changeOrigin": true
+  },
+  "/api/*": {
+    "target": "http://127.0.0.1:8000",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite": {
+      "^/api": ""
+    }
   }
 }

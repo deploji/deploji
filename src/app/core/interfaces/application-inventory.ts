@@ -7,6 +7,8 @@ export interface ApplicationInventory {
   Version?: string;
   Key: SshKey;
   KeyID: number;
+  VaultKey: SshKey;
+  VaultKeyID: number;
   Application: App;
   ApplicationID?: number;
   Inventory: Inventory;

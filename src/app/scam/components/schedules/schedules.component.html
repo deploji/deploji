@@ -1,0 +1,52 @@
+<div class="flex">
+  <h1 i18n>Schedules</h1>
+  <div class="flex-auto"></div>
+  <div class="flex flex-column justify-center">
+    <button type="button" mat-raised-button color="primary" routerLink="/schedules/create">
+      <ng-container i18n>Create new schedule</ng-container>
+    </button>
+  </div>
+</div>
+<table mat-table [dataSource]="schedules">
+  <ng-container matColumnDef="next">
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Next execution</th>
+    <td mat-cell *matCellDef="let element">
+      {{element?.NextExecutionTimes?.slice(0, 1)}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="application">
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Application</th>
+    <td mat-cell *matCellDef="let element">
+      {{element?.Job?.ApplicationID}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="inventory">
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Inventory</th>
+    <td mat-cell *matCellDef="let element">
+      {{element?.Job?.InventoryID}}
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="version">
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Version</th>
+    <td mat-cell *matCellDef="let element">{{element?.Job?.Version}}</td>
+  </ng-container>
+  <ng-container matColumnDef="time">
+    <th mat-header-cell *matHeaderCellDef scope="col"></th>
+    <td mat-cell *matCellDef="let element">
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="user">
+    <th mat-header-cell *matHeaderCellDef scope="col"></th>
+    <td mat-cell *matCellDef="let element">
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef scope="col" i18n>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <app-edit-button></app-edit-button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>

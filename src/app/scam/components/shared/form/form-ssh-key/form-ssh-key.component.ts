@@ -10,7 +10,7 @@ import { FormSelectComponentModule } from '../form-select/form-select.component'
   templateUrl: './form-ssh-key.component.html',
 })
 export class FormSshKeyComponent implements OnInit {
-  @Input() label = 'SSH key';
+  @Input() label = 'Key';
   @Input() keys: SshKey[] = [];
   @Input() control = new FormControl();
   @Input() multiple = false;

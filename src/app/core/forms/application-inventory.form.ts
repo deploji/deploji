@@ -12,6 +12,7 @@ export class ApplicationInventoryForm extends FormGroup {
       ApplicationUrls: new FormControl(),
       ExtraVariables: new FormControl('---\n'),
       Key: new FormControl(),
+      VaultKey: new FormControl(),
       Playbook: new FormControl()
     });
   }
@@ -30,6 +31,10 @@ export class ApplicationInventoryForm extends FormGroup {
 
   get Key() {
     return this.get('Key') as FormControl;
+  }
+
+  get VaultKey() {
+    return this.get('VaultKey') as FormControl;
   }
 
   get IsActive() {

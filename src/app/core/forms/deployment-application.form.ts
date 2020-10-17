@@ -9,7 +9,8 @@ export class DeploymentApplicationForm extends FormGroup {
         Version: new FormControl(),
         Playbook: new FormControl(inventory.Playbook),
         ExtraVariables: new FormControl(inventory.ExtraVariables),
-        KeyID: new FormControl(inventory.KeyID)
+        KeyID: new FormControl(inventory.KeyID),
+        VaultKeyID: new FormControl(inventory.VaultKeyID),
     });
   }
 

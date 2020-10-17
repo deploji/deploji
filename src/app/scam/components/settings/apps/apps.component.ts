@@ -14,6 +14,10 @@ import { Observable, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { EditButtonComponentModule } from '../../shared/edit-button/edit-button.component';
 import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-button.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { HighlightDirectiveModule } from '../../../directives/highlight.directive';
 
 @Component({
   selector: 'app-apps',
@@ -21,12 +25,14 @@ import { DeleteButtonComponentModule } from '../../shared/delete-button/delete-b
 })
 export class AppsComponent implements OnInit, OnDestroy {
   apps: App[] = [];
+  filteredApps: App[] = [];
   columnsToDisplay = ['name', 'project', 'playbook', 'repository', 'artifact', 'actions'];
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
       map(result => result.matches)
     );
-  private subscription: Subscription;
+  searchControl = new FormControl();
+  private subscription = new Subscription();
 
   constructor(
     private breakpointObserver: BreakpointObserver,
@@ -35,15 +41,29 @@ export class AppsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.subscription = this.isHandset$.subscribe(isHeadset => {
-      if (isHeadset) {
-        this.columnsToDisplay = ['name', 'artifact', 'actions'];
-      } else {
-        this.columnsToDisplay = ['name', 'project', 'playbook', 'repository', 'artifact', 'actions'];
-      }
-    });
+    this.subscription.add(
+      this.isHandset$.subscribe(isHeadset => {
+        if (isHeadset) {
+          this.columnsToDisplay = ['name', 'artifact', 'actions'];
+        } else {
+          this.columnsToDisplay = ['name', 'project', 'playbook', 'repository', 'artifact', 'actions'];
+        }
+      })
+    );
+    this.subscription.add(
+      this.searchControl.valueChanges.subscribe((searchText: string) => {
+        this.filteredApps = this.apps
+          .filter(app =>
+            app.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1 ||
+            app.Project?.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1 ||
+            app.AnsiblePlaybook.toLowerCase().indexOf(searchText.toLowerCase()) !== -1 ||
+            app.RepositoryArtifact.toLowerCase().indexOf(searchText.toLowerCase()) !== -1 ||
+            app.Repository?.Name.toLowerCase().indexOf(searchText.toLowerCase()) !== -1);
+      })
+    );
     this.appsService.getApps().subscribe(apps => {
       this.apps = apps;
+      this.filteredApps = apps;
     });
   }
 
@@ -54,12 +74,13 @@ export class AppsComponent implements OnInit, OnDestroy {
   delete(app: App) {
     const dialogRef = this.dialog.open(DialogConfirmComponent, {
       width: '500px',
-      data: { title: 'Are you sure?', message: `Do you want do delete application ${app.Name}?`}
+      data: {title: 'Are you sure?', message: `Do you want do delete application ${app.Name}?`}
     });
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
         this.appsService.destroy(app).subscribe(() => {
           this.apps.splice(this.apps.indexOf(app), 1);
+          this.filteredApps.splice(this.apps.indexOf(app), 1);
         });
       }
     });
@@ -67,8 +88,8 @@ export class AppsComponent implements OnInit, OnDestroy {
 }
 
 @NgModule({
-    declarations: [AppsComponent],
-    exports: [AppsComponent],
+  declarations: [AppsComponent],
+  exports: [AppsComponent],
   imports: [
     CommonModule,
     MatButtonModule,
@@ -78,6 +99,11 @@ export class AppsComponent implements OnInit, OnDestroy {
     MatTableModule,
     EditButtonComponentModule,
     DeleteButtonComponentModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    HighlightDirectiveModule,
   ]
 })
-export class AppsComponentModule { }
+export class AppsComponentModule {
+}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { App } from '../interfaces/app';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,17 @@ export class AppsService {
   }
 
   getApps(): Observable<App[]> {
-    return this.http.get<App[]>('/api/applications');
+    return this.http.get<App[]>('/api/applications')
+      .pipe(
+        map(apps => {
+          return apps.map(app => {
+            app.Inventories.sort(
+              (a, b) => a.Inventory.Name < b.Inventory.Name ? -1 : 1
+            );
+            return app;
+          });
+        })
+      );
   }
 
   destroy(app: App) {

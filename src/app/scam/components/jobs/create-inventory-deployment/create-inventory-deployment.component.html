@@ -2,7 +2,7 @@
 <mat-card>
   <form [formGroup]="form">
     <div>
-      <app-form-inventory label="Inventory" i18n-label [control]="form.Inventory"></app-form-inventory>
+      <app-form-inventory label="Inventory" i18n-label [deployment]="true" [control]="form.Inventory"></app-form-inventory>
     </div>
     <div formArrayName="Applications" *ngFor="let application of form.Applications; let i = index">
       <div [formGroupName]="i.toString(10)">

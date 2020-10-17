@@ -2,14 +2,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NavResolve } from '../../core/resolvers/nav.resolver';
 import {
-  ApplicationsComponent,
-  ApplicationsComponentModule
-} from '../../scam/components/applications/applications.component';
+  ApplicationsListComponent,
+  ApplicationsListComponentModule
+} from '../../scam/components/applications/applications-list/applications-list.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: ApplicationsComponent,
+    component: ApplicationsListComponent,
     resolve: [NavResolve],
     data: {
       nav: {
@@ -22,7 +22,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    ApplicationsComponentModule,
+    ApplicationsListComponentModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]
