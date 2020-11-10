@@ -10,7 +10,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-i18n": "for lang in en pl; do ng build --output-path=dist/$lang --aot --prod --base-href /$lang/ ; done",
-    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points"
+    "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
+    "proxy-serve": "ng serve --proxy-config proxy-serve.conf.json"
   },
   "private": false,
   "dependencies": {
