@@ -35,7 +35,7 @@ export class AuthService {
     }
     const perm = [];
     if (Array.isArray(this.token.perm)) {
-      perm.push(this.token.perm);
+      perm.push(...this.token.perm);
     }
     if (this.token.utp === UserTypesEnum.ADMIN) {
       perm.push(UserTypesEnum.ADMIN);
