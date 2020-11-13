@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FormSshKeyComponent } from './form-ssh-key.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -8,7 +8,7 @@ describe('FormSshKeyComponent', () => {
   let component: FormSshKeyComponent;
   let fixture: ComponentFixture<FormSshKeyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [FormSshKeyComponent],
       schemas: [NO_ERRORS_SCHEMA],

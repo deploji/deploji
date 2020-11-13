@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EditTeamComponent } from './edit-team.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -9,7 +9,7 @@ describe('EditUserComponent', () => {
   let component: EditTeamComponent;
   let fixture: ComponentFixture<EditTeamComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [EditTeamComponent],
       schemas: [NO_ERRORS_SCHEMA],

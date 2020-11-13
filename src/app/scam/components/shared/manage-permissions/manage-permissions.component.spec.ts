@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ManagePermissionsComponent } from './manage-permissions.component';
 import { MatTableModule } from '@angular/material/table';
@@ -16,7 +16,7 @@ describe('ManagePermissionsComponent', () => {
   let component: ManagePermissionsComponent;
   let fixture: ComponentFixture<ManagePermissionsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ManagePermissionsComponent ],
       imports: [

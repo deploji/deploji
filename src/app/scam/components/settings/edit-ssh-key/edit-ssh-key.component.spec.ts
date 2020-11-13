@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { EditSshKeyComponent } from './edit-ssh-key.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -9,7 +9,7 @@ describe('EditSshKeyComponent', () => {
   let component: EditSshKeyComponent;
   let fixture: ComponentFixture<EditSshKeyComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [EditSshKeyComponent],
       schemas: [NO_ERRORS_SCHEMA],

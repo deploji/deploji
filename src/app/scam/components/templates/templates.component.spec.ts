@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { TemplatesComponent } from './templates.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -9,7 +9,7 @@ describe('TemplatesComponent', () => {
   let component: TemplatesComponent;
   let fixture: ComponentFixture<TemplatesComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [TemplatesComponent],
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],

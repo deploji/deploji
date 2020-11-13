@@ -49,7 +49,7 @@ const routes: Routes = [
   imports: [
     LoginComponentModule,
     JobsRoutingModule,
-    RouterModule.forRoot(routes, { enableTracing: environment.enableRouterTracing})
+    RouterModule.forRoot(routes, { enableTracing: environment.enableRouterTracing, relativeLinkResolution: 'legacy' })
   ],
   exports: [RouterModule]
 })

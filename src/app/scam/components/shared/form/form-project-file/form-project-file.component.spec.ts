@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FormProjectFileComponent } from './form-project-file.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -10,7 +10,7 @@ describe('FormProjectFileComponent', () => {
   let component: FormProjectFileComponent;
   let fixture: ComponentFixture<FormProjectFileComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, MatAutocompleteModule, ScrollingModule],
       declarations: [FormProjectFileComponent],

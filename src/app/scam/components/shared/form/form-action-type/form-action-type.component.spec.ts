@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormActionTypeComponent } from './form-action-type.component';
 import { Component } from '@angular/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
@@ -40,7 +40,7 @@ describe('FormActionTypeComponent', () => {
   let component: FormActionTypeComponent;
   let fixture: ComponentFixture<TestWrapperComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
         CommonModule,

@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CreateInventoryDeploymentComponent } from './create-inventory-deployment.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -9,7 +9,7 @@ describe('CreateInventoryDeploymentComponent', () => {
   let component: CreateInventoryDeploymentComponent;
   let fixture: ComponentFixture<CreateInventoryDeploymentComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, RouterTestingModule.withRoutes([])],
       declarations: [CreateInventoryDeploymentComponent],

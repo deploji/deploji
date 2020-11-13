@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { CreateDeploymentComponent } from './create-deployment.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -9,7 +9,7 @@ describe('CreateDeploymentComponent', () => {
   let component: CreateDeploymentComponent;
   let fixture: ComponentFixture<CreateDeploymentComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [CreateDeploymentComponent],
       schemas: [NO_ERRORS_SCHEMA],

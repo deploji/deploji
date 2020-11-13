@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ManageUsersComponent } from './manage-users.component';
 import { MatTableModule } from '@angular/material/table';
@@ -12,7 +12,7 @@ describe('ManageUsersComponent', () => {
   let component: ManageUsersComponent;
   let fixture: ComponentFixture<ManageUsersComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ManageUsersComponent ],
       imports: [
