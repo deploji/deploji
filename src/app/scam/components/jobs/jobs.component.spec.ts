@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { JobsComponent } from './jobs.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -19,7 +19,7 @@ describe('JobsComponent', () => {
   const swSpy = jasmine.createSpyObj<SwPush>('swPush', ['requestSubscription']);
   swSpy.requestSubscription.and.returnValue(Promise.resolve({} as PushSubscription));
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [JobsComponent],
       imports: [

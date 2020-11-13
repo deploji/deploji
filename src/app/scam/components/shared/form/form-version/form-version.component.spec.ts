@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { FormVersionComponent } from './form-version.component';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -10,7 +10,7 @@ describe('FormVersionComponent', () => {
   let component: FormVersionComponent;
   let fixture: ComponentFixture<FormVersionComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [FormVersionComponent],
       schemas: [NO_ERRORS_SCHEMA],
