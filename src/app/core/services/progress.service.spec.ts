@@ -21,6 +21,6 @@ describe('ProgressService', () => {
   it('should open progress bar', () => {
     const service: ProgressService = TestBed.inject(ProgressService);
     service.open();
-    // todo - how to check hom manipulation in a service test?
+    // todo - how to check dom manipulation in a service test?
   });
 });
