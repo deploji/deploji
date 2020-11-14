@@ -36,4 +36,12 @@ describe('SurveyInputManagerService', () => {
 
     expect(result).toEqual(['motor', 'goll', 'skuter', 'admin', 'sti24', 'portal']);
   });
+
+  it('should emit stringified survey inputs', () => {
+    const service: SurveyInputManagerService = TestBed.inject(SurveyInputManagerService);
+    service.inputSource.subscribe((value) => {
+      expect(value).toEqual('app: Deploji\nenvironment: prod\n');
+    });
+    service.send({Enabled: true, Inputs: [{VariableName: 'app'}, {VariableName: 'environment'}]}, ['Deploji', 'prod']);
+  });
 });
