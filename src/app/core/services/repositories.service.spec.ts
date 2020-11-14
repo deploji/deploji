@@ -22,14 +22,14 @@ describe('RepositoriesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should save new project using POST', () => {
+  it('should save new repository using POST', () => {
     const service: RepositoriesService = TestBed.inject(RepositoriesService);
     service.save({Name: '', Type: '', Url: ''}).subscribe(() => {
       expect(httpClientSpy.post).toHaveBeenCalled();
     });
   });
 
-  it('should save existing project using PUT', () => {
+  it('should save existing repository using PUT', () => {
     const service: RepositoriesService = TestBed.inject(RepositoriesService);
     service.save({ID: 1, Name: '', Type: '', Url: ''}).subscribe(() => {
       expect(httpClientSpy.put).toHaveBeenCalled();

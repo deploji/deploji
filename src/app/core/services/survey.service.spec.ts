@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TeamsService } from './teams.service';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
+import { SurveyService } from './survey.service';
 
-describe('TeamsService', () => {
+describe('SurveyService', () => {
 
   const httpClientSpy = jasmine.createSpyObj<HttpClient>(['post', 'put']);
   httpClientSpy.post.and.returnValues(of({}));
@@ -18,20 +18,20 @@ describe('TeamsService', () => {
   }));
 
   it('should be created', () => {
-    const service: TeamsService = TestBed.inject(TeamsService);
+    const service: SurveyService = TestBed.inject(SurveyService);
     expect(service).toBeTruthy();
   });
 
-  it('should save new team using POST', () => {
-    const service: TeamsService = TestBed.inject(TeamsService);
-    service.save({}).subscribe(() => {
+  it('should save new survey input using POST', () => {
+    const service: SurveyService = TestBed.inject(SurveyService);
+    service.sendSurveyInput(1, {VariableName: 'foo'}).subscribe(() => {
       expect(httpClientSpy.post).toHaveBeenCalled();
     });
   });
 
-  it('should save existing team using PUT', () => {
-    const service: TeamsService = TestBed.inject(TeamsService);
-    service.save({ID: 1}).subscribe(() => {
+  it('should save existing survey input using PUT', () => {
+    const service: SurveyService = TestBed.inject(SurveyService);
+    service.sendSurveyInput(1, {ID: 1, VariableName: 'bar'}).subscribe(() => {
       expect(httpClientSpy.put).toHaveBeenCalled();
     });
   });
