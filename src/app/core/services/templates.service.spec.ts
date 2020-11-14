@@ -22,14 +22,14 @@ describe('TemplatesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should save new project using POST', () => {
+  it('should save new template using POST', () => {
     const service: TemplatesService = TestBed.inject(TemplatesService);
     service.save({}).subscribe(() => {
       expect(httpClientSpy.post).toHaveBeenCalled();
     });
   });
 
-  it('should save existing project using PUT', () => {
+  it('should save existing template using PUT', () => {
     const service: TemplatesService = TestBed.inject(TemplatesService);
     service.save({ID: 1}).subscribe(() => {
       expect(httpClientSpy.put).toHaveBeenCalled();

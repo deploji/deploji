@@ -8,7 +8,6 @@ import { AuthService } from './auth.service';
 import { HttpClient } from '@angular/common/http';
 import { of } from 'rxjs';
 import { UserTypesEnum } from '../enums/user-types.enum';
-// import { tap } from 'rxjs/operators';
 
 @Component({
   template: ''
@@ -95,12 +94,14 @@ describe('AuthService', () => {
     });
   });
 
+  // WARN: 'Spec 'AuthService should refresh token' has no expectations.'
   // it('should refresh token', async () => {
+  // tslint:disable-next-line:max-line-length
   //   const refreshTokenResponse = {Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDUxODkzNzgsImlhdCI6MTYwNTE4ODM5MCwibmJmIjoxNjA1MTg4NDc4LCJzdWIiOiJhZG1pbiIsInVpZCI6MSwidXRwIjoiYWRtaW4ifQ.YKRpJjT4ea5EZK_S60Bju0oETznuaWCoSb_O0_yIKAY'};
-  //   httpSpy.post.and.returnValues(of(refreshTokenResponse).pipe(tap((resp: any) => localStorage.setItem('token', resp.Token))));
+  //   httpSpy.post.and.returnValues(of(refreshTokenResponse));
   //
   //   service.refreshToken().subscribe((response) => {
-  //     console.log(response);
+  //     expect(localStorage.getItem('token')).toEqual(response.Token);
   //   });
   // });
 

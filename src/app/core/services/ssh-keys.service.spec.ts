@@ -22,14 +22,14 @@ describe('SshKeysService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should save new project using POST', () => {
+  it('should save new ssh key using POST', () => {
     const service: SshKeysService = TestBed.inject(SshKeysService);
     service.save({Title: ''}).subscribe(() => {
       expect(httpClientSpy.post).toHaveBeenCalled();
     });
   });
 
-  it('should save existing project using PUT', () => {
+  it('should save existing ssh key using PUT', () => {
     const service: SshKeysService = TestBed.inject(SshKeysService);
     service.save({ID: 1, Title: ''}).subscribe(() => {
       expect(httpClientSpy.put).toHaveBeenCalled();
