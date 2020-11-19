@@ -17,10 +17,4 @@ describe('ProgressService', () => {
     const service: ProgressService = TestBed.inject(ProgressService);
     expect(service).toBeTruthy();
   });
-
-  it('should open progress bar', () => {
-    const service: ProgressService = TestBed.inject(ProgressService);
-    service.open();
-    // todo - how to check dom manipulation in a service test?
-  });
 });

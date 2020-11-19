@@ -50,14 +50,4 @@ describe('ConfigService', () => {
       expect(defaultValue).toBe('some-default-value');
     });
   });
-
-  // Even tough it throws error as expected, Karma thinks it the test does not contain any expectations
-  // and toThrowError matcher does not work.
-  // it('should throw error if key does not exist', async () => {
-  //   const service: ConfigService = TestBed.inject(ConfigService);
-  //   const promise = service.loadSettings();
-  //   promise().then(() => {
-  //     expect(service.getSettings('non-existing-key')).toThrowError('No setting found with the specified key [non-existing-key]!');
-  //   });
-  // });
 });
