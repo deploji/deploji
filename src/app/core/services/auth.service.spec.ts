@@ -44,17 +44,15 @@ describe('AuthService', () => {
   });
 
   afterEach(() => {
-    localStorage.clear();
     service.logout();
     httpSpy.post.and.returnValue(of(adminTokenResponse));
-    routerServiceSpy.navigateByUrl.calls.reset();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should set guest permissions if token is absent', async() => {
+  it('should set guest permissions if token is absent', async () => {
     expect(service.permissions).toEqual([UserTypesEnum.GUEST]);
   });
 
@@ -71,8 +69,8 @@ describe('AuthService', () => {
   });
 
   it('should set regular user permissions if token with regular user permissions was received', async () => {
-    const regularTokenResponse = {Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDUxNzk2OTYsImlhdCI6MTYwNTE3ODc5NiwibmJmIjoxNjA1MTc4Nzk2LCJzdWIiOiJhZG1pbiIsInVpZCI6MSwidXRwIjpudWxsLCJwZXJtIjpbInJlZ3VsYXIiXX0.p5uzf6PUVGup4IbW8eSo3osAauvWK1nogzxfxwPmvF0'};
-    httpSpy.post.and.returnValue(of(regularTokenResponse));
+    const response = {Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDUxNzk2OTYsImlhdCI6MTYwNTE3ODc5NiwibmJmIjoxNjA1MTc4Nzk2LCJzdWIiOiJhZG1pbiIsInVpZCI6MSwidXRwIjpudWxsLCJwZXJtIjpbInJlZ3VsYXIiXX0.p5uzf6PUVGup4IbW8eSo3osAauvWK1nogzxfxwPmvF0'};
+    httpSpy.post.and.returnValue(of(response));
 
     service.login({}).subscribe(() => {
       expect(service.permissions).toEqual([UserTypesEnum.REGULAR]);
@@ -80,8 +78,8 @@ describe('AuthService', () => {
   });
 
   it('should set auditor user permissions if token with auditor user permissions was received', async () => {
-    const regularTokenResponse = {Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDUxNzk2OTYsImlhdCI6MTYwNTE3ODc5NiwibmJmIjoxNjA1MTc4Nzk2LCJzdWIiOiJhZG1pbiIsInVpZCI6MSwidXRwIjpudWxsLCJwZXJtIjpbImF1ZGl0b3IiXX0.e8_h-HI1x0dDO6kwdbFA_zk11MCPP_AFOhPyc7df_bM'};
-    httpSpy.post.and.returnValue(of(regularTokenResponse));
+    const response = {Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MDUxNzk2OTYsImlhdCI6MTYwNTE3ODc5NiwibmJmIjoxNjA1MTc4Nzk2LCJzdWIiOiJhZG1pbiIsInVpZCI6MSwidXRwIjpudWxsLCJwZXJtIjpbImF1ZGl0b3IiXX0.e8_h-HI1x0dDO6kwdbFA_zk11MCPP_AFOhPyc7df_bM'};
+    httpSpy.post.and.returnValue(of(response));
 
     service.login({}).subscribe(() => {
       expect(service.permissions).toEqual([UserTypesEnum.AUDITOR]);
@@ -101,7 +99,7 @@ describe('AuthService', () => {
   });
 
   it('should set guest user permission after logout', async () => {
-    service.logout();
+    service.login({}).subscribe(() => service.logout());
 
     expect(service.permissions).toEqual([UserTypesEnum.GUEST]);
   });

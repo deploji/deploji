@@ -37,7 +37,7 @@ describe('JobsService', () => {
   it('should wrap jobs into collection', () => {
     const service: JobsService = TestBed.inject(JobsService);
     service.getJobs().subscribe((response)  => {
-      expect(response instanceof Collection).toEqual(true);
+      expect(response instanceof Collection).toBeTruthy();
     });
   });
 

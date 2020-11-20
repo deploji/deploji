@@ -2,7 +2,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { catchError, filter, finalize, flatMap, map, switchMap, take } from 'rxjs/operators';
+import { catchError, filter, finalize, map, mergeMap, switchMap, take } from 'rxjs/operators';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -37,7 +37,7 @@ export class AuthInterceptor implements HttpInterceptor {
           }
           this.isRefreshingToken = true;
           return this.auth.refreshToken().pipe(
-            flatMap(() => {
+            mergeMap(() => {
               this.tokenSubject.next(this.auth.tokenString);
               return next.handle(this.applyToken(request));
             }),
