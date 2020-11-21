@@ -7,4 +7,8 @@ export class TeamForm extends FormGroup {
       Name: new FormControl('', [Validators.required]),
     });
   }
+
+  get Name(): FormControl {
+    return this.get('Name') as FormControl;
+  }
 }
