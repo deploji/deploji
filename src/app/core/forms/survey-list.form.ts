@@ -9,9 +9,7 @@ export class SurveyListForm extends FormGroup {
   }
 
   public addControl(initialValue: string = '') {
-    this.extraVariables.push(
-      new FormControl(initialValue)
-    );
+    this.extraVariables.push(new FormControl(initialValue));
   }
 
   get extraVariables(): FormArray {

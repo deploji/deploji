@@ -26,6 +26,10 @@ export class RepositoryForm extends FormGroup {
     return this.get('ID') as FormControl;
   }
 
+  get Name(): FormControl {
+    return this.get('Name') as FormControl;
+  }
+
   get Type(): FormControl {
     return this.get('Type') as FormControl;
   }

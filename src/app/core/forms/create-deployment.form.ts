@@ -2,7 +2,6 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { JobTypesEnum } from '../enums/job-types.enum';
 import { Job } from '../interfaces/job';
 import { ApplicationInventory } from '../interfaces/application-inventory';
-import { notEmpty } from '../utils/utils';
 
 export class CreateDeploymentForm extends FormGroup {
   constructor() {
@@ -27,15 +26,17 @@ export class CreateDeploymentForm extends FormGroup {
 
   get deploymentsValue(): Job[] {
     return this.value.Inventories
-      .map((applicationInventory: ApplicationInventory) => ({
-        Type: JobTypesEnum.DEPLOYMENT,
-        ApplicationID: this.value.Application.ID,
-        Version: this.value.Version.Value,
-        InventoryID: applicationInventory.Inventory.ID,
-        KeyID: applicationInventory.KeyID,
-        VaultKeyID: applicationInventory.VaultKeyID,
-        ExtraVariables: applicationInventory.ExtraVariables,
-        Playbook: notEmpty(applicationInventory.Playbook) ? applicationInventory.Playbook : this.value.Application.AnsiblePlaybook
-      }));
+      .map((applicationInventory: ApplicationInventory) => {
+        return ({
+          Type: JobTypesEnum.DEPLOYMENT,
+          ApplicationID: this.value.Application.ID,
+          Version: this.value.Version.Value,
+          InventoryID: applicationInventory.Inventory.ID,
+          KeyID: applicationInventory.KeyID,
+          VaultKeyID: applicationInventory.VaultKeyID,
+          ExtraVariables: applicationInventory.ExtraVariables,
+          Playbook: applicationInventory.Playbook || this.value.Application.AnsiblePlaybook
+        });
+      });
   }
 }

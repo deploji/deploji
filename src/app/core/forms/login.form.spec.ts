@@ -5,14 +5,17 @@ describe('LoginForm', () => {
     expect(new LoginForm()).toBeTruthy();
   });
 
+  it('should be invalid', () => {
+    const form = new LoginForm();
+
+    expect(form.valid).toBeFalse();
+  });
+
   it('should require Username and Password', () => {
     const form = new LoginForm();
-    expect(form.valid).toBeFalsy();
-
     form.Username.setValue('user');
-    expect(form.valid).toBeFalsy();
-
     form.Password.setValue('secret');
-    expect(form.valid).toBeTruthy();
+
+    expect(form.valid).toBeTrue();
   });
 });

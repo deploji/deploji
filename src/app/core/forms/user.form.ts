@@ -13,4 +13,8 @@ export class UserForm extends FormGroup {
       IsActive: new FormControl(),
     });
   }
+
+  get Username(): FormControl {
+    return this.get('Username') as FormControl;
+  }
 }
