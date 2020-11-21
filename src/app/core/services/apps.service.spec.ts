@@ -54,14 +54,14 @@ describe('AppsService', () => {
     });
   });
 
-  it('should save using POST', async() => {
+  it('should save using POST', async () => {
     const service: AppsService = TestBed.inject(AppsService);
     service.save(fakeApps[0]).subscribe(() => {
       expect(httpSpy.post).toHaveBeenCalled();
     });
   });
 
-  it('should save using PUT', async() => {
+  it('should save using PUT', async () => {
     const service: AppsService = TestBed.inject(AppsService);
     service.save(fakeApps[1]).subscribe(() => {
       expect(httpSpy.put).toHaveBeenCalledWith(`/api/applications/${fakeApps[1].ID}`, fakeApps[1]);
