@@ -12,7 +12,7 @@ describe('SurveyDetailsForm', () => {
   it('should be invalid', () => {
     const form = new SurveyDetailsForm();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should be valid', () => {
@@ -24,7 +24,7 @@ describe('SurveyDetailsForm', () => {
     form.VariableName.setValue('foo');
     form.Options.setValue('foo');
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 
   it('should return empty form values', () => {

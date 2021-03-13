@@ -7,6 +7,6 @@ describe('TemplateForm', () => {
 
   it('should be valid', () => {
     const form = new TemplateForm();
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 });

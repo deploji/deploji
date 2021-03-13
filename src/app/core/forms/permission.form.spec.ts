@@ -11,13 +11,13 @@ describe('PermissionForm', () => {
   it('should be invalid', () => {
     const form = new PermissionForm();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should be valid', () => {
     const form = new PermissionForm();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should reset subject', () => {
@@ -33,7 +33,7 @@ describe('PermissionForm', () => {
     form.Subject.setValue('foo');
     form.SubjectType.setValue(SubjectTypesEnum.USERS);
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should return permissions', () => {

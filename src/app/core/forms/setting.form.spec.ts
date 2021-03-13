@@ -8,6 +8,6 @@ describe('SettingForm', () => {
   it('should be valid', () => {
     const form = new SettingForm();
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 });

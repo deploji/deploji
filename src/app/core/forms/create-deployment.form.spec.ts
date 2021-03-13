@@ -10,7 +10,7 @@ describe('CreateDeployment.Form', () => {
   it('should validate', () => {
     const form = new CreateDeploymentForm();
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 
   // it('should map to deployment value', () => {

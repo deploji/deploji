@@ -8,13 +8,13 @@ describe('TeamForm', () => {
   it('should be invalid', () => {
     const form = new TeamForm();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should be valid', () => {
     const form = new TeamForm();
     form.Name.setValue('name_of_the_team');
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 });

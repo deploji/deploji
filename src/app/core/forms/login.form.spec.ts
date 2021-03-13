@@ -8,7 +8,7 @@ describe('LoginForm', () => {
   it('should be invalid', () => {
     const form = new LoginForm();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should require Username and Password', () => {
@@ -16,6 +16,6 @@ describe('LoginForm', () => {
     form.Username.setValue('user');
     form.Password.setValue('secret');
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 });

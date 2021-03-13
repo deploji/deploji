@@ -9,7 +9,7 @@ describe('RepositoryForm', () => {
   it('should be invalid', () => {
     const form = new RepositoryForm();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should be valid', () => {
@@ -18,7 +18,7 @@ describe('RepositoryForm', () => {
     form.Url.setValue('https://github.com/deploji/deploji.git');
     form.Type.setValue('foo');
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 
   it('should be invalid without NexusName if repository type is NEXUS_V3_MAVEN', () => {
@@ -28,7 +28,7 @@ describe('RepositoryForm', () => {
     form.Type.setValue(RepositoryTypesEnum.NEXUS_V3_MAVEN);
     form.NexusName.reset();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should be valid with NexusName if repository type is NEXUS_V3_MAVEN', () => {
@@ -38,6 +38,6 @@ describe('RepositoryForm', () => {
     form.Url.setValue('https://github.com/deploji/deploji.git');
     form.NexusName.setValue('foo');
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 });

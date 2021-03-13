@@ -8,26 +8,26 @@ describe('NotificationChannel.Form', () => {
 
   it('should be invalid', () => {
     const form = new NotificationChannel();
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should be valid', () => {
     const form = new NotificationChannel();
     form.Name.setValue('team communication channel');
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 
   it('should check if the type is email', () => {
     const form = new NotificationChannel();
     form.Type.setValue(NotificationChannelTypesEnum.EMAIL);
 
-    expect(form.isEmail).toBeTrue();
+    expect(form.isEmail).toBeTruthy();
   });
 
   it('should check if the type is webhook', () => {
     const form = new NotificationChannel();
     form.Type.setValue(NotificationChannelTypesEnum.WEBHOOK);
 
-    expect(form.isWebhook).toBeTrue();
+    expect(form.isWebhook).toBeTruthy();
   });
 });
