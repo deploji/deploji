@@ -7,6 +7,7 @@
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
+    "watest": "ng test --watch --code-coverage",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "build-i18n": "for lang in en pl; do ng build --output-path=dist/$lang --aot --prod --base-href /$lang/ ; done",
