@@ -24,7 +24,7 @@ describe('DeploymentApplicationForm', () => {
   it('should be valid', () => {
     const form = new DeploymentApplicationForm(inventory);
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 
   it('should reflect inventory', () => {
@@ -40,6 +40,6 @@ describe('DeploymentApplicationForm', () => {
   it('should be active', () => {
     const form = new DeploymentApplicationForm(inventory);
 
-    expect(form.get('IsActive').value).toBeTrue();
+    expect(form.get('IsActive').value).toBeTruthy();
   });
 });

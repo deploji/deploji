@@ -6,6 +6,6 @@ describe('InventoryForm', () => {
   });
 
   it('should be valid', () => {
-    expect(new InventoryForm().valid).toBeTrue();
+    expect(new InventoryForm().valid).toBeTruthy();
   });
 });

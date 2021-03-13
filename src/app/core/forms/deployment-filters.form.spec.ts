@@ -6,6 +6,6 @@ describe('DeploymentFiltersForm', () => {
   });
 
   it('should be valid', () => {
-    expect(new DeploymentFiltersForm().valid).toBeTrue();
+    expect(new DeploymentFiltersForm().valid).toBeTruthy();
   });
 });

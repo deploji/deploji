@@ -8,6 +8,6 @@ describe('SshKeyForm', () => {
   it('should be valid', () => {
     const form = new SshKeyForm();
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 });

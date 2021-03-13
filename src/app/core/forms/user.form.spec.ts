@@ -8,13 +8,13 @@ describe('UserForm', () => {
   it('should be invalid', () => {
     const form = new UserForm();
 
-    expect(form.valid).toBeFalse();
+    expect(form.valid).toBeFalsy();
   });
 
   it('should be valid', () => {
     const form = new UserForm();
     form.Username.setValue('john_doe');
 
-    expect(form.valid).toBeTrue();
+    expect(form.valid).toBeTruthy();
   });
 });

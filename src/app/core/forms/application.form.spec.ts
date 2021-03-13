@@ -33,8 +33,8 @@ describe('ApplicationForm', () => {
 
     form.addInventory(1);
 
-    expect(form.Inventories.length === 1).toBeTrue();
-    expect(form.Inventories.at(0) instanceof ApplicationInventoryForm).toBeTrue();
+    expect(form.Inventories.length === 1).toBeTruthy();
+    expect(form.Inventories.at(0) instanceof ApplicationInventoryForm).toBeTruthy();
   });
 
   it('should remove application inventory', () => {
@@ -43,6 +43,6 @@ describe('ApplicationForm', () => {
     form.addInventory(1);
     form.removeInventory(app.Inventories[0]);
 
-    expect(form.Inventories.length === 0).toBeTrue();
+    expect(form.Inventories.length === 0).toBeTruthy();
   });
 });
