@@ -35,7 +35,7 @@
     "basscss": "^8.1.0",
     "flag-icon-css": "^3.4.6",
     "jwt-decode": "^2.2.0",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "moment": "^2.24.0",
     "ngx-permissions": "^7.0.3",
     "rxjs": "~6.5.4",
